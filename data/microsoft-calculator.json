@@ -1,0 +1,11 @@
+{
+  "id": "microsoft-calculator",
+  "name": "Microsoft calculator",
+  "category": "Applications",
+  "description": "This project collects usage data and sends it to Microsoft to help improve our products and services. Diagnostic data is disabled in development builds by default, and can be enabled with the SEND_DIAGNOSTICS build flag.",
+  "links": {
+    "main": "https://github.com/Microsoft/calculator",
+    "telemetry": "https://github.com/microsoft/calculator#diagnostic-data",
+    "privacy": "https://go.microsoft.com/fwlink/?LinkId=521839"
+  }
+}

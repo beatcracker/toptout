@@ -1,0 +1,285 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Toptout",
+    "definitions": {
+        "Toptout": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "category": {
+                    "type": "string"
+                },
+                "links": {
+                    "$ref": "#/definitions/ToptoutLinks"
+                },
+                "telemetry": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Telemetry"
+                    }
+                }
+            },
+            "required": [
+                "description",
+                "category",
+                "id",
+                "links",
+                "name"
+            ],
+            "title": "Toptout"
+        },
+        "ToptoutLinks": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "main": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ]
+                },
+                "telemetry": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ]
+                },
+                "privacy": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ]
+                }
+            },
+            "required": [
+                "main"
+            ],
+            "title": "ToptoutLinks"
+        },
+        "Telemetry": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "links": {
+                    "$ref": "#/definitions/ToptoutLinks"
+                },
+                "target": {
+                    "$ref": "#/definitions/Target"
+                }
+            },
+            "required": [
+                "id",
+                "name"
+            ],
+            "title": "Telemetry"
+        },
+        "Target": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "json_file": {
+                    "$ref": "#/definitions/JSONFile"
+                },
+                "exec": {
+                    "$ref": "#/definitions/Exec"
+                },
+                "env": {
+                    "$ref": "#/definitions/Env"
+                },
+                "plain_file": {
+                    "$ref": "#/definitions/PlainFile"
+                }
+            },
+            "anyOf": [
+                {
+                    "required": [
+                        "json_file"
+                    ]
+                },
+                {
+                    "required": [
+                        "exec"
+                    ]
+                },
+                {
+                    "required": [
+                        "env"
+                    ]
+                },
+                {
+                    "required": [
+                        "plain_file"
+                    ]
+                }
+            ],
+            "required": [],
+            "title": "Target"
+        },
+        "Env": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "path": {
+                    "$ref": "#/definitions/Path"
+                },
+                "value": {
+                    "$ref": "#/definitions/Value"
+                }
+            },
+            "required": [
+                "path",
+                "value"
+            ],
+            "title": "Env"
+        },
+        "Exec": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "path": {
+                    "$ref": "#/definitions/Path"
+                },
+                "value": {
+                    "$ref": "#/definitions/Value"
+                }
+            },
+            "required": [
+                "path",
+                "value"
+            ],
+            "title": "Env"
+        },
+        "Value": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "opt_out": {
+                    "type": "string"
+                },
+                "opt_in": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "opt_in",
+                "opt_out"
+            ],
+            "title": "Value"
+        },
+        "JSONFile": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "path": {
+                    "$ref": "#/definitions/Path"
+                },
+                "selector": {
+                    "type": "string"
+                },
+                "value": {
+                    "$ref": "#/definitions/Value"
+                },
+                "display_value": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "display_value",
+                "path",
+                "selector",
+                "value"
+            ],
+            "title": "JSONFile"
+        },
+        "PlainFile": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "path": {
+                    "$ref": "#/definitions/Path"
+                },
+                "selector": {
+                    "type": "string"
+                },
+                "value": {
+                    "$ref": "#/definitions/Value"
+                },
+                "display_value": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "display_value",
+                "path",
+                "selector",
+                "value"
+            ],
+            "title": "PlainFile"
+        },
+        "Path": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "linux": {
+                    "type": "string"
+                },
+                "macos": {
+                    "type": "string"
+                },
+                "windows": {
+                    "type": "string"
+                },
+                "default": {
+                    "type": "string"
+                }
+            },
+            "anyOf": [
+                {
+                    "required": [
+                        "default"
+                    ]
+                },
+                {
+                    "required": [
+                        "linux"
+                    ]
+                },
+                {
+                    "required": [
+                        "macos"
+                    ]
+                },
+                {
+                    "required": [
+                        "windows"
+                    ]
+                }
+            ],
+            "title": "Path"
+        }
+    }
+}

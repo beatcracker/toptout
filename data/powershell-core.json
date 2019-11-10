@@ -1,0 +1,28 @@
+{
+  "id": "powershell-core",
+  "name": "PowerShell Core",
+  "category": "Shells",
+  "description": "PowerShell Core sends basic telemetry data to Microsoft when it is launched. The data includes the OS name, OS version, and PowerShell version. This data allows us to better understand the environments where PowerShell is used and enables us to prioritize new features and fixes.",
+  "links": {
+    "main": "https://github.com/powershell/powershell",
+    "telemetry": "https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_telemetry",
+    "privacy": "https://privacy.microsoft.com/privacystatement"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "target": {
+        "env": {
+          "path": {
+            "default": "POWERSHELL_TELEMETRY_OPTOUT"
+          },
+          "value": {
+            "opt_out": "1",
+            "opt_in": "0"
+          }
+        }
+      }
+    }
+  ]
+}
