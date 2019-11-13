@@ -137,7 +137,6 @@ foreach ($file in Get-ChildItem -Path "$TasksDirPath/*.tasks.ps1") {
 #region Tasks
 
 task . -Jobs @(
-    'Import-Dependecies'
     'Invoke-Pester'
     'New-README'
 )
@@ -149,33 +148,39 @@ task Clear-PackageCache {
     )
 }
 
-task Import-Dependecies {
-    Get-ChildItem -LiteralPath "$PackageDirPath" -Directory |
-    Where-Object { $_.Name -ne 'InvokeBuild' } |
-    ForEach-Object {
-        try {
-            $name = $_.Name
-            Import-Module -Name $_.FullName -Force
+task Invoke-Pester {
+    $Results = Start-Job -Name Invoke-Pester -ScriptBlock {
+        Param (
+            [Parameter(Position = 0)]
+            [ValidateNotNullOrEmpty()]
+            [string]$PackageDirPath,
+
+            [Parameter(Position = 1)]
+            [ValidateNotNullOrEmpty()]
+            [string]$TestDirPath
+        )
+
+        $ErrorActionPreference = 'Stop'
+
+        $splat = @{
+            Path       = $TestDirPath
+            Strict     = $true
+            PassThru   = $true
+            Verbose    = $false
+            EnableExit = $false
         }
-        catch [System.IO.FileLoadException] {
-            Write-Warning "Can't import module '$name' : another instance of assembly used by module is alredy loaded."
+
+        'Pester', 'PSScriptAnalyzer' | ForEach-Object {
+            Import-Module -Name "$PackageDirPath/$_" -Force
         }
-    }
-}
 
-task Invoke-Pester  {
-    $invokePesterParams = @{
-        Path       = "$BuildRoot/tests"
-        Strict     = $true
-        PassThru   = $true
-        Verbose    = $false
-        EnableExit = $false
-    }
+        Invoke-Pester @splat
+    } -ArgumentList @(
+        $PackageDirPath
+        "$BuildRoot/tests"
+     ) | Receive-Job -Wait -AutoRemoveJob
 
-    $testResults = Invoke-Pester @invokePesterParams
-
-    $numberFails = $testResults.FailedCount
-    assert($numberFails -eq 0) ('Failed "{0}" tests.' -f $numberFails)
+    assert($Results.FailedCount -eq 0) ('Failed "{0}" tests.' -f $Results.FailedCount)
 }
 
 #endregion
