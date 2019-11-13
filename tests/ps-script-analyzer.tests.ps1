@@ -7,10 +7,10 @@ Describe 'PSScriptAnalyzer tests for build scripts' {
     ) | Get-ChildItem | ForEach-Object {
         Context $_.Name {
             It 'Should not have any PSScriptAnalyzer warnings' {
-                [array]$ScriptWarnings = $_ | Invoke-ScriptAnalyzer
+                [array]$ScriptWarnings = Invoke-ScriptAnalyzer -Path $_.FullName
 
                 if ($ScriptWarnings.Count) {
-                    $ScriptWarnings | Format-List | Out-String | Write-Warning
+                    $ScriptWarnings |fl|out-string| Write-Host -ForegroundColor Cyan
                 }
 
                 $ScriptWarnings.Count | Should -BeExactly 0

@@ -276,8 +276,17 @@ filter ConvertTo-Readme {
 }
 
 task New-README {
+    $ReadmePath = "$BuildRoot/README.md"
+    $DataDir = "$BuildRoot/data"
 
-    $data = Get-ChildItem "$BuildRoot/data" -Filter '*.json' -File | ForEach-Object {
+    $DataFiles = Get-ChildItem $DataDir -Filter '*.json' -File
+
+    Write-Build White "Processing data files:"
+    $DataFiles | ForEach-Object {
+        Write-Build Gray ('  {0}' -f $_.Name)
+    }
+
+    $data = $DataFiles | ForEach-Object {
         $_ | Get-Content -Raw | ConvertFrom-Json -Depth 99 -AsHashtable
     } | Group-Object -Property category -AsHashTable -AsString
 
@@ -307,5 +316,6 @@ task New-README {
         }
     )
 
-    ($document -join "`n").Trim() | Out-File "$BuildRoot/README.md" -Encoding utf8NoBOM -Force
+    Write-Build White "Generating README: $ReadmePath"
+    ($document -join "`n").Trim() | Out-File -LiteralPath $ReadmePath -Encoding utf8NoBOM -Force
 }
