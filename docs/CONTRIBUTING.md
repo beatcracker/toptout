@@ -8,7 +8,7 @@ While you can hack around without using provided build script, it is not recomme
 
 ## Adding new telemetry data file
 
-See [data/README.md](data/README.md)
+See [data/README](data/README.md)
 
 ## Using build script
 
