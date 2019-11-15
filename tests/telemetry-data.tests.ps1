@@ -22,19 +22,26 @@ Describe 'JSON telemetry data' {
 
     $json_files | ForEach-Object {
         Context $_.Name {
+            $content =  $_ | Get-Content -Raw
+            $object = $content | ConvertFrom-Json -Depth 99
+
             It 'Conforms to the schema' {
-                $_ | Get-Content -Raw | Test-Json -Schema $schema | Should -BeExactly $true
+                $content | Test-Json -Schema $schema | Should -BeExactly $true
             }
 
             It 'File basename matches id' {
-                ($_ | Get-Content -Raw | ConvertFrom-Json -Depth 99).id | Should -BeExactly $_.BaseName
+                $object.id | Should -BeExactly $_.BaseName
             }
 
             It 'Telemetry opt-out definitions have unique IDs' {
-                [array]$telemetry = ($_ | Get-Content -Raw | ConvertFrom-Json -Depth 99).telemetry
+                [array]$telemetry = $object.telemetry
                 if ($telemetry.Count -gt 1) {
                     @($telemetry.id | Sort-Object -Unique).Count | Should -BeExactly @($telemetry.id).Count
                 }
+            }
+
+            It 'Using LF, not CRLF' {
+                $content -match "`r`n" | Should -BeExactly $false
             }
         }
     }
