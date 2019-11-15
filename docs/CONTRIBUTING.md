@@ -4,7 +4,9 @@ The core of this project is a set of JSON files which describe what telemetry is
 
 ## Prerequisites
 
-While you can hack around without using provided build script, it is not recommended. To run the build and tests, you need [PowerShell Core](https://github.com/powershell/powershell) installed.
+While you can hack around without using provided build script, it is not recommended. To run the build and tests, you need [PowerShell Core](https://github.com/powershell/powershell).
+
+On non-Windows systems you'll need [Mono](https://www.mono-project.com/) for script to be able to run [Paket](https://fsprojects.github.io/Paket/) restore its dependecies.
 
 ## Adding new telemetry data file
 
