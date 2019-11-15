@@ -126,18 +126,28 @@ Set-BuildHeader {
 #region Tasks
 
 task . -Jobs @(
-    'Invoke-Pester'
-    'New-README'
+    'test'
+    'build'
 )
 
-task Clear-PackageCache {
+task clean-all {
+    Write-Build Yellow 'Clearing the global and local NuGet and cache directories...'
+
     Invoke-Paket -Arguments @(
         'clear-cache'
         '--clear-local'
     )
 }
 
-task Invoke-Pester {
+task clean-local {
+    Write-Build Yellow 'Clearing local NuGet and cache directories...'
+
+    'packages', 'paket-files' | ForEach-Object {
+        Remove-Item -LiteralPath "$BuildRoot/$_" -Force -Recurse -Confirm:$false
+    }
+}
+
+task test {
     $Results = Start-Job -Name Invoke-Pester -ScriptBlock {
         Param (
             [Parameter(Position = 0)]
@@ -155,8 +165,6 @@ task Invoke-Pester {
             Path       = $TestDirPath
             Strict     = $true
             PassThru   = $true
-            Verbose    = $false
-            EnableExit = $false
         }
 
         'Pester', 'PSScriptAnalyzer' | ForEach-Object {
@@ -173,7 +181,7 @@ task Invoke-Pester {
 }
 
 
-task New-README {
+task build {
     . "$BuildRoot/helpers/common.ps1"
 
     $ReadmePath = "$BuildRoot/README.md"
@@ -183,7 +191,7 @@ task New-README {
 
     Write-Build White "Processing data files:"
     $DataFiles | ForEach-Object {
-        Write-Build Gray ('  {0}' -f $_.Name)
+        Write-Build Gray ('  - {0}' -f $_.Name)
     }
 
     $data = $DataFiles | ForEach-Object {
