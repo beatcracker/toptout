@@ -12,7 +12,10 @@ See [data/README.md](data/README.md)
 
 ## Using build script
 
-The provided `build.ps1` script has several tasks:
+Contributions need to pass the tests and provide a generated `README.md` file. Build script takes care of that.
+
+### Tasks
+The provided `build.ps1` script includes several tasks:
 
 - `test`: run code and data files tests
 - `readme`: generate `README.md`
@@ -21,4 +24,6 @@ The provided `build.ps1` script has several tasks:
 
 If build script is run without arguments the `test` and `readme` tasks are executed. To execute specific task provide its name as an argument: `.\build.ps1 readme`
 
-Script and tasks require several dependencies from the PowerShell Gallery. To avoid polluting your enviornmnet those dependecies are downloaded on the first run into the `./packages` directory. This is achieved by using [Paket](https://fsprojects.github.io/Paket/) in [magic mode](https://fsprojects.github.io/Paket/bootstrapper.html#Magic-mode).
+### Dependencies
+
+Script and tasks require several dependencies from the [PowerShell Gallery](https://www.powershellgallery.com/). To avoid polluting your environment those dependecies are downloaded on the first run into the `./packages` directory. This is achieved by using [Paket](https://fsprojects.github.io/Paket/) in [magic mode](https://fsprojects.github.io/Paket/bootstrapper.html#Magic-mode).

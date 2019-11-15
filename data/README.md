@@ -1,10 +1,10 @@
 # Telemetry data files
 
-The telemetry data file is a JSON document conforming to the JSON Schema [toptout.schema.json](schema/toptout.schema.json). See [JSON Schema](https://json-schema.org) website for more information.
+The telemetry data file is a JSON document conforming to the JSON Schema: [toptout.schema.json](schema/toptout.schema.json). See [JSON Schema](https://json-schema.org) website for more information.
 
 ## Basic example
 
-Describes product which has one telemetry channel that is controlled by the environment variable.
+Describes product which has one telemetry channel which is controlled by the environment variable.
 
 ```jsonc
 {
@@ -17,13 +17,13 @@ Describes product which has one telemetry channel that is controlled by the envi
   // Friendly category name. The README generator uses it to group products.
   "category": "Development tools",
 
-   // Short description of the collected telemetry. Usually copied from product's documentation.
+   // Short description of the collected telemetry. Usually copied from the product's documentation.
   "description": "All your base are belong to us.",
 
   // Links object
   "links": {
     // Link to the product's website. Mandatory.
-    "main": "https://example.com", // Main link to the product website. Manadatory.
+    "main": "https://example.com",
 
     // Link to the product's telemetry description. Optional.
     "telemetry": "https://example.com/telemetry",
@@ -32,21 +32,24 @@ Describes product which has one telemetry channel that is controlled by the envi
     "privacy": "https://example.com/privacy"
   },
 
-  // Telemetry channels list. Has name, desription and optionally opt-in/out methods.
-  // Optional, since you may wish to add a product that contains telemetry but no way to control it.
+  // Telemetry channels list. Conains name and optionally desription and opt-in/out methods.
+  // Optional, since you may wish to add a product that contains telemetry but doesn't provide a way to control it.
   "telemetry": [
     {
 
-      // Telemetry channel unique ID. Use lowercase and [az-] character set. Must be unique in this list.
+      // Telemetry channel unique ID. Use lowercase and [az-] character set.
+      // Must be unique in this list.
       "id": "usage-data",
 
       // Friendly name of the product
       "name": "Usage data",
 
-      // Target object. Optional, since you may wish to describe multiple telemetry channels that you can't control.
+      // Target object.
+      // Optional, since you may wish to describe multiple telemetry channels that don't provide a ways to control them.
       "target": {
 
-        // "Environment variable" target. Sets or removes environment variable.
+        // "Environment variable" target.
+        // Sets or removes environment variable.
         "env": {
 
           // Path object. Contains environment variable name for various OSes.
@@ -74,7 +77,7 @@ Describes product which has one telemetry channel that is controlled by the envi
 
 ## Telemetry channel targets
 
-Product can have multiple telemetry cSome telemetry channels could be controlled by multiple methods. Currently supported ones are:
+Product can have multiple telemetry channels. Some of them could be controlled by multiple methods. Currently supported methods are:
 
 - Environment variable: `env`
 - Executable: `exec`
@@ -109,7 +112,7 @@ Product can have multiple telemetry cSome telemetry channels could be controlled
 
 ### exec
 
-`Execute` target. Indicates that this specific telemetry channel is controlled by the executing shell command.
+`Execute` target. Indicates that this specific telemetry channel is controlled by executing shell command.
 
 ```jsonc
   "exec": {
@@ -145,7 +148,7 @@ Product can have multiple telemetry cSome telemetry channels could be controlled
       "windows": "%USERPROFILE%\\.foobar\\config.json"
     },
 
-    // Path to object in the JSON.
+    // Selector of the telemetry channel control setting in the JSON.
     // Specify as JSON Pointer (https://tools.ietf.org/html/rfc6901)
     "selector": "/telemetry",
 
@@ -179,15 +182,17 @@ Product can have multiple telemetry cSome telemetry channels could be controlled
       "windows": "%USERPROFILE%\\.foobar\\config.cfg"
     },
 
-    // Path to object in the plaintext file.
+    // Selector of the telemetry channel control setting in the plaintext file.
     // Specify as GO regex (https://github.com/google/re2/wiki/Syntax)
     "selector": "^[ \\t]*telemetry[ \t](on|off)\s*$",
 
     "value": {
       // Use this value to opt-out of this telemetry channel.
+      // Specify full string.
       "opt_out": "telemetry off",
 
       // Use this value to opt-in into this telemetry channel.
+      // Specify full string.
       "opt_in": "telemetry on"
     },
 

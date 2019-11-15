@@ -215,8 +215,7 @@ The core of this project is a set of JSON files which describe what telemetry is
 
 If the tool you're using is not here you can easily add it by creating a new JSON file describing a telemetry data channels.
 
-- JSON files directory: [data](data)
-- [JSON Schema](https://json-schema.org) to validate files: [toptout.schema.json](schema/toptout.schema.json)
+See [Contributing.md](Contributing.md) and [data/README.md](data/README.md) for details.
 
 ## Future plans
 
