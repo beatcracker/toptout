@@ -79,7 +79,6 @@ function Get-PaddedString {
 #region Common variables
 
 $PackageDirPath = Join-Path $PSScriptRoot 'packages'
-$TasksDirPath = Join-Path $PSScriptRoot 'tasks'
 
 #endregion
 
@@ -123,16 +122,6 @@ Set-BuildHeader {
 }
 
 #endregion
-
-
-#region Import tasks
-
-foreach ($file in Get-ChildItem -Path "$TasksDirPath/*.tasks.ps1") {
-    . $file
-}
-
-#endregion
-
 
 #region Tasks
 
@@ -181,6 +170,77 @@ task Invoke-Pester {
      ) | Receive-Job -Wait -AutoRemoveJob
 
     assert($Results.FailedCount -eq 0) ('Failed "{0}" tests.' -f $Results.FailedCount)
+}
+
+
+task New-README {
+    . "$BuildRoot/helpers/common.ps1"
+
+    $ReadmePath = "$BuildRoot/README.md"
+    $DataDir = "$BuildRoot/data"
+
+    $DataFiles = Get-ChildItem $DataDir -Filter '*.json' -File
+
+    Write-Build White "Processing data files:"
+    $DataFiles | ForEach-Object {
+        Write-Build Gray ('  {0}' -f $_.Name)
+    }
+
+    $data = $DataFiles | ForEach-Object {
+        $_ | Get-Content -Raw | ConvertFrom-Json -Depth 99 -AsHashtable
+    } | Group-Object -Property category -AsHashTable -AsString
+
+    $Categories = $data.Keys | Sort-Object
+
+    $document = $(
+@"
+# Toptout | easily opt-out from telemetry collection
+
+Telemetry in software projects is a polarized issue: on one hand it allows developers to improve their work by collecting various metrics, on the other hand - nobody likes to be spied on.
+The goal of this project is to put you in control. See what data is collected by the tools you use and decide if you want to share it. Then use methods provided here to opt-in or opt-out.
+
+## Details
+
+The core of this project is a set of JSON files which describe what telemetry is collected and what can be done to enable or disable it. The README you see is automatically generated from those files.
+
+## Contributing
+
+If the tool you're using is not here you can easily add it by creating a new JSON file describing a telemetry data channels.
+
+- JSON files directory: [data](data)
+- [JSON Schema](https://json-schema.org) to validate files: [toptout.schema.json](schema/toptout.schema.json)
+
+## Future plans
+
+- API to serve this data online.
+- Automated tool that can ingest the data from the API. You could run it on your machine to detect and configure telemetry in all suported products.
+- ???
+"@
+        '## Table of Contents' | Add-Newline
+
+        $Categories | ForEach-Object {
+            # https://gist.github.com/asabaylus/3071099#gistcomment-1593627
+            # https://github.com/jch/html-pipeline/blob/master/lib/html/pipeline/toc_filter.rb
+
+            '- [{0}](#{1})' -f $_, ($_ | ConvertTo-Anchor)
+            $data[$_].name | ForEach-Object {
+                '  - [{0}](#{1})' -f $_, ($_ | ConvertTo-Anchor)
+            }
+        }
+
+        Add-Newline
+
+        $Categories | Sort-Object | ForEach-Object {
+            '## {0}' -f $_ | Add-Newline
+
+            $data.$_ | Sort-Object -Property id | ForEach-Object {
+                $_ | ConvertTo-Readme
+            }
+        }
+    )
+
+    Write-Build White "Generating README: $ReadmePath"
+    ($document -join $LF).Trim() + $LF | Out-File -LiteralPath $ReadmePath -Encoding utf8NoBOM -NoNewline -Force
 }
 
 #endregion
