@@ -1,3 +1,24 @@
+# Toptout | easily opt-out from telemetry collection
+
+Telemetry in software projects is a polarising issue: on one hand it allows developers to improve their work by collecting various metrics, on the other hand - nobody likes to be spied on.
+The goal of this project is to put you in control. See what data is collected by the tools you use and decide if you want to share it. Then use methods provided here to opt-on or opt-out.
+
+## Description
+
+The core of this project is a set of JSON files which describe how telemetry collected and what can be done to enable or disable it. This README is automatically generated from those files.
+
+## Contributing
+
+If the tool you're using is not here you can easily add it by creating a new JSON file describing a telemetry data channels.
+
+- JSON files directory: [data](data)
+- [JSON Schema](https://json-schema.org) to validate files: [schema](schema/toptout.schema.json)
+
+## Future plans
+
+- API to serve this data online
+- Automated tool that can ingest the data from the API. You could run it on your machine to detect and configure telemetry in all suported products
+- ???
 ## Table of Contents
 
 - [Applications](#applications)
