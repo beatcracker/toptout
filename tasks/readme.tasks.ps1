@@ -1,5 +1,8 @@
 #Requires -Version 6
 
+$LF = "`n"
+$CRLF = "`r`n"
+
 filter ConvertTo-Anchor {
     ($_ -replace '[^\w- ]').ToLowerInvariant() -replace '\s', '-'
 }
@@ -223,7 +226,7 @@ filter ConvertTo-Readme {
                 '{0} Content' -f ($hdr * $Indent) | Add-Newline
 
                 '```json'
-                ($tg.json_file.display_value | ConvertFrom-Json -Depth 99 | ConvertTo-Json) -replace "`r`n", "`n"
+                ($tg.json_file.display_value | ConvertFrom-Json -Depth 99 | ConvertTo-Json) -replace $CRLF, $LF
                 '```'
 
                 Add-Newline
@@ -341,5 +344,5 @@ If the tool you're using is not here you can easily add it by creating a new JSO
     )
 
     Write-Build White "Generating README: $ReadmePath"
-    ($document -join "`n").Trim() | Out-File -LiteralPath $ReadmePath -Encoding utf8NoBOM -Force
+    ($document -join $LF).Trim() + $LF | Out-File -LiteralPath $ReadmePath -Encoding utf8NoBOM -NoNewline -Force
 }
