@@ -38,7 +38,6 @@ If the tool you're using is not here you can easily add it by creating a new JSO
 
 ## Applications
 
-  - atom.json
 ## [Atom](https://atom.io)
 
 > Help improve Atom by sending usage statistics, exceptions and deprecations to the team. The user's decision is stored at core.telemetryConsent. The three possible values are undecided, no and limited. The intent is that consent is given if and only if limited is chosen.
@@ -66,7 +65,6 @@ Use methods described below to opt-out of this telemetry channel.
 atom.config.set('core.telemetryConsent', 'no')
 ```
 
-  - microsoft-calculator.json
 ## [Microsoft calculator](https://github.com/Microsoft/calculator)
 
 > This project collects usage data and sends it to Microsoft to help improve our products and services. Diagnostic data is disabled in development builds by default, and can be enabled with the SEND_DIAGNOSTICS build flag.
@@ -76,7 +74,6 @@ atom.config.set('core.telemetryConsent', 'no')
 
 List of known telemetry channels:
 
-  - vscode.json
 ## [VSCode](https://code.visualstudio.com/)
 
 > Visual Studio Code collects telemetry data, which is used to help understand how to improve the product.
@@ -132,7 +129,6 @@ Use methods described below to opt-out of this telemetry channel.
 
 ## Development tools
 
-  - automated-lab.json
 ## [AutomatedLab](https://github.com/AutomatedLab/AutomatedLab)
 
 > AutomatedLab will start to collect telemetry starting with version 5.0. This is an opt-out collection and you will be asked once to specify whether or not you want to send us telemetry data.
@@ -161,7 +157,6 @@ AUTOMATEDLAB_TELEMETRY_OPTOUT=1
 pwsh -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Import-Module AutomatedLab -ErrorAction Stop ; Disable-LabTelemetry -ErrorAction Stop"
 ```
 
-  - cordova-cli.json
 ## [Apache Cordova CLI](https://cordova.apache.org)
 
 > We use the gathered information to help us make our tool more useful and to better understand how it is used. We do not track or collect personally identifiable information or associate gathered data with any personally identifying information from other sources.
@@ -191,7 +186,6 @@ CI=ANY_VALUE
 cordova telemetry off
 ```
 
-  - gatsby-js.json
 ## [Gatsby](https://www.gatsbyjs.org)
 
 > Gatsby contains a telemetry feature that collects anonymous usage information that is used to help improve Gatsby for all users. The Gatsby user base is growing very rapidly. It’s important that our small team and the greater community will better understand the usage patterns, so we can best decide how to design future features and prioritize current work.
@@ -221,7 +215,6 @@ GATSBY_TELEMETRY_DISABLED =1
 gatsby telemetry --disable
 ```
 
-  - hasura.json
 ## [Hasura GraphQL engine](https://hasura.io)
 
 > The Hasura GraphQL engine collects anonymous telemetry data that helps the Hasura team in understanding how the product is being used and in deciding what to focus on next.
@@ -263,7 +256,6 @@ HASURA_GRAPHQL_ENABLE_TELEMETRY=false
 }
 ```
 
-  - net-core-sdk.json
 ## [.NET Core SDK](https://docs.microsoft.com/en-us/dotnet/core/tools/index)
 
 > The NET Core SDK includes a telemetry feature that collects usage data and exception information when the .NET Core CLI crashes. The .NET Core CLI comes with the .NET Core SDK and is the set of verbs that enable you to build, test, and publish your .NET Core apps. It's important that the .NET team understands how the tools are used so they can be improved. Information on failures helps the team resolve problems and fix bugs.
@@ -283,7 +275,6 @@ Use methods described below to opt-out of this telemetry channel.
 DOTNET_CLI_TELEMETRY_OPTOUT=false
 ```
 
-  - netlify-cli.json
 ## [Netlify CLI](https://netlify.com)
 
 > By default, Netlify collects data on usage of Netlify CLI commands. We do this to improve the reliability and performance of Netlify CLI, and to help drive new features and improvements.
@@ -305,7 +296,6 @@ Use methods described below to opt-out of this telemetry channel.
 netlify --telemetry-disable
 ```
 
-  - nextjs.json
 ## [Next.js](https://nextjs.org)
 
 > Next.js collects completely anonymous telemetry data about general usage. Participation in this anonymous program is optional, and you may opt-out if you'd not like to share any information.
@@ -337,7 +327,6 @@ npx next telemetry disable
 
 ## Shells
 
-  - powershell-core.json
 ## [PowerShell Core](https://github.com/powershell/powershell)
 
 > PowerShell Core sends basic telemetry data to Microsoft when it is launched. The data includes the OS name, OS version, and PowerShell version. This data allows us to better understand the environments where PowerShell is used and enables us to prioritize new features and fixes.
