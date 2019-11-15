@@ -1,6 +1,6 @@
 # Toptout: easily opt-out from telemetry collection
 
-Telemetry in software projects is a polarized issue: on one hand it allows developers to improve their work by collecting various metrics, on the other hand - nobody likes to be spied on.
+Telemetry in software projects is a polarized issue: on the one hand it allows developers to improve their work by collecting various metrics, on the other hand - nobody likes to be spied on.
 The goal of this project is to put you in control. See what data is collected by the tools you use and decide if you want to share it. Then use methods provided here to opt-in or opt-out.
 
 ## Details
