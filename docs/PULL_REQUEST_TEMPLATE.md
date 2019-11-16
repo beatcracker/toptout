@@ -1,4 +1,4 @@
-Please refer to contributing documentation for any questions: [/docs/CONTRIBUTING.md]
+Please refer to contributing documentation for any questions: [CONTRIBUTING](/docs/CONTRIBUTING.md)
 
 ### Pull request checklist
 
