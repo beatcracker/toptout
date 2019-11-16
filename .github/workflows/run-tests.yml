@@ -1,0 +1,13 @@
+name: Run tests
+
+on: [pull_request, push]
+
+jobs:
+  build:
+    runs-on: [ubuntu-18.04]
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Pester
+        shell: pwsh
+        run: ./build.ps1 test
