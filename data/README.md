@@ -8,7 +8,7 @@ Describes a product that has one telemetry channel which is controlled by the en
 
 ```jsonc
 {
-  // Product unique ID. Use lowercase and [az-] character set. Must be unique across all files.
+  // Product unique ID. Use [az-] character set. Must be unique across all files.
   "id": "foo-bar",
 
   // Friendly name of the product
@@ -32,12 +32,12 @@ Describes a product that has one telemetry channel which is controlled by the en
     "privacy": "https://example.com/privacy"
   },
 
-  // Telemetry channels list. Conains name and optionally desription and opt-in/out methods.
+  // Telemetry channels list. Conеains name and optionally desription and opt-in/out methods.
   // Optional, since you may wish to add a product that contains telemetry but doesn't provide a way to control it.
   "telemetry": [
     {
 
-      // Telemetry channel unique ID. Use lowercase and [az-] character set.
+      // Telemetry channel unique ID. Use [az-] character set.
       // Must be unique in this list.
       "id": "usage-data",
 
@@ -49,7 +49,7 @@ Describes a product that has one telemetry channel which is controlled by the en
       "target": {
 
         // "Environment variable" target.
-        // Sets or removes environment variable.
+        // Set or remove environment variable.
         "env": {
 
           // Path object. Contains environment variable name for various OSes.
@@ -66,7 +66,7 @@ Describes a product that has one telemetry channel which is controlled by the en
 
             // Set environment variable to this value to opt-in into this telemetry channel.
             // Set to 'null' value (not literal "null" string) to indicate that environment variable should be removed.
-            "opt_in": "true"
+            "opt_in": null
           }
         }
       }
@@ -106,7 +106,7 @@ Product can have multiple telemetry channels. Some of them could be controlled b
 
     // Set environment variable to this value to opt-in into this telemetry channel.
     // Set to 'null' value (not literal "null" string) to indicate that environment variable should be removed.
-    "opt_in": "true"
+    "opt_in": null
   }
 ```
 
@@ -148,7 +148,7 @@ Product can have multiple telemetry channels. Some of them could be controlled b
       "windows": "%USERPROFILE%\\.foobar\\config.json"
     },
 
-    // Selector of the telemetry channel control setting in the JSON.
+    // Selector of the telemetry channel control setting in the JSON object.
     // Specify as JSON Pointer (https://tools.ietf.org/html/rfc6901)
     "selector": "/telemetry",
 
