@@ -55,7 +55,7 @@ Use methods described below to opt-out of this telemetry channel.
 | OS      | Path                                |
 |---------|-------------------------------------|
 | Linux   | $HOME/\.atom/init\.coffee           |
-| MacOS   | $HOME/\.atom/init\.coffee           |
+| macOS   | $HOME/\.atom/init\.coffee           |
 | Windows | %USERPROFILE%\\\.atom\\init\.coffee |
 
 ###### Content
@@ -93,7 +93,7 @@ Use methods described below to opt-out of this telemetry channel.
 | OS      | Path                                                       |
 |---------|------------------------------------------------------------|
 | Linux   | $HOME/\.config/Code/User/settings\.json                    |
-| MacOS   | $HOME/Library/Application Support/Code/User/settings\.json |
+| macOS   | $HOME/Library/Application Support/Code/User/settings\.json |
 | Windows | %APPDATA%\\Code\\User\\settings\.json                      |
 
 ###### Content
@@ -115,7 +115,7 @@ Use methods described below to opt-out of this telemetry channel.
 | OS      | Path                                                       |
 |---------|------------------------------------------------------------|
 | Linux   | $HOME/\.config/Code/User/settings\.json                    |
-| MacOS   | $HOME/Library/Application Support/Code/User/settings\.json |
+| macOS   | $HOME/Library/Application Support/Code/User/settings\.json |
 | Windows | %APPDATA%\\Code\\User\\settings\.json                      |
 
 ###### Content
@@ -244,7 +244,7 @@ HASURA_GRAPHQL_ENABLE_TELEMETRY=false
 | OS      | Path                                  |
 |---------|---------------------------------------|
 | Linux   | $HOME/\.hasura/config\.json           |
-| MacOS   | $HOME/\.hasura/config\.json           |
+| macOS   | $HOME/\.hasura/config\.json           |
 | Windows | %USERPROFILE%\\\.hasura\\config\.json |
 
 ###### Content
