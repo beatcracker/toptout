@@ -34,7 +34,7 @@ filter ConvertTo-PathTableObject {
         [ordered]@{
             OS   = @{
                 linux   = 'Linux'
-                macos   = 'MacOS'
+                macos   = 'macOS'
                 windows = 'Windows'
             }[$key]
             Path = ($_.$key | Format-MdString)
