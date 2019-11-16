@@ -4,7 +4,7 @@ The telemetry data file is a JSON document conforming to the JSON Schema: [topto
 
 ## Basic example
 
-Describes product which has one telemetry channel which is controlled by the environment variable.
+Describes a product that has one telemetry channel which is controlled by the environment variable.
 
 ```jsonc
 {
@@ -184,7 +184,7 @@ Product can have multiple telemetry channels. Some of them could be controlled b
 
     // Selector of the telemetry channel control setting in the plaintext file.
     // Specify as GO regex (https://github.com/google/re2/wiki/Syntax)
-    "selector": "^[ \\t]*telemetry[ \t](on|off)\s*$",
+    "selector": "^[ \\t]*telemetry[ \\t](on|off)[ \\t]*$",
 
     "value": {
       // Use this value to opt-out of this telemetry channel.
