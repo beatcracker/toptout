@@ -230,6 +230,7 @@ See [CONTRIBUTING](/docs/CONTRIBUTING.md) and [data/README](/data/README.md) for
 - API to serve this data online.
 - Automated tool that can ingest the data from the API. You could run it on your machine to detect and configure telemetry in all suported products.
 - ???
+
 "@
         '## Table of Contents' | Add-Newline
 
