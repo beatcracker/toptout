@@ -26,19 +26,24 @@ See [CONTRIBUTING](/docs/CONTRIBUTING.md) and [data/README](/data/README.md) for
 - API to serve this data online.
 - Automated tool that can ingest the data from the API. You could run it on your machine to detect and configure telemetry in all suported products.
 - ???
+
 ## Table of Contents
 
 - [Applications](#applications)
   - [Atom](#atom)
   - [Microsoft calculator](#microsoft-calculator)
   - [VSCode](#vscode)
+- [Cloud tools](#cloud-tools)
+  - [AWS SAM CLI](#aws-sam-cli)
+  - [Netlify CLI](#netlify-cli)
+  - [Stripe CLI](#stripe-cli)
 - [Development tools](#development-tools)
   - [AutomatedLab](#automatedlab)
   - [Apache Cordova CLI](#apache-cordova-cli)
   - [Gatsby](#gatsby)
+  - [Gauge](#gauge)
   - [Hasura GraphQL engine](#hasura-graphql-engine)
   - [.NET Core SDK](#net-core-sdk)
-  - [Netlify CLI](#netlify-cli)
   - [Next.js](#nextjs)
 - [Shells](#shells)
   - [PowerShell Core](#powershell-core)
@@ -134,6 +139,67 @@ Use methods described below to opt-out of this telemetry channel.
 }
 ```
 
+## Cloud tools
+
+## [AWS SAM CLI](https://aws.amazon.com/serverless/sam/)
+
+> At AWS, we develop and launch services based on what we learn from interactions with customers. We use customer feedback to iterate on our product. Telemetry is additional information that helps us to better understand our customers’ needs, diagnose issues, and deliver features that improve the customer experience.\n The AWS SAM CLI collects telemetry, such as generic usage metrics, system and environment information, and errors.
+
+- [Telemetry details](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-telemetry.html)
+- [Privacy policy](https://aws.amazon.com/compliance/data-privacy-faq/)
+
+List of known telemetry channels:
+
+### Usage data
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### Set environment variable
+
+```none
+SAM_CLI_TELEMETRY=0
+```
+
+## [Netlify CLI](https://netlify.com)
+
+> By default, Netlify collects data on usage of Netlify CLI commands. We do this to improve the reliability and performance of Netlify CLI, and to help drive new features and improvements.
+
+- [Telemetry details](https://docs.netlify.com/cli/get-started/#usage-data-collection)
+- [Privacy policy](https://www.netlify.com/privacy/)
+
+List of known telemetry channels:
+
+### Usage data
+
+Use methods described below to opt-out of this telemetry channel.
+
+#### Method #1
+
+##### Run command
+
+```shell
+netlify --telemetry-disable
+```
+
+## [Stripe CLI](https://stripe.com/docs/stripe-cli)
+
+> The Stripe CLI includes a telemetry feature that collects some usage data. This feature is enabled by default.
+
+- [Telemetry details](https://github.com/stripe/stripe-cli/wiki/telemetry)
+- [Privacy policy](https://stripe.com/privacy)
+
+List of known telemetry channels:
+
+### Usage data
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### Set environment variable
+
+```none
+STRIPE_CLI_TELEMETRY_OPTOUT=0
+```
+
 ## Development tools
 
 ## [AutomatedLab](https://github.com/AutomatedLab/AutomatedLab)
@@ -222,6 +288,35 @@ GATSBY_TELEMETRY_DISABLED =1
 gatsby telemetry --disable
 ```
 
+## [Gauge](https://gauge.org/)
+
+> To be a better testing tool, from version 0.9.0, Gauge collects anonymous usage statistics (telemetry). The data is public and there’s an easy way to opt out.
+
+- [Telemetry details](https://manpage.gauge.org/gauge_telemetry.html)
+- [Privacy policy](https://www.thoughtworks.com/privacy-policy)
+
+List of known telemetry channels:
+
+### Usage data
+
+Use methods described below to opt-out of this telemetry channel.
+
+#### Method #1
+
+##### Set environment variable
+
+```none
+GAUGE_TELEMETRY_ENABLED=false
+```
+
+#### Method #2
+
+##### Run command
+
+```shell
+gauge telemetry off
+```
+
 ## [Hasura GraphQL engine](https://hasura.io)
 
 > The Hasura GraphQL engine collects anonymous telemetry data that helps the Hasura team in understanding how the product is being used and in deciding what to focus on next.
@@ -280,27 +375,6 @@ Use methods described below to opt-out of this telemetry channel.
 
 ```none
 DOTNET_CLI_TELEMETRY_OPTOUT=false
-```
-
-## [Netlify CLI](https://netlify.com)
-
-> By default, Netlify collects data on usage of Netlify CLI commands. We do this to improve the reliability and performance of Netlify CLI, and to help drive new features and improvements.
-
-- [Telemetry details](https://docs.netlify.com/cli/get-started/#usage-data-collection)
-- [Privacy policy](https://www.netlify.com/privacy/)
-
-List of known telemetry channels:
-
-### Usage data
-
-Use methods described below to opt-out of this telemetry channel.
-
-#### Method #1
-
-##### Run command
-
-```shell
-netlify --telemetry-disable
 ```
 
 ## [Next.js](https://nextjs.org)
