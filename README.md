@@ -181,6 +181,24 @@ Use methods described below to opt-out of this telemetry channel.
 netlify --telemetry-disable
 ```
 
+#### Method #2
+
+##### Edit config file (JSON)
+
+| OS      | Path                                   |
+|---------|----------------------------------------|
+| Linux   | $HOME/\.netlify/config\.json           |
+| macOS   | $HOME/\.netlify/config\.json           |
+| Windows | %USERPROFILE%\\\.netlify\\config\.json |
+
+###### Content
+
+```json
+{
+  "telemetryDisabled": true
+}
+```
+
 ## [Stripe CLI](https://stripe.com/docs/stripe-cli)
 
 > The Stripe CLI includes a telemetry feature that collects some usage data. This feature is enabled by default.
