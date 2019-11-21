@@ -15,7 +15,7 @@
       "target": {
         "env": {
           "path": {
-            "default": "GATSBY_TELEMETRY_DISABLED "
+            "default": "GATSBY_TELEMETRY_DISABLED"
           },
           "value": {
             "opt_out": "1",

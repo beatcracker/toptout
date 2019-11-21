@@ -295,7 +295,7 @@ Use methods described below to opt-out of this telemetry channel.
 ##### Set environment variable
 
 ```none
-GATSBY_TELEMETRY_DISABLED =1
+GATSBY_TELEMETRY_DISABLED=1
 ```
 
 #### Method #2
