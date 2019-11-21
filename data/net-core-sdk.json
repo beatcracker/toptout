@@ -18,8 +18,8 @@
             "default": "DOTNET_CLI_TELEMETRY_OPTOUT"
           },
           "value": {
-            "opt_out": "false",
-            "opt_in": "true"
+            "opt_out": "true",
+            "opt_in": null
           }
         }
       }
