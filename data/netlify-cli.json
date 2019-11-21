@@ -1,7 +1,7 @@
 {
   "id": "netlify-cli",
   "name": "Netlify CLI",
-  "category": "Development tools",
+  "category": "Cloud tools",
   "description": "By default, Netlify collects data on usage of Netlify CLI commands. We do this to improve the reliability and performance of Netlify CLI, and to help drive new features and improvements.",
   "links": {
     "main": "https://netlify.com",
