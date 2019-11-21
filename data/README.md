@@ -167,7 +167,7 @@ Product can have multiple telemetry channels. Some of them could be controlled b
   }
 ```
 
-### json_file
+### plain_file
 
 `Plaintext file` target. Indicates that this specific telemetry channel is controlled by setting the value in the plaintext file.
 
