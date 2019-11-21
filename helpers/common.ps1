@@ -134,7 +134,9 @@ filter ConvertTo-Readme {
         Add-Newline
     }
 
-    'List of known telemetry channels:' | Add-Newline
+    if ($_.telemetry.Count -gt 0) {
+        'List of known telemetry channels:' | Add-Newline
+    }
 
     foreach ($tm in $_.telemetry) {
         $Indent++ > $null
@@ -145,14 +147,16 @@ filter ConvertTo-Readme {
             '> {0}' -f $tm.description | Add-Newline
         }
 
-        'Use methods described below to opt-out of this telemetry channel.' | Add-Newline
-
         if ($tm.links) {
             foreach ($l in $tm.links.GetEnumerator()) {
                 '{0}: {1}' -f $l.Key, $l.Value
             }
 
             Add-Newline
+        }
+
+        if ($tm.target.Keys.Count -gt 0) {
+            'Use methods described below to opt-out of this telemetry channel.' | Add-Newline
         }
 
         $Indent++ > $null
