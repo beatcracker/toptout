@@ -52,7 +52,7 @@ See [CONTRIBUTING](/docs/CONTRIBUTING.md) and [data/README](/data/README.md) for
 
 ## [Atom](https://atom.io)
 
-> Help improve Atom by sending usage statistics, exceptions and deprecations to the team. The user's decision is stored at core.telemetryConsent. The three possible values are undecided, no and limited. The intent is that consent is given if and only if limited is chosen.
+> Help improve Atom by sending usage statistics, exceptions and deprecations to the team.
 
 - [Telemetry details](https://github.com/atom/metrics)
 - [Privacy policy](https://help.github.com/articles/github-privacy-policy/)
@@ -60,6 +60,8 @@ See [CONTRIBUTING](/docs/CONTRIBUTING.md) and [data/README](/data/README.md) for
 List of known telemetry channels:
 
 ### Usage data
+
+> The user's decision is stored at core.telemetryConsent. The three possible values are undecided, no and limited. The intent is that consent is given if and only if limited is chosen.
 
 Use methods described below to opt-out of this telemetry channel.
 

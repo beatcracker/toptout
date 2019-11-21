@@ -2,7 +2,7 @@
   "id": "atom",
   "name": "Atom",
   "category": "Applications",
-  "description": "Help improve Atom by sending usage statistics, exceptions and deprecations to the team. The user's decision is stored at core.telemetryConsent. The three possible values are undecided, no and limited. The intent is that consent is given if and only if limited is chosen.",
+  "description": "Help improve Atom by sending usage statistics, exceptions and deprecations to the team.",
   "links": {
     "main": "https://atom.io",
     "telemetry": "https://github.com/atom/metrics",
@@ -12,7 +12,8 @@
     {
       "id": "usage-data",
       "name": "Usage data",
-        "target": {
+      "description": "The user's decision is stored at core.telemetryConsent. The three possible values are undecided, no and limited. The intent is that consent is given if and only if limited is chosen.",
+      "target": {
         "plain_file": {
           "path": {
             "linux": "$HOME/.atom/init.coffee",
