@@ -392,7 +392,7 @@ Use methods described below to opt-out of this telemetry channel.
 ##### Set environment variable
 
 ```none
-DOTNET_CLI_TELEMETRY_OPTOUT=false
+DOTNET_CLI_TELEMETRY_OPTOUT=true
 ```
 
 ## [Next.js](https://nextjs.org)
