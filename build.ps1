@@ -127,7 +127,7 @@ Set-BuildHeader {
 
 task . -Jobs @(
     'test'
-    'build'
+    'readme'
 )
 
 task clean-all {
@@ -181,7 +181,7 @@ task test {
 }
 
 
-task build {
+task readme {
     . "$BuildRoot/helpers/common.ps1"
 
     $ReadmePath = "$BuildRoot/README.md"
