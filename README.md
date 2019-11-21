@@ -143,7 +143,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ## [AWS SAM CLI](https://aws.amazon.com/serverless/sam/)
 
-> At AWS, we develop and launch services based on what we learn from interactions with customers. We use customer feedback to iterate on our product. Telemetry is additional information that helps us to better understand our customers’ needs, diagnose issues, and deliver features that improve the customer experience.\n The AWS SAM CLI collects telemetry, such as generic usage metrics, system and environment information, and errors.
+> At AWS, we develop and launch services based on what we learn from interactions with customers. We use customer feedback to iterate on our product. Telemetry is additional information that helps us to better understand our customers’ needs, diagnose issues, and deliver features that improve the customer experience. The AWS SAM CLI collects telemetry, such as generic usage metrics, system and environment information, and errors.
 
 - [Telemetry details](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-telemetry.html)
 - [Privacy policy](https://aws.amazon.com/compliance/data-privacy-faq/)
