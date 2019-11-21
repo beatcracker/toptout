@@ -201,7 +201,6 @@ filter ConvertTo-Readme {
                 $Indent-- > $null
                 $Counter++ > $null
 
-                break
             }
 
             if ($tg.json_file) {
@@ -234,8 +233,6 @@ filter ConvertTo-Readme {
                 $Indent-- > $null
                 $Indent-- > $null
                 $Counter++ > $null
-
-                break
             }
 
             if ($tg.plain_file) {
@@ -268,8 +265,6 @@ filter ConvertTo-Readme {
                 $Indent-- > $null
                 $Indent-- > $null
                 $Counter++ > $null
-
-                break
             }
         }
 
