@@ -215,7 +215,7 @@ Use methods described below to opt-out of this telemetry channel.
 ##### Set environment variable
 
 ```none
-STRIPE_CLI_TELEMETRY_OPTOUT=0
+STRIPE_CLI_TELEMETRY_OPTOUT=1
 ```
 
 ## Development tools
