@@ -79,12 +79,16 @@ atom.config.set('core.telemetryConsent', 'no')
 
 ## [Microsoft calculator](https://github.com/Microsoft/calculator)
 
-> This project collects usage data and sends it to Microsoft to help improve our products and services. Diagnostic data is disabled in development builds by default, and can be enabled with the SEND_DIAGNOSTICS build flag.
+> This project collects usage data and sends it to Microsoft to help improve our products and services.
 
 - [Telemetry details](https://github.com/microsoft/calculator#diagnostic-data)
 - [Privacy policy](https://go.microsoft.com/fwlink/?LinkId=521839)
 
 List of known telemetry channels:
+
+### Diagnostic data
+
+> Diagnostic data is disabled in development builds by default, and can be enabled with the SEND_DIAGNOSTICS build flag.
 
 ## [VSCode](https://code.visualstudio.com/)
 
