@@ -8,7 +8,7 @@ Describes a product that has one telemetry channel which is controlled by the en
 
 ```jsonc
 {
-  // Product unique ID. Use [az-] character set. Must be unique across all files.
+  // Product unique ID. Use [a-z0-9-] character set. Must be unique across all files.
   "id": "foo-bar",
 
   // Friendly name of the product
@@ -37,7 +37,7 @@ Describes a product that has one telemetry channel which is controlled by the en
   "telemetry": [
     {
 
-      // Telemetry channel unique ID. Use [az-] character set.
+      // Telemetry channel unique ID. Use [a-z0-9-] character set.
       // Must be unique in this list.
       "id": "usage-data",
 
