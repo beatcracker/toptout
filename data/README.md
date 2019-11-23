@@ -15,7 +15,7 @@ Describes a product that has one telemetry channel which is controlled by the en
   "name": "Foo Bar",
 
   // Friendly category name. The README generator uses it to group products.
-  "category": "Development tools",
+  "category": "Development",
 
    // Short description of the collected telemetry. Usually copied from the product's documentation.
   "description": "All your base are belong to us.",
@@ -32,7 +32,7 @@ Describes a product that has one telemetry channel which is controlled by the en
     "privacy": "https://example.com/privacy"
   },
 
-  // Telemetry channels list. Conеains name and optionally desription and opt-in/out methods.
+  // Telemetry channels list. Contains name and optionally desription and opt-in/out methods.
   // Optional, since you may wish to add a product that contains telemetry but doesn't provide a way to control it.
   "telemetry": [
     {
