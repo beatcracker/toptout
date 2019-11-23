@@ -1,7 +1,7 @@
 {
   "id": "aws-sam-cli",
   "name": "AWS SAM CLI",
-  "category": "Cloud tools",
+  "category": "Cloud",
   "description": "At AWS, we develop and launch services based on what we learn from interactions with customers. We use customer feedback to iterate on our product. Telemetry is additional information that helps us to better understand our customers’ needs, diagnose issues, and deliver features that improve the customer experience. The AWS SAM CLI collects telemetry, such as generic usage metrics, system and environment information, and errors.",
   "links": {
     "main": "https://aws.amazon.com/serverless/sam/",

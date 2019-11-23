@@ -1,7 +1,7 @@
 {
   "id": "stripe-cli",
   "name": "Stripe CLI",
-  "category": "Cloud tools",
+  "category": "Cloud",
   "description": "The Stripe CLI includes a telemetry feature that collects some usage data. This feature is enabled by default.",
   "links": {
     "main": "https://stripe.com/docs/stripe-cli",

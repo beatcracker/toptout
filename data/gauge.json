@@ -1,7 +1,7 @@
 {
   "id": "gauge",
   "name": "Gauge",
-  "category": "Development tools",
+  "category": "Development",
   "description": "To be a better testing tool, from version 0.9.0, Gauge collects anonymous usage statistics (telemetry). The data is public and there’s an easy way to opt out.",
   "links": {
     "main": "https://gauge.org/",
