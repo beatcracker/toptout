@@ -33,18 +33,19 @@ See [CONTRIBUTING](/docs/CONTRIBUTING.md) and [data/README](/data/README.md) for
   - [Atom](#atom)
   - [Microsoft calculator](#microsoft-calculator)
   - [VSCode](#vscode)
-- [Cloud tools](#cloud-tools)
+- [Cloud](#cloud)
   - [AWS SAM CLI](#aws-sam-cli)
   - [Netlify CLI](#netlify-cli)
   - [Stripe CLI](#stripe-cli)
-- [Development tools](#development-tools)
-  - [AutomatedLab](#automatedlab)
+- [Development](#development)
   - [Apache Cordova CLI](#apache-cordova-cli)
   - [Gatsby](#gatsby)
   - [Gauge](#gauge)
   - [Hasura GraphQL engine](#hasura-graphql-engine)
   - [.NET Core SDK](#net-core-sdk)
   - [Next.js](#nextjs)
+- [DevOps](#devops)
+  - [AutomatedLab](#automatedlab)
 - [Shells](#shells)
   - [PowerShell Core](#powershell-core)
 
@@ -145,7 +146,7 @@ Use methods described below to opt-out of this telemetry channel.
 }
 ```
 
-## Cloud tools
+## Cloud
 
 ## [AWS SAM CLI](https://aws.amazon.com/serverless/sam/)
 
@@ -224,35 +225,7 @@ Use methods described below to opt-out of this telemetry channel.
 STRIPE_CLI_TELEMETRY_OPTOUT=1
 ```
 
-## Development tools
-
-## [AutomatedLab](https://github.com/AutomatedLab/AutomatedLab)
-
-> AutomatedLab will start to collect telemetry starting with version 5.0. This is an opt-out collection and you will be asked once to specify whether or not you want to send us telemetry data.
-
-- [Telemetry details](https://github.com/AutomatedLab/AutomatedLab/wiki/Lab-Telemetry)
-
-List of known telemetry channels:
-
-### Usage data
-
-Use methods described below to opt-out of this telemetry channel.
-
-#### Method #1
-
-##### Set environment variable
-
-```none
-AUTOMATEDLAB_TELEMETRY_OPTOUT=1
-```
-
-#### Method #2
-
-##### Run command
-
-```shell
-pwsh -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Import-Module AutomatedLab -ErrorAction Stop ; Disable-LabTelemetry -ErrorAction Stop"
-```
+## Development
 
 ## [Apache Cordova CLI](https://cordova.apache.org)
 
@@ -428,6 +401,36 @@ NEXT_TELEMETRY_DISABLED=1
 
 ```shell
 npx next telemetry disable
+```
+
+## DevOps
+
+## [AutomatedLab](https://github.com/AutomatedLab/AutomatedLab)
+
+> AutomatedLab will start to collect telemetry starting with version 5.0. This is an opt-out collection and you will be asked once to specify whether or not you want to send us telemetry data.
+
+- [Telemetry details](https://github.com/AutomatedLab/AutomatedLab/wiki/Lab-Telemetry)
+
+List of known telemetry channels:
+
+### Usage data
+
+Use methods described below to opt-out of this telemetry channel.
+
+#### Method #1
+
+##### Set environment variable
+
+```none
+AUTOMATEDLAB_TELEMETRY_OPTOUT=1
+```
+
+#### Method #2
+
+##### Run command
+
+```shell
+pwsh -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Import-Module AutomatedLab -ErrorAction Stop ; Disable-LabTelemetry -ErrorAction Stop"
 ```
 
 ## Shells
