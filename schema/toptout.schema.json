@@ -83,6 +83,9 @@
                 "name": {
                     "type": "string"
                 },
+                "is_official": {
+                    "type": "boolean"
+                },
                 "description": {
                     "type": "string"
                 },
@@ -95,7 +98,8 @@
             },
             "required": [
                 "id",
-                "name"
+                "name",
+                "is_official"
             ],
             "title": "Telemetry"
         },
