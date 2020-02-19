@@ -1,6 +1,7 @@
 {
   "id": "vscode",
   "name": "VSCode",
+  "executable_name": "code",
   "category": "Applications",
   "description": "Visual Studio Code collects telemetry data, which is used to help understand how to improve the product.",
   "links": {
@@ -13,6 +14,7 @@
       "id": "usage-data",
       "name": "Usage data",
       "description": "VS Code collects usage data that helps to debug issues, such as slow start-up times, and to prioritize new features.",
+      "is_official": true,
       "target": {
         "json_file": {
           "path": {
@@ -33,6 +35,7 @@
       "id": "crash-data",
       "name": "Crash data",
       "description": "VS Code collects data about any crashes that occur and sends it to Microsoft to help improve our products and services.",
+      "is_official": true,
       "target": {
         "json_file": {
           "path": {

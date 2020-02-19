@@ -1,6 +1,7 @@
 {
   "id": "nextjs",
   "name": "Next.js",
+  "executable_name": "next",
   "category": "Development",
   "description": "Next.js collects completely anonymous telemetry data about general usage. Participation in this anonymous program is optional, and you may opt-out if you'd not like to share any information.",
   "links": {
@@ -12,6 +13,7 @@
     {
       "id": "usage-data",
       "name": "Usage data",
+      "is_official": true,
       "target": {
         "env": {
           "path": {

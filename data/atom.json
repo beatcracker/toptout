@@ -1,6 +1,7 @@
 {
   "id": "atom",
   "name": "Atom",
+  "executable_name": "atom",
   "category": "Applications",
   "description": "Help improve Atom by sending usage statistics, exceptions and deprecations to the team.",
   "links": {
@@ -12,6 +13,7 @@
     {
       "id": "usage-data",
       "name": "Usage data",
+      "is_official": true,
       "description": "The user's decision is stored at core.telemetryConsent. The three possible values are undecided, no and limited. The intent is that consent is given if and only if limited is chosen.",
       "target": {
         "plain_file": {

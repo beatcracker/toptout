@@ -12,7 +12,8 @@
     {
       "id": "diagnostic-data",
       "name": "Diagnostic data",
-      "description": "Diagnostic data is disabled in development builds by default, and can be enabled with the SEND_DIAGNOSTICS build flag."
+      "description": "Diagnostic data is disabled in development builds by default, and can be enabled with the SEND_DIAGNOSTICS build flag.",
+      "is_official": true
     }
   ]
 }

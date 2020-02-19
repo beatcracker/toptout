@@ -11,6 +11,7 @@
     {
       "id": "usage-data",
       "name": "Usage data",
+      "is_official": true,
       "target": {
         "env": {
           "path": {

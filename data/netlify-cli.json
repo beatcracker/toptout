@@ -1,6 +1,7 @@
 {
   "id": "netlify-cli",
   "name": "Netlify CLI",
+  "executable_name": "netlify",
   "category": "Cloud",
   "description": "By default, Netlify collects data on usage of Netlify CLI commands. We do this to improve the reliability and performance of Netlify CLI, and to help drive new features and improvements.",
   "links": {
@@ -12,6 +13,7 @@
     {
       "id": "usage-data",
       "name": "Usage data",
+      "is_official": true,
       "target": {
         "json_file": {
           "path": {

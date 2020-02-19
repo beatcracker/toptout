@@ -1,6 +1,7 @@
 {
   "id": "hasura",
   "name": "Hasura GraphQL engine",
+  "executable_name": "hasura",
   "category": "Development",
   "description": "The Hasura GraphQL engine collects anonymous telemetry data that helps the Hasura team in understanding how the product is being used and in deciding what to focus on next.",
   "links": {
@@ -13,6 +14,7 @@
       "id": "usage-data-cli",
       "name": "Usage data (CLI and Console)",
       "description": "The CLI collects each execution event, along with a randomly generated UUID. The execution event contains the command name, timestamp and whether the execution resulted in an error or not. Error messages, arguments and flags are not recorded. The CLI also collects the server version and UUID that it is talking to. The operating system platform and architecture is also noted along with the CLI version.",
+      "is_official": true,
       "target": {
         "json_file": {
           "path": {

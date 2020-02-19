@@ -14,6 +14,9 @@ Describes a product that has one telemetry channel which is controlled by the en
   // Friendly name of the product
   "name": "Foo Bar",
 
+  // Optional. Provide executable name if presence of this product can be detected by PATH environment variable lookup.
+  "executable_name": "foobar"
+
   // Friendly category name. The README generator uses it to group products.
   "category": "Development",
 
@@ -43,6 +46,9 @@ Describes a product that has one telemetry channel which is controlled by the en
 
       // Friendly name of the product
       "name": "Usage data",
+
+      // Specify, if this channel oficially supports opt-in/opt-out
+      "is_official": true,
 
       // Target object.
       // Optional, since you may wish to describe multiple telemetry channels that don't provide a ways to control them.
