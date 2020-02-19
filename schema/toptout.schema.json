@@ -13,6 +13,9 @@
                 "name": {
                     "type": "string"
                 },
+                "executable_name": {
+                    "type": "string"
+                },
                 "description": {
                     "type": "string"
                 },
