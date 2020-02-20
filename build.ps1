@@ -139,7 +139,7 @@ task clean-all {
     )
 }
 
-task clean-local {
+task clean {
     Write-Build Yellow 'Clearing local NuGet and cache directories...'
 
     'packages', 'paket-files' | ForEach-Object {
