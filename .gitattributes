@@ -1,1 +1,22 @@
-* text=auto
+# Paket
+
+.dependencies text lf
+.lock         text lf
+
+.exe binary
+.png binary
+
+# Stuff that really matters
+
+.json text lf
+.md   text lf
+.ps1  text lf
+
+# GitHub
+
+.yml text lf
+
+# Git
+
+.gitattributes text lf
+.gitignore     text lf
