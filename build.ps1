@@ -126,6 +126,7 @@ Set-BuildHeader {
 #region Tasks
 
 task . -Jobs @(
+    'api'
     'test'
     'readme'
 )
@@ -162,9 +163,9 @@ task test {
         $ErrorActionPreference = 'Stop'
 
         $splat = @{
-            Path       = $TestDirPath
-            Strict     = $true
-            PassThru   = $true
+            Path     = $TestDirPath
+            Strict   = $true
+            PassThru = $true
         }
 
         'Pester', 'PSScriptAnalyzer' | ForEach-Object {
@@ -175,7 +176,7 @@ task test {
     } -ArgumentList @(
         $PackageDirPath
         "$BuildRoot/tests"
-     ) | Receive-Job -Wait -AutoRemoveJob
+    ) | Receive-Job -Wait -AutoRemoveJob
 
     assert($Results.FailedCount -eq 0) ('Failed "{0}" tests.' -f $Results.FailedCount)
 }
@@ -201,7 +202,7 @@ task readme {
     $Categories = $data.Keys | Sort-Object
 
     $document = $(
-@"
+        @"
 <p align="center">
   <img src="/media/toptout.png">
 </p>
@@ -231,6 +232,12 @@ See [CONTRIBUTING](/docs/CONTRIBUTING.md) and [data/README](/data/README.md) for
 - Automated tool that can ingest the data from the API. You could run it on your machine to detect and configure telemetry in all suported products.
 - ???
 
+## Related projects
+
+[Console Do Not Track (DNT)](https://consoledonottrack.com)
+
+A proposed unified standard for opting out of telemetry for TUI/console apps: ``export DO_NOT_TRACK=1``
+
 "@
         '## Table of Contents' | Add-Newline
 
@@ -257,6 +264,38 @@ See [CONTRIBUTING](/docs/CONTRIBUTING.md) and [data/README](/data/README.md) for
 
     Write-Build White "Generating README: $ReadmePath"
     ($document -join $LF).Trim() + $LF | Out-File -LiteralPath $ReadmePath -Encoding utf8NoBOM -NoNewline -Force
+}
+
+task api {
+    $ApiPath = "$BuildRoot/api/toptout.json"
+    $DataDir = "$BuildRoot/data"
+
+    [array]$DataFiles = Get-ChildItem $DataDir -Filter '*.json' -File | Sort-Object
+
+    Write-Build White "Processing data files:"
+    $DataFiles | ForEach-Object {
+        Write-Build Gray ('  - {0}' -f $_.Name)
+    }
+
+    $ApiTemplate = [ordered]@{
+        apiVersion = '0.0.1'
+        data       = [ordered]@{
+            # RFC3339
+            updated    = [System.Xml.XmlConvert]::ToString(
+                [datetime]::Now,
+                [System.Xml.XmlDateTimeSerializationMode]::Utc
+            )
+            totalItems = $DataFiles.Count
+            items      = @()
+        }
+    }
+
+    $ApiTemplate.data.items = @(
+        $DataFiles | Get-Content -Raw | ConvertFrom-Json -Depth 99
+    )
+
+    Write-Build White "Generating API: $ApiPath"
+    $ApiTemplate | ConvertTo-Json -Depth 99 -Compress | Out-File -LiteralPath $ApiPath -Encoding utf8NoBOM -NoNewline -Force
 }
 
 #endregion

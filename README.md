@@ -27,6 +27,12 @@ See [CONTRIBUTING](/docs/CONTRIBUTING.md) and [data/README](/data/README.md) for
 - Automated tool that can ingest the data from the API. You could run it on your machine to detect and configure telemetry in all suported products.
 - ???
 
+## Related projects
+
+[Console Do Not Track (DNT)](https://consoledonottrack.com)
+
+A proposed unified standard for opting out of telemetry for TUI/console apps: `export DO_NOT_TRACK=1`
+
 ## Table of Contents
 
 - [Applications](#applications)
