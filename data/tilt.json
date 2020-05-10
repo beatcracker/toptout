@@ -1,0 +1,29 @@
+{
+  "id": "tilt",
+  "name": "Tilt",
+  "executable_name": "tilt",
+  "category": "Cloud",
+  "description": "Tilt sends anonymized data about how you use it.",
+  "links": {
+    "main": "https://tilt.dev",
+    "telemetry": "https://docs.tilt.dev/telemetry_faq.html"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "is_official": true,
+      "target": {
+        "env": {
+          "path": {
+            "default": "DO_NOT_TRACK"
+          },
+          "value": {
+            "opt_out": "1",
+            "opt_in": null
+          }
+        }
+      }
+    }
+  ]
+}
