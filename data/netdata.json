@@ -1,0 +1,30 @@
+{
+  "id": "netdata",
+  "name": "Netdata",
+  "executable_name": "netdata",
+  "category": "Cloud",
+  "description": "By default, Netlify collects data on usage of Netlify CLI commands. We do this to improve the reliability and performance of Netlify CLI, and to help drive new features and improvements.",
+  "links": {
+    "main": "https://www.netdata.cloud",
+    "telemetry": "https://learn.netdata.cloud/docs/agent/anonymous-statistic/",
+    "privacy": "https://learn.netdata.cloud/docs/agent/privacy-policy/"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "is_official": true,
+      "target": {
+        "env": {
+          "path": {
+            "default": "DO_NOT_TRACK"
+          },
+          "value": {
+            "opt_out": "1",
+            "opt_in": null
+          }
+        }
+      }
+    }
+  ]
+}
