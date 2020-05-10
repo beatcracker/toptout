@@ -37,16 +37,20 @@ A proposed unified standard for opting out of telemetry for TUI/console apps: `e
 
 - [Applications](#applications)
   - [Atom](#atom)
+  - [Homebrew](#homebrew)
   - [Microsoft calculator](#microsoft-calculator)
   - [VSCode](#vscode)
 - [Cloud](#cloud)
   - [AWS SAM CLI](#aws-sam-cli)
+  - [Azure CLI](#azure-cli)
+  - [Google Cloud SDK](#google-cloud-sdk)
+  - [Netdata](#netdata)
   - [Netlify CLI](#netlify-cli)
   - [Stripe CLI](#stripe-cli)
+  - [Tilt](#tilt)
 - [Development](#development)
   - [Apache Cordova CLI](#apache-cordova-cli)
   - [Gatsby](#gatsby)
-  - [Gauge](#gauge)
   - [Hasura GraphQL engine](#hasura-graphql-engine)
   - [.NET Core SDK](#net-core-sdk)
   - [Next.js](#nextjs)
@@ -84,6 +88,34 @@ Use methods described below to opt-out of this telemetry channel.
 
 ```none
 atom.config.set('core.telemetryConsent', 'no')
+```
+
+## [Homebrew](https://brew.sh)
+
+> Homebrew has begun gathering anonymous aggregate user behaviour analytics and reporting these to Google Analytics.
+
+- [Telemetry details](https://docs.brew.sh/Analytics)
+
+List of known telemetry channels:
+
+### Usage data
+
+Use methods described below to opt-out of this telemetry channel.
+
+#### Method #1
+
+##### Set environment variable
+
+```none
+HOMEBREW_NO_ANALYTICS=1
+```
+
+#### Method #2
+
+##### Run command
+
+```shell
+brew analytics off
 ```
 
 ## [Microsoft calculator](https://github.com/Microsoft/calculator)
@@ -173,6 +205,73 @@ Use methods described below to opt-out of this telemetry channel.
 SAM_CLI_TELEMETRY=0
 ```
 
+## [Azure CLI](https://docs.microsoft.com/en-us/cli/azure)
+
+> Allow Microsoft to collect anonymous data on the usage of the CLI.
+
+- [Telemetry details](https://docs.microsoft.com/en-us/cli/azure/azure-cli-configuration)
+- [Privacy policy](https://aka.ms/AzureCliLegal)
+
+List of known telemetry channels:
+
+### Usage data
+
+Use methods described below to opt-out of this telemetry channel.
+
+#### Method #1
+
+##### Set environment variable
+
+```none
+AZURE_CORE_COLLECT_TELEMETRY=0
+```
+
+#### Method #2
+
+##### Run command
+
+```shell
+az configure -d collect_telemetry=0
+```
+
+## [Google Cloud SDK](https://cloud.google.com/sdk)
+
+> Unless you opt-in during Google Cloud SDK installation, Cloud SDK software does not collect usage statistics. You can help Google to prioritize Google Cloud SDK features and improvements by permitting Cloud SDK to send command-line command usage statistics to Google.
+
+- [Telemetry details](https://cloud.google.com/sdk/usage-statistics)
+- [Privacy policy](https://policies.google.com/privacy)
+
+List of known telemetry channels:
+
+### Usage data
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### Run command
+
+```shell
+gcloud config set disable_usage_reporting true
+```
+
+## [Netdata](https://www.netdata.cloud)
+
+> By default, Netlify collects data on usage of Netlify CLI commands. We do this to improve the reliability and performance of Netlify CLI, and to help drive new features and improvements.
+
+- [Telemetry details](https://learn.netdata.cloud/docs/agent/anonymous-statistic/)
+- [Privacy policy](https://learn.netdata.cloud/docs/agent/privacy-policy/)
+
+List of known telemetry channels:
+
+### Usage data
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### Set environment variable
+
+```none
+DO_NOT_TRACK=1
+```
+
 ## [Netlify CLI](https://netlify.com)
 
 > By default, Netlify collects data on usage of Netlify CLI commands. We do this to improve the reliability and performance of Netlify CLI, and to help drive new features and improvements.
@@ -229,6 +328,24 @@ Use methods described below to opt-out of this telemetry channel.
 
 ```none
 STRIPE_CLI_TELEMETRY_OPTOUT=1
+```
+
+## [Tilt](https://tilt.dev)
+
+> Tilt sends anonymized data about how you use it.
+
+- [Telemetry details](https://docs.tilt.dev/telemetry_faq.html)
+
+List of known telemetry channels:
+
+### Usage data
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### Set environment variable
+
+```none
+DO_NOT_TRACK=1
 ```
 
 ## Development
@@ -289,35 +406,6 @@ GATSBY_TELEMETRY_DISABLED=1
 
 ```shell
 gatsby telemetry --disable
-```
-
-## [Gauge](https://gauge.org/)
-
-> To be a better testing tool, from version 0.9.0, Gauge collects anonymous usage statistics (telemetry). The data is public and there’s an easy way to opt out.
-
-- [Telemetry details](https://manpage.gauge.org/gauge_telemetry.html)
-- [Privacy policy](https://www.thoughtworks.com/privacy-policy)
-
-List of known telemetry channels:
-
-### Usage data
-
-Use methods described below to opt-out of this telemetry channel.
-
-#### Method #1
-
-##### Set environment variable
-
-```none
-GAUGE_TELEMETRY_ENABLED=false
-```
-
-#### Method #2
-
-##### Run command
-
-```shell
-gauge telemetry off
 ```
 
 ## [Hasura GraphQL engine](https://hasura.io)
