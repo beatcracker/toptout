@@ -1,0 +1,38 @@
+{
+  "id": "homebrew",
+  "name": "Homebrew",
+  "executable_name": "brew",
+  "category": "Applications",
+  "description": "Homebrew has begun gathering anonymous aggregate user behaviour analytics and reporting these to Google Analytics.",
+  "links": {
+    "main": "https://brew.sh",
+    "telemetry": "https://docs.brew.sh/Analytics"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "is_official": true,
+      "target": {
+        "env": {
+          "path": {
+            "default": "HOMEBREW_NO_ANALYTICS"
+          },
+          "value": {
+            "opt_out": "1",
+            "opt_in": null
+          }
+        },
+        "exec": {
+          "path": {
+            "default": "brew"
+          },
+          "value": {
+            "opt_out": "analytics off",
+            "opt_in": "analytics on"
+          }
+        }
+      }
+    }
+  ]
+}
