@@ -266,36 +266,4 @@ A proposed unified standard for opting out of telemetry for TUI/console apps: ``
     ($document -join $LF).Trim() + $LF | Out-File -LiteralPath $ReadmePath -Encoding utf8NoBOM -NoNewline -Force
 }
 
-task api {
-    $ApiPath = "$BuildRoot/api/toptout.json"
-    $DataDir = "$BuildRoot/data"
-
-    [array]$DataFiles = Get-ChildItem $DataDir -Filter '*.json' -File | Sort-Object
-
-    Write-Build White "Processing data files:"
-    $DataFiles | ForEach-Object {
-        Write-Build Gray ('  - {0}' -f $_.Name)
-    }
-
-    $ApiTemplate = [ordered]@{
-        apiVersion = '0.0.1'
-        data       = [ordered]@{
-            # RFC3339
-            updated    = [System.Xml.XmlConvert]::ToString(
-                [datetime]::Now,
-                [System.Xml.XmlDateTimeSerializationMode]::Utc
-            )
-            totalItems = $DataFiles.Count
-            items      = @()
-        }
-    }
-
-    $ApiTemplate.data.items = @(
-        $DataFiles | Get-Content -Raw | ConvertFrom-Json -Depth 99
-    )
-
-    Write-Build White "Generating API: $ApiPath"
-    $ApiTemplate | ConvertTo-Json -Depth 99 -Compress | Out-File -LiteralPath $ApiPath -Encoding utf8NoBOM -NoNewline -Force
-}
-
 #endregion
