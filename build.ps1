@@ -126,7 +126,6 @@ Set-BuildHeader {
 #region Tasks
 
 task . -Jobs @(
-    'api'
     'test'
     'readme'
 )
