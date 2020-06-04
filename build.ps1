@@ -7,6 +7,12 @@ Param(
     [string[]]$Tasks
 )
 
+#region Common variables
+
+$PackageDirPath = Join-Path $PSScriptRoot 'packages'
+
+#endregion
+
 #region Common functions
 
 <#
@@ -76,12 +82,6 @@ function Get-PaddedString {
 
 #endregion
 
-#region Common variables
-
-$PackageDirPath = Join-Path $PSScriptRoot 'packages'
-
-#endregion
-
 #region Bootstrap
 
 # If direct call: ensure packages and call the local Invoke-Build
@@ -142,9 +142,10 @@ task clean-all {
 task clean {
     Write-Build Yellow 'Clearing local NuGet and cache directories...'
 
-    'packages', 'paket-files' | ForEach-Object {
-        Remove-Item -LiteralPath "$BuildRoot/$_" -Force -Recurse -Confirm:$false
-    }
+    Remove-BuildItem "$BuildRoot/$_" @(
+        'packages'
+        'paket-files'
+    )
 }
 
 task test {
@@ -183,19 +184,20 @@ task test {
 
 task readme {
     . "$BuildRoot/helpers/common.ps1"
+    . "$BuildRoot/helpers/readme.ps1"
 
     $ReadmePath = "$BuildRoot/README.md"
     $DataDir = "$BuildRoot/data"
 
     $DataFiles = Get-ChildItem $DataDir -Filter '*.json' -File
 
-    Write-Build White "Processing data files:"
+    Write-Build White ('Processing data files: {0}' -f $DataFiles.Count)
     $DataFiles | ForEach-Object {
         Write-Build Gray ('  - {0}' -f $_.Name)
     }
 
     $data = $DataFiles | ForEach-Object {
-        $_ | Get-Content -Raw | ConvertFrom-Json -Depth 99 -AsHashtable
+        $_ | Get-Content -Raw | ConvertFrom-Json -Depth 100 -AsHashtable
     } | Group-Object -Property category -AsHashTable -AsString
 
     $Categories = $data.Keys | Sort-Object
@@ -217,7 +219,7 @@ The goal of this project is to put you in control. See what data is collected by
 
 ## Details
 
-The core of this project is a set of JSON files which describe what telemetry is collected and what can be done to enable or disable it. The README you see is automatically generated from those files.
+The core of this project is a set of JSON files which describe what telemetry is collected and what can be done to enable or disable it.
 
 ## Contributing
 
@@ -245,7 +247,7 @@ A proposed unified standard for opting out of telemetry for TUI/console apps: ``
             # https://github.com/jch/html-pipeline/blob/master/lib/html/pipeline/toc_filter.rb
 
             '- [{0}](#{1})' -f $_, ($_ | ConvertTo-Anchor)
-            $data[$_].name | ForEach-Object {
+            $data.$_.name | ForEach-Object {
                 '  - [{0}](#{1})' -f $_, ($_ | ConvertTo-Anchor)
             }
         }
@@ -261,7 +263,8 @@ A proposed unified standard for opting out of telemetry for TUI/console apps: ``
         }
     )
 
-    Write-Build White "Generating README: $ReadmePath"
+    Write-Build White 'Generating MARKDOWN:'
+    Write-Build Gray ('  - {0}: {1}' -f 'README.md', $ReadmePath)
     ($document -join $LF).Trim() + $LF | Out-File -LiteralPath $ReadmePath -Encoding utf8NoBOM -NoNewline -Force
 }
 
