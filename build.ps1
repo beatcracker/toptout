@@ -128,6 +128,7 @@ Set-BuildHeader {
 task . -Jobs @(
     'test'
     'readme'
+    'shell'
 )
 
 task clean-all {
@@ -221,6 +222,13 @@ The goal of this project is to put you in control. See what data is collected by
 
 The core of this project is a set of JSON files which describe what telemetry is collected and what can be done to enable or disable it.
 
+## Real-world applications
+
+Telemetry data from the JSON files can be used in various ways. Here are several examples:
+
+- The [README](README.md) you see is automatically generated
+- [Scripts](/examples) to disable all known telemetry channels in your shell session
+
 ## Contributing
 
 If the tool you're using is not here you can easily add it by creating a new JSON file describing its telemetry data channels.
@@ -266,6 +274,45 @@ A proposed unified standard for opting out of telemetry for TUI/console apps: ``
     Write-Build White 'Generating MARKDOWN:'
     Write-Build Gray ('  - {0}: {1}' -f 'README.md', $ReadmePath)
     ($document -join $LF).Trim() + $LF | Out-File -LiteralPath $ReadmePath -Encoding utf8NoBOM -NoNewline -Force
+}
+
+task shell {
+    . "$BuildRoot/helpers/common.ps1"
+    . "$BuildRoot/helpers/shell.ps1"
+
+    $DataDir = "$BuildRoot/data"
+    $ShellScriptDir = "$BuildRoot/examples"
+
+    $DataFiles = Get-ChildItem $DataDir -Filter '*.json' -File
+
+    Write-Build White ('Processing data files: {0}' -f $DataFiles.Count)
+    $DataFiles | ForEach-Object {
+        Write-Build Gray ('  - {0}' -f $_.Name)
+    }
+
+    $data = $DataFiles | ForEach-Object {
+        $_ | Get-Content -Raw | ConvertFrom-Json -Depth 100 -AsHashtable
+    } | Group-Object -Property category -AsHashTable -AsString
+
+    $Categories = $data.Keys | Sort-Object
+
+    $ShellList = @(
+        'bash'
+        'pwsh'
+    )
+
+    Write-Build White ('Generating SHELL SCRIPT(s): {0}' -f $ShellList.Count)
+
+    foreach ($Shell in $ShellList) {
+        $ShellScript = $Categories | Sort-Object | ForEach-Object {
+            $data.$_ | Sort-Object -Property id | ConvertTo-ShellScript -Shell $Shell
+        }
+
+        $ShellScriptName = 'toptout_{0}.{1}' -f $Shell, ($Shell | Get-ShellScriptExtension)
+
+        Write-Build Gray ('  - {0}: {1}' -f $Shell, "$ShellScriptDir/$ShellScriptName")
+        ($ShellScript -join $LF).Trim() + $LF | Out-File -LiteralPath "$ShellScriptDir/$ShellScriptName" -Encoding utf8NoBOM -NoNewline -Force
+    }
 }
 
 #endregion

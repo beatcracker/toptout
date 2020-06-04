@@ -13,7 +13,14 @@ The goal of this project is to put you in control. See what data is collected by
 
 ## Details
 
-The core of this project is a set of JSON files which describe what telemetry is collected and what can be done to enable or disable it. The README you see is automatically generated from those files.
+The core of this project is a set of JSON files which describe what telemetry is collected and what can be done to enable or disable it.
+
+## Real-world applications
+
+Telemetry data from the JSON files can be used in various ways. Here are several examples:
+
+- The [README](README.md) you see is automatically generated
+- [Scripts](/examples) to disable all known telemetry channels in your shell session
 
 ## Contributing
 

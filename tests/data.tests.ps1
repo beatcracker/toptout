@@ -23,7 +23,7 @@ Describe 'JSON telemetry data' {
     $json_files | ForEach-Object {
         Context $_.Name {
             $content =  $_ | Get-Content -Raw
-            $object = $content | ConvertFrom-Json -Depth 99
+            $object = $content | ConvertFrom-Json -Depth 100
 
             It 'Conforms to the schema' {
                 $content | Test-Json -Schema $schema | Should -BeExactly $true
