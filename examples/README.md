@@ -1,0 +1,12 @@
+# Examples
+
+This folder contains example that show how provided [telemetry data](/data) can be used.
+
+## Scripts disable all known telemetry channels in your shell session
+
+- Bash: [toptout_bash.sh](toptout_bash.sh)
+  - Usage: `. ./toptout_bash.sh` in your session or from the [.bashrc](https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html)
+- PowerShell: [toptout_pwsh.ps1](toptout_pwsh.ps1)
+  - Usage: `toptout_pwsh.ps1` in your session or from the [profile](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles)
+
+Please note that the scripts will set environment variables and execute commands on your behalf. While setting environment variables has no performance impact, executing commands may cause delays.
