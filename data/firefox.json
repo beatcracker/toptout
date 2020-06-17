@@ -35,12 +35,12 @@
       }
     },
     {
-      "id": "usage-data-macos",
-      "name": "Usage data (macOS)",
+      "id": "usage-data",
+      "name": "Usage data",
       "description": "Examples of the kind of data Telemetry sends to Mozilla includes start-up time, time between cycle collector runs, memory heap used, whether hardware graphics acceleration or Java is enabled, and more.\nTelemetry does not collect any bookmarks or passwords. It may collect anonymized site visit information in some circumstances, such as when a secure browsing connection fails to connect, or for some experiments.",
       "is_official": true,
       "links": {
-        "main": "https://github.com/mozilla/policy-templates/blob/master/README.md#macos-32"
+        "main": "https://github.com/mozilla/policy-templates/blob/master/README.md#windows-gpo-33"
       },
       "target": {
         "exec": {
@@ -55,18 +55,7 @@
               }
             }
           }
-        }
-      }
-    },
-    {
-      "id": "usage-data",
-      "name": "Usage data",
-      "description": "Examples of the kind of data Telemetry sends to Mozilla includes start-up time, time between cycle collector runs, memory heap used, whether hardware graphics acceleration or Java is enabled, and more.\nTelemetry does not collect any bookmarks or passwords. It may collect anonymized site visit information in some circumstances, such as when a secure browsing connection fails to connect, or for some experiments.",
-      "is_official": true,
-      "links": {
-        "main": "https://github.com/mozilla/policy-templates/blob/master/README.md#windows-gpo-33"
-      },
-      "target": {
+        },
         "registry": {
           "scope": {
             "machine": {
