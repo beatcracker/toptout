@@ -153,7 +153,6 @@
                     ]
                 }
             ],
-            "required": [],
             "title": "Target"
         },
         "Env": {
@@ -190,8 +189,7 @@
                                 "user"
                             ]
                         }
-                    ],
-                    "required": []
+                    ]
                 }
             },
             "required": [
@@ -250,8 +248,7 @@
                                 "user"
                             ]
                         }
-                    ],
-                    "required": []
+                    ]
                 }
             },
             "required": [
@@ -310,8 +307,7 @@
                                 "user"
                             ]
                         }
-                    ],
-                    "required": []
+                    ]
                 }
             },
             "required": [
@@ -378,8 +374,7 @@
                                 "user"
                             ]
                         }
-                    ],
-                    "required": []
+                    ]
                 }
             },
             "required": [
@@ -446,8 +441,7 @@
                                 "user"
                             ]
                         }
-                    ],
-                    "required": []
+                    ]
                 }
             },
             "required": [
