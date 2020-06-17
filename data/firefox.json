@@ -1,0 +1,97 @@
+{
+  "id": "firefox",
+  "name": "Firefox",
+  "executable_name": "firefox.",
+  "category": "Web",
+  "description": "Telemetry collects information about your Firefox browsing experience to improve Firefox features, browser performance and stability.",
+  "links": {
+    "main": "https://www.mozilla.org/firefox/",
+    "telemetry": "https://wiki.allizom.org/Telemetry/FAQ",
+    "privacy": "https://www.mozilla.org/privacy/firefox/"
+  },
+  "telemetry": [
+    {
+      "id": "enable-policy-macos",
+      "name": "Enable policies (macOS)",
+      "description": "Enable Firefox policies so the telemetry can be configured.",
+      "is_official": true,
+      "links": {
+        "main": "https://github.com/mozilla/policy-templates/tree/master/mac"
+      },
+      "target": {
+        "exec": {
+          "scope": {
+            "machine": {
+              "path": {
+                "macos": "defaults"
+              },
+              "value": {
+                "opt_out": "write /Library/Preferences/org.mozilla.firefox EnterprisePoliciesEnabled -bool TRUE",
+                "opt_in": "delete /Library/Preferences/org.mozilla.firefox EnterprisePoliciesEnabled"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "usage-data-macos",
+      "name": "Usage data (macOS)",
+      "description": "Examples of the kind of data Telemetry sends to Mozilla includes start-up time, time between cycle collector runs, memory heap used, whether hardware graphics acceleration or Java is enabled, and more.\nTelemetry does not collect any bookmarks or passwords. It may collect anonymized site visit information in some circumstances, such as when a secure browsing connection fails to connect, or for some experiments.",
+      "is_official": true,
+      "links": {
+        "main": "https://github.com/mozilla/policy-templates/blob/master/README.md#macos-32"
+      },
+      "target": {
+        "exec": {
+          "scope": {
+            "machine": {
+              "path": {
+                "macos": "defaults"
+              },
+              "value": {
+                "opt_out": "write /Library/Preferences/org.mozilla.firefox DisableTelemetry -bool TRUE",
+                "opt_in": "delete /Library/Preferences/org.mozilla.firefox DisableTelemetry"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "description": "Examples of the kind of data Telemetry sends to Mozilla includes start-up time, time between cycle collector runs, memory heap used, whether hardware graphics acceleration or Java is enabled, and more.\nTelemetry does not collect any bookmarks or passwords. It may collect anonymized site visit information in some circumstances, such as when a secure browsing connection fails to connect, or for some experiments.",
+      "is_official": true,
+      "links": {
+        "main": "https://github.com/mozilla/policy-templates/blob/master/README.md#windows-gpo-33"
+      },
+      "target": {
+        "registry": {
+          "scope": {
+            "machine": {
+              "root": "HKEY_LOCAL_MACHINE",
+              "path": "Software\\Policies\\Mozilla\\Firefox",
+              "key": "DisableTelemetry",
+              "type": "REG_DWORD",
+              "value": {
+                "opt_out": "1",
+                "opt_in": "0"
+              }
+            },
+            "user": {
+              "root": "HKEY_CURRENT_USER",
+              "path": "Software\\Policies\\Mozilla\\Firefox",
+              "key": "DisableTelemetry",
+              "type": "REG_DWORD",
+              "value": {
+                "opt_out": "1",
+                "opt_in": "0"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
