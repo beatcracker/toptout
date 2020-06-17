@@ -474,7 +474,8 @@
                     ]
                 },
                 "path": {
-                    "type": "string"
+                    "type": "string",
+                    "pattern": "^(?!\\\\).+?(?<!\\\\)$"
                 },
                 "key": {
                     "type": "string"
