@@ -61,7 +61,7 @@ Describes a product that has one telemetry channel which is controlled by the en
           // Path object. Contains environment variable name for various OSes.
           // Allowed keys: default, linux, macos, windows
           "path": {
-            // Use the 'default' key if the environmnet variable name is the same on any OS.
+            // Use the 'default' key if the environment variable name is the same on any OS.
             "default": "TELEMETRY_OPTOUT"
           },
 
