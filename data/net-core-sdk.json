@@ -16,12 +16,16 @@
       "is_official": true,
       "target": {
         "env": {
-          "path": {
-            "default": "DOTNET_CLI_TELEMETRY_OPTOUT"
-          },
-          "value": {
-            "opt_out": "true",
-            "opt_in": null
+          "scope": {
+            "process": {
+              "path": {
+                "default": "DOTNET_CLI_TELEMETRY_OPTOUT"
+              },
+              "value": {
+                "opt_out": "true",
+                "opt_in": null
+              }
+            }
           }
         }
       }

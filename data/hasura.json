@@ -17,25 +17,33 @@
       "is_official": true,
       "target": {
         "json_file": {
-          "path": {
-            "linux": "$HOME/.hasura/config.json",
-            "macos": "$HOME/.hasura/config.json",
-            "windows": "%USERPROFILE%\\.hasura\\config.json"
-          },
-          "selector": "/enable_telemetry",
-          "value": {
-            "opt_out": "false",
-            "opt_in": "true"
-          },
-          "display_value": "{\"enable_telemetry\":false}"
+          "scope": {
+            "user": {
+              "path": {
+                "linux": "$HOME/.hasura/config.json",
+                "macos": "$HOME/.hasura/config.json",
+                "windows": "%USERPROFILE%\\.hasura\\config.json"
+              },
+              "selector": "/enable_telemetry",
+              "value": {
+                "opt_out": "false",
+                "opt_in": "true"
+              },
+              "display_value": "{\"enable_telemetry\":false}"
+            }
+          }
         },
         "env": {
-          "path": {
-            "default": "HASURA_GRAPHQL_ENABLE_TELEMETRY"
-          },
-          "value": {
-            "opt_out": "false",
-            "opt_in": "true"
+          "scope": {
+            "process": {
+              "path": {
+                "default": "HASURA_GRAPHQL_ENABLE_TELEMETRY"
+              },
+              "value": {
+                "opt_out": "false",
+                "opt_in": "true"
+              }
+            }
           }
         }
       }

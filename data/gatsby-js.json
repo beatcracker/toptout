@@ -16,21 +16,29 @@
       "is_official": true,
       "target": {
         "env": {
-          "path": {
-            "default": "GATSBY_TELEMETRY_DISABLED"
-          },
-          "value": {
-            "opt_out": "1",
-            "opt_in": "0"
+          "scope": {
+            "process": {
+              "path": {
+                "default": "GATSBY_TELEMETRY_DISABLED"
+              },
+              "value": {
+                "opt_out": "1",
+                "opt_in": "0"
+              }
+            }
           }
         },
         "exec": {
-          "path": {
-            "default": "gatsby"
-          },
-          "value": {
-            "opt_out": "telemetry --disable",
-            "opt_in": "telemetry --enable"
+          "scope": {
+            "user": {
+              "path": {
+                "default": "gatsby"
+              },
+              "value": {
+                "opt_out": "telemetry --disable",
+                "opt_in": "telemetry --enable"
+              }
+            }
           }
         }
       }

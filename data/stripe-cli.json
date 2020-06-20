@@ -16,12 +16,16 @@
       "is_official": true,
       "target": {
         "env": {
-          "path": {
-            "default": "STRIPE_CLI_TELEMETRY_OPTOUT"
-          },
-          "value": {
-            "opt_out": "1",
-            "opt_in": null
+          "scope": {
+            "user": {
+              "path": {
+                "default": "STRIPE_CLI_TELEMETRY_OPTOUT"
+              },
+              "value": {
+                "opt_out": "1",
+                "opt_in": null
+              }
+            }
           }
         }
       }

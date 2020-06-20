@@ -14,22 +14,30 @@
       "is_official": true,
       "target": {
         "env": {
-          "path": {
-            "default": "AUTOMATEDLAB_TELEMETRY_OPTOUT"
-          },
-          "value": {
-            "opt_out": "1",
-            "opt_in": "0"
+          "scope": {
+            "user": {
+              "path": {
+                "default": "AUTOMATEDLAB_TELEMETRY_OPTOUT"
+              },
+              "value": {
+                "opt_out": "1",
+                "opt_in": "0"
+              }
+            }
           }
         },
         "exec": {
-          "path": {
-            "default": "pwsh",
-            "windows": "powershell"
-          },
-          "value": {
-            "opt_out": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command \"Import-Module AutomatedLab -ErrorAction Stop ; Disable-LabTelemetry -ErrorAction Stop\"",
-            "opt_in": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command \"Import-Module AutomatedLab -ErrorAction Stop ; Enable-LabTelemetry -ErrorAction Stop\""
+          "scope": {
+            "user": {
+              "path": {
+                "default": "pwsh",
+                "windows": "powershell"
+              },
+              "value": {
+                "opt_out": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command \"Import-Module AutomatedLab -ErrorAction Stop ; Disable-LabTelemetry -ErrorAction Stop\"",
+                "opt_in": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command \"Import-Module AutomatedLab -ErrorAction Stop ; Enable-LabTelemetry -ErrorAction Stop\""
+              }
+            }
           }
         }
       }

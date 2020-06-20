@@ -16,12 +16,16 @@
       "is_official": true,
       "target": {
         "env": {
-          "path": {
-            "default": "SAM_CLI_TELEMETRY"
-          },
-          "value": {
-            "opt_out": "0",
-            "opt_in": null
+          "scope": {
+            "process": {
+              "path": {
+                "default": "SAM_CLI_TELEMETRY"
+              },
+              "value": {
+                "opt_out": "0",
+                "opt_in": null
+              }
+            }
           }
         }
       }

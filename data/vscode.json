@@ -17,17 +17,21 @@
       "is_official": true,
       "target": {
         "json_file": {
-          "path": {
-            "linux": "$HOME/.config/Code/User/settings.json",
-            "macos": "$HOME/Library/Application Support/Code/User/settings.json",
-            "windows": "%APPDATA%\\Code\\User\\settings.json"
-          },
-          "selector": "/telemetry.enableTelemetry",
-          "value": {
-            "opt_out": "false",
-            "opt_in": "true"
-          },
-          "display_value": "{\"telemetry.enableTelemetry\":false}"
+          "scope": {
+            "user": {
+              "path": {
+                "linux": "$HOME/.config/Code/User/settings.json",
+                "macos": "$HOME/Library/Application Support/Code/User/settings.json",
+                "windows": "%APPDATA%\\Code\\User\\settings.json"
+              },
+              "selector": "/telemetry.enableTelemetry",
+              "value": {
+                "opt_out": "false",
+                "opt_in": "true"
+              },
+              "display_value": "{\"telemetry.enableTelemetry\":false}"
+            }
+          }
         }
       }
     },
@@ -38,17 +42,21 @@
       "is_official": true,
       "target": {
         "json_file": {
-          "path": {
-            "linux": "$HOME/.config/Code/User/settings.json",
-            "macos": "$HOME/Library/Application Support/Code/User/settings.json",
-            "windows": "%APPDATA%\\Code\\User\\settings.json"
-          },
-          "selector": "/telemetry.enableCrashReporter",
-          "value": {
-            "opt_out": "false",
-            "opt_in": "true"
-          },
-          "display_value": "{\"telemetry.enableCrashReporter\":false}"
+          "scope": {
+            "user": {
+              "path": {
+                "linux": "$HOME/.config/Code/User/settings.json",
+                "macos": "$HOME/Library/Application Support/Code/User/settings.json",
+                "windows": "%APPDATA%\\Code\\User\\settings.json"
+              },
+              "selector": "/telemetry.enableCrashReporter",
+              "value": {
+                "opt_out": "false",
+                "opt_in": "true"
+              },
+              "display_value": "{\"telemetry.enableCrashReporter\":false}"
+            }
+          }
         }
       }
     }

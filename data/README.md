@@ -54,25 +54,37 @@ Describes a product that has one telemetry channel which is controlled by the en
       // Optional, since you may wish to describe multiple telemetry channels that don't provide a ways to control them.
       "target": {
 
-        // "Environment variable" target.
-        // Set or remove environment variable.
-        "env": {
+        // Target scope. You can use multiple scopes.
+        // machine - configures telemetry channel for all users of the computer
+        // user    - configures telemetry channel for current user of the computer
+        // process - configures telemetry channel for process only
+        "scope": {
 
-          // Path object. Contains environment variable name for various OSes.
-          // Allowed keys: default, linux, macos, windows
-          "path": {
-            // Use the 'default' key if the environment variable name is the same on any OS.
-            "default": "TELEMETRY_OPTOUT"
-          },
+          "process": {
+            // "Environment variable" target.
+            // Set or remove environment variable.
+            //
+            // Environment variables are by design configured per procces.
+            // There are mechanisms to configre them for every new process, but it's up to OS/shell.
+            "env": {
 
-          // Value object.
-          "value": {
-            // Set environment variable to this value to opt-out of this telemetry channel
-            "opt_out": "false",
+              // Path object. Contains environment variable name for various OSes.
+              // Allowed keys: default, linux, macos, windows
+              "path": {
+                // Use the 'default' key if the environment variable name is the same on any OS.
+                "default": "TELEMETRY_OPTOUT"
+              },
 
-            // Set environment variable to this value to opt-in into this telemetry channel.
-            // Set to 'null' value (not literal "null" string) to indicate that environment variable should be removed.
-            "opt_in": null
+              // Value object.
+              "value": {
+                // Set environment variable to this value to opt-out of this telemetry channel
+                "opt_out": "false",
+
+                // Set environment variable to this value to opt-in into this telemetry channel.
+                // Set to 'null' value (not literal "null" string) to indicate that environment variable should be removed.
+                "opt_in": null
+              }
+            }
           }
         }
       }
@@ -96,24 +108,35 @@ Product can have multiple telemetry channels. Some of them could be controlled b
 
 ```jsonc
 "env": {
+  // Target scope. You can use multiple scopes.
+  // machine - configures telemetry channel for all users of the computer
+  // user    - configures telemetry channel for current user of the computer
+  // process - configures telemetry channel for process only
+  "scope": {
 
-  // Path object. Contains environment variable name for various OSes.
-  // Allowed keys: default, linux, macos, windows
-  // If there is no OS-specific key and no default - this OS is not supported.
-  "path": {
-    // Use the 'default' key if the environment variable name is the same on any OS.
-    "default": "FOOBAR_TELEMETRY"
-  },
+    // Environment variables are by design configured per procces.
+    // There are mechanisms to configre them for every new process, but it's up to OS/
+    "process": {
+      // Path object. Contains environment variable name for various OSes.
+      // Allowed keys: default, linux, macos, windows
+      // If there is no OS-specific key and no default - this OS is not supported.
+      "path": {
+        // Use the 'default' key if the environment variable name is the same on any OS.
+        "default": "FOOBAR_TELEMETRY"
+      },
 
-  // Value object.
-  "value": {
-    // Set environment variable to this value to opt-out of this telemetry channel
-    "opt_out": "false",
+      // Value object.
+      "value": {
+        // Set environment variable to this value to opt-out of this telemetry channel
+        "opt_out": "false",
 
-    // Set environment variable to this value to opt-in into this telemetry channel.
-    // Set to 'null' value (not literal "null" string) to indicate that environment variable should be removed.
-    "opt_in": null
+        // Set environment variable to this value to opt-in into this telemetry channel.
+        // Set to 'null' value (not literal "null" string) to indicate that environment variable should be removed.
+        "opt_in": null
+      }
+    }
   }
+}
 ```
 
 ### exec
@@ -121,22 +144,31 @@ Product can have multiple telemetry channels. Some of them could be controlled b
 `Execute` target. Indicates that this specific telemetry channel is controlled by executing shell command.
 
 ```jsonc
-  "exec": {
-    // Path object. Contains environment variable name for various OSes.
-    // Allowed keys: default, linux, macos, windows
-    // If there is no OS-specific key and no default - this OS is not supported.
-    "path": {
-      // Use the 'default' key if the executable name is the same on any OS.
-      "default": "foobar"
-    },
-    "value": {
-      // Use this arguments to opt-out of this telemetry channel.
-      "opt_out": "--telemetry-disable",
+"exec": {
+  // Target scope. You can use multiple scopes.
+  // machine - configures telemetry channel for all users of the computer
+  // user    - configures telemetry channel for current user of the computer
+  // process - configures telemetry channel for process only
+  "scope": {
+    // In this example, executing shell command will configure per-user preference
+    "user": {
+      // Path object. Contains environment variable name for various OSes.
+      // Allowed keys: default, linux, macos, windows
+      // If there is no OS-specific key and no default - this OS is not supported.
+      "path": {
+        // Use the 'default' key if the executable name is the same on any OS.
+        "default": "foobar"
+      },
+      "value": {
+        // Use this arguments to opt-out of this telemetry channel.
+        "opt_out": "--telemetry-disable",
 
-      // Use this arguments to opt-in into this telemetry channel.
-      "opt_in": "--telemetry-enable"
+        // Use this arguments to opt-in into this telemetry channel.
+        "opt_in": "--telemetry-enable"
+      }
     }
   }
+}
 ```
 
 ### json_file
@@ -144,33 +176,42 @@ Product can have multiple telemetry channels. Some of them could be controlled b
 `JSON file` target. Indicates that this specific telemetry channel is controlled by setting the value in the JSON file.
 
 ```jsonc
-  "json_file": {
-    // Path object. Contains environment variable name for various OSes.
-    // Allowed keys: default, linux, macos, windows
-    // If there is no OS-specific key and no default - this OS is not supported.
-    "path": {
-      "linux": "$HOME/.foobar/config.json",
-      "macos": "$HOME/.foobar/config.json",
-      "windows": "%USERPROFILE%\\.foobar\\config.json"
-    },
+"json_file": {
+  // Target scope. You can use multiple scopes.
+  // machine - configures telemetry channel for all users of the computer
+  // user    - configures telemetry channel for current user of the computer
+  // process - configures telemetry channel for process only
+  "scope": {
+    // In this example, paths point to the per-user configuration file
+    "user": {
+      // Path object. Contains environment variable name for various OSes.
+      // Allowed keys: default, linux, macos, windows
+      // If there is no OS-specific key and no default - this OS is not supported.
+      "path": {
+        "linux": "$HOME/.foobar/config.json",
+        "macos": "$HOME/.foobar/config.json",
+        "windows": "%USERPROFILE%\\.foobar\\config.json"
+      },
 
-    // Selector of the telemetry channel control setting in the JSON object.
-    // Specify as JSON Pointer (https://tools.ietf.org/html/rfc6901)
-    "selector": "/telemetry",
+      // Selector of the telemetry channel control setting in the JSON object.
+      // Specify as JSON Pointer (https://tools.ietf.org/html/rfc6901)
+      "selector": "/telemetry",
 
-    "value": {
+      "value": {
 
-      // Use this value to opt-out of this telemetry channel.
-      "opt_out": "false",
+        // Use this value to opt-out of this telemetry channel.
+        "opt_out": "false",
 
-      // Use this value to opt-in into this telemetry channel.
-      "opt_in": "true"
-    },
+        // Use this value to opt-in into this telemetry channel.
+        "opt_in": "true"
+      },
 
-    // Friendly example. Must denote disabled telemetry.
-    // Used by README generator.
-    "display_value": "{\"telemetry\":false}"
+      // Friendly example. Must denote disabled telemetry.
+      // Used by README generator.
+      "display_value": "{\"telemetry\":false}"
+    }
   }
+}
 ```
 
 ### plain_file
@@ -178,32 +219,71 @@ Product can have multiple telemetry channels. Some of them could be controlled b
 `Plaintext file` target. Indicates that this specific telemetry channel is controlled by setting the value in the plaintext file.
 
 ```jsonc
-  "plain_file": {
-    // Path object. Contains environment variable name for various OSes.
-    // Allowed keys: default, linux, macos, windows
-    // If there is no OS-specific key and no default - this OS is not supported.
-    "path": {
-      "linux": "$HOME/.foobar/config.cfg",
-      "macos": "$HOME/.foobar/config.cfg",
-      "windows": "%USERPROFILE%\\.foobar\\config.cfg"
+"plain_file": {
+  // Target scope. You can use multiple scopes.
+  // machine - configures telemetry channel for all users of the computer
+  // user    - configures telemetry channel for current user of the computer
+  // process - configures telemetry channel for process only
+  "scope": {
+    // Scope with paths to the machine-wide configuration file
+    "machine": {
+      // Path object. Contains environment variable name for various OSes.
+      // Allowed keys: default, linux, macos, windows
+      // If there is no OS-specific key and no default - this OS is not supported.
+      "path": {
+        "linux": "/opt/foobar/config.cfg",
+        "macos": "Applications/Foobar.app/config.cfg",
+        "windows": "%ProgramFiles%\\foobar\\config.cfg"
+      },
+
+      // Selector of the telemetry channel control setting in the plaintext file.
+      // Specify as GO regex (https://github.com/google/re2/wiki/Syntax)
+      "selector": "^[ \\t]*telemetry[ \\t](on|off)[ \\t]*$",
+
+      "value": {
+        // Use this value to opt-out of this telemetry channel.
+        // Specify full string.
+        "opt_out": "telemetry off",
+
+        // Use this value to opt-in into this telemetry channel.
+        // Specify full string.
+        "opt_in": "telemetry on"
+      },
+
+      // Friendly example. Must denote disabled telemetry.
+      // Used by README generator.
+      "display_value": "telemetry off"
     },
 
-    // Selector of the telemetry channel control setting in the plaintext file.
-    // Specify as GO regex (https://github.com/google/re2/wiki/Syntax)
-    "selector": "^[ \\t]*telemetry[ \\t](on|off)[ \\t]*$",
+    // Scope with paths to the per-user configuration file
+    "user": {
+      // Path object. Contains environment variable name for various OSes.
+      // Allowed keys: default, linux, macos, windows
+      // If there is no OS-specific key and no default - this OS is not supported.
+      "path": {
+        "linux": "$HOME/.foobar/config.cfg",
+        "macos": "$HOME/.foobar/config.cfg",
+        "windows": "%USERPROFILE%\\.foobar\\config.cfg"
+      },
 
-    "value": {
-      // Use this value to opt-out of this telemetry channel.
-      // Specify full string.
-      "opt_out": "telemetry off",
+      // Selector of the telemetry channel control setting in the plaintext file.
+      // Specify as GO regex (https://github.com/google/re2/wiki/Syntax)
+      "selector": "^[ \\t]*telemetry[ \\t](on|off)[ \\t]*$",
 
-      // Use this value to opt-in into this telemetry channel.
-      // Specify full string.
-      "opt_in": "telemetry on"
-    },
+      "value": {
+        // Use this value to opt-out of this telemetry channel.
+        // Specify full string.
+        "opt_out": "telemetry off",
 
-    // Friendly example. Must denote disabled telemetry.
-    // Used by README generator.
-    "display_value": "telemetry off"
+        // Use this value to opt-in into this telemetry channel.
+        // Specify full string.
+        "opt_in": "telemetry on"
+      },
+
+      // Friendly example. Must denote disabled telemetry.
+      // Used by README generator.
+      "display_value": "telemetry off"
+    }
   }
+}
 ```

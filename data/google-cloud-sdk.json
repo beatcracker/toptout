@@ -16,12 +16,16 @@
       "is_official": true,
       "target": {
         "exec": {
-          "path": {
-            "default": "gcloud"
-          },
-          "value": {
-            "opt_out": "config set disable_usage_reporting true",
-            "opt_in": "config set disable_usage_reporting false"
+          "scope": {
+            "user": {
+              "path": {
+                "default": "gcloud"
+              },
+              "value": {
+                "opt_out": "config set disable_usage_reporting true",
+                "opt_in": "config set disable_usage_reporting false"
+              }
+            }
           }
         }
       }

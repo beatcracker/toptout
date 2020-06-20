@@ -16,21 +16,29 @@
       "is_official": true,
       "target": {
         "env": {
-          "path": {
-            "default": "AZURE_CORE_COLLECT_TELEMETRY"
-          },
-          "value": {
-            "opt_out": "0",
-            "opt_in": null
+          "scope": {
+            "process": {
+              "path": {
+                "default": "AZURE_CORE_COLLECT_TELEMETRY"
+              },
+              "value": {
+                "opt_out": "0",
+                "opt_in": null
+              }
+            }
           }
         },
         "exec": {
-          "path": {
-            "default": "az"
-          },
-          "value": {
-            "opt_out": "configure -d collect_telemetry=0",
-            "opt_in": "configure -d collect_telemetry=1"
+          "scope": {
+            "user": {
+              "path": {
+                "default": "az"
+              },
+              "value": {
+                "opt_out": "configure -d collect_telemetry=0",
+                "opt_in": "configure -d collect_telemetry=1"
+              }
+            }
           }
         }
       }

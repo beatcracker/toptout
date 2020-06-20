@@ -16,12 +16,16 @@
       "is_official": true,
       "target": {
         "env": {
-          "path": {
-            "default": "DO_NOT_TRACK"
-          },
-          "value": {
-            "opt_out": "1",
-            "opt_in": null
+          "scope": {
+            "process": {
+              "path": {
+                "default": "DO_NOT_TRACK"
+              },
+              "value": {
+                "opt_out": "1",
+                "opt_in": null
+              }
+            }
           }
         }
       }

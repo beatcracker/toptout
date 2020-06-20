@@ -16,21 +16,29 @@
       "is_official": true,
       "target": {
         "env": {
-          "path": {
-            "default": "NEXT_TELEMETRY_DISABLED"
-          },
-          "value": {
-            "opt_out": "1",
-            "opt_in": "0"
+          "scope": {
+            "process": {
+              "path": {
+                "default": "NEXT_TELEMETRY_DISABLED"
+              },
+              "value": {
+                "opt_out": "1",
+                "opt_in": "0"
+              }
+            }
           }
         },
         "exec": {
-          "path": {
-            "default": "npx"
-          },
-          "value": {
-            "opt_out": "next telemetry disable",
-            "opt_in": "next telemetry enable"
+          "scope": {
+            "user": {
+              "path": {
+                "default": "npx"
+              },
+              "value": {
+                "opt_out": "next telemetry disable",
+                "opt_in": "next telemetry enable"
+              }
+            }
           }
         }
       }

@@ -15,21 +15,29 @@
       "is_official": true,
       "target": {
         "env": {
-          "path": {
-            "default": "HOMEBREW_NO_ANALYTICS"
-          },
-          "value": {
-            "opt_out": "1",
-            "opt_in": null
+          "scope": {
+            "process": {
+              "path": {
+                "default": "HOMEBREW_NO_ANALYTICS"
+              },
+              "value": {
+                "opt_out": "1",
+                "opt_in": null
+              }
+            }
           }
         },
         "exec": {
-          "path": {
-            "default": "brew"
-          },
-          "value": {
-            "opt_out": "analytics off",
-            "opt_in": "analytics on"
+          "scope": {
+            "user": {
+              "path": {
+                "default": "brew"
+              },
+              "value": {
+                "opt_out": "analytics off",
+                "opt_in": "analytics on"
+              }
+            }
           }
         }
       }

@@ -16,21 +16,29 @@
       "is_official": true,
       "target": {
         "env": {
-          "path": {
-            "default": "CI"
-          },
-          "value": {
-            "opt_out": "ANY_VALUE",
-            "opt_in": null
+          "scope": {
+            "process": {
+              "path": {
+                "default": "CI"
+              },
+              "value": {
+                "opt_out": "ANY_VALUE",
+                "opt_in": null
+              }
+            }
           }
         },
         "exec": {
-          "path": {
-            "default": "cordova"
-          },
-          "value": {
-            "opt_out": "telemetry off",
-            "opt_in": "telemetry off"
+          "scope": {
+            "user": {
+              "path": {
+                "default": "cordova"
+              },
+              "value": {
+                "opt_out": "telemetry off",
+                "opt_in": "telemetry off"
+              }
+            }
           }
         }
       }
