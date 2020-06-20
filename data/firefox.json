@@ -40,9 +40,26 @@
       "description": "Examples of the kind of data Telemetry sends to Mozilla includes start-up time, time between cycle collector runs, memory heap used, whether hardware graphics acceleration or Java is enabled, and more.\nTelemetry does not collect any bookmarks or passwords. It may collect anonymized site visit information in some circumstances, such as when a secure browsing connection fails to connect, or for some experiments.",
       "is_official": true,
       "links": {
-        "main": "https://github.com/mozilla/policy-templates/blob/master/README.md#windows-gpo-33"
+        "main": "https://github.com/mozilla/policy-templates/blob/master/README.md"
       },
       "target": {
+        "json_file": {
+          "scope": {
+            "machine": {
+              "path": {
+                "linux": "distribution/policies.json",
+                "macos": "/Applications/Firefox.app/Contents/Resources/distribution/policies.json",
+                "windows": "distribution\\policies.json"
+              },
+              "selector": "/policies/DisableTelemetry",
+              "value": {
+                "opt_out": "true",
+                "opt_in": "false"
+              },
+              "display_value": "{\"policies\":{\"DisableTelemetry\":true}}"
+            }
+          }
+        },
         "exec": {
           "scope": {
             "machine": {
