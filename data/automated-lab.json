@@ -15,7 +15,7 @@
       "target": {
         "env": {
           "scope": {
-            "user": {
+            "process": {
               "path": {
                 "default": "AUTOMATEDLAB_TELEMETRY_OPTOUT"
               },

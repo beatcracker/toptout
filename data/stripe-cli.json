@@ -17,7 +17,7 @@
       "target": {
         "env": {
           "scope": {
-            "user": {
+            "process": {
               "path": {
                 "default": "STRIPE_CLI_TELEMETRY_OPTOUT"
               },
