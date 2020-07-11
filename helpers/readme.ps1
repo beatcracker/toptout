@@ -22,16 +22,38 @@ filter Format-MdString {
     }
 }
 
-filter ConvertTo-PathTableObject {
+filter ConvertTo-OsTableObject {
+    Param(
+        [ValidateNotNullOrEmpty()]
+        [string]$ValueName,
+
+        [ValidateNotNullOrEmpty()]
+        [string]$ValuePostfix
+    )
+
+    if ($ValuePostfix) {
+        $ValuePostfix = " $ValuePostfix"
+    }
+
     foreach ($key in ($_.Keys) | Sort-Object) {
         [ordered]@{
-            OS   = @{
+            OS         = @{
                 linux   = 'Linux'
                 macos   = 'macOS'
                 windows = 'Windows'
+                default = 'Other'
             }[$key]
-            Path = ($_.$key | Format-MdString)
+            $ValueName = (-join ($_.$key, $ValuePostfix) | Format-MdString -Code)
         }
+    }
+}
+
+filter Test-IsDefaultOnly {
+    if ($_.Keys -contains 'default' -and $_.Keys.Count -eq 1) {
+        $true
+    }
+    else {
+        $false
     }
 }
 
@@ -103,7 +125,6 @@ function New-MdTable {
     }
 }
 
-
 filter ConvertTo-Readme {
     Param (
         [int]$Indent = 2
@@ -134,138 +155,152 @@ filter ConvertTo-Readme {
     foreach ($tm in $_.telemetry) {
         $Indent++ > $null
 
-        '{0} {1}' -f ($hdr * $Indent), $tm.name | Add-Newline
+        if ($tm.links.main) {
+            '{0} 📡 [{1}]({2})' -f ($hdr * $Indent), $tm.name, $tm.links.main | Add-Newline
+        } else {
+            '{0} 📡 {1}' -f ($hdr * $Indent), $tm.name | Add-Newline
+        }
+
+        'Official: {0}' -f ('❌', '✔')[$tm.is_official] | Add-Newline
+
+        if ($_.links.telemetry) {
+            '- [Telemetry details]({0})' -f $_.links.telemetry
+        }
+
+        if ($_.links.privacy) {
+            '- [Privacy policy]({0})' -f $_.links.privacy
+        }
 
         if ($tm.description) {
-            '> {0}' -f $tm.description | Add-Newline
+            '> {0}' -f $tm.description
         }
 
-        if ($tm.links) {
-            foreach ($l in $tm.links.GetEnumerator()) {
-                '{0}: {1}' -f $l.Key, $l.Value
-            }
-
-            Add-Newline
-        }
+        Add-Newline
 
         if ($tm.target.Keys.Count -gt 0) {
             'Use methods described below to opt-out of this telemetry channel.' | Add-Newline
         }
 
-        $Indent++ > $null
+        $Counter = 1
 
-        foreach ($tg in $tm.target) {
+        foreach ($tg in ($tm.target.Keys | Sort-Object)) {
 
-            $Counter = 1
+            $Indent++ > $null
 
-            $MethodHdr = {
-                if ($tg.Keys.Count -gt 1) {
-                    '{0} Method #{1}' -f ($hdr * $Indent), $Counter | Add-NewLine
+            '{0} {1}. {2}' -f @(
+                $hdr * $Indent
+                $Counter
+                @{
+                    env        = 'Set environment variable'
+                    exec       = 'Run command'
+                    json_file  = 'Edit config file (JSON)'
+                    plain_file = 'Edit config file (plaintext)'
+                    registry   = 'Set registry key'
+                }[$tg]
+            ) | Add-Newline
+
+            $Indent++ > $null
+
+            foreach ($scope in ('machine', 'user', 'process')) {
+
+                $tgs = $tm.target.$tg.scope.$scope
+
+                if ($tgs) {
+
+                    '{0} Scope: {1}' -f ($hdr * $Indent), @{
+                        machine = '💻 Machine'
+                        user    = '👤 User'
+                        process = '🗗 Process'
+                    }[$scope] | Add-Newline
+
+                    if ($tg -eq 'env') {
+
+                        if ($tgs.path | Test-IsDefaultOnly) {
+
+                            '```none'
+                            '{0}={1}' -f $tgs.path.default, $tgs.value.opt_out
+                            '```'
+
+                            Add-Newline
+                        }
+                        else {
+                            $tgs.path | ConvertTo-OsTableObject -ValueName 'Variable Name' | New-MdTable
+
+                            'Value: `{0}`' -f $tgs.value.opt_out | Add-NewLine
+                        }
+                    }
+                    elseif ($tg -eq 'exec') {
+
+                        if ($tgs.path | Test-IsDefaultOnly) {
+
+                            '```shell'
+                            @($tgs.path.default, $tgs.value.opt_out) -join ' '
+                            '```'
+                        }
+                        else {
+                            $tgs.path |
+                            ConvertTo-OsTableObject -ValueName 'Command' -ValuePostfix $tgs.value.opt_out |
+                            New-MdTable
+                        }
+
+                        Add-Newline
+                    }
+                    elseif ($tg -eq 'json_file') {
+
+                        if ($tgs.path | Test-IsDefaultOnly) {
+
+                            'Path: `{0}`' -f $tgs.path.default
+                        }
+                        else {
+                            $tgs.path | ConvertTo-OsTableObject -ValueName 'Path' | New-MdTable
+                        }
+
+                        Add-Newline
+
+                        '{0} Content' -f ($hdr * $Indent) | Add-Newline
+
+                        '```json'
+                        ($tgs.display_value | ConvertFrom-Json -Depth 100 | ConvertTo-Json) -replace $CRLF, $LF
+                        '```'
+
+                        Add-Newline
+                    }
+                    elseif ($tg -eq 'plain_file') {
+
+                        if ($tgs.path | Test-IsDefaultOnly) {
+
+                            'Path: `{0}`' -f $tgs.path.default
+                        }
+                        else {
+                            $tgs.path | ConvertTo-OsTableObject -ValueName 'Path' | New-MdTable
+                        }
+
+                        Add-Newline
+
+                        '{0} Content' -f ($hdr * $Indent) | Add-Newline
+
+                        '```json'
+                        $tgs.display_value
+                        '```'
+
+                        Add-Newline
+                    }
+                    elseif ($tg -eq 'registry') {
+                        '- Path: `{0}`' -f (
+                            $tgs.root, $tgs.path, $tgs.key -join '\'
+                        )
+
+                        '- Type: `{0}`' -f $tgs.type
+
+                        '- Value: `{0}`' -f $tgs.value.opt_out | Add-Newline
+                    }
                 }
             }
+            $Indent-- > $null
+            $Indent-- > $null
 
-            if ($tg.env) {
-                . $MethodHdr
-
-                $Indent++ > $null
-
-                '{0} Set environment variable' -f ($hdr * $Indent) | Add-Newline
-
-                '```none'
-                '{0}={1}' -f $tg.env.path.default, $tg.env.value.opt_out
-                '```'
-
-                Add-Newline
-
-                $Indent-- > $null
-                $Counter++ > $null
-
-            }
-
-            if ($tg.exec) {
-                . $MethodHdr
-
-                $Indent++ > $null
-
-                '{0} Run command' -f ($hdr * $Indent) | Add-Newline
-
-                '```shell'
-                @($tg.exec.path.default, $tg.exec.value.opt_out) -join ' '
-                '```'
-
-                Add-Newline
-
-                $Indent-- > $null
-                $Counter++ > $null
-
-            }
-
-            if ($tg.json_file) {
-                . $MethodHdr
-
-                $Indent++ > $null
-
-                '{0} Edit config file (JSON)' -f ($hdr * $Indent) | Add-Newline
-
-                $Indent++ > $null
-
-                $tg.json_file.path | ConvertTo-PathTableObject | New-MdTable
-
-                # '{0} Path' -f ($hdr * $Indent) | Add-Newline
-
-                # foreach ($p in $tgi.Value.path.GetEnumerator()) {
-                #     '- {0}: `{1}`' -f $p.Key, $p.Value
-                # }
-
-                Add-Newline
-
-                '{0} Content' -f ($hdr * $Indent) | Add-Newline
-
-                '```json'
-                ($tg.json_file.display_value | ConvertFrom-Json -Depth 100 | ConvertTo-Json) -replace $CRLF, $LF
-                '```'
-
-                Add-Newline
-
-                $Indent-- > $null
-                $Indent-- > $null
-                $Counter++ > $null
-            }
-
-            if ($tg.plain_file) {
-                . $MethodHdr
-
-                $Indent++ > $null
-
-                '{0} Edit config file (plaintext)' -f ($hdr * $Indent) | Add-Newline
-
-                $Indent++ > $null
-
-                $tg.plain_file.path | ConvertTo-PathTableObject | New-MdTable
-
-                # '{0} Path' -f ($hdr * $Indent) | Add-Newline
-
-                # foreach ($p in $tgi.Value.path.GetEnumerator()) {
-                #     '- {0}: `{1}`' -f $p.Key, $p.Value
-                # }
-
-                Add-Newline
-
-                '{0} Content' -f ($hdr * $Indent) | Add-Newline
-
-                '```none'
-                $tg.plain_file.display_value
-                '```'
-
-                Add-Newline
-
-                $Indent-- > $null
-                $Indent-- > $null
-                $Counter++ > $null
-            }
+            $Counter++ > $null
         }
-
-        $Indent-- > $null
         $Indent-- > $null
     }
 }
