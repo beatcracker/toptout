@@ -6,3 +6,12 @@ filter Add-Newline {
     }
     [string]::Empty
 }
+
+filter Test-IsDefaultOnly {
+    if ($_.Keys -contains 'default' -and $_.Keys.Count -eq 1) {
+        $true
+    }
+    else {
+        $false
+    }
+}
