@@ -2,6 +2,108 @@
 
 $LF = "`n"
 
+$PadRegex = [regex]'(?m)^(.)'
+$PadReplace = '  $1'
+
+$ShellSwitchMap = @{
+    bash = @(
+        'case "$OSTYPE" in'
+        '{0}'
+        'esac'
+    ) -join $LF
+    pwsh = @(
+        'switch (Get-OsMoniker) {{'
+        '{0}'
+        '}}'
+    ) -join $LF
+
+}
+
+$ShellCaseMap = @{
+    bash = @{
+        default = @(
+            '*)'
+            '{0}'
+            ';;'
+        ) -join $LF
+        linux   = @(
+            'linux*)'
+            '{0}'
+            ';;'
+        ) -join $LF
+        windows = @(
+            'msys*)'
+            '{0}'
+            ';;'
+        ) -join $LF
+        macos   = @(
+            'darwin*)'
+            '{0}'
+            ';;'
+        ) -join $LF
+    }
+    pwsh = @{
+        default = @(
+            'default {{'
+            '{0}'
+            '}}'
+        ) -join $LF
+        linux   = @(
+            "'linux' {{"
+            '{0}'
+            '}}'
+        ) -join $LF
+        windows = @(
+            "'windows' {{"
+            '{0}'
+            '}}'
+        ) -join $LF
+        macos   = @(
+            "'macos' {{"
+            '{0}'
+            '}}'
+        ) -join $LF
+    }
+}
+
+$ShellCmdMap = @{
+    bash = @{
+        env  = "export {0}='{1}'"
+        exec = @(
+            "if command -v '{0}' >/dev/null 2>&1 >/dev/null"
+            'then'
+            "  '{0}' {1} >/dev/null 2>&1"
+            'fi'
+        ) -join $LF
+    }
+    pwsh = @{
+        env  = "`${{env:{0}}} = '{1}'"
+        exec = @(
+            '. {{'
+            "  & (Get-Command -Name '{0}' -CommandType Application -ErrorAction Stop)[0].Path --% {1}"
+            '}} *>&1 > $null'
+        ) -join $LF
+    }
+}
+
+filter Select-LowestScope {
+    foreach ($scope in 'process', 'user', 'machine') {
+        if ($_.scope.Keys -contains $scope) {
+            $_.scope.$scope
+            break
+        }
+    }
+}
+
+filter Select-LowestImpact {
+    foreach ($target in 'env', 'exec') {
+        if ($_.Keys -contains $target) {
+            @{ $target = $_.$target }
+            break
+        }
+    }
+}
+
 filter Get-ShellScriptExtension {
     @{
         bash = 'sh'
@@ -15,59 +117,44 @@ filter ConvertTo-ShellScript {
         [string]$Shell
     )
 
-    $ShellCmdMap = @{
-        bash = @{
-            env = "export {0}='{1}'"
-            exec = @(
-                "if command -v '{0}' >/dev/null 2>&1 >/dev/null"
-                'then'
-                "  '{0}' {1} >/dev/null 2>&1"
-                'fi'
-            ) -join $LF
-        }
-        pwsh = @{
-            env = "`${{env:{0}}} = '{1}'"
-            exec = @(
-                '. {{'
-                "  & (Get-Command -Name '{0}' -CommandType Application -ErrorAction Stop)[0].Path --% {1}"
-                '}} *>&1 > $null'
-            ) -join $LF
-        }
-    }
+    foreach ($telemetry in $_.telemetry) {
 
-    $OsShellMap = @{
-        bash = 'Linux'
-        pwsh = 'Windows'
-    }
+        $target = $telemetry.target | Select-LowestImpact
 
-    $_ | Where-Object {
-        ($_.telemetry).target.Keys -match '^(env|exec)$'
-    } | ForEach-Object {
-        '# {0}' -f $_.name
-        '# {0}' -f $_.links.main
+        $code = if ($target) {
+            '# {0}' -f $telemetry.name
+            if ($telemetry.links.main) { '# {0}' -f $telemetry.links.main }
 
-        $_.telemetry | Where-Object {
-            $_.target.Keys -match '^(env|exec)$'
-        } | ForEach-Object {
-            if ($_.target.Keys -contains 'env'){
-                $Env = if ($_.target.env.path.default) {
-                    $_.target.env.path.default
-                } else {
-                    $_.target.env.path.($OsShellMap.$Shell)
+            $target.GetEnumerator() | ForEach-Object {
+
+                if ($_.Key -and $ShellCmdMap.$Shell.ContainsKey($_.Key)) {
+                    $scope = $_.Value | Select-LowestScope
+
+                    if ($scope.path | Test-IsDefaultOnly) {
+                        $ShellCmdMap.$Shell.($_.Key) -f $scope.path.default, $scope.value.opt_out
+                    }
+                    else {
+                        $cases = foreach ($kv in $scope.path.GetEnumerator() | Sort-Object { $_.Key }) {
+                            $ShellCaseMap.$Shell.($kv.Key) -f (
+                                ($ShellCmdMap.$Shell.($_.Key) -f $kv.Value, $scope.value.opt_out) -replace $PadRegex, $PadReplace
+                            )
+                        }
+
+                        $ShellSwitchMap.$Shell -f (
+                            ($cases -join $LF) -replace $PadRegex, $PadReplace
+                        )
+
+                    }
+                    Add-Newline
                 }
-
-                $ShellCmdMap.$Shell.env -f $Env, $_.target.env.value.opt_out
-            } elseif ($_.target.Keys -contains 'exec') {
-                $Exec = if ($_.target.exec.path.default) {
-                    $_.target.exec.path.default
-                } else {
-                    $_.target.exec.path.($OsShellMap.$Shell)
-                }
-
-                $ShellCmdMap.$Shell.exec -f $Exec, $_.target.exec.value.opt_out
             }
+        }
 
+        if ($code) {
+            '# {0}' -f $_.name
+            '# {0}' -f $_.links.main
             Add-Newline
+            $code
         }
     }
 }
