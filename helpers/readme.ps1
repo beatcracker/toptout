@@ -48,15 +48,6 @@ filter ConvertTo-OsTableObject {
     }
 }
 
-filter Test-IsDefaultOnly {
-    if ($_.Keys -contains 'default' -and $_.Keys.Count -eq 1) {
-        $true
-    }
-    else {
-        $false
-    }
-}
-
 function New-MdTable {
     [CmdletBinding()]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseShouldProcessForStateChangingFunctions', '')]
