@@ -8,7 +8,7 @@ Describe 'PSScriptAnalyzer tests for build scripts' {
     ) | Get-ChildItem -Filter '*.ps1' -File | ForEach-Object {
         Context $_.Name {
             It 'Should not have any PSScriptAnalyzer warnings' {
-                [array]$ScriptWarnings = Invoke-ScriptAnalyzer -Path $_.FullName
+                [array]$ScriptWarnings = Invoke-ScriptAnalyzer -Path $_.FullName -ExcludeRule 'PSUseBOMForUnicodeEncodedFile'
 
                 if ($ScriptWarnings.Count) {
                     $ScriptWarnings | Out-String | Write-Warning
