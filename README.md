@@ -65,6 +65,8 @@ A proposed unified standard for opting out of telemetry for TUI/console apps: `e
   - [AutomatedLab](#automatedlab)
 - [Shells](#shells)
   - [PowerShell Core](#powershell-core)
+- [Web](#web)
+  - [Firefox](#firefox)
 
 ## Applications
 
@@ -77,23 +79,29 @@ A proposed unified standard for opting out of telemetry for TUI/console apps: `e
 
 List of known telemetry channels:
 
-### Usage data
+### 📡 Usage data
 
+Official: ✔
+
+- [Telemetry details](https://github.com/atom/metrics)
+- [Privacy policy](https://help.github.com/articles/github-privacy-policy/)
 > The user's decision is stored at core.telemetryConsent. The three possible values are undecided, no and limited. The intent is that consent is given if and only if limited is chosen.
 
 Use methods described below to opt-out of this telemetry channel.
 
-##### Edit config file (plaintext)
+#### 1. Edit config file (plaintext)
 
-| OS      | Path                                |
-|---------|-------------------------------------|
-| Linux   | $HOME/\.atom/init\.coffee           |
-| macOS   | $HOME/\.atom/init\.coffee           |
-| Windows | %USERPROFILE%\\\.atom\\init\.coffee |
+##### Scope: 👤 User
 
-###### Content
+| OS      | Path                              |
+|---------|-----------------------------------|
+| Linux   | `$HOME/.atom/init.coffee`         |
+| macOS   | `$HOME/.atom/init.coffee`         |
+| Windows | `%USERPROFILE%\.atom\init.coffee` |
 
-```none
+##### Content
+
+```json
 atom.config.set('core.telemetryConsent', 'no')
 ```
 
@@ -105,21 +113,25 @@ atom.config.set('core.telemetryConsent', 'no')
 
 List of known telemetry channels:
 
-### Usage data
+### 📡 Usage data
+
+Official: ✔
+
+- [Telemetry details](https://docs.brew.sh/Analytics)
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### Method #1
+#### 1. Set environment variable
 
-##### Set environment variable
+##### Scope: 🗗 Process
 
 ```none
 HOMEBREW_NO_ANALYTICS=1
 ```
 
-#### Method #2
+#### 2. Run command
 
-##### Run command
+##### Scope: 👤 User
 
 ```shell
 brew analytics off
@@ -134,8 +146,12 @@ brew analytics off
 
 List of known telemetry channels:
 
-### Diagnostic data
+### 📡 Diagnostic data
 
+Official: ✔
+
+- [Telemetry details](https://github.com/microsoft/calculator#diagnostic-data)
+- [Privacy policy](https://go.microsoft.com/fwlink/?LinkId=521839)
 > Diagnostic data is disabled in development builds by default, and can be enabled with the SEND_DIAGNOSTICS build flag.
 
 ## [VSCode](https://code.visualstudio.com/)
@@ -147,21 +163,27 @@ List of known telemetry channels:
 
 List of known telemetry channels:
 
-### Usage data
+### 📡 Usage data
 
+Official: ✔
+
+- [Telemetry details](https://code.visualstudio.com/docs/getstarted/telemetry)
+- [Privacy policy](https://go.microsoft.com/fwlink/?LinkID=528096)
 > VS Code collects usage data that helps to debug issues, such as slow start-up times, and to prioritize new features.
 
 Use methods described below to opt-out of this telemetry channel.
 
-##### Edit config file (JSON)
+#### 1. Edit config file (JSON)
 
-| OS      | Path                                                       |
-|---------|------------------------------------------------------------|
-| Linux   | $HOME/\.config/Code/User/settings\.json                    |
-| macOS   | $HOME/Library/Application Support/Code/User/settings\.json |
-| Windows | %APPDATA%\\Code\\User\\settings\.json                      |
+##### Scope: 👤 User
 
-###### Content
+| OS      | Path                                                        |
+|---------|-------------------------------------------------------------|
+| Linux   | `$HOME/.config/Code/User/settings.json`                     |
+| macOS   | `$HOME/Library/Application Support/Code/User/settings.json` |
+| Windows | `%APPDATA%\Code\User\settings.json`                         |
+
+##### Content
 
 ```json
 {
@@ -169,21 +191,27 @@ Use methods described below to opt-out of this telemetry channel.
 }
 ```
 
-### Crash data
+### 📡 Crash data
 
+Official: ✔
+
+- [Telemetry details](https://code.visualstudio.com/docs/getstarted/telemetry)
+- [Privacy policy](https://go.microsoft.com/fwlink/?LinkID=528096)
 > VS Code collects data about any crashes that occur and sends it to Microsoft to help improve our products and services.
 
 Use methods described below to opt-out of this telemetry channel.
 
-##### Edit config file (JSON)
+#### 1. Edit config file (JSON)
 
-| OS      | Path                                                       |
-|---------|------------------------------------------------------------|
-| Linux   | $HOME/\.config/Code/User/settings\.json                    |
-| macOS   | $HOME/Library/Application Support/Code/User/settings\.json |
-| Windows | %APPDATA%\\Code\\User\\settings\.json                      |
+##### Scope: 👤 User
 
-###### Content
+| OS      | Path                                                        |
+|---------|-------------------------------------------------------------|
+| Linux   | `$HOME/.config/Code/User/settings.json`                     |
+| macOS   | `$HOME/Library/Application Support/Code/User/settings.json` |
+| Windows | `%APPDATA%\Code\User\settings.json`                         |
+
+##### Content
 
 ```json
 {
@@ -202,11 +230,18 @@ Use methods described below to opt-out of this telemetry channel.
 
 List of known telemetry channels:
 
-### Usage data
+### 📡 Usage data
+
+Official: ✔
+
+- [Telemetry details](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-telemetry.html)
+- [Privacy policy](https://aws.amazon.com/compliance/data-privacy-faq/)
 
 Use methods described below to opt-out of this telemetry channel.
 
-##### Set environment variable
+#### 1. Set environment variable
+
+##### Scope: 🗗 Process
 
 ```none
 SAM_CLI_TELEMETRY=0
@@ -221,21 +256,26 @@ SAM_CLI_TELEMETRY=0
 
 List of known telemetry channels:
 
-### Usage data
+### 📡 Usage data
+
+Official: ✔
+
+- [Telemetry details](https://docs.microsoft.com/en-us/cli/azure/azure-cli-configuration)
+- [Privacy policy](https://aka.ms/AzureCliLegal)
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### Method #1
+#### 1. Set environment variable
 
-##### Set environment variable
+##### Scope: 🗗 Process
 
 ```none
 AZURE_CORE_COLLECT_TELEMETRY=0
 ```
 
-#### Method #2
+#### 2. Run command
 
-##### Run command
+##### Scope: 👤 User
 
 ```shell
 az configure -d collect_telemetry=0
@@ -250,11 +290,18 @@ az configure -d collect_telemetry=0
 
 List of known telemetry channels:
 
-### Usage data
+### 📡 Usage data
+
+Official: ✔
+
+- [Telemetry details](https://cloud.google.com/sdk/usage-statistics)
+- [Privacy policy](https://policies.google.com/privacy)
 
 Use methods described below to opt-out of this telemetry channel.
 
-##### Run command
+#### 1. Run command
+
+##### Scope: 👤 User
 
 ```shell
 gcloud config set disable_usage_reporting true
@@ -269,11 +316,18 @@ gcloud config set disable_usage_reporting true
 
 List of known telemetry channels:
 
-### Usage data
+### 📡 Usage data
+
+Official: ✔
+
+- [Telemetry details](https://learn.netdata.cloud/docs/agent/anonymous-statistic/)
+- [Privacy policy](https://learn.netdata.cloud/docs/agent/privacy-policy/)
 
 Use methods described below to opt-out of this telemetry channel.
 
-##### Set environment variable
+#### 1. Set environment variable
+
+##### Scope: 🗗 Process
 
 ```none
 DO_NOT_TRACK=1
@@ -288,29 +342,34 @@ DO_NOT_TRACK=1
 
 List of known telemetry channels:
 
-### Usage data
+### 📡 Usage data
+
+Official: ✔
+
+- [Telemetry details](https://docs.netlify.com/cli/get-started/#usage-data-collection)
+- [Privacy policy](https://www.netlify.com/privacy/)
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### Method #1
+#### 1. Run command
 
-##### Run command
+##### Scope: 👤 User
 
 ```shell
 netlify --telemetry-disable
 ```
 
-#### Method #2
+#### 2. Edit config file (JSON)
 
-##### Edit config file (JSON)
+##### Scope: 👤 User
 
-| OS      | Path                                   |
-|---------|----------------------------------------|
-| Linux   | $HOME/\.netlify/config\.json           |
-| macOS   | $HOME/\.netlify/config\.json           |
-| Windows | %USERPROFILE%\\\.netlify\\config\.json |
+| OS      | Path                                 |
+|---------|--------------------------------------|
+| Linux   | `$HOME/.netlify/config.json`         |
+| macOS   | `$HOME/.netlify/config.json`         |
+| Windows | `%USERPROFILE%\.netlify\config.json` |
 
-###### Content
+##### Content
 
 ```json
 {
@@ -327,11 +386,18 @@ netlify --telemetry-disable
 
 List of known telemetry channels:
 
-### Usage data
+### 📡 Usage data
+
+Official: ✔
+
+- [Telemetry details](https://github.com/stripe/stripe-cli/wiki/telemetry)
+- [Privacy policy](https://stripe.com/privacy)
 
 Use methods described below to opt-out of this telemetry channel.
 
-##### Set environment variable
+#### 1. Set environment variable
+
+##### Scope: 🗗 Process
 
 ```none
 STRIPE_CLI_TELEMETRY_OPTOUT=1
@@ -345,11 +411,17 @@ STRIPE_CLI_TELEMETRY_OPTOUT=1
 
 List of known telemetry channels:
 
-### Usage data
+### 📡 Usage data
+
+Official: ✔
+
+- [Telemetry details](https://docs.tilt.dev/telemetry_faq.html)
 
 Use methods described below to opt-out of this telemetry channel.
 
-##### Set environment variable
+#### 1. Set environment variable
+
+##### Scope: 🗗 Process
 
 ```none
 DO_NOT_TRACK=1
@@ -366,21 +438,26 @@ DO_NOT_TRACK=1
 
 List of known telemetry channels:
 
-### Usage data
+### 📡 Usage data
+
+Official: ✔
+
+- [Telemetry details](https://cordova.apache.org/docs/en/latest/reference/cordova-cli/#global-command-list)
+- [Privacy policy](https://cordova.apache.org/privacy/)
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### Method #1
+#### 1. Set environment variable
 
-##### Set environment variable
+##### Scope: 🗗 Process
 
 ```none
 CI=ANY_VALUE
 ```
 
-#### Method #2
+#### 2. Run command
 
-##### Run command
+##### Scope: 👤 User
 
 ```shell
 cordova telemetry off
@@ -395,21 +472,26 @@ cordova telemetry off
 
 List of known telemetry channels:
 
-### Usage data
+### 📡 Usage data
+
+Official: ✔
+
+- [Telemetry details](https://www.gatsbyjs.org/docs/telemetry/)
+- [Privacy policy](https://www.gatsbyjs.com/privacy-policy/)
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### Method #1
+#### 1. Set environment variable
 
-##### Set environment variable
+##### Scope: 🗗 Process
 
 ```none
 GATSBY_TELEMETRY_DISABLED=1
 ```
 
-#### Method #2
+#### 2. Run command
 
-##### Run command
+##### Scope: 👤 User
 
 ```shell
 gatsby telemetry --disable
@@ -424,31 +506,35 @@ gatsby telemetry --disable
 
 List of known telemetry channels:
 
-### Usage data (CLI and Console)
+### 📡 Usage data (CLI and Console)
 
+Official: ✔
+
+- [Telemetry details](https://docs.hasura.io/1.0/graphql/manual/guides/telemetry.html)
+- [Privacy policy](https://hasura.io/legal/hasura-privacy-policy)
 > The CLI collects each execution event, along with a randomly generated UUID. The execution event contains the command name, timestamp and whether the execution resulted in an error or not. Error messages, arguments and flags are not recorded. The CLI also collects the server version and UUID that it is talking to. The operating system platform and architecture is also noted along with the CLI version.
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### Method #1
+#### 1. Set environment variable
 
-##### Set environment variable
+##### Scope: 🗗 Process
 
 ```none
 HASURA_GRAPHQL_ENABLE_TELEMETRY=false
 ```
 
-#### Method #2
+#### 2. Edit config file (JSON)
 
-##### Edit config file (JSON)
+##### Scope: 👤 User
 
-| OS      | Path                                  |
-|---------|---------------------------------------|
-| Linux   | $HOME/\.hasura/config\.json           |
-| macOS   | $HOME/\.hasura/config\.json           |
-| Windows | %USERPROFILE%\\\.hasura\\config\.json |
+| OS      | Path                                |
+|---------|-------------------------------------|
+| Linux   | `$HOME/.hasura/config.json`         |
+| macOS   | `$HOME/.hasura/config.json`         |
+| Windows | `%USERPROFILE%\.hasura\config.json` |
 
-###### Content
+##### Content
 
 ```json
 {
@@ -465,11 +551,18 @@ HASURA_GRAPHQL_ENABLE_TELEMETRY=false
 
 List of known telemetry channels:
 
-### Usage data
+### 📡 Usage data
+
+Official: ✔
+
+- [Telemetry details](https://docs.microsoft.com/en-us/dotnet/core/tools/telemetry)
+- [Privacy policy](https://go.microsoft.com/fwlink/?LinkID=528096)
 
 Use methods described below to opt-out of this telemetry channel.
 
-##### Set environment variable
+#### 1. Set environment variable
+
+##### Scope: 🗗 Process
 
 ```none
 DOTNET_CLI_TELEMETRY_OPTOUT=true
@@ -484,21 +577,26 @@ DOTNET_CLI_TELEMETRY_OPTOUT=true
 
 List of known telemetry channels:
 
-### Usage data
+### 📡 Usage data
+
+Official: ✔
+
+- [Telemetry details](https://nextjs.org/telemetry)
+- [Privacy policy](https://zeit.co/security#policy)
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### Method #1
+#### 1. Set environment variable
 
-##### Set environment variable
+##### Scope: 🗗 Process
 
 ```none
 NEXT_TELEMETRY_DISABLED=1
 ```
 
-#### Method #2
+#### 2. Run command
 
-##### Run command
+##### Scope: 👤 User
 
 ```shell
 npx next telemetry disable
@@ -514,25 +612,30 @@ npx next telemetry disable
 
 List of known telemetry channels:
 
-### Usage data
+### 📡 Usage data
+
+Official: ✔
+
+- [Telemetry details](https://github.com/AutomatedLab/AutomatedLab/wiki/Lab-Telemetry)
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### Method #1
+#### 1. Set environment variable
 
-##### Set environment variable
+##### Scope: 🗗 Process
 
 ```none
 AUTOMATEDLAB_TELEMETRY_OPTOUT=1
 ```
 
-#### Method #2
+#### 2. Run command
 
-##### Run command
+##### Scope: 👤 User
 
-```shell
-pwsh -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Import-Module AutomatedLab -ErrorAction Stop ; Disable-LabTelemetry -ErrorAction Stop"
-```
+| OS      | Command                                                                                                                                                                  |
+|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Other   | `pwsh -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Import-Module AutomatedLab -ErrorAction Stop ; Disable-LabTelemetry -ErrorAction Stop"`       |
+| Windows | `powershell -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Import-Module AutomatedLab -ErrorAction Stop ; Disable-LabTelemetry -ErrorAction Stop"` |
 
 ## Shells
 
@@ -545,12 +648,101 @@ pwsh -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Import
 
 List of known telemetry channels:
 
-### Usage data
+### 📡 Usage data
+
+Official: ✔
+
+- [Telemetry details](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_telemetry)
+- [Privacy policy](https://privacy.microsoft.com/privacystatement)
 
 Use methods described below to opt-out of this telemetry channel.
 
-##### Set environment variable
+#### 1. Set environment variable
+
+##### Scope: 🗗 Process
 
 ```none
 POWERSHELL_TELEMETRY_OPTOUT=1
 ```
+
+## Web
+
+## [Firefox](https://www.mozilla.org/firefox/)
+
+> Telemetry collects information about your Firefox browsing experience to improve Firefox features, browser performance and stability.
+
+- [Telemetry details](https://wiki.allizom.org/Telemetry/FAQ)
+- [Privacy policy](https://www.mozilla.org/privacy/firefox/)
+
+List of known telemetry channels:
+
+### 📡 [Enable policies (macOS)](https://github.com/mozilla/policy-templates/tree/master/mac)
+
+Official: ✔
+
+- [Telemetry details](https://wiki.allizom.org/Telemetry/FAQ)
+- [Privacy policy](https://www.mozilla.org/privacy/firefox/)
+> Enable Firefox policies so the telemetry can be configured.
+
+Use methods described below to opt-out of this telemetry channel.
+
+#### 1. Run command
+
+##### Scope: 💻 Machine
+
+| OS    | Command                                                                                        |
+|-------|------------------------------------------------------------------------------------------------|
+| macOS | `defaults write /Library/Preferences/org.mozilla.firefox EnterprisePoliciesEnabled -bool TRUE` |
+
+### 📡 [Usage data](https://github.com/mozilla/policy-templates/blob/master/README.md)
+
+Official: ✔
+
+- [Telemetry details](https://wiki.allizom.org/Telemetry/FAQ)
+- [Privacy policy](https://www.mozilla.org/privacy/firefox/)
+> Examples of the kind of data Telemetry sends to Mozilla includes start-up time, time between cycle collector runs, memory heap used, whether hardware graphics acceleration or Java is enabled, and more.
+Telemetry does not collect any bookmarks or passwords. It may collect anonymized site visit information in some circumstances, such as when a secure browsing connection fails to connect, or for some experiments.
+
+Use methods described below to opt-out of this telemetry channel.
+
+#### 1. Run command
+
+##### Scope: 💻 Machine
+
+| OS    | Command                                                                               |
+|-------|---------------------------------------------------------------------------------------|
+| macOS | `defaults write /Library/Preferences/org.mozilla.firefox DisableTelemetry -bool TRUE` |
+
+#### 2. Edit config file (JSON)
+
+##### Scope: 💻 Machine
+
+| OS      | Path                                                                      |
+|---------|---------------------------------------------------------------------------|
+| Linux   | `distribution/policies.json`                                              |
+| macOS   | `/Applications/Firefox.app/Contents/Resources/distribution/policies.json` |
+| Windows | `distribution\policies.json`                                              |
+
+##### Content
+
+```json
+{
+  "policies": {
+    "DisableTelemetry": true
+  }
+}
+```
+
+#### 3. Set registry key
+
+##### Scope: 💻 Machine
+
+- Path: `HKEY_LOCAL_MACHINE\Software\Policies\Mozilla\Firefox\DisableTelemetry`
+- Type: `REG_DWORD`
+- Value: `1`
+
+##### Scope: 👤 User
+
+- Path: `HKEY_CURRENT_USER\Software\Policies\Mozilla\Firefox\DisableTelemetry`
+- Type: `REG_DWORD`
+- Value: `1`
