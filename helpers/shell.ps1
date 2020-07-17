@@ -5,6 +5,30 @@ $LF = "`n"
 $PadRegex = [regex]'(?m)^(.)'
 $PadReplace = '  $1'
 
+$ShellHelpersMap = @{
+    pwsh = @(
+        '#Requires -Version 5'
+        @'
+function Get-OsMoniker {
+    if ($IsCoreCLR) {
+        if ($IsWindows) {
+            'windows'
+        } elseif ($IsLinux) {
+            'linux'
+        } elseif ($IsMacOS) {
+            'macos'
+        }
+    } else {
+        'windows'
+    }
+}
+'@
+    )
+    bash = @(
+        '#!/usr/bin/env bash'
+    )
+}
+
 $ShellSwitchMap = @{
     bash = @(
         'case "$OSTYPE" in'
@@ -80,7 +104,7 @@ $ShellCmdMap = @{
         env  = "`${{env:{0}}} = '{1}'"
         exec = @(
             '. {{'
-            "  & (Get-Command -Name '{0}' -CommandType Application -ErrorAction Stop)[0].Path --% {1}"
+            "  `"& (Get-Command -Name '{0}' -CommandType Application -ErrorAction Stop)[0].Path --% {1}`""
             '}} *>&1 > $null'
         ) -join $LF
     }
@@ -109,6 +133,17 @@ filter Get-ShellScriptExtension {
         bash = 'sh'
         pwsh = 'ps1'
     }.$_
+}
+
+function Get-ShellScriptHelpers {
+    Param (
+        [ValidateSet('bash', 'pwsh')]
+        [string]$Shell
+    )
+
+    if ($ShellHelpersMap.$Shell) {
+        $ShellHelpersMap.$Shell | Add-NewLine
+    }
 }
 
 filter ConvertTo-ShellScript {
