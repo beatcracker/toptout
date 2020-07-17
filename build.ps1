@@ -303,7 +303,9 @@ task shell {
     Write-Build White ('Generating SHELL SCRIPT(s): {0}' -f $ShellList.Count)
 
     foreach ($Shell in $ShellList) {
-        $ShellScript = $Categories | Sort-Object | ForEach-Object {
+        $ShellScript = $Categories | Sort-Object | ForEach-Object -Begin {
+            Get-ShellScriptHelpers -Shell $Shell
+        } -Process {
             $data.$_ | Sort-Object -Property id | ConvertTo-ShellScript -Shell $Shell
         }
 
