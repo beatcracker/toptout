@@ -143,9 +143,9 @@ task clean-all {
 task clean {
     Write-Build Yellow 'Clearing local NuGet and cache directories...'
 
-    Remove-BuildItem "$BuildRoot/$_" @(
-        'packages'
-        'paket-files'
+    Remove-BuildItem @(
+        "$BuildRoot/packages"
+        "$BuildRoot/paket-files"
     )
 }
 
@@ -181,7 +181,6 @@ task test {
 
     assert($Results.FailedCount -eq 0) ('Failed "{0}" tests.' -f $Results.FailedCount)
 }
-
 
 task readme {
     . "$BuildRoot/helpers/common.ps1"
