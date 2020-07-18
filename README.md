@@ -50,6 +50,7 @@ See [CONTRIBUTING](/docs/CONTRIBUTING.md) and [data/README](/data/README.md) for
 
 - [Applications](#applications)
   - [Atom](#atom)
+  - [Firefox](#firefox)
   - [Homebrew](#homebrew)
   - [Microsoft calculator](#microsoft-calculator)
   - [VSCode](#vscode)
@@ -71,8 +72,6 @@ See [CONTRIBUTING](/docs/CONTRIBUTING.md) and [data/README](/data/README.md) for
   - [AutomatedLab](#automatedlab)
 - [Shells](#shells)
   - [PowerShell Core](#powershell-core)
-- [Web](#web)
-  - [Firefox](#firefox)
 
 ## Applications
 
@@ -110,6 +109,86 @@ Use methods described below to opt-out of this telemetry channel.
 ```json
 atom.config.set('core.telemetryConsent', 'no')
 ```
+
+## [Firefox](https://www.mozilla.org/firefox/)
+
+> Telemetry collects information about your Firefox browsing experience to improve Firefox features, browser performance and stability.
+
+- [Telemetry details](https://wiki.allizom.org/Telemetry/FAQ)
+- [Privacy policy](https://www.mozilla.org/privacy/firefox/)
+
+List of known telemetry channels:
+
+### 📡 [Enable policies (macOS)](https://github.com/mozilla/policy-templates/tree/master/mac)
+
+Official: ✔
+
+- [Telemetry details](https://wiki.allizom.org/Telemetry/FAQ)
+- [Privacy policy](https://www.mozilla.org/privacy/firefox/)
+> Enable Firefox policies so the telemetry can be configured.
+
+Use methods described below to opt-out of this telemetry channel.
+
+#### 1. Run command
+
+##### Scope: 💻 Machine
+
+| OS    | Command                                                                                        |
+|-------|------------------------------------------------------------------------------------------------|
+| macOS | `defaults write /Library/Preferences/org.mozilla.firefox EnterprisePoliciesEnabled -bool TRUE` |
+
+### 📡 [Usage data](https://github.com/mozilla/policy-templates/blob/master/README.md)
+
+Official: ✔
+
+- [Telemetry details](https://wiki.allizom.org/Telemetry/FAQ)
+- [Privacy policy](https://www.mozilla.org/privacy/firefox/)
+> Examples of the kind of data Telemetry sends to Mozilla includes start-up time, time between cycle collector runs, memory heap used, whether hardware graphics acceleration or Java is enabled, and more.
+Telemetry does not collect any bookmarks or passwords. It may collect anonymized site visit information in some circumstances, such as when a secure browsing connection fails to connect, or for some experiments.
+
+Use methods described below to opt-out of this telemetry channel.
+
+#### 1. Run command
+
+##### Scope: 💻 Machine
+
+| OS    | Command                                                                               |
+|-------|---------------------------------------------------------------------------------------|
+| macOS | `defaults write /Library/Preferences/org.mozilla.firefox DisableTelemetry -bool TRUE` |
+
+#### 2. Edit config file (JSON)
+
+##### Scope: 💻 Machine
+
+| OS      | Path                                                                      |
+|---------|---------------------------------------------------------------------------|
+| Linux   | `distribution/policies.json`                                              |
+| macOS   | `/Applications/Firefox.app/Contents/Resources/distribution/policies.json` |
+| Windows | `distribution\policies.json`                                              |
+
+##### Content
+
+```json
+{
+  "policies": {
+    "DisableTelemetry": true
+  }
+}
+```
+
+#### 3. Set registry key
+
+##### Scope: 💻 Machine
+
+- Path: `HKEY_LOCAL_MACHINE\Software\Policies\Mozilla\Firefox\DisableTelemetry`
+- Type: `REG_DWORD`
+- Value: `1`
+
+##### Scope: 👤 User
+
+- Path: `HKEY_CURRENT_USER\Software\Policies\Mozilla\Firefox\DisableTelemetry`
+- Type: `REG_DWORD`
+- Value: `1`
 
 ## [Homebrew](https://brew.sh)
 
@@ -670,85 +749,3 @@ Use methods described below to opt-out of this telemetry channel.
 ```none
 POWERSHELL_TELEMETRY_OPTOUT=1
 ```
-
-## Web
-
-## [Firefox](https://www.mozilla.org/firefox/)
-
-> Telemetry collects information about your Firefox browsing experience to improve Firefox features, browser performance and stability.
-
-- [Telemetry details](https://wiki.allizom.org/Telemetry/FAQ)
-- [Privacy policy](https://www.mozilla.org/privacy/firefox/)
-
-List of known telemetry channels:
-
-### 📡 [Enable policies (macOS)](https://github.com/mozilla/policy-templates/tree/master/mac)
-
-Official: ✔
-
-- [Telemetry details](https://wiki.allizom.org/Telemetry/FAQ)
-- [Privacy policy](https://www.mozilla.org/privacy/firefox/)
-> Enable Firefox policies so the telemetry can be configured.
-
-Use methods described below to opt-out of this telemetry channel.
-
-#### 1. Run command
-
-##### Scope: 💻 Machine
-
-| OS    | Command                                                                                        |
-|-------|------------------------------------------------------------------------------------------------|
-| macOS | `defaults write /Library/Preferences/org.mozilla.firefox EnterprisePoliciesEnabled -bool TRUE` |
-
-### 📡 [Usage data](https://github.com/mozilla/policy-templates/blob/master/README.md)
-
-Official: ✔
-
-- [Telemetry details](https://wiki.allizom.org/Telemetry/FAQ)
-- [Privacy policy](https://www.mozilla.org/privacy/firefox/)
-> Examples of the kind of data Telemetry sends to Mozilla includes start-up time, time between cycle collector runs, memory heap used, whether hardware graphics acceleration or Java is enabled, and more.
-Telemetry does not collect any bookmarks or passwords. It may collect anonymized site visit information in some circumstances, such as when a secure browsing connection fails to connect, or for some experiments.
-
-Use methods described below to opt-out of this telemetry channel.
-
-#### 1. Run command
-
-##### Scope: 💻 Machine
-
-| OS    | Command                                                                               |
-|-------|---------------------------------------------------------------------------------------|
-| macOS | `defaults write /Library/Preferences/org.mozilla.firefox DisableTelemetry -bool TRUE` |
-
-#### 2. Edit config file (JSON)
-
-##### Scope: 💻 Machine
-
-| OS      | Path                                                                      |
-|---------|---------------------------------------------------------------------------|
-| Linux   | `distribution/policies.json`                                              |
-| macOS   | `/Applications/Firefox.app/Contents/Resources/distribution/policies.json` |
-| Windows | `distribution\policies.json`                                              |
-
-##### Content
-
-```json
-{
-  "policies": {
-    "DisableTelemetry": true
-  }
-}
-```
-
-#### 3. Set registry key
-
-##### Scope: 💻 Machine
-
-- Path: `HKEY_LOCAL_MACHINE\Software\Policies\Mozilla\Firefox\DisableTelemetry`
-- Type: `REG_DWORD`
-- Value: `1`
-
-##### Scope: 👤 User
-
-- Path: `HKEY_CURRENT_USER\Software\Policies\Mozilla\Firefox\DisableTelemetry`
-- Type: `REG_DWORD`
-- Value: `1`
