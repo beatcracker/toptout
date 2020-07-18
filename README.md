@@ -52,7 +52,7 @@ See [CONTRIBUTING](/docs/CONTRIBUTING.md) and [data/README](/data/README.md) for
   - [Atom](#atom)
   - [Firefox](#firefox)
   - [Homebrew](#homebrew)
-  - [Microsoft 365 | Enterpsise](#microsoft-365--enterpsise)
+  - [Microsoft 365 | Enterprise](#microsoft-365--enterprise)
   - [Microsoft calculator](#microsoft-calculator)
   - [VSCode](#vscode)
 - [Cloud](#cloud)
@@ -223,7 +223,7 @@ HOMEBREW_NO_ANALYTICS=1
 brew analytics off
 ```
 
-## [Microsoft 365 | Enterpsise](https://www.microsoft.com/en-us/microsoft-365/enterprise)
+## [Microsoft 365 | Enterprise](https://www.microsoft.com/en-us/microsoft-365/enterprise)
 
 > Microsoft is committed to providing you with the information and controls you need to make choices about how your data is collected and used when you’re using Microsoft 365 Apps for enterprise (previously named Office 365 ProPlus).
 

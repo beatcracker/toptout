@@ -34,7 +34,7 @@ esac
 # Usage data
 export HOMEBREW_NO_ANALYTICS='1'
 
-# Microsoft 365 | Enterpsise
+# Microsoft 365 | Enterprise
 # https://www.microsoft.com/en-us/microsoft-365/enterprise
 
 # Diagnostic data
