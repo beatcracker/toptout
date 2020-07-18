@@ -34,6 +34,20 @@ esac
 # Usage data
 export HOMEBREW_NO_ANALYTICS='1'
 
+# Microsoft 365 | Enterpsise
+# https://www.microsoft.com/en-us/microsoft-365/enterprise
+
+# Diagnostic data
+# https://docs.microsoft.com/en-us/deployoffice/privacy/overview-privacy-controls#diagnostic-data-sent-from-microsoft-365-apps-for-enterprise-to-microsoftd
+case "$OSTYPE" in
+  darwin*)
+    if command -v 'defaults' >/dev/null 2>&1 >/dev/null
+    then
+      'defaults' write /Library/Preferences/com.microsoft.office DiagnosticDataTypePreference -string ZeroDiagnosticData >/dev/null 2>&1
+    fi
+  ;;
+esac
+
 # AWS SAM CLI
 # https://aws.amazon.com/serverless/sam/
 

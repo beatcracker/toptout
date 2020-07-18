@@ -46,6 +46,19 @@ switch (Get-OsMoniker) {
 # Usage data
 ${env:HOMEBREW_NO_ANALYTICS} = '1'
 
+# Microsoft 365 | Enterpsise
+# https://www.microsoft.com/en-us/microsoft-365/enterprise
+
+# Diagnostic data
+# https://docs.microsoft.com/en-us/deployoffice/privacy/overview-privacy-controls#diagnostic-data-sent-from-microsoft-365-apps-for-enterprise-to-microsoftd
+switch (Get-OsMoniker) {
+  'macos' {
+    . {
+      "& (Get-Command -Name 'defaults' -CommandType Application -ErrorAction Stop)[0].Path --% write /Library/Preferences/com.microsoft.office DiagnosticDataTypePreference -string ZeroDiagnosticData"
+    } *>&1 > $null
+  }
+}
+
 # AWS SAM CLI
 # https://aws.amazon.com/serverless/sam/
 

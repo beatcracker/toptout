@@ -1,0 +1,52 @@
+{
+  "id": "microsoft-365-enterprise",
+  "name": "Microsoft 365 | Enterpsise",
+  "executable_name": "winword",
+  "category": "Applications",
+  "description": "Microsoft is committed to providing you with the information and controls you need to make choices about how your data is collected and used when you’re using Microsoft 365 Apps for enterprise (previously named Office 365 ProPlus).",
+  "links": {
+    "main": "https://www.microsoft.com/en-us/microsoft-365/enterprise",
+    "telemetry": "https://docs.microsoft.com/en-us/deployoffice/privacy/manage-privacy-controls",
+    "privacy": "https://privacy.microsoft.com/en-us/privacystatement"
+  },
+  "telemetry": [
+    {
+      "id": "diagnostic-data",
+      "name": "Diagnostic data",
+      "description": "Configure the level of client software diagnostic data sent by Office to Microsoft.",
+      "is_official": true,
+      "links": {
+        "main": "https://docs.microsoft.com/en-us/deployoffice/privacy/overview-privacy-controls#diagnostic-data-sent-from-microsoft-365-apps-for-enterprise-to-microsoftd"
+      },
+      "target": {
+        "exec": {
+          "scope": {
+            "machine": {
+              "path": {
+                "macos": "defaults"
+              },
+              "value": {
+                "opt_out": "write /Library/Preferences/com.microsoft.office DiagnosticDataTypePreference -string ZeroDiagnosticData",
+                "opt_in": "delete /Library/Preferences/com.microsoft.office DiagnosticDataTypePreference"
+              }
+            }
+          }
+        },
+        "registry": {
+          "scope": {
+            "user": {
+              "root": "HKEY_CURRENT_USER",
+              "path": "Software\\Policies\\Microsoft\\office\\16.0\\common\\privacy",
+              "key": "SendTelemetry",
+              "type": "REG_DWORD",
+              "value": {
+                "opt_out": "3",
+                "opt_in": "1"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

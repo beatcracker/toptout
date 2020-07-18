@@ -52,6 +52,7 @@ See [CONTRIBUTING](/docs/CONTRIBUTING.md) and [data/README](/data/README.md) for
   - [Atom](#atom)
   - [Firefox](#firefox)
   - [Homebrew](#homebrew)
+  - [Microsoft 365 | Enterpsise](#microsoft-365--enterpsise)
   - [Microsoft calculator](#microsoft-calculator)
   - [VSCode](#vscode)
 - [Cloud](#cloud)
@@ -221,6 +222,41 @@ HOMEBREW_NO_ANALYTICS=1
 ```shell
 brew analytics off
 ```
+
+## [Microsoft 365 | Enterpsise](https://www.microsoft.com/en-us/microsoft-365/enterprise)
+
+> Microsoft is committed to providing you with the information and controls you need to make choices about how your data is collected and used when you’re using Microsoft 365 Apps for enterprise (previously named Office 365 ProPlus).
+
+- [Telemetry details](https://docs.microsoft.com/en-us/deployoffice/privacy/manage-privacy-controls)
+- [Privacy policy](https://privacy.microsoft.com/en-us/privacystatement)
+
+List of known telemetry channels:
+
+### 📡 [Diagnostic data](https://docs.microsoft.com/en-us/deployoffice/privacy/overview-privacy-controls#diagnostic-data-sent-from-microsoft-365-apps-for-enterprise-to-microsoftd)
+
+Official: ✔
+
+- [Telemetry details](https://docs.microsoft.com/en-us/deployoffice/privacy/manage-privacy-controls)
+- [Privacy policy](https://privacy.microsoft.com/en-us/privacystatement)
+> Configure the level of client software diagnostic data sent by Office to Microsoft.
+
+Use methods described below to opt-out of this telemetry channel.
+
+#### 1. Run command
+
+##### Scope: 💻 Machine
+
+| OS    | Command                                                                                                            |
+|-------|--------------------------------------------------------------------------------------------------------------------|
+| macOS | `defaults write /Library/Preferences/com.microsoft.office DiagnosticDataTypePreference -string ZeroDiagnosticData` |
+
+#### 2. Set registry key
+
+##### Scope: 👤 User
+
+- Path: `HKEY_CURRENT_USER\Software\Policies\Microsoft\office\16.0\common\privacy\SendTelemetry`
+- Type: `REG_DWORD`
+- Value: `3`
 
 ## [Microsoft calculator](https://github.com/Microsoft/calculator)
 
