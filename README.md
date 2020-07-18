@@ -36,9 +36,15 @@ See [CONTRIBUTING](/docs/CONTRIBUTING.md) and [data/README](/data/README.md) for
 
 ## Related projects
 
-[Console Do Not Track (DNT)](https://consoledonottrack.com)
+- [Console Do Not Track (DNT)](https://consoledonottrack.com)
 
-A proposed unified standard for opting out of telemetry for TUI/console apps: `export DO_NOT_TRACK=1`
+  A proposed unified standard for opting out of telemetry for TUI/console apps: `export DO_NOT_TRACK=1`
+
+- [privacy.sexy](https://privacy.sexy/)
+
+  Web tool to enforce privacy & security best-practices on Windows, because privacy is sexy 🍑🍆
+
+  GitHub: [undergroundwires/privacy.sexy](https://github.com/undergroundwires/privacy.sexy)
 
 ## Table of Contents
 
