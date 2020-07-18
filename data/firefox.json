@@ -2,7 +2,7 @@
   "id": "firefox",
   "name": "Firefox",
   "executable_name": "firefox.",
-  "category": "Web",
+  "category": "Applications",
   "description": "Telemetry collects information about your Firefox browsing experience to improve Firefox features, browser performance and stability.",
   "links": {
     "main": "https://www.mozilla.org/firefox/",
