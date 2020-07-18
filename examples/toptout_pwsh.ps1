@@ -14,6 +14,32 @@ function Get-OsMoniker {
     }
 }
 
+# Firefox
+# https://www.mozilla.org/firefox/
+
+# Enable policies (macOS)
+# https://github.com/mozilla/policy-templates/tree/master/mac
+switch (Get-OsMoniker) {
+  'macos' {
+    . {
+      "& (Get-Command -Name 'defaults' -CommandType Application -ErrorAction Stop)[0].Path --% write /Library/Preferences/org.mozilla.firefox EnterprisePoliciesEnabled -bool TRUE"
+    } *>&1 > $null
+  }
+}
+
+# Firefox
+# https://www.mozilla.org/firefox/
+
+# Usage data
+# https://github.com/mozilla/policy-templates/blob/master/README.md
+switch (Get-OsMoniker) {
+  'macos' {
+    . {
+      "& (Get-Command -Name 'defaults' -CommandType Application -ErrorAction Stop)[0].Path --% write /Library/Preferences/org.mozilla.firefox DisableTelemetry -bool TRUE"
+    } *>&1 > $null
+  }
+}
+
 # Homebrew
 # https://brew.sh
 
@@ -107,29 +133,3 @@ ${env:AUTOMATEDLAB_TELEMETRY_OPTOUT} = '1'
 
 # Usage data
 ${env:POWERSHELL_TELEMETRY_OPTOUT} = '1'
-
-# Firefox
-# https://www.mozilla.org/firefox/
-
-# Enable policies (macOS)
-# https://github.com/mozilla/policy-templates/tree/master/mac
-switch (Get-OsMoniker) {
-  'macos' {
-    . {
-      "& (Get-Command -Name 'defaults' -CommandType Application -ErrorAction Stop)[0].Path --% write /Library/Preferences/org.mozilla.firefox EnterprisePoliciesEnabled -bool TRUE"
-    } *>&1 > $null
-  }
-}
-
-# Firefox
-# https://www.mozilla.org/firefox/
-
-# Usage data
-# https://github.com/mozilla/policy-templates/blob/master/README.md
-switch (Get-OsMoniker) {
-  'macos' {
-    . {
-      "& (Get-Command -Name 'defaults' -CommandType Application -ErrorAction Stop)[0].Path --% write /Library/Preferences/org.mozilla.firefox DisableTelemetry -bool TRUE"
-    } *>&1 > $null
-  }
-}

@@ -1,5 +1,33 @@
 #!/usr/bin/env bash
 
+# Firefox
+# https://www.mozilla.org/firefox/
+
+# Enable policies (macOS)
+# https://github.com/mozilla/policy-templates/tree/master/mac
+case "$OSTYPE" in
+  darwin*)
+    if command -v 'defaults' >/dev/null 2>&1 >/dev/null
+    then
+      'defaults' write /Library/Preferences/org.mozilla.firefox EnterprisePoliciesEnabled -bool TRUE >/dev/null 2>&1
+    fi
+  ;;
+esac
+
+# Firefox
+# https://www.mozilla.org/firefox/
+
+# Usage data
+# https://github.com/mozilla/policy-templates/blob/master/README.md
+case "$OSTYPE" in
+  darwin*)
+    if command -v 'defaults' >/dev/null 2>&1 >/dev/null
+    then
+      'defaults' write /Library/Preferences/org.mozilla.firefox DisableTelemetry -bool TRUE >/dev/null 2>&1
+    fi
+  ;;
+esac
+
 # Homebrew
 # https://brew.sh
 
@@ -95,31 +123,3 @@ export AUTOMATEDLAB_TELEMETRY_OPTOUT='1'
 
 # Usage data
 export POWERSHELL_TELEMETRY_OPTOUT='1'
-
-# Firefox
-# https://www.mozilla.org/firefox/
-
-# Enable policies (macOS)
-# https://github.com/mozilla/policy-templates/tree/master/mac
-case "$OSTYPE" in
-  darwin*)
-    if command -v 'defaults' >/dev/null 2>&1 >/dev/null
-    then
-      'defaults' write /Library/Preferences/org.mozilla.firefox EnterprisePoliciesEnabled -bool TRUE >/dev/null 2>&1
-    fi
-  ;;
-esac
-
-# Firefox
-# https://www.mozilla.org/firefox/
-
-# Usage data
-# https://github.com/mozilla/policy-templates/blob/master/README.md
-case "$OSTYPE" in
-  darwin*)
-    if command -v 'defaults' >/dev/null 2>&1 >/dev/null
-    then
-      'defaults' write /Library/Preferences/org.mozilla.firefox DisableTelemetry -bool TRUE >/dev/null 2>&1
-    fi
-  ;;
-esac
