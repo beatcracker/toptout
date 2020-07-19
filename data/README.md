@@ -101,6 +101,7 @@ Product can have multiple telemetry channels. Some of them could be controlled b
 - Executable: `exec`
 - JSON file: `json_file`
 - Plaintext file: `plain_file`
+- Windows registry: `registry`
 
 ### env
 
@@ -285,5 +286,41 @@ Product can have multiple telemetry channels. Some of them could be controlled b
       "display_value": "telemetry off"
     }
   }
+}
+```
+
+### registry
+
+`Windows registry` target. Indicates that this specific telemetry channel is controlled by setting the Windows registry keys and values.
+
+```jsonc
+"plain_file": {
+  // Target scope. You can use multiple scopes.
+  // machine - configures telemetry channel for all users of the computer
+  // user    - configures telemetry channel for current user of the computer
+  // process - configures telemetry channel for process only
+  "scope": {
+    // Scope with paths to the machine-wide configuration
+    "machine": {
+      // Root key. See a schema for the list of allowed values.
+      "root": "HKEY_LOCAL_MACHINE",
+
+      // Registry key path
+      "path": "Software\\FooBar",
+
+      // Registry key name
+      "key": "telemetry",
+
+      // Registry key type. See a schema for the list of allowed values.
+      "type": "REG_DWORD",
+
+      "value": {
+        // Use this value to opt-out of this telemetry channel.
+        "opt_out": "0",
+
+        // Use this value to opt-in into this telemetry channel.
+        "opt_in": "1"
+      },
+    }
 }
 ```
