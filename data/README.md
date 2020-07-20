@@ -28,7 +28,7 @@ Describes a product that has one telemetry channel which is controlled by the en
     // Link to the product's website. Mandatory.
     "main": "https://example.com",
 
-    // Link to the product's telemetry description. Optional.
+    // Link to the product's general telemetry description. Optional.
     "telemetry": "https://example.com/telemetry",
 
     // Link to the product's privacy policy. Optional.
@@ -47,8 +47,23 @@ Describes a product that has one telemetry channel which is controlled by the en
       // Friendly name of the product
       "name": "Usage data",
 
+      // Optional description
+      "description": "Disable usage data reporting",
+
       // Specify, if this channel oficially supports opt-in/opt-out
       "is_official": true,
+
+      // Optional links
+      "links": {
+        // Link to the specific telemetry channel description. Optional.
+        "main": "https://example.com",
+
+        // Link to the specific telemetry channel details. Optional.
+        "telemetry": "https://example.com/telemetry",
+
+        // Link to the telemetry channel privacy policy. Optional.
+        "privacy": "https://example.com/privacy"
+      },
 
       // Target object.
       // Optional, since you may wish to describe multiple telemetry channels that don't provide a ways to control them.
@@ -97,15 +112,15 @@ Describes a product that has one telemetry channel which is controlled by the en
 
 Product can have multiple telemetry channels. Some of them could be controlled by multiple methods. Currently supported methods are:
 
-- Environment variable: `env`
-- Executable: `exec`
-- JSON file: `json_file`
-- Plaintext file: `plain_file`
-- Windows registry: `registry`
+- [Environment variable](#environment-variable) (`env`)
+- [Execute command](#execute-command) (`exec`)
+- [JSON file](#json-file) (`json_file`)
+- [Plaintext file](#plaintext-file) (`plain_file`)
+- [Windows registry](#windows-registry) (`registry`)
 
-### env
+### Environment variable
 
-`Environment variable` target. Indicates that this specific telemetry channel is controlled by the environment variable.
+Indicates that this specific telemetry channel is controlled by the environment variable.
 
 ```jsonc
 "env": {
@@ -140,9 +155,9 @@ Product can have multiple telemetry channels. Some of them could be controlled b
 }
 ```
 
-### exec
+### Execute command
 
-`Execute` target. Indicates that this specific telemetry channel is controlled by executing shell command.
+Indicates that this specific telemetry channel is controlled by executing shell command.
 
 ```jsonc
 "exec": {
@@ -172,9 +187,9 @@ Product can have multiple telemetry channels. Some of them could be controlled b
 }
 ```
 
-### json_file
+### JSON file
 
-`JSON file` target. Indicates that this specific telemetry channel is controlled by setting the value in the JSON file.
+Indicates that this specific telemetry channel is controlled by setting the value in the JSON file.
 
 ```jsonc
 "json_file": {
@@ -215,9 +230,9 @@ Product can have multiple telemetry channels. Some of them could be controlled b
 }
 ```
 
-### plain_file
+### Plaintext file
 
-`Plaintext file` target. Indicates that this specific telemetry channel is controlled by setting the value in the plaintext file.
+Indicates that this specific telemetry channel is controlled by setting the value in the plaintext file.
 
 ```jsonc
 "plain_file": {
@@ -289,9 +304,9 @@ Product can have multiple telemetry channels. Some of them could be controlled b
 }
 ```
 
-### registry
+### Windows registry
 
-`Windows registry` target. Indicates that this specific telemetry channel is controlled by setting the Windows registry keys and values.
+Indicates that this specific telemetry channel is controlled by setting the Windows registry keys and values.
 
 ```jsonc
 "plain_file": {
