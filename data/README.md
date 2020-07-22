@@ -96,7 +96,7 @@ Describes a product that has one telemetry channel which is controlled by the en
                 "opt_out": "false",
 
                 // Set environment variable to this value to opt-in into this telemetry channel.
-                // Set to 'null' value (not literal "null" string) to indicate that environment variable should be removed.
+                // Set to 'null' value (not literal "null" string) to indicate that environment variable should not exist.
                 "opt_in": null
               }
             }
@@ -147,7 +147,7 @@ Indicates that this specific telemetry channel is controlled by the environment 
         "opt_out": "false",
 
         // Set environment variable to this value to opt-in into this telemetry channel.
-        // Set to 'null' value (not literal "null" string) to indicate that environment variable should be removed.
+        // Set to 'null' value (not literal "null" string) to indicate that environment variable should not exist.
         "opt_in": null
       }
     }
