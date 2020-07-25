@@ -54,7 +54,7 @@ ${env:HOMEBREW_NO_ANALYTICS} = '1'
 switch (Get-OsMoniker) {
   'macos' {
     . {
-      "& (Get-Command -Name 'defaults' -CommandType Application -ErrorAction Stop)[0].Path --% write /Library/Preferences/com.microsoft.office DiagnosticDataTypePreference -string ZeroDiagnosticData"
+      "& (Get-Command -Name 'defaults' -CommandType Application -ErrorAction Stop)[0].Path --% write com.microsoft.office DiagnosticDataTypePreference -string ZeroDiagnosticData"
     } *>&1 > $null
   }
 }

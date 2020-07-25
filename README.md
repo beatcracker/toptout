@@ -246,9 +246,9 @@ Use methods described below to opt-out of this telemetry channel.
 
 ##### Scope: 💻 Machine
 
-| OS    | Command                                                                                                            |
-|-------|--------------------------------------------------------------------------------------------------------------------|
-| macOS | `defaults write /Library/Preferences/com.microsoft.office DiagnosticDataTypePreference -string ZeroDiagnosticData` |
+| OS    | Command                                                                                       |
+|-------|-----------------------------------------------------------------------------------------------|
+| macOS | `defaults write com.microsoft.office DiagnosticDataTypePreference -string ZeroDiagnosticData` |
 
 #### 2. Set registry key
 

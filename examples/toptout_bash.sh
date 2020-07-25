@@ -43,7 +43,7 @@ case "$OSTYPE" in
   darwin*)
     if command -v 'defaults' >/dev/null 2>&1 >/dev/null
     then
-      'defaults' write /Library/Preferences/com.microsoft.office DiagnosticDataTypePreference -string ZeroDiagnosticData >/dev/null 2>&1
+      'defaults' write com.microsoft.office DiagnosticDataTypePreference -string ZeroDiagnosticData >/dev/null 2>&1
     fi
   ;;
 esac
