@@ -44,11 +44,11 @@ Describes a product that has one telemetry channel which is controlled by the en
       // Optional links
       "links": {
         // Link to the specific telemetry channel description. Optional.
-        "main": "https://example.com",
+        "main": "https://example.com/foobar",
         // Link to the specific telemetry channel details. Optional.
-        "telemetry": "https://example.com/telemetry",
+        "telemetry": "https://example.com/foobar/telemetry",
         // Link to the telemetry channel privacy policy. Optional.
-        "privacy": "https://example.com/privacy"
+        "privacy": "https://example.com/foobar/privacy"
       },
       // Target object.
       // Optional, since you may wish to describe multiple telemetry channels that don't provide a ways to control them.
