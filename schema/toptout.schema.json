@@ -124,6 +124,12 @@
                 },
                 "registry": {
                     "$ref": "#/definitions/Registry"
+                },
+                "noop": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Noop"
+                    }
                 }
             },
             "anyOf": [
@@ -150,6 +156,11 @@
                 {
                     "required": [
                         "registry"
+                    ]
+                },
+                {
+                    "required": [
+                        "noop"
                     ]
                 }
             ],
@@ -502,6 +513,32 @@
                 "value"
             ],
             "title": "RegistryProperties"
+        },
+        "Noop": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "link": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "http",
+                        "https"
+                    ]
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "description",
+                "link",
+                "name"
+            ],
+            "title": "Noop"
         },
         "Path": {
             "type": "object",
