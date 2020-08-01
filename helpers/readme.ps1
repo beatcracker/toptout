@@ -43,7 +43,7 @@ filter ConvertTo-OsTableObject {
                 windows = 'Windows'
                 default = 'Other'
             }[$key]
-            $ValueName = (-join ($_.$key, $ValuePostfix) | Format-MdString -Code)
+            $ValueName = ( -join ($_.$key, $ValuePostfix) | Format-MdString -Code)
         }
     }
 }
@@ -148,25 +148,24 @@ filter ConvertTo-Readme {
 
         if ($tm.links.main) {
             '{0} 📡 [{1}]({2})' -f ($hdr * $Indent), $tm.name, $tm.links.main | Add-Newline
-        } else {
+        }
+        else {
             '{0} 📡 {1}' -f ($hdr * $Indent), $tm.name | Add-Newline
         }
 
         'Official: {0}' -f ('❌', '✔')[$tm.is_official] | Add-Newline
 
-        if ($_.links.telemetry) {
-            '- [Telemetry details]({0})' -f $_.links.telemetry
+        if ($tm.links.telemetry) {
+            '- [Telemetry details]({0})' -f $tm.links.telemetry         | Add-Newline
         }
 
-        if ($_.links.privacy) {
-            '- [Privacy policy]({0})' -f $_.links.privacy
+        if ($tm.links.privacy) {
+            '- [Privacy policy]({0})' -f $tm.links.privacy | Add-Newline
         }
 
         if ($tm.description) {
-            '> {0}' -f $tm.description
+            '> {0}' -f $tm.description | Add-Newline
         }
-
-        Add-Newline
 
         if ($tm.target.Keys.Count -gt 0) {
             'Use methods described below to opt-out of this telemetry channel.' | Add-Newline
@@ -187,10 +186,24 @@ filter ConvertTo-Readme {
                     json_file  = 'Edit config file (JSON)'
                     plain_file = 'Edit config file (plaintext)'
                     registry   = 'Set registry key'
+                    noop       = 'Visit link for more details'
                 }[$tg]
             ) | Add-Newline
 
             $Indent++ > $null
+
+            if ($tg -eq 'noop') {
+
+                $noop_counter = 1
+
+                foreach ($item in $tm.target.$tg) {
+
+                    '{0}. [{1}]({2})' -f $noop_counter, $item.name, $item.link | Add-NewLine
+                    '    > {0}' -f $item.description | Add-Newline
+
+                    $noop_counter++ > $null
+                }
+            }
 
             foreach ($scope in ('machine', 'user', 'process')) {
 
@@ -287,6 +300,7 @@ filter ConvertTo-Readme {
                     }
                 }
             }
+
             $Indent-- > $null
             $Indent-- > $null
 
