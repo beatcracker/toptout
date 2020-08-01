@@ -71,6 +71,8 @@ See [CONTRIBUTING](/docs/CONTRIBUTING.md) and [data/README](/data/README.md) for
   - [Next.js](#nextjs)
 - [DevOps](#devops)
   - [AutomatedLab](#automatedlab)
+- [Drivers](#drivers)
+  - [Nvidia drivers](#nvidia-drivers)
 - [Shells](#shells)
   - [PowerShell Core](#powershell-core)
 
@@ -89,8 +91,6 @@ List of known telemetry channels:
 
 Official: ✔
 
-- [Telemetry details](https://github.com/atom/metrics)
-- [Privacy policy](https://help.github.com/articles/github-privacy-policy/)
 > The user's decision is stored at core.telemetryConsent. The three possible values are undecided, no and limited. The intent is that consent is given if and only if limited is chosen.
 
 Use methods described below to opt-out of this telemetry channel.
@@ -124,8 +124,6 @@ List of known telemetry channels:
 
 Official: ✔
 
-- [Telemetry details](https://wiki.allizom.org/Telemetry/FAQ)
-- [Privacy policy](https://www.mozilla.org/privacy/firefox/)
 > Enable Firefox policies so the telemetry can be configured.
 
 Use methods described below to opt-out of this telemetry channel.
@@ -142,8 +140,6 @@ Use methods described below to opt-out of this telemetry channel.
 
 Official: ✔
 
-- [Telemetry details](https://wiki.allizom.org/Telemetry/FAQ)
-- [Privacy policy](https://www.mozilla.org/privacy/firefox/)
 > Examples of the kind of data Telemetry sends to Mozilla includes start-up time, time between cycle collector runs, memory heap used, whether hardware graphics acceleration or Java is enabled, and more.
 Telemetry does not collect any bookmarks or passwords. It may collect anonymized site visit information in some circumstances, such as when a secure browsing connection fails to connect, or for some experiments.
 
@@ -203,8 +199,6 @@ List of known telemetry channels:
 
 Official: ✔
 
-- [Telemetry details](https://docs.brew.sh/Analytics)
-
 Use methods described below to opt-out of this telemetry channel.
 
 #### 1. Set environment variable
@@ -236,8 +230,6 @@ List of known telemetry channels:
 
 Official: ✔
 
-- [Telemetry details](https://docs.microsoft.com/en-us/deployoffice/privacy/manage-privacy-controls)
-- [Privacy policy](https://privacy.microsoft.com/en-us/privacystatement)
 > Configure the level of client software diagnostic data sent by Office to Microsoft.
 
 Use methods described below to opt-out of this telemetry channel.
@@ -271,8 +263,6 @@ List of known telemetry channels:
 
 Official: ✔
 
-- [Telemetry details](https://github.com/microsoft/calculator#diagnostic-data)
-- [Privacy policy](https://go.microsoft.com/fwlink/?LinkId=521839)
 > Diagnostic data is disabled in development builds by default, and can be enabled with the SEND_DIAGNOSTICS build flag.
 
 ## [VSCode](https://code.visualstudio.com/)
@@ -288,8 +278,6 @@ List of known telemetry channels:
 
 Official: ✔
 
-- [Telemetry details](https://code.visualstudio.com/docs/getstarted/telemetry)
-- [Privacy policy](https://go.microsoft.com/fwlink/?LinkID=528096)
 > VS Code collects usage data that helps to debug issues, such as slow start-up times, and to prioritize new features.
 
 Use methods described below to opt-out of this telemetry channel.
@@ -316,8 +304,6 @@ Use methods described below to opt-out of this telemetry channel.
 
 Official: ✔
 
-- [Telemetry details](https://code.visualstudio.com/docs/getstarted/telemetry)
-- [Privacy policy](https://go.microsoft.com/fwlink/?LinkID=528096)
 > VS Code collects data about any crashes that occur and sends it to Microsoft to help improve our products and services.
 
 Use methods described below to opt-out of this telemetry channel.
@@ -355,9 +341,6 @@ List of known telemetry channels:
 
 Official: ✔
 
-- [Telemetry details](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-telemetry.html)
-- [Privacy policy](https://aws.amazon.com/compliance/data-privacy-faq/)
-
 Use methods described below to opt-out of this telemetry channel.
 
 #### 1. Set environment variable
@@ -380,9 +363,6 @@ List of known telemetry channels:
 ### 📡 Usage data
 
 Official: ✔
-
-- [Telemetry details](https://docs.microsoft.com/en-us/cli/azure/azure-cli-configuration)
-- [Privacy policy](https://aka.ms/AzureCliLegal)
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -415,9 +395,6 @@ List of known telemetry channels:
 
 Official: ✔
 
-- [Telemetry details](https://cloud.google.com/sdk/usage-statistics)
-- [Privacy policy](https://policies.google.com/privacy)
-
 Use methods described below to opt-out of this telemetry channel.
 
 #### 1. Run command
@@ -441,9 +418,6 @@ List of known telemetry channels:
 
 Official: ✔
 
-- [Telemetry details](https://learn.netdata.cloud/docs/agent/anonymous-statistic/)
-- [Privacy policy](https://learn.netdata.cloud/docs/agent/privacy-policy/)
-
 Use methods described below to opt-out of this telemetry channel.
 
 #### 1. Set environment variable
@@ -466,9 +440,6 @@ List of known telemetry channels:
 ### 📡 Usage data
 
 Official: ✔
-
-- [Telemetry details](https://docs.netlify.com/cli/get-started/#usage-data-collection)
-- [Privacy policy](https://www.netlify.com/privacy/)
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -511,9 +482,6 @@ List of known telemetry channels:
 
 Official: ✔
 
-- [Telemetry details](https://github.com/stripe/stripe-cli/wiki/telemetry)
-- [Privacy policy](https://stripe.com/privacy)
-
 Use methods described below to opt-out of this telemetry channel.
 
 #### 1. Set environment variable
@@ -535,8 +503,6 @@ List of known telemetry channels:
 ### 📡 Usage data
 
 Official: ✔
-
-- [Telemetry details](https://docs.tilt.dev/telemetry_faq.html)
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -562,9 +528,6 @@ List of known telemetry channels:
 ### 📡 Usage data
 
 Official: ✔
-
-- [Telemetry details](https://cordova.apache.org/docs/en/latest/reference/cordova-cli/#global-command-list)
-- [Privacy policy](https://cordova.apache.org/privacy/)
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -597,9 +560,6 @@ List of known telemetry channels:
 
 Official: ✔
 
-- [Telemetry details](https://www.gatsbyjs.org/docs/telemetry/)
-- [Privacy policy](https://www.gatsbyjs.com/privacy-policy/)
-
 Use methods described below to opt-out of this telemetry channel.
 
 #### 1. Set environment variable
@@ -631,8 +591,6 @@ List of known telemetry channels:
 
 Official: ✔
 
-- [Telemetry details](https://docs.hasura.io/1.0/graphql/manual/guides/telemetry.html)
-- [Privacy policy](https://hasura.io/legal/hasura-privacy-policy)
 > The CLI collects each execution event, along with a randomly generated UUID. The execution event contains the command name, timestamp and whether the execution resulted in an error or not. Error messages, arguments and flags are not recorded. The CLI also collects the server version and UUID that it is talking to. The operating system platform and architecture is also noted along with the CLI version.
 
 Use methods described below to opt-out of this telemetry channel.
@@ -676,9 +634,6 @@ List of known telemetry channels:
 
 Official: ✔
 
-- [Telemetry details](https://docs.microsoft.com/en-us/dotnet/core/tools/telemetry)
-- [Privacy policy](https://go.microsoft.com/fwlink/?LinkID=528096)
-
 Use methods described below to opt-out of this telemetry channel.
 
 #### 1. Set environment variable
@@ -701,9 +656,6 @@ List of known telemetry channels:
 ### 📡 Usage data
 
 Official: ✔
-
-- [Telemetry details](https://nextjs.org/telemetry)
-- [Privacy policy](https://zeit.co/security#policy)
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -737,8 +689,6 @@ List of known telemetry channels:
 
 Official: ✔
 
-- [Telemetry details](https://github.com/AutomatedLab/AutomatedLab/wiki/Lab-Telemetry)
-
 Use methods described below to opt-out of this telemetry channel.
 
 #### 1. Set environment variable
@@ -758,6 +708,28 @@ AUTOMATEDLAB_TELEMETRY_OPTOUT=1
 | Other   | `pwsh -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Import-Module AutomatedLab -ErrorAction Stop ; Disable-LabTelemetry -ErrorAction Stop"`       |
 | Windows | `powershell -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Import-Module AutomatedLab -ErrorAction Stop ; Disable-LabTelemetry -ErrorAction Stop"` |
 
+## Drivers
+
+## [Nvidia drivers](https://www.nvidia.com/en-us/geforce/geforce-experience/)
+
+> Details on your device and network configurations, how you are using our products or services (including the software you are using), and details on how your system is performing, so we can optimize hardware and software configurations.
+
+- [Privacy policy](https://www.nvidia.com/en-us/about-nvidia/privacy-policy/)
+
+List of known telemetry channels:
+
+### 📡 [Diagnostic data](https://www.gamersnexus.net/industry/2672-geforce-experience-data-transfer-analysis)
+
+Official: ❌
+
+Use methods described below to opt-out of this telemetry channel.
+
+#### 1. Visit link for more details
+
+1. [Disable Nvidia Telemetry](https://github.com/NateShoffner/Disable-Nvidia-Telemetry)
+
+    > Disable Nvidia Telemetry is a utility that allows you to disable the telemetry services Nvidia bundles with their drivers.
+
 ## Shells
 
 ## [PowerShell Core](https://github.com/powershell/powershell)
@@ -772,9 +744,6 @@ List of known telemetry channels:
 ### 📡 Usage data
 
 Official: ✔
-
-- [Telemetry details](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_telemetry)
-- [Privacy policy](https://privacy.microsoft.com/privacystatement)
 
 Use methods described below to opt-out of this telemetry channel.
 
