@@ -304,18 +304,16 @@ Indicates that this specific telemetry channel is controlled by setting the Wind
 Indicates that user should visit an external link to get details about configuring this telemetry channel. Use this for links to third-party telemetry configuration tools, that are not officially supported.
 
 ```jsonc
-"target": {
-  "noop": [
-    {
-      "name": "Disable FooBar telemetry",
-      "description": "This unoffical pacth disables telemetry in FooBar app.",
-      "link": "https://example.com/foobar-telemetry-patch"
-    },
-    {
-      "name": "Block FooBar telemetry hosts",
-      "description": "This hosts file will block FooBar app telemetry endpoints.",
-      "link": "https://example.com/foobar-telemetry-hosts"
-    }
-  ]
-}
+"noop": [
+  {
+    "name": "Disable FooBar telemetry",
+    "description": "This unoffical pacth disables telemetry in FooBar app.",
+    "link": "https://example.com/foobar-telemetry-patch"
+  },
+  {
+    "name": "Block FooBar telemetry hosts",
+    "description": "This hosts file will block FooBar app telemetry endpoints.",
+    "link": "https://example.com/foobar-telemetry-hosts"
+  }
+]
 ```
