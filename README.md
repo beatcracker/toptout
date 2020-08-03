@@ -73,6 +73,8 @@ See [CONTRIBUTING](/docs/CONTRIBUTING.md) and [data/README](/data/README.md) for
   - [AutomatedLab](#automatedlab)
 - [Drivers](#drivers)
   - [Nvidia drivers](#nvidia-drivers)
+- [Operating systems](#operating-systems)
+  - [Windows 10](#windows-10)
 - [Shells](#shells)
   - [PowerShell Core](#powershell-core)
 
@@ -724,11 +726,68 @@ Official: ❌
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Visit link for more details
+#### 1. Visit link(s) for more details
 
 1. [Disable Nvidia Telemetry](https://github.com/NateShoffner/Disable-Nvidia-Telemetry)
 
     > Disable Nvidia Telemetry is a utility that allows you to disable the telemetry services Nvidia bundles with their drivers.
+
+## Operating systems
+
+## [Windows 10](https://www.microsoft.com/windows/)
+
+> Microsoft collects Windows diagnostic data to solve problems and to keep Windows up to date, secure, and operating properly.
+
+- [Telemetry details](https://support.microsoft.com/en-us/help/4468236/diagnostics-feedback-and-privacy-in-windows-10-microsoft-privacy)
+- [Privacy policy](https://privacy.microsoft.com/privacystatement)
+
+List of known telemetry channels:
+
+### 📡 [Usage data | Enterpise](https://docs.microsoft.com/en-us/windows/privacy/configure-windows-diagnostic-data-in-your-organization)
+
+Official: ✔
+
+> Applies to: Windows 10 Enterprise/Education, Windows Server 2016 and newer
+
+Use methods described below to opt-out of this telemetry channel.
+
+#### 1. Set registry key
+
+##### Scope: 💻 Machine
+
+- Path: `HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DataCollection\AllowTelemetry`
+- Type: `REG_DWORD`
+- Value: `0`
+
+### 📡 Usage data
+
+Official: ❌
+
+> There is no official way to disable telemetry in the all other Windows editions (Home/Pro/etc...)
+
+Use methods described below to opt-out of this telemetry channel.
+
+#### 1. Visit link(s) for more details
+
+1. [ghacks.net | Comparison of Windows 10 Privacy tools](https://www.ghacks.net/2015/08/14/comparison-of-windows-10-privacy-tools/)
+
+    > We update the listing regularly. Please let us know about any updates that we may have missed, and about new programs that you found that are not on it already.
+
+2. [github.com | crazy-max/WindowsSpyBlocker](https://github.com/crazy-max/WindowsSpyBlocker)
+
+    > 🛡 Block spying and tracking on Windows
+
+3. [github.com | Disassembler0/Win10-Initial-Setup-Script](https://github.com/Disassembler0/Win10-Initial-Setup-Script)
+
+    > PowerShell script for automation of routine tasks done after fresh installations of Windows 10 / Server 2016 / Server 2019
+
+4. [github.com | builtbybel/spydish](https://github.com/builtbybel/spydish)
+
+    > 👀👮🐢🔥The Spydish app is the simplest way to perform a quick privacy and security check of your Windows 10 installation
+
+5. [github.com | builtbybel/sharpapp](https://github.com/builtbybel/sharpapp)
+
+    > 💩⭐️🚀A #app with cutting edge technology to #minimize windows-10 telemetry and #maximize privacy plus many more
 
 ## Shells
 
