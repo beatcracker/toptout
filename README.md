@@ -763,7 +763,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 Official: ❌
 
-> There is no official way to disable telemetry in the all other Windows editions (Home/Pro/etc...)
+> There is no official way to disable telemetry in all other Windows editions (Home/Pro/etc...)
 
 Use methods described below to opt-out of this telemetry channel.
 

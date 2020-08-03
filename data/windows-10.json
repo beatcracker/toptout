@@ -38,7 +38,7 @@
     {
       "id": "usage-data",
       "name": "Usage data",
-      "description": "There is no official way to disable telemetry in the all other Windows editions (Home/Pro/etc...)",
+      "description": "There is no official way to disable telemetry in all other Windows editions (Home/Pro/etc...)",
       "is_official": false,
       "target": {
         "noop": [
