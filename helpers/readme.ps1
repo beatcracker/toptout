@@ -186,7 +186,7 @@ filter ConvertTo-Readme {
                     json_file  = 'Edit config file (JSON)'
                     plain_file = 'Edit config file (plaintext)'
                     registry   = 'Set registry key'
-                    noop       = 'Visit link for more details'
+                    noop       = 'Visit link(s) for more details'
                 }[$tg]
             ) | Add-Newline
 
