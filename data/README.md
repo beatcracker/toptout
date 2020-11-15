@@ -57,7 +57,7 @@ Describes a product that has one telemetry channel which is controlled by the en
         // Set or remove environment variable.
         //
         // Environment variables are by design configured per procces.
-        // There are mechanisms to configre them for every new process, but it's up to OS/shell.
+        // There are mechanisms to configure them for every new process, but it's up to OS/shell.
         "env": {
           // Target scope. You can use multiple scopes.
           // machine - configures telemetry channel for all users of the computer
@@ -111,7 +111,7 @@ Indicates that this specific telemetry channel is controlled by the environment 
   // process - configures telemetry channel for process only
   "scope": {
     // Environment variables are by design configured per procces.
-    // There are mechanisms to configre them for every new process, but it's up to OS/
+    // There are mechanisms to configure them for every new process, but it's up to OS/
     "process": {
       // Path object. Contains environment variable name for various OSes.
       // Allowed keys: default, linux, macos, windows
@@ -307,7 +307,7 @@ Indicates that user should visit an external link to get details about configuri
 "noop": [
   {
     "name": "Disable FooBar telemetry",
-    "description": "This unoffical pacth disables telemetry in FooBar app.",
+    "description": "This unoffical patch disables telemetry in FooBar app.",
     "link": "https://example.com/foobar-telemetry-patch"
   },
   {
