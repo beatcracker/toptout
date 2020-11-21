@@ -1,0 +1,62 @@
+{
+  "id": "vagrant",
+  "name": "Vagrant",
+  "executable_name": "vagrant",
+  "category": "DevOps",
+  "description": "Vagrant interacts with HashiCorp services to provide update notifications.",
+  "links": {
+    "main": "hhttps://www.vagrantup.com/",
+    "telemetry": "https://www.vagrantup.com/docs/other/environmental-variables",
+    "privacy": "https://hashicorp.com/privacy"
+  },
+  "telemetry": [
+    {
+      "id": "vagrant-update-check",
+      "name": "Vagrant update check",
+      "description": "Vagrant does occasional network calls to check whether the version of Vagrant that is running locally is up to date.",
+      "links": {
+        "main": "https://www.vagrantup.com/docs/other/environmental-variables#vagrant_checkpoint_disable"
+      },
+      "is_official": true,
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "VAGRANT_CHECKPOINT_DISABLE"
+              },
+              "value": {
+                "opt_out": "ANY_VALUE",
+                "opt_in": null
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "vagrant-box-update-check",
+      "name": "Vagrant box update check",
+      "description": "By default, Vagrant will query the metadata API server to see if a newer box version is available for download.",
+      "links": {
+        "main": "https://www.vagrantup.com/docs/other/environmental-variables#vagrant_box_update_check_disable"
+      },
+      "is_official": true,
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "VAGRANT_BOX_UPDATE_CHECK_DISABLE"
+              },
+              "value": {
+                "opt_out": "ANY_VALUE",
+                "opt_in": null
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
