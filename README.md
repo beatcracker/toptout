@@ -69,8 +69,16 @@ See [CONTRIBUTING](/docs/CONTRIBUTING.md) and [data/README](/data/README.md) for
   - [Hasura GraphQL engine](#hasura-graphql-engine)
   - [.NET Core SDK](#net-core-sdk)
   - [Next.js](#nextjs)
+  - [Prisma](#prisma)
 - [DevOps](#devops)
   - [AutomatedLab](#automatedlab)
+  - [Consul](#consul)
+  - [Packer](#packer)
+  - [Terraform](#terraform)
+  - [Cloud Development Kit for Terraform](#cloud-development-kit-for-terraform)
+  - [Vagrant](#vagrant)
+  - [Weave Net](#weave-net)
+  - [WKSctl](#wksctl)
 - [Drivers](#drivers)
   - [Nvidia drivers](#nvidia-drivers)
 - [Operating systems](#operating-systems)
@@ -677,6 +685,45 @@ NEXT_TELEMETRY_DISABLED=1
 npx next telemetry disable
 ```
 
+## [Prisma](https://www.prisma.io/)
+
+> Telemetry helps us better understand how many users are using our products and how often they are using our products.
+
+- [Telemetry details](https://www.prisma.io/docs/concepts/more/telemetry)
+- [Privacy policy](https://pris.ly/privacy)
+
+List of known telemetry channels:
+
+### 📡 [Usage data](https://www.prisma.io/docs/concepts/more/telemetry#usage-data)
+
+Official: ✔
+
+> Invocations of the prisma CLI and general usage of Studio results in data being sent to the telemetry server at https://checkpoint.prisma.io.
+
+Use methods described below to opt-out of this telemetry channel.
+
+#### 1. Set environment variable
+
+##### Scope: 🗗 Process
+
+```none
+CHECKPOINT_DISABLE=1
+```
+
+### 📡 [Error reporting](https://www.prisma.io/docs/concepts/more/telemetry#error-reporting)
+
+Official: ✔
+
+> Before an error report is submitted, there will always be a prompt asking you to confirm or deny the submission of the error report!
+
+Use methods described below to opt-out of this telemetry channel.
+
+#### 1. Visit link(s) for more details
+
+1. [Disable error reporting](https://www.prisma.io/docs/concepts/more/telemetry#error-reporting-1)
+
+    > You can opt-out of data collection by responding to the interactive prompt with no.
+
 ## DevOps
 
 ## [AutomatedLab](https://github.com/AutomatedLab/AutomatedLab)
@@ -709,6 +756,265 @@ AUTOMATEDLAB_TELEMETRY_OPTOUT=1
 |---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Other   | `pwsh -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Import-Module AutomatedLab -ErrorAction Stop ; Disable-LabTelemetry -ErrorAction Stop"`       |
 | Windows | `powershell -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Import-Module AutomatedLab -ErrorAction Stop ; Disable-LabTelemetry -ErrorAction Stop"` |
+
+## [Consul](https://www.consul.io/)
+
+> Consul makes use of a HashiCorp service called Checkpoint which is used to check for updates and critical security bulletins.
+
+- [Telemetry details](hhttps://www.consul.io/docs/troubleshoot/faq#q-what-is-checkpoint-does-consul-call-home)
+- [Privacy policy](https://hashicorp.com/privacy)
+
+List of known telemetry channels:
+
+### 📡 [Update check](https://www.consul.io/docs/agent/options#disable_update_check)
+
+Official: ✔
+
+> Disables automatic checking for security bulletins and new version releases. This is disabled in Consul Enterprise.
+
+Use methods described below to opt-out of this telemetry channel.
+
+#### 1. Set environment variable
+
+##### Scope: 🗗 Process
+
+```none
+CHECKPOINT_DISABLE=ANY_VALUE
+```
+
+#### 2. Edit config file (JSON)
+
+##### Scope: 👤 User
+
+Path: `some-dir/example.json`
+
+##### Content
+
+```json
+{
+  "disable_update_check": true
+}
+```
+
+### 📡 [Update check signature](https://www.consul.io/docs/agent/options#disable_anonymous_signature)
+
+Official: ✔
+
+> Disables providing an anonymous signature for de-duplication with the update check
+
+Use methods described below to opt-out of this telemetry channel.
+
+#### 1. Edit config file (JSON)
+
+##### Scope: 👤 User
+
+Path: `some-dir/example.json`
+
+##### Content
+
+```json
+{
+  "disable_anonymous_signature": true
+}
+```
+
+## [Packer](https://www.packer.io/)
+
+> When Packer is invoked it sometimes calls out to checkpoint.hashicorp.com to look for new versions of Packer.
+
+- [Telemetry details](https://www.packer.io/docs/other/environment-variables.html#checkpoint_disable)
+- [Privacy policy](https://hashicorp.com/privacy)
+
+List of known telemetry channels:
+
+### 📡 Update check
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+#### 1. Set environment variable
+
+##### Scope: 🗗 Process
+
+```none
+CHECKPOINT_DISABLE=1
+```
+
+## [Terraform](https://www.terraform.io/)
+
+> The Terraform CLI commands interact with the HashiCorp service Checkpoint to check for the availability of new versions and for critical security bulletins about the current version.
+
+- [Telemetry details](https://www.terraform.io/docs/commands/index.html#upgrade-and-security-bulletin-checks)
+- [Privacy policy](https://hashicorp.com/privacy)
+
+List of known telemetry channels:
+
+### 📡 [Update check](https://www.terraform.io/docs/commands/index.html#disable_checkpoint)
+
+Official: ✔
+
+> Disable checkpoint calls entirely.
+
+Use methods described below to opt-out of this telemetry channel.
+
+#### 1. Set environment variable
+
+##### Scope: 🗗 Process
+
+```none
+CHECKPOINT_DISABLE=ANY_VALUE
+```
+
+#### 2. Edit config file (plaintext)
+
+##### Scope: 👤 User
+
+| OS      | Path                     |
+|---------|--------------------------|
+| Linux   | `$HOME/.terraformrc`     |
+| macOS   | `$HOME/.terraformrc`     |
+| Windows | `%APPDATA%\terraform.rc` |
+
+##### Content
+
+```json
+disable_checkpoint = true
+```
+
+### 📡 [Update check signature](https://www.terraform.io/docs/commands/index.html#disable_checkpoint_signature)
+
+Official: ✔
+
+> Disable the use of an anonymous signature in checkpoint requests. This allows Terraform to check for security bulletins but does not send the anonymous signature in these requests.
+
+Use methods described below to opt-out of this telemetry channel.
+
+#### 1. Edit config file (plaintext)
+
+##### Scope: 👤 User
+
+| OS      | Path                     |
+|---------|--------------------------|
+| Linux   | `$HOME/.terraformrc`     |
+| macOS   | `$HOME/.terraformrc`     |
+| Windows | `%APPDATA%\terraform.rc` |
+
+##### Content
+
+```json
+disable_checkpoint_signature = true
+```
+
+## [Cloud Development Kit for Terraform](https://github.com/hashicorp/terraform-cdk)
+
+> CDK for Terraform CLI (cdktf-cli) interacts with a HashiCorp service called Checkpoint to report project metrics such as cdktf version, project language, provider name, platform name, and other details that help guide the project maintainers with feature and roadmap decisions.
+
+- [Telemetry details](https://github.com/hashicorp/terraform-cdk/blob/master/docs/working-with-cdk-for-terraform/telemetry.md)
+- [Privacy policy](https://hashicorp.com/privacy)
+
+List of known telemetry channels:
+
+### 📡 Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+#### 1. Set environment variable
+
+##### Scope: 🗗 Process
+
+```none
+CHECKPOINT_DISABLE=ANY_VALUE
+```
+
+## [Vagrant](hhttps://www.vagrantup.com/)
+
+> Vagrant interacts with HashiCorp services to provide update notifications.
+
+- [Telemetry details](https://www.vagrantup.com/docs/other/environmental-variables)
+- [Privacy policy](https://hashicorp.com/privacy)
+
+List of known telemetry channels:
+
+### 📡 [Vagrant update check](https://www.vagrantup.com/docs/other/environmental-variables#vagrant_checkpoint_disable)
+
+Official: ✔
+
+> Vagrant does occasional network calls to check whether the version of Vagrant that is running locally is up to date.
+
+Use methods described below to opt-out of this telemetry channel.
+
+#### 1. Set environment variable
+
+##### Scope: 🗗 Process
+
+```none
+VAGRANT_CHECKPOINT_DISABLE=ANY_VALUE
+```
+
+### 📡 [Vagrant box update check](https://www.vagrantup.com/docs/other/environmental-variables#vagrant_box_update_check_disable)
+
+Official: ✔
+
+> By default, Vagrant will query the metadata API server to see if a newer box version is available for download.
+
+Use methods described below to opt-out of this telemetry channel.
+
+#### 1. Set environment variable
+
+##### Scope: 🗗 Process
+
+```none
+VAGRANT_BOX_UPDATE_CHECK_DISABLE=ANY_VALUE
+```
+
+## [Weave Net](https://www.weave.works/)
+
+> Weave Net periodically contacts Weaveworks servers for available versions. New versions are announced in the log and in the status summary.
+
+- [Telemetry details](https://www.weave.works/docs/net/latest/install/installing-weave/#checkpoint)
+- [Privacy policy](https://www.weave.works/weaveworks-privacy-policy/)
+
+List of known telemetry channels:
+
+### 📡 Update check
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+#### 1. Set environment variable
+
+##### Scope: 🗗 Process
+
+```none
+CHECKPOINT_DISABLE=1
+```
+
+## [WKSctl](https://www.weave.works/oss/wksctl/)
+
+> wksctl contacts Weaveworks servers for available versions. When a new version is available, wksctl will print out a message along with a URL to download it.
+
+- [Telemetry details](https://wksctl.readthedocs.io/en/latest/faq/#checkpoint-and-how-to-disable-it)
+- [Privacy policy](https://www.weave.works/weaveworks-privacy-policy/)
+
+List of known telemetry channels:
+
+### 📡 Update check
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+#### 1. Set environment variable
+
+##### Scope: 🗗 Process
+
+```none
+CHECKPOINT_DISABLE=1
+```
 
 ## Drivers
 
