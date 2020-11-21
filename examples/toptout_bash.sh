@@ -126,11 +126,70 @@ export DOTNET_CLI_TELEMETRY_OPTOUT='true'
 # Usage data
 export NEXT_TELEMETRY_DISABLED='1'
 
+# Prisma
+# https://www.prisma.io/
+
+# Usage data
+# https://www.prisma.io/docs/concepts/more/telemetry#usage-data
+export CHECKPOINT_DISABLE='1'
+
 # AutomatedLab
 # https://github.com/AutomatedLab/AutomatedLab
 
 # Usage data
 export AUTOMATEDLAB_TELEMETRY_OPTOUT='1'
+
+# Consul
+# https://www.consul.io/
+
+# Update check
+# https://www.consul.io/docs/agent/options#disable_update_check
+export CHECKPOINT_DISABLE='ANY_VALUE'
+
+# Packer
+# https://www.packer.io/
+
+# Update check
+export CHECKPOINT_DISABLE='1'
+
+# Terraform
+# https://www.terraform.io/
+
+# Update check
+# https://www.terraform.io/docs/commands/index.html#disable_checkpoint
+export CHECKPOINT_DISABLE='ANY_VALUE'
+
+# Cloud Development Kit for Terraform
+# https://github.com/hashicorp/terraform-cdk
+
+# Usage data
+export CHECKPOINT_DISABLE='ANY_VALUE'
+
+# Vagrant
+# hhttps://www.vagrantup.com/
+
+# Vagrant update check
+# https://www.vagrantup.com/docs/other/environmental-variables#vagrant_checkpoint_disable
+export VAGRANT_CHECKPOINT_DISABLE='ANY_VALUE'
+
+# Vagrant
+# hhttps://www.vagrantup.com/
+
+# Vagrant box update check
+# https://www.vagrantup.com/docs/other/environmental-variables#vagrant_box_update_check_disable
+export VAGRANT_BOX_UPDATE_CHECK_DISABLE='ANY_VALUE'
+
+# Weave Net
+# https://www.weave.works/
+
+# Update check
+export CHECKPOINT_DISABLE='1'
+
+# WKSctl
+# https://www.weave.works/oss/wksctl/
+
+# Update check
+export CHECKPOINT_DISABLE='1'
 
 # PowerShell Core
 # https://github.com/powershell/powershell
