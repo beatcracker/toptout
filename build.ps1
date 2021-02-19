@@ -221,18 +221,18 @@ The goal of this project is to put you in control. See what data is collected by
 
 The core of this project is a set of JSON files which describe what telemetry is collected and what can be done to enable or disable it.
 
+## Contributing
+
+If the tool you're using is not here you can easily add it by creating a new JSON file describing its telemetry data channels.
+
+See [CONTRIBUTING](/.github/CONTRIBUTING.md) for build setup and [data/README](/data/README.md) for JSON data format details.
+
 ## Real-world applications
 
 Telemetry data from the JSON files can be used in various ways. Here are several examples:
 
 - The [README](README.md) you see is automatically generated
 - [Scripts](/examples) to disable all known telemetry channels in your shell session
-
-## Contributing
-
-If the tool you're using is not here you can easily add it by creating a new JSON file describing its telemetry data channels.
-
-See [CONTRIBUTING](/.github/CONTRIBUTING.md) and [data/README](/data/README.md) for details.
 
 ## Future plans
 
