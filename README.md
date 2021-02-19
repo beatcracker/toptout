@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/media/toptout.png">
+  <img id="logo" src="https://raw.githubusercontent.com/beatcracker/toptout/master/media/toptout.png">
 </p>
 
 <p align="center">
