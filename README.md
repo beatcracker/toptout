@@ -26,7 +26,7 @@ Telemetry data from the JSON files can be used in various ways. Here are several
 
 If the tool you're using is not here you can easily add it by creating a new JSON file describing its telemetry data channels.
 
-See [CONTRIBUTING](/docs/CONTRIBUTING.md) and [data/README](/data/README.md) for details.
+See [CONTRIBUTING](/.github/CONTRIBUTING.md) and [data/README](/data/README.md) for details.
 
 ## Future plans
 
