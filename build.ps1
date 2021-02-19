@@ -212,7 +212,7 @@ task readme {
   <a href="https://github.com/beatcracker/toptout/actions?query=workflow%3ATests"><img alt="GitHub Actions status" src="https://github.com/beatcracker/toptout/workflows/Tests/badge.svg"></a>
 </p>
 
-# Toptout: easily opt-out from telemetry collection [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Toptout%3A%20easily%20opt-out%20from%20telemetry%20collection%21%20https%3A%2F%2Fgithub.com%2Fbeatcracker%2Ftoptout&hashtags=opensource,powershell,telemetry,privacy,infosec)
+# Easily opt-out from telemetry collection [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Toptout%3A%20easily%20opt-out%20from%20telemetry%20collection%21%20https%3A%2F%2Fgithub.com%2Fbeatcracker%2Ftoptout&hashtags=opensource,powershell,telemetry,privacy,infosec)
 
 Telemetry in software projects is a polarized issue: on the one hand it allows developers to improve their work by collecting various metrics, on the other hand - nobody likes to be spied on.
 The goal of this project is to put you in control. See what data is collected by the tools you use and decide if you want to share it. Then use methods provided here to opt-in or opt-out.
