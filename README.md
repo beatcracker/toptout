@@ -88,7 +88,7 @@ See [CONTRIBUTING](/docs/CONTRIBUTING.md) and [data/README](/data/README.md) for
 
 ## Applications
 
-## [Atom](https://atom.io)
+### [Atom](https://atom.io)
 
 > Help improve Atom by sending usage statistics, exceptions and deprecations to the team.
 
@@ -97,7 +97,7 @@ See [CONTRIBUTING](/docs/CONTRIBUTING.md) and [data/README](/data/README.md) for
 
 List of known telemetry channels:
 
-### 📡 Usage data
+#### Usage data
 
 Official: ✔
 
@@ -105,9 +105,9 @@ Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Edit config file (plaintext)
+##### 1. Edit config file (plaintext)
 
-##### Scope: 👤 User
+###### Scope: 👤 User
 
 | OS      | Path                              |
 |---------|-----------------------------------|
@@ -115,13 +115,13 @@ Use methods described below to opt-out of this telemetry channel.
 | macOS   | `$HOME/.atom/init.coffee`         |
 | Windows | `%USERPROFILE%\.atom\init.coffee` |
 
-##### Content
+###### Content
 
 ```json
 atom.config.set('core.telemetryConsent', 'no')
 ```
 
-## [Firefox](https://www.mozilla.org/firefox/)
+### [Firefox](https://www.mozilla.org/firefox/)
 
 > Telemetry collects information about your Firefox browsing experience to improve Firefox features, browser performance and stability.
 
@@ -130,7 +130,7 @@ atom.config.set('core.telemetryConsent', 'no')
 
 List of known telemetry channels:
 
-### 📡 [Enable policies (macOS)](https://github.com/mozilla/policy-templates/tree/master/mac)
+#### [Enable policies (macOS)](https://github.com/mozilla/policy-templates/tree/master/mac)
 
 Official: ✔
 
@@ -138,15 +138,15 @@ Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Run command
+##### 1. Run command
 
-##### Scope: 💻 Machine
+###### Scope: 💻 Machine
 
 | OS    | Command                                                                                        |
 |-------|------------------------------------------------------------------------------------------------|
 | macOS | `defaults write /Library/Preferences/org.mozilla.firefox EnterprisePoliciesEnabled -bool TRUE` |
 
-### 📡 [Usage data](https://github.com/mozilla/policy-templates/blob/master/README.md)
+#### [Usage data](https://github.com/mozilla/policy-templates/blob/master/README.md)
 
 Official: ✔
 
@@ -155,17 +155,17 @@ Telemetry does not collect any bookmarks or passwords. It may collect anonymized
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Run command
+##### 1. Run command
 
-##### Scope: 💻 Machine
+###### Scope: 💻 Machine
 
 | OS    | Command                                                                               |
 |-------|---------------------------------------------------------------------------------------|
 | macOS | `defaults write /Library/Preferences/org.mozilla.firefox DisableTelemetry -bool TRUE` |
 
-#### 2. Edit config file (JSON)
+##### 2. Edit config file (JSON)
 
-##### Scope: 💻 Machine
+###### Scope: 💻 Machine
 
 | OS      | Path                                                                      |
 |---------|---------------------------------------------------------------------------|
@@ -173,7 +173,7 @@ Use methods described below to opt-out of this telemetry channel.
 | macOS   | `/Applications/Firefox.app/Contents/Resources/distribution/policies.json` |
 | Windows | `distribution\policies.json`                                              |
 
-##### Content
+###### Content
 
 ```json
 {
@@ -183,21 +183,21 @@ Use methods described below to opt-out of this telemetry channel.
 }
 ```
 
-#### 3. Set registry key
+##### 3. Set registry key
 
-##### Scope: 💻 Machine
+###### Scope: 💻 Machine
 
 - Path: `HKEY_LOCAL_MACHINE\Software\Policies\Mozilla\Firefox\DisableTelemetry`
 - Type: `REG_DWORD`
 - Value: `1`
 
-##### Scope: 👤 User
+###### Scope: 👤 User
 
 - Path: `HKEY_CURRENT_USER\Software\Policies\Mozilla\Firefox\DisableTelemetry`
 - Type: `REG_DWORD`
 - Value: `1`
 
-## [Homebrew](https://brew.sh)
+### [Homebrew](https://brew.sh)
 
 > Homebrew has begun gathering anonymous aggregate user behaviour analytics and reporting these to Google Analytics.
 
@@ -205,29 +205,29 @@ Use methods described below to opt-out of this telemetry channel.
 
 List of known telemetry channels:
 
-### 📡 Usage data
+#### Usage data
 
 Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Set environment variable
+##### 1. Set environment variable
 
-##### Scope: 🗗 Process
+###### Scope: 🗗 Process
 
 ```none
 HOMEBREW_NO_ANALYTICS=1
 ```
 
-#### 2. Run command
+##### 2. Run command
 
-##### Scope: 👤 User
+###### Scope: 👤 User
 
 ```shell
 brew analytics off
 ```
 
-## [Microsoft 365 | Enterprise](https://www.microsoft.com/en-us/microsoft-365/enterprise)
+### [Microsoft 365 | Enterprise](https://www.microsoft.com/en-us/microsoft-365/enterprise)
 
 > Microsoft is committed to providing you with the information and controls you need to make choices about how your data is collected and used when you’re using Microsoft 365 Apps for enterprise (previously named Office 365 ProPlus).
 
@@ -236,7 +236,7 @@ brew analytics off
 
 List of known telemetry channels:
 
-### 📡 [Diagnostic data](https://docs.microsoft.com/en-us/deployoffice/privacy/overview-privacy-controls#diagnostic-data-sent-from-microsoft-365-apps-for-enterprise-to-microsoftd)
+#### [Diagnostic data](https://docs.microsoft.com/en-us/deployoffice/privacy/overview-privacy-controls#diagnostic-data-sent-from-microsoft-365-apps-for-enterprise-to-microsoftd)
 
 Official: ✔
 
@@ -244,23 +244,23 @@ Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Run command
+##### 1. Run command
 
-##### Scope: 💻 Machine
+###### Scope: 💻 Machine
 
 | OS    | Command                                                                                       |
 |-------|-----------------------------------------------------------------------------------------------|
 | macOS | `defaults write com.microsoft.office DiagnosticDataTypePreference -string ZeroDiagnosticData` |
 
-#### 2. Set registry key
+##### 2. Set registry key
 
-##### Scope: 👤 User
+###### Scope: 👤 User
 
 - Path: `HKEY_CURRENT_USER\Software\Policies\Microsoft\office\16.0\common\privacy\SendTelemetry`
 - Type: `REG_DWORD`
 - Value: `3`
 
-## [Microsoft calculator](https://github.com/Microsoft/calculator)
+### [Microsoft calculator](https://github.com/Microsoft/calculator)
 
 > This project collects usage data and sends it to Microsoft to help improve our products and services.
 
@@ -269,13 +269,13 @@ Use methods described below to opt-out of this telemetry channel.
 
 List of known telemetry channels:
 
-### 📡 Diagnostic data
+#### Diagnostic data
 
 Official: ✔
 
 > Diagnostic data is disabled in development builds by default, and can be enabled with the SEND_DIAGNOSTICS build flag.
 
-## [VSCode](https://code.visualstudio.com/)
+### [VSCode](https://code.visualstudio.com/)
 
 > Visual Studio Code collects telemetry data, which is used to help understand how to improve the product.
 
@@ -284,7 +284,7 @@ Official: ✔
 
 List of known telemetry channels:
 
-### 📡 Usage data
+#### Usage data
 
 Official: ✔
 
@@ -292,9 +292,9 @@ Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Edit config file (JSON)
+##### 1. Edit config file (JSON)
 
-##### Scope: 👤 User
+###### Scope: 👤 User
 
 | OS      | Path                                                        |
 |---------|-------------------------------------------------------------|
@@ -302,7 +302,7 @@ Use methods described below to opt-out of this telemetry channel.
 | macOS   | `$HOME/Library/Application Support/Code/User/settings.json` |
 | Windows | `%APPDATA%\Code\User\settings.json`                         |
 
-##### Content
+###### Content
 
 ```json
 {
@@ -310,7 +310,7 @@ Use methods described below to opt-out of this telemetry channel.
 }
 ```
 
-### 📡 Crash data
+#### Crash data
 
 Official: ✔
 
@@ -318,9 +318,9 @@ Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Edit config file (JSON)
+##### 1. Edit config file (JSON)
 
-##### Scope: 👤 User
+###### Scope: 👤 User
 
 | OS      | Path                                                        |
 |---------|-------------------------------------------------------------|
@@ -328,7 +328,7 @@ Use methods described below to opt-out of this telemetry channel.
 | macOS   | `$HOME/Library/Application Support/Code/User/settings.json` |
 | Windows | `%APPDATA%\Code\User\settings.json`                         |
 
-##### Content
+###### Content
 
 ```json
 {
@@ -338,7 +338,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ## Cloud
 
-## [AWS SAM CLI](https://aws.amazon.com/serverless/sam/)
+### [AWS SAM CLI](https://aws.amazon.com/serverless/sam/)
 
 > At AWS, we develop and launch services based on what we learn from interactions with customers. We use customer feedback to iterate on our product. Telemetry is additional information that helps us to better understand our customers’ needs, diagnose issues, and deliver features that improve the customer experience. The AWS SAM CLI collects telemetry, such as generic usage metrics, system and environment information, and errors.
 
@@ -347,21 +347,21 @@ Use methods described below to opt-out of this telemetry channel.
 
 List of known telemetry channels:
 
-### 📡 Usage data
+#### Usage data
 
 Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Set environment variable
+##### 1. Set environment variable
 
-##### Scope: 🗗 Process
+###### Scope: 🗗 Process
 
 ```none
 SAM_CLI_TELEMETRY=0
 ```
 
-## [Azure CLI](https://docs.microsoft.com/en-us/cli/azure)
+### [Azure CLI](https://docs.microsoft.com/en-us/cli/azure)
 
 > Allow Microsoft to collect anonymous data on the usage of the CLI.
 
@@ -370,29 +370,29 @@ SAM_CLI_TELEMETRY=0
 
 List of known telemetry channels:
 
-### 📡 Usage data
+#### Usage data
 
 Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Set environment variable
+##### 1. Set environment variable
 
-##### Scope: 🗗 Process
+###### Scope: 🗗 Process
 
 ```none
 AZURE_CORE_COLLECT_TELEMETRY=0
 ```
 
-#### 2. Run command
+##### 2. Run command
 
-##### Scope: 👤 User
+###### Scope: 👤 User
 
 ```shell
 az configure -d collect_telemetry=0
 ```
 
-## [Google Cloud SDK](https://cloud.google.com/sdk)
+### [Google Cloud SDK](https://cloud.google.com/sdk)
 
 > Unless you opt-in during Google Cloud SDK installation, Cloud SDK software does not collect usage statistics. You can help Google to prioritize Google Cloud SDK features and improvements by permitting Cloud SDK to send command-line command usage statistics to Google.
 
@@ -401,44 +401,44 @@ az configure -d collect_telemetry=0
 
 List of known telemetry channels:
 
-### 📡 Usage data
+#### Usage data
 
 Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Run command
+##### 1. Run command
 
-##### Scope: 👤 User
+###### Scope: 👤 User
 
 ```shell
 gcloud config set disable_usage_reporting true
 ```
 
-## [Netdata](https://www.netdata.cloud)
+### [Netdata](https://www.netdata.cloud)
 
-> By default, Netlify collects data on usage of Netlify CLI commands. We do this to improve the reliability and performance of Netlify CLI, and to help drive new features and improvements.
+> Starting with v1.12, Netdata collects anonymous usage information by default and sends it to Google Analytics.
 
-- [Telemetry details](https://learn.netdata.cloud/docs/agent/anonymous-statistic/)
+- [Telemetry details](https://learn.netdata.cloud/docs/agent/anonymous-statistics)
 - [Privacy policy](https://learn.netdata.cloud/docs/agent/privacy-policy/)
 
 List of known telemetry channels:
 
-### 📡 Usage data
+#### Usage data
 
 Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Set environment variable
+##### 1. Set environment variable
 
-##### Scope: 🗗 Process
+###### Scope: 🗗 Process
 
 ```none
 DO_NOT_TRACK=1
 ```
 
-## [Netlify CLI](https://netlify.com)
+### [Netlify CLI](https://netlify.com)
 
 > By default, Netlify collects data on usage of Netlify CLI commands. We do this to improve the reliability and performance of Netlify CLI, and to help drive new features and improvements.
 
@@ -447,23 +447,23 @@ DO_NOT_TRACK=1
 
 List of known telemetry channels:
 
-### 📡 Usage data
+#### Usage data
 
 Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Run command
+##### 1. Run command
 
-##### Scope: 👤 User
+###### Scope: 👤 User
 
 ```shell
 netlify --telemetry-disable
 ```
 
-#### 2. Edit config file (JSON)
+##### 2. Edit config file (JSON)
 
-##### Scope: 👤 User
+###### Scope: 👤 User
 
 | OS      | Path                                 |
 |---------|--------------------------------------|
@@ -471,7 +471,7 @@ netlify --telemetry-disable
 | macOS   | `$HOME/.netlify/config.json`         |
 | Windows | `%USERPROFILE%\.netlify\config.json` |
 
-##### Content
+###### Content
 
 ```json
 {
@@ -479,7 +479,7 @@ netlify --telemetry-disable
 }
 ```
 
-## [Stripe CLI](https://stripe.com/docs/stripe-cli)
+### [Stripe CLI](https://stripe.com/docs/stripe-cli)
 
 > The Stripe CLI includes a telemetry feature that collects some usage data. This feature is enabled by default.
 
@@ -488,21 +488,21 @@ netlify --telemetry-disable
 
 List of known telemetry channels:
 
-### 📡 Usage data
+#### Usage data
 
 Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Set environment variable
+##### 1. Set environment variable
 
-##### Scope: 🗗 Process
+###### Scope: 🗗 Process
 
 ```none
 STRIPE_CLI_TELEMETRY_OPTOUT=1
 ```
 
-## [Tilt](https://tilt.dev)
+### [Tilt](https://tilt.dev)
 
 > Tilt sends anonymized data about how you use it.
 
@@ -510,15 +510,15 @@ STRIPE_CLI_TELEMETRY_OPTOUT=1
 
 List of known telemetry channels:
 
-### 📡 Usage data
+#### Usage data
 
 Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Set environment variable
+##### 1. Set environment variable
 
-##### Scope: 🗗 Process
+###### Scope: 🗗 Process
 
 ```none
 DO_NOT_TRACK=1
@@ -526,7 +526,7 @@ DO_NOT_TRACK=1
 
 ## Development
 
-## [Apache Cordova CLI](https://cordova.apache.org)
+### [Apache Cordova CLI](https://cordova.apache.org)
 
 > We use the gathered information to help us make our tool more useful and to better understand how it is used. We do not track or collect personally identifiable information or associate gathered data with any personally identifying information from other sources.
 
@@ -535,29 +535,29 @@ DO_NOT_TRACK=1
 
 List of known telemetry channels:
 
-### 📡 Usage data
+#### Usage data
 
 Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Set environment variable
+##### 1. Set environment variable
 
-##### Scope: 🗗 Process
+###### Scope: 🗗 Process
 
 ```none
 CI=ANY_VALUE
 ```
 
-#### 2. Run command
+##### 2. Run command
 
-##### Scope: 👤 User
+###### Scope: 👤 User
 
 ```shell
 cordova telemetry off
 ```
 
-## [Gatsby](https://www.gatsbyjs.org)
+### [Gatsby](https://www.gatsbyjs.org)
 
 > Gatsby contains a telemetry feature that collects anonymous usage information that is used to help improve Gatsby for all users. The Gatsby user base is growing very rapidly. It’s important that our small team and the greater community will better understand the usage patterns, so we can best decide how to design future features and prioritize current work.
 
@@ -566,29 +566,29 @@ cordova telemetry off
 
 List of known telemetry channels:
 
-### 📡 Usage data
+#### Usage data
 
 Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Set environment variable
+##### 1. Set environment variable
 
-##### Scope: 🗗 Process
+###### Scope: 🗗 Process
 
 ```none
 GATSBY_TELEMETRY_DISABLED=1
 ```
 
-#### 2. Run command
+##### 2. Run command
 
-##### Scope: 👤 User
+###### Scope: 👤 User
 
 ```shell
 gatsby telemetry --disable
 ```
 
-## [Hasura GraphQL engine](https://hasura.io)
+### [Hasura GraphQL engine](https://hasura.io)
 
 > The Hasura GraphQL engine collects anonymous telemetry data that helps the Hasura team in understanding how the product is being used and in deciding what to focus on next.
 
@@ -597,7 +597,7 @@ gatsby telemetry --disable
 
 List of known telemetry channels:
 
-### 📡 Usage data (CLI and Console)
+#### Usage data (CLI and Console)
 
 Official: ✔
 
@@ -605,17 +605,17 @@ Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Set environment variable
+##### 1. Set environment variable
 
-##### Scope: 🗗 Process
+###### Scope: 🗗 Process
 
 ```none
 HASURA_GRAPHQL_ENABLE_TELEMETRY=false
 ```
 
-#### 2. Edit config file (JSON)
+##### 2. Edit config file (JSON)
 
-##### Scope: 👤 User
+###### Scope: 👤 User
 
 | OS      | Path                                |
 |---------|-------------------------------------|
@@ -623,7 +623,7 @@ HASURA_GRAPHQL_ENABLE_TELEMETRY=false
 | macOS   | `$HOME/.hasura/config.json`         |
 | Windows | `%USERPROFILE%\.hasura\config.json` |
 
-##### Content
+###### Content
 
 ```json
 {
@@ -631,7 +631,7 @@ HASURA_GRAPHQL_ENABLE_TELEMETRY=false
 }
 ```
 
-## [.NET Core SDK](https://docs.microsoft.com/en-us/dotnet/core/tools/index)
+### [.NET Core SDK](https://docs.microsoft.com/en-us/dotnet/core/tools/index)
 
 > The NET Core SDK includes a telemetry feature that collects usage data and exception information when the .NET Core CLI crashes. The .NET Core CLI comes with the .NET Core SDK and is the set of verbs that enable you to build, test, and publish your .NET Core apps. It's important that the .NET team understands how the tools are used so they can be improved. Information on failures helps the team resolve problems and fix bugs.
 
@@ -640,21 +640,21 @@ HASURA_GRAPHQL_ENABLE_TELEMETRY=false
 
 List of known telemetry channels:
 
-### 📡 Usage data
+#### Usage data
 
 Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Set environment variable
+##### 1. Set environment variable
 
-##### Scope: 🗗 Process
+###### Scope: 🗗 Process
 
 ```none
 DOTNET_CLI_TELEMETRY_OPTOUT=true
 ```
 
-## [Next.js](https://nextjs.org)
+### [Next.js](https://nextjs.org)
 
 > Next.js collects completely anonymous telemetry data about general usage. Participation in this anonymous program is optional, and you may opt-out if you'd not like to share any information.
 
@@ -663,29 +663,29 @@ DOTNET_CLI_TELEMETRY_OPTOUT=true
 
 List of known telemetry channels:
 
-### 📡 Usage data
+#### Usage data
 
 Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Set environment variable
+##### 1. Set environment variable
 
-##### Scope: 🗗 Process
+###### Scope: 🗗 Process
 
 ```none
 NEXT_TELEMETRY_DISABLED=1
 ```
 
-#### 2. Run command
+##### 2. Run command
 
-##### Scope: 👤 User
+###### Scope: 👤 User
 
 ```shell
 npx next telemetry disable
 ```
 
-## [Prisma](https://www.prisma.io/)
+### [Prisma](https://www.prisma.io/)
 
 > Telemetry helps us better understand how many users are using our products and how often they are using our products.
 
@@ -694,7 +694,7 @@ npx next telemetry disable
 
 List of known telemetry channels:
 
-### 📡 [Usage data](https://www.prisma.io/docs/concepts/more/telemetry#usage-data)
+#### [Usage data](https://www.prisma.io/docs/concepts/more/telemetry#usage-data)
 
 Official: ✔
 
@@ -702,15 +702,15 @@ Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Set environment variable
+##### 1. Set environment variable
 
-##### Scope: 🗗 Process
+###### Scope: 🗗 Process
 
 ```none
 CHECKPOINT_DISABLE=1
 ```
 
-### 📡 [Error reporting](https://www.prisma.io/docs/concepts/more/telemetry#error-reporting)
+#### [Error reporting](https://www.prisma.io/docs/concepts/more/telemetry#error-reporting)
 
 Official: ✔
 
@@ -718,7 +718,7 @@ Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Visit link(s) for more details
+##### 1. Visit link(s) for more details
 
 1. [Disable error reporting](https://www.prisma.io/docs/concepts/more/telemetry#error-reporting-1)
 
@@ -726,7 +726,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ## DevOps
 
-## [AutomatedLab](https://github.com/AutomatedLab/AutomatedLab)
+### [AutomatedLab](https://github.com/AutomatedLab/AutomatedLab)
 
 > AutomatedLab will start to collect telemetry starting with version 5.0. This is an opt-out collection and you will be asked once to specify whether or not you want to send us telemetry data.
 
@@ -734,30 +734,30 @@ Use methods described below to opt-out of this telemetry channel.
 
 List of known telemetry channels:
 
-### 📡 Usage data
+#### Usage data
 
 Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Set environment variable
+##### 1. Set environment variable
 
-##### Scope: 🗗 Process
+###### Scope: 🗗 Process
 
 ```none
 AUTOMATEDLAB_TELEMETRY_OPTOUT=1
 ```
 
-#### 2. Run command
+##### 2. Run command
 
-##### Scope: 👤 User
+###### Scope: 👤 User
 
 | OS      | Command                                                                                                                                                                  |
 |---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Other   | `pwsh -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Import-Module AutomatedLab -ErrorAction Stop ; Disable-LabTelemetry -ErrorAction Stop"`       |
 | Windows | `powershell -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Import-Module AutomatedLab -ErrorAction Stop ; Disable-LabTelemetry -ErrorAction Stop"` |
 
-## [Consul](https://www.consul.io/)
+### [Consul](https://www.consul.io/)
 
 > Consul makes use of a HashiCorp service called Checkpoint which is used to check for updates and critical security bulletins.
 
@@ -766,7 +766,7 @@ AUTOMATEDLAB_TELEMETRY_OPTOUT=1
 
 List of known telemetry channels:
 
-### 📡 [Update check](https://www.consul.io/docs/agent/options#disable_update_check)
+#### [Update check](https://www.consul.io/docs/agent/options#disable_update_check)
 
 Official: ✔
 
@@ -774,21 +774,21 @@ Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Set environment variable
+##### 1. Set environment variable
 
-##### Scope: 🗗 Process
+###### Scope: 🗗 Process
 
 ```none
 CHECKPOINT_DISABLE=ANY_VALUE
 ```
 
-#### 2. Edit config file (JSON)
+##### 2. Edit config file (JSON)
 
-##### Scope: 👤 User
+###### Scope: 👤 User
 
 Path: `some-dir/example.json`
 
-##### Content
+###### Content
 
 ```json
 {
@@ -796,7 +796,7 @@ Path: `some-dir/example.json`
 }
 ```
 
-### 📡 [Update check signature](https://www.consul.io/docs/agent/options#disable_anonymous_signature)
+#### [Update check signature](https://www.consul.io/docs/agent/options#disable_anonymous_signature)
 
 Official: ✔
 
@@ -804,13 +804,13 @@ Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Edit config file (JSON)
+##### 1. Edit config file (JSON)
 
-##### Scope: 👤 User
+###### Scope: 👤 User
 
 Path: `some-dir/example.json`
 
-##### Content
+###### Content
 
 ```json
 {
@@ -818,7 +818,7 @@ Path: `some-dir/example.json`
 }
 ```
 
-## [Packer](https://www.packer.io/)
+### [Packer](https://www.packer.io/)
 
 > When Packer is invoked it sometimes calls out to checkpoint.hashicorp.com to look for new versions of Packer.
 
@@ -827,21 +827,21 @@ Path: `some-dir/example.json`
 
 List of known telemetry channels:
 
-### 📡 Update check
+#### Update check
 
 Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Set environment variable
+##### 1. Set environment variable
 
-##### Scope: 🗗 Process
+###### Scope: 🗗 Process
 
 ```none
 CHECKPOINT_DISABLE=1
 ```
 
-## [Terraform](https://www.terraform.io/)
+### [Terraform](https://www.terraform.io/)
 
 > The Terraform CLI commands interact with the HashiCorp service Checkpoint to check for the availability of new versions and for critical security bulletins about the current version.
 
@@ -850,7 +850,7 @@ CHECKPOINT_DISABLE=1
 
 List of known telemetry channels:
 
-### 📡 [Update check](https://www.terraform.io/docs/commands/index.html#disable_checkpoint)
+#### [Update check](https://www.terraform.io/docs/commands/index.html#disable_checkpoint)
 
 Official: ✔
 
@@ -858,17 +858,17 @@ Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Set environment variable
+##### 1. Set environment variable
 
-##### Scope: 🗗 Process
+###### Scope: 🗗 Process
 
 ```none
 CHECKPOINT_DISABLE=ANY_VALUE
 ```
 
-#### 2. Edit config file (plaintext)
+##### 2. Edit config file (plaintext)
 
-##### Scope: 👤 User
+###### Scope: 👤 User
 
 | OS      | Path                     |
 |---------|--------------------------|
@@ -876,13 +876,13 @@ CHECKPOINT_DISABLE=ANY_VALUE
 | macOS   | `$HOME/.terraformrc`     |
 | Windows | `%APPDATA%\terraform.rc` |
 
-##### Content
+###### Content
 
 ```json
 disable_checkpoint = true
 ```
 
-### 📡 [Update check signature](https://www.terraform.io/docs/commands/index.html#disable_checkpoint_signature)
+#### [Update check signature](https://www.terraform.io/docs/commands/index.html#disable_checkpoint_signature)
 
 Official: ✔
 
@@ -890,9 +890,9 @@ Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Edit config file (plaintext)
+##### 1. Edit config file (plaintext)
 
-##### Scope: 👤 User
+###### Scope: 👤 User
 
 | OS      | Path                     |
 |---------|--------------------------|
@@ -900,13 +900,13 @@ Use methods described below to opt-out of this telemetry channel.
 | macOS   | `$HOME/.terraformrc`     |
 | Windows | `%APPDATA%\terraform.rc` |
 
-##### Content
+###### Content
 
 ```json
 disable_checkpoint_signature = true
 ```
 
-## [Cloud Development Kit for Terraform](https://github.com/hashicorp/terraform-cdk)
+### [Cloud Development Kit for Terraform](https://github.com/hashicorp/terraform-cdk)
 
 > CDK for Terraform CLI (cdktf-cli) interacts with a HashiCorp service called Checkpoint to report project metrics such as cdktf version, project language, provider name, platform name, and other details that help guide the project maintainers with feature and roadmap decisions.
 
@@ -915,21 +915,21 @@ disable_checkpoint_signature = true
 
 List of known telemetry channels:
 
-### 📡 Usage data
+#### Usage data
 
 Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Set environment variable
+##### 1. Set environment variable
 
-##### Scope: 🗗 Process
+###### Scope: 🗗 Process
 
 ```none
 CHECKPOINT_DISABLE=ANY_VALUE
 ```
 
-## [Vagrant](hhttps://www.vagrantup.com/)
+### [Vagrant](hhttps://www.vagrantup.com/)
 
 > Vagrant interacts with HashiCorp services to provide update notifications.
 
@@ -938,7 +938,7 @@ CHECKPOINT_DISABLE=ANY_VALUE
 
 List of known telemetry channels:
 
-### 📡 [Vagrant update check](https://www.vagrantup.com/docs/other/environmental-variables#vagrant_checkpoint_disable)
+#### [Vagrant update check](https://www.vagrantup.com/docs/other/environmental-variables#vagrant_checkpoint_disable)
 
 Official: ✔
 
@@ -946,15 +946,15 @@ Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Set environment variable
+##### 1. Set environment variable
 
-##### Scope: 🗗 Process
+###### Scope: 🗗 Process
 
 ```none
 VAGRANT_CHECKPOINT_DISABLE=ANY_VALUE
 ```
 
-### 📡 [Vagrant box update check](https://www.vagrantup.com/docs/other/environmental-variables#vagrant_box_update_check_disable)
+#### [Vagrant box update check](https://www.vagrantup.com/docs/other/environmental-variables#vagrant_box_update_check_disable)
 
 Official: ✔
 
@@ -962,15 +962,15 @@ Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Set environment variable
+##### 1. Set environment variable
 
-##### Scope: 🗗 Process
+###### Scope: 🗗 Process
 
 ```none
 VAGRANT_BOX_UPDATE_CHECK_DISABLE=ANY_VALUE
 ```
 
-## [Weave Net](https://www.weave.works/)
+### [Weave Net](https://www.weave.works/)
 
 > Weave Net periodically contacts Weaveworks servers for available versions. New versions are announced in the log and in the status summary.
 
@@ -979,21 +979,21 @@ VAGRANT_BOX_UPDATE_CHECK_DISABLE=ANY_VALUE
 
 List of known telemetry channels:
 
-### 📡 Update check
+#### Update check
 
 Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Set environment variable
+##### 1. Set environment variable
 
-##### Scope: 🗗 Process
+###### Scope: 🗗 Process
 
 ```none
 CHECKPOINT_DISABLE=1
 ```
 
-## [WKSctl](https://www.weave.works/oss/wksctl/)
+### [WKSctl](https://www.weave.works/oss/wksctl/)
 
 > wksctl contacts Weaveworks servers for available versions. When a new version is available, wksctl will print out a message along with a URL to download it.
 
@@ -1002,15 +1002,15 @@ CHECKPOINT_DISABLE=1
 
 List of known telemetry channels:
 
-### 📡 Update check
+#### Update check
 
 Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Set environment variable
+##### 1. Set environment variable
 
-##### Scope: 🗗 Process
+###### Scope: 🗗 Process
 
 ```none
 CHECKPOINT_DISABLE=1
@@ -1018,7 +1018,7 @@ CHECKPOINT_DISABLE=1
 
 ## Drivers
 
-## [Nvidia drivers](https://www.nvidia.com/en-us/geforce/geforce-experience/)
+### [Nvidia drivers](https://www.nvidia.com/en-us/geforce/geforce-experience/)
 
 > Details on your device and network configurations, how you are using our products or services (including the software you are using), and details on how your system is performing, so we can optimize hardware and software configurations.
 
@@ -1026,13 +1026,13 @@ CHECKPOINT_DISABLE=1
 
 List of known telemetry channels:
 
-### 📡 [Diagnostic data](https://www.gamersnexus.net/industry/2672-geforce-experience-data-transfer-analysis)
+#### [Diagnostic data](https://www.gamersnexus.net/industry/2672-geforce-experience-data-transfer-analysis)
 
 Official: ❌
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Visit link(s) for more details
+##### 1. Visit link(s) for more details
 
 1. [Disable Nvidia Telemetry](https://github.com/NateShoffner/Disable-Nvidia-Telemetry)
 
@@ -1040,7 +1040,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ## Operating systems
 
-## [Windows 10](https://www.microsoft.com/windows/)
+### [Windows 10](https://www.microsoft.com/windows/)
 
 > Microsoft collects Windows diagnostic data to solve problems and to keep Windows up to date, secure, and operating properly.
 
@@ -1049,7 +1049,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 List of known telemetry channels:
 
-### 📡 [Usage data | Enterpise](https://docs.microsoft.com/en-us/windows/privacy/configure-windows-diagnostic-data-in-your-organization)
+#### [Usage data | Enterpise](https://docs.microsoft.com/en-us/windows/privacy/configure-windows-diagnostic-data-in-your-organization)
 
 Official: ✔
 
@@ -1057,15 +1057,15 @@ Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Set registry key
+##### 1. Set registry key
 
-##### Scope: 💻 Machine
+###### Scope: 💻 Machine
 
 - Path: `HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DataCollection\AllowTelemetry`
 - Type: `REG_DWORD`
 - Value: `0`
 
-### 📡 Usage data
+#### Usage data
 
 Official: ❌
 
@@ -1073,7 +1073,7 @@ Official: ❌
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Visit link(s) for more details
+##### 1. Visit link(s) for more details
 
 1. [ghacks.net | Comparison of Windows 10 Privacy tools](https://www.ghacks.net/2015/08/14/comparison-of-windows-10-privacy-tools/)
 
@@ -1097,7 +1097,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ## Shells
 
-## [PowerShell Core](https://github.com/powershell/powershell)
+### [PowerShell Core](https://github.com/powershell/powershell)
 
 > PowerShell Core sends basic telemetry data to Microsoft when it is launched. The data includes the OS name, OS version, and PowerShell version. This data allows us to better understand the environments where PowerShell is used and enables us to prioritize new features and fixes.
 
@@ -1106,15 +1106,15 @@ Use methods described below to opt-out of this telemetry channel.
 
 List of known telemetry channels:
 
-### 📡 Usage data
+#### Usage data
 
 Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-#### 1. Set environment variable
+##### 1. Set environment variable
 
-##### Scope: 🗗 Process
+###### Scope: 🗗 Process
 
 ```none
 POWERSHELL_TELEMETRY_OPTOUT=1
