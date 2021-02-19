@@ -118,7 +118,7 @@ function New-MdTable {
 
 filter ConvertTo-Readme {
     Param (
-        [int]$Indent = 2
+        [int]$Indent = 3
     )
 
     $hdr = '#'
@@ -147,10 +147,10 @@ filter ConvertTo-Readme {
         $Indent++ > $null
 
         if ($tm.links.main) {
-            '{0} 📡 [{1}]({2})' -f ($hdr * $Indent), $tm.name, $tm.links.main | Add-Newline
+            '{0} [{1}]({2})' -f ($hdr * $Indent), $tm.name, $tm.links.main | Add-Newline
         }
         else {
-            '{0} 📡 {1}' -f ($hdr * $Indent), $tm.name | Add-Newline
+            '{0} {1}' -f ($hdr * $Indent), $tm.name | Add-Newline
         }
 
         'Official: {0}' -f ('❌', '✔')[$tm.is_official] | Add-Newline
