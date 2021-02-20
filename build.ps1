@@ -222,25 +222,10 @@ task readme {
 Telemetry in software projects is a polarized issue: on the one hand it allows developers to improve their work by collecting various metrics, on the other hand - nobody likes to be spied on.
 The goal of this project is to put you in control. See what data is collected by the tools you use and decide if you want to share it. Then use methods provided here to opt-in or opt-out.
 
-## Details
-
-The core of this project is a set of JSON files which describe what telemetry is collected and what can be done to enable or disable it.
-
-### JSON data format
-
-See [data/README](/data/README.md)
-
-### Build setup
-
-See [CONTRIBUTING](/.github/CONTRIBUTING.md)
-
-## Contributing
-
-If the tool you're using is not here you can easily add it by creating a new JSON file describing its telemetry data channels. Pull requests are welcome!
-
 ## Real-world applications
 
-Telemetry data from the JSON files can be used in various ways. Here are several examples:
+The core of this project is a set of JSON files which describe what telemetry is collected and what can be done to enable or disable it.
+This data can be used in various ways. Here are several examples:
 
 ### Documentation
 
@@ -249,6 +234,18 @@ The [page](README.md) you see is automatically generated.
 ### Scripts
 
 [Scripts](/examples/) to disable all known telemetry channels in your shell session.
+
+## Details
+
+### Contributing
+
+If the tool you're using is not here you can easily add it by creating a new JSON file describing its telemetry data channels. Pull requests are welcome!
+
+See [CONTRIBUTING](/.github/CONTRIBUTING.md) for details on adding telemetry data and running tests.
+
+### JSON data format
+
+JSON telemetry data format decscription: [data/README](/data/)
 
 ## Future plans
 
