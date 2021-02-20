@@ -84,6 +84,7 @@ Below is automatically generated list of known telemetry channels for various ap
 - [DevOps](#devops)
   - [AutomatedLab](#automatedlab)
   - [Consul](#consul)
+  - [k0s](#k0s)
   - [Packer](#packer)
   - [Terraform](#terraform)
   - [Cloud Development Kit for Terraform](#cloud-development-kit-for-terraform)
@@ -238,7 +239,7 @@ HOMEBREW_NO_ANALYTICS=1
 brew analytics off
 ```
 
-### [Lens](https://www.prisma.io/)
+### [Lens](https://k8slens.dev/)
 
 > Lens collects telemetry data, which is used to help us understand how to improve the product. For example, this usage data helps us to debug issues and to prioritize new features.
 
@@ -255,7 +256,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ##### 1. Visit link(s) for more details
 
-1. [Disable error reporting](https://docs.k8slens.dev/v4.1.2/getting-started/preferences/#disable-telemetry-reporting)
+1. [Disable usage data reporting](https://docs.k8slens.dev/v4.1.2/getting-started/preferences/#disable-telemetry-reporting)
 
     > If you don't wish to send usage data to Mirantis, you can disable the "Telemetry & Usage Tracking" in the Lens preferences.
 
@@ -849,6 +850,27 @@ Path: `some-dir/example.json`
   "disable_anonymous_signature": true
 }
 ```
+
+### [k0s](https://k8slens.dev/)
+
+> To build better end user experience we collect and send telemetry data from clusters.
+
+- [Telemetry details](https://docs.k0sproject.io/v0.10.0/configuration/#telemetry)
+- [Privacy policy](https://www.mirantis.com/company/privacy-policy/)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Visit link(s) for more details
+
+1. [Disable usage data reporting](https://docs.k8slens.dev/v4.1.2/getting-started/preferences/#disable-telemetry-reporting)
+
+    > It is enabled by default and can be disabled by settings corresponding option as 'false'.
 
 ### [Packer](https://www.packer.io/)
 
