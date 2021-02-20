@@ -129,7 +129,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ###### Content
 
-```json
+```none
 atom.config.set('core.telemetryConsent', 'no')
 ```
 
@@ -932,7 +932,7 @@ CHECKPOINT_DISABLE=ANY_VALUE
 
 ###### Content
 
-```json
+```none
 disable_checkpoint = true
 ```
 
@@ -956,7 +956,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ###### Content
 
-```json
+```none
 disable_checkpoint_signature = true
 ```
 

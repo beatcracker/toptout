@@ -288,7 +288,7 @@ filter ConvertTo-Readme {
 
                         '{0} Content' -f ($hdr * $Indent) | Add-Newline
 
-                        '```json'
+                        '```none'
                         $tgs.display_value
                         '```'
 
