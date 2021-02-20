@@ -15,18 +15,29 @@ The goal of this project is to put you in control. See what data is collected by
 
 The core of this project is a set of JSON files which describe what telemetry is collected and what can be done to enable or disable it.
 
+### JSON data format
+
+See [data/README](/data/README.md)
+
+### Build setup
+
+See [CONTRIBUTING](/.github/CONTRIBUTING.md)
+
 ## Contributing
 
-If the tool you're using is not here you can easily add it by creating a new JSON file describing its telemetry data channels.
-
-See [CONTRIBUTING](/.github/CONTRIBUTING.md) for build setup and [data/README](/data/README.md) for JSON data format details.
+If the tool you're using is not here you can easily add it by creating a new JSON file describing its telemetry data channels. Pull requests are welcome!
 
 ## Real-world applications
 
 Telemetry data from the JSON files can be used in various ways. Here are several examples:
 
-- The [README](README.md) you see is automatically generated
-- [Scripts](/examples) to disable all known telemetry channels in your shell session
+### Documentation
+
+The [page](README.md) you see is automatically generated.
+
+### Scripts
+
+[Scripts](/examples/) to disable all known telemetry channels in your shell session.
 
 ## Future plans
 
@@ -46,7 +57,9 @@ Telemetry data from the JSON files can be used in various ways. Here are several
 
   GitHub: [undergroundwires/privacy.sexy](https://github.com/undergroundwires/privacy.sexy)
 
-## Table of Contents
+## Telemetry channels
+
+Below is automatically genereated list of known telemetry channels for various applications.
 
 - [Applications](#applications)
   - [Atom](#atom)
