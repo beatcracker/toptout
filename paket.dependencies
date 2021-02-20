@@ -1,5 +1,5 @@
 source https://www.powershellgallery.com/api/v2/
 
-clitool InvokeBuild = 5.5.11
+clitool InvokeBuild = 5.7.0
 clitool Pester = 4.10.1
-clitool PSScriptAnalyzer = 1.18.3
+clitool PSScriptAnalyzer = 1.19.1

@@ -50,7 +50,12 @@ filter ConvertTo-OsTableObject {
 
 function New-MdTable {
     [CmdletBinding()]
+    # Doesn't change anything
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseShouldProcessForStateChangingFunctions', '')]
+
+    # Collects pipeline input in the implied End block
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseProcessBlockForPipelineCommand', '')]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', '')]
     Param(
         [Parameter(Mandatory = $true, ValueFromPipeline = $true, Position = 0)]
         [ValidateNotNullOrEmpty()]

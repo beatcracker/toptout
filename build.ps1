@@ -1,5 +1,9 @@
 #Requires -Version 6
 
+# PSScriptAnalyzer doesn't handle scriptblocks well
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseUsingScopeModifierInNewRunspaces', '')]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', '')]
+
 [CmdletBinding()]
 Param(
     [Parameter(Position = 0)]
@@ -155,6 +159,7 @@ task test {
             [Parameter(Position = 0)]
             [ValidateNotNullOrEmpty()]
             [string]$PackageDirPath,
+
 
             [Parameter(Position = 1)]
             [ValidateNotNullOrEmpty()]

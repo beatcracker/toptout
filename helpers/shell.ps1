@@ -147,6 +147,8 @@ function Get-ShellScriptHelpers {
 }
 
 filter ConvertTo-ShellScript {
+    # $Shell IS used, PSScriptAnalyzer is just not smart enough yet to figure it out
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', '')]
     Param (
         [ValidateSet('bash', 'pwsh')]
         [string]$Shell
