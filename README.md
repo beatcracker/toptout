@@ -62,6 +62,7 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Atom](#atom)
   - [Firefox](#firefox)
   - [Homebrew](#homebrew)
+  - [Lens](#lens)
   - [Microsoft 365 | Enterprise](#microsoft-365--enterprise)
   - [Microsoft calculator](#microsoft-calculator)
   - [VSCode](#vscode)
@@ -236,6 +237,27 @@ HOMEBREW_NO_ANALYTICS=1
 ```shell
 brew analytics off
 ```
+
+### [Lens](https://www.prisma.io/)
+
+> Lens collects telemetry data, which is used to help us understand how to improve the product. For example, this usage data helps us to debug issues and to prioritize new features.
+
+- [Telemetry details](https://docs.k8slens.dev/getting-started/preferences)
+- [Privacy policy](https://www.mirantis.com/company/privacy-policy/)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Visit link(s) for more details
+
+1. [Disable error reporting](https://docs.k8slens.dev/v4.1.2/getting-started/preferences/#disable-telemetry-reporting)
+
+    > If you don't wish to send usage data to Mirantis, you can disable the "Telemetry & Usage Tracking" in the Lens preferences.
 
 ### [Microsoft 365 | Enterprise](https://www.microsoft.com/en-us/microsoft-365/enterprise)
 

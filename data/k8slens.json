@@ -1,0 +1,28 @@
+{
+  "id": "k8slens",
+  "name": "Lens",
+  "executable_name": "Lens",
+  "category": "Applications",
+  "description": "Lens collects telemetry data, which is used to help us understand how to improve the product. For example, this usage data helps us to debug issues and to prioritize new features.",
+  "links": {
+    "main": "https://www.prisma.io/",
+    "telemetry": "https://docs.k8slens.dev/getting-started/preferences",
+    "privacy": "https://www.mirantis.com/company/privacy-policy/"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "is_official": true,
+      "target": {
+        "noop": [
+          {
+            "name": "Disable error reporting",
+            "description": "If you don't wish to send usage data to Mirantis, you can disable the \"Telemetry & Usage Tracking\" in the Lens preferences.",
+            "link": "https://docs.k8slens.dev/v4.1.2/getting-started/preferences/#disable-telemetry-reporting"
+          }
+        ]
+      }
+    }
+  ]
+}
