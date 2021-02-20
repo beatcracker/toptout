@@ -219,7 +219,7 @@ filter ConvertTo-Readme {
                     '{0} Scope: {1}' -f ($hdr * $Indent), @{
                         machine = '💻 Machine'
                         user    = '👤 User'
-                        process = '🗗 Process'
+                        process = '⧉ Process'
                     }[$scope] | Add-Newline
 
                     if ($tg -eq 'env') {

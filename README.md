@@ -225,7 +225,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ##### 1. Set environment variable
 
-###### Scope: 🗗 Process
+###### Scope: ⧉ Process
 
 ```none
 HOMEBREW_NO_ANALYTICS=1
@@ -388,7 +388,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ##### 1. Set environment variable
 
-###### Scope: 🗗 Process
+###### Scope: ⧉ Process
 
 ```none
 SAM_CLI_TELEMETRY=0
@@ -411,7 +411,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ##### 1. Set environment variable
 
-###### Scope: 🗗 Process
+###### Scope: ⧉ Process
 
 ```none
 AZURE_CORE_COLLECT_TELEMETRY=0
@@ -465,7 +465,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ##### 1. Set environment variable
 
-###### Scope: 🗗 Process
+###### Scope: ⧉ Process
 
 ```none
 DO_NOT_TRACK=1
@@ -529,7 +529,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ##### 1. Set environment variable
 
-###### Scope: 🗗 Process
+###### Scope: ⧉ Process
 
 ```none
 STRIPE_CLI_TELEMETRY_OPTOUT=1
@@ -551,7 +551,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ##### 1. Set environment variable
 
-###### Scope: 🗗 Process
+###### Scope: ⧉ Process
 
 ```none
 DO_NOT_TRACK=1
@@ -576,7 +576,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ##### 1. Set environment variable
 
-###### Scope: 🗗 Process
+###### Scope: ⧉ Process
 
 ```none
 CI=ANY_VALUE
@@ -607,7 +607,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ##### 1. Set environment variable
 
-###### Scope: 🗗 Process
+###### Scope: ⧉ Process
 
 ```none
 GATSBY_TELEMETRY_DISABLED=1
@@ -640,7 +640,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ##### 1. Set environment variable
 
-###### Scope: 🗗 Process
+###### Scope: ⧉ Process
 
 ```none
 HASURA_GRAPHQL_ENABLE_TELEMETRY=false
@@ -681,7 +681,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ##### 1. Set environment variable
 
-###### Scope: 🗗 Process
+###### Scope: ⧉ Process
 
 ```none
 DOTNET_CLI_TELEMETRY_OPTOUT=true
@@ -704,7 +704,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ##### 1. Set environment variable
 
-###### Scope: 🗗 Process
+###### Scope: ⧉ Process
 
 ```none
 NEXT_TELEMETRY_DISABLED=1
@@ -737,7 +737,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ##### 1. Set environment variable
 
-###### Scope: 🗗 Process
+###### Scope: ⧉ Process
 
 ```none
 CHECKPOINT_DISABLE=1
@@ -775,7 +775,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ##### 1. Set environment variable
 
-###### Scope: 🗗 Process
+###### Scope: ⧉ Process
 
 ```none
 AUTOMATEDLAB_TELEMETRY_OPTOUT=1
@@ -809,7 +809,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ##### 1. Set environment variable
 
-###### Scope: 🗗 Process
+###### Scope: ⧉ Process
 
 ```none
 CHECKPOINT_DISABLE=ANY_VALUE
@@ -889,7 +889,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ##### 1. Set environment variable
 
-###### Scope: 🗗 Process
+###### Scope: ⧉ Process
 
 ```none
 CHECKPOINT_DISABLE=1
@@ -914,7 +914,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ##### 1. Set environment variable
 
-###### Scope: 🗗 Process
+###### Scope: ⧉ Process
 
 ```none
 CHECKPOINT_DISABLE=ANY_VALUE
@@ -977,7 +977,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ##### 1. Set environment variable
 
-###### Scope: 🗗 Process
+###### Scope: ⧉ Process
 
 ```none
 CHECKPOINT_DISABLE=ANY_VALUE
@@ -1002,7 +1002,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ##### 1. Set environment variable
 
-###### Scope: 🗗 Process
+###### Scope: ⧉ Process
 
 ```none
 VAGRANT_CHECKPOINT_DISABLE=ANY_VALUE
@@ -1018,7 +1018,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ##### 1. Set environment variable
 
-###### Scope: 🗗 Process
+###### Scope: ⧉ Process
 
 ```none
 VAGRANT_BOX_UPDATE_CHECK_DISABLE=ANY_VALUE
@@ -1041,7 +1041,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ##### 1. Set environment variable
 
-###### Scope: 🗗 Process
+###### Scope: ⧉ Process
 
 ```none
 CHECKPOINT_DISABLE=1
@@ -1064,7 +1064,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ##### 1. Set environment variable
 
-###### Scope: 🗗 Process
+###### Scope: ⧉ Process
 
 ```none
 CHECKPOINT_DISABLE=1
@@ -1168,7 +1168,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ##### 1. Set environment variable
 
-###### Scope: 🗗 Process
+###### Scope: ⧉ Process
 
 ```none
 POWERSHELL_TELEMETRY_OPTOUT=1
