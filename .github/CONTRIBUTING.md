@@ -22,7 +22,7 @@ The provided `build.ps1` script includes several tasks:
 
 - `test`: run code and data files tests
 - `readme`: generate `README.md`
-- `shell`: generate [example shell scripts](/example)
+- `shell`: generate [example shell scripts](/examples/)
 - `clean-all`: clean global and local NuGet and cache directories
 - `clean`: clean local NuGet and cache directories
 
