@@ -7,7 +7,7 @@ jobs:
     runs-on: [ubuntu-18.04]
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Pester
         shell: pwsh
         run: ./build.ps1 test
