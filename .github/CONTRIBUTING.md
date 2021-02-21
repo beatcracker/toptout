@@ -26,7 +26,7 @@ The provided `build.ps1` script includes several tasks:
 - `clean-all`: clean global and local NuGet and cache directories
 - `clean`: clean local NuGet and cache directories
 
-If the build script is run without arguments the `test` and `readme` tasks are executed. To execute specific task provide its name as an argument: `.\build.ps1 readme`. For more details see [Invoke-Build](https://github.com/nightroman/Invoke-Build) docs.
+If the build script is run without arguments the `test` and `readme` tasks are executed. To execute specific task provide its name as an argument: `./build.ps1 readme`. For more details see [Invoke-Build](https://github.com/nightroman/Invoke-Build) docs.
 
 ### Dependencies
 
