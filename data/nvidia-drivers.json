@@ -20,6 +20,11 @@
       "target": {
         "noop": [
           {
+            "name": "NVCleanstall",
+            "description": "Our free software lets you customize the NVIDIA GeForce Driver package by removing components that you don't need (or want).",
+            "link": "https://www.techpowerup.com/nvcleanstall/"
+          },
+          {
             "name": "Disable Nvidia Telemetry",
             "description": "Disable Nvidia Telemetry is a utility that allows you to disable the telemetry services Nvidia bundles with their drivers.",
             "link": "https://github.com/NateShoffner/Disable-Nvidia-Telemetry"

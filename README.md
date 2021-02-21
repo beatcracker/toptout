@@ -1088,7 +1088,11 @@ Use methods described below to opt-out of this telemetry channel.
 
 ##### 1. Visit link(s) for more details
 
-1. [Disable Nvidia Telemetry](https://github.com/NateShoffner/Disable-Nvidia-Telemetry)
+1. [NVCleanstall](https://www.techpowerup.com/nvcleanstall/)
+
+    > Our free software lets you customize the NVIDIA GeForce Driver package by removing components that you don't need (or want).
+
+2. [Disable Nvidia Telemetry](https://github.com/NateShoffner/Disable-Nvidia-Telemetry)
 
     > Disable Nvidia Telemetry is a utility that allows you to disable the telemetry services Nvidia bundles with their drivers.
 
