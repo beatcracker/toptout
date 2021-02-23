@@ -361,8 +361,8 @@ task api {
 
     Write-Build White '  category/'
     New-Item -Path "$ApiDir/category" -ItemType Directory > $null
-    @($data.category).ForEach(
-        { "$_".ToLowerInvariant() } # HACK! Fix by adding category_id to data files
+    @($data.category | Sort-Object -Unique).ForEach(
+        { "$_".ToLowerInvariant().Replace(' ', '-') } # HACK! Fix by adding category_id to data files
     ) | ConvertTo-Json -Depth 100 -Compress |
     Out-File -LiteralPath "$ApiDir/category/index.json" -Encoding utf8NoBOM -NoNewline -Force
 
