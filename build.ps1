@@ -133,6 +133,7 @@ task . -Jobs @(
     'test'
     'readme'
     'shell'
+    'api'
 )
 
 task clean-all {
@@ -334,6 +335,68 @@ task shell {
 
         Write-Build Gray ('  - {0}: {1}' -f $Shell, "$ShellScriptDir/$ShellScriptName")
         ($ShellScript -join $LF).Trim() + $LF | Out-File -LiteralPath "$ShellScriptDir/$ShellScriptName" -Encoding utf8NoBOM -NoNewline -Force
+    }
+}
+
+task api {
+    . "$BuildRoot/helpers/common.ps1"
+
+    $DataDir = "$BuildRoot/data"
+    $ApiDir = "$BuildRoot/docs/api"
+
+    Remove-BuildItem $ApiDir
+
+    $DataFiles = Get-ChildItem $DataDir -Filter '*.json' -File
+
+    Write-Build White ('Processing data files: {0}' -f $DataFiles.Count)
+    $DataFiles | ForEach-Object {
+        Write-Build Gray ('  - {0}' -f $_.Name)
+    }
+
+    $data = $DataFiles | ForEach-Object {
+        $_ | Get-Content -Raw | ConvertFrom-Json -Depth 100 -AsHashtable
+    }
+
+    Write-Build White 'Generating API'
+
+    Write-Build White '  category/'
+    New-Item -Path "$ApiDir/category" -ItemType Directory > $null
+    @($data.category).ForEach(
+        { "$_".ToLowerInvariant() } # HACK! Fix by adding category_id to data files
+    ) | ConvertTo-Json -Depth 100 -Compress |
+    Out-File -LiteralPath "$ApiDir/category/index.json" -Encoding utf8NoBOM -NoNewline -Force
+
+    Write-Build White '  id/'
+    New-Item -Path "$ApiDir/id" -ItemType Directory > $null
+    @($data.id) | ConvertTo-Json -Depth 100 -Compress |
+    Out-File -LiteralPath "$ApiDir/id/index.json" -Encoding utf8NoBOM -NoNewline -Force
+
+    Write-Build White '  telemetry/'
+    New-Item -Path "$ApiDir/telemetry" -ItemType Directory > $null
+    ConvertTo-Json -InputObject @($data) -Depth 100 -Compress |
+    Out-File -LiteralPath "$ApiDir/telemetry/index.json" -Encoding utf8NoBOM -NoNewline -Force
+
+    Write-Build White '  telemetry/id/'
+    $data | ForEach-Object {
+        $id = $_.id
+
+        Write-Build White "    $id/"
+        New-Item -Path "$ApiDir/telemetry/id/$id" -ItemType Directory > $null
+
+        $_ | ConvertTo-Json -Depth 100 -Compress |
+        Out-File -LiteralPath "$ApiDir/telemetry/id/$id/index.json" -Encoding utf8NoBOM -NoNewline -Force
+    }
+
+    Write-Build White '  telemetry/category/'
+    $data_by_category = $data | Group-Object -Property category -AsHashTable -AsString
+    $data_by_category.GetEnumerator() | ForEach-Object {
+        $category = $_.Key.ToLowerInvariant().Replace(' ', '-')  # HACK! Fix by adding category_id to data files
+
+        Write-Build White "    $category/"
+        New-Item -Path "$ApiDir/telemetry/category/$category" -ItemType Directory > $null
+
+        ConvertTo-Json -InputObject @($_.Value) -Depth 100 -Compress |
+        Out-File -LiteralPath "$ApiDir/telemetry/category/$category/index.json" -Encoding utf8NoBOM -NoNewline -Force
     }
 }
 
