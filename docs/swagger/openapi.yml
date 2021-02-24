@@ -1,0 +1,79 @@
+openapi: 3.0.2
+info:
+  title: Toptout
+  description: Get data about telemetry channels in various applications
+  version: 0.0.1
+servers:
+  - url: https://beatcracker.github.io/toptout/api
+    description: Implements static API using GitHub pages
+paths:
+  /id:
+    get:
+      summary: Returns a list of all supported application ids
+      responses:
+        '200':
+          description: A JSON array of all supported application ids
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /category:
+    get:
+      summary: Returns a list of all supported application categories
+      responses:
+        '200':
+          description: A JSON array of all supported application categories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /telemetry:
+    get:
+      summary: Returns telemetry details for all known application ids
+      responses:
+        '200':
+          description: An array of JSON objects with telemetry channels data
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: https://raw.githubusercontent.com/beatcracker/toptout/master/schema/toptout.schema.json
+  /telemetry/id/{id}:
+    get:
+      summary: Returns telemetry details for specific application id
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A JSON object with telemetry channels data
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/beatcracker/toptout/master/schema/toptout.schema.json
+  /telemetry/category/{category}:
+    get:
+      summary: Returns telemetry details for applications in the specific category
+      parameters:
+        - in: path
+          name: category
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: An array of JSON objects with telemetry channles data
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: https://raw.githubusercontent.com/beatcracker/toptout/master/schema/toptout.schema.json

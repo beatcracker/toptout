@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- Source: https://stackoverflow.com/a/53525511/4424236 -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Toptout | Swagger UI</title>
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📡</text></svg>">
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/swagger-ui-dist@3/swagger-ui.css">
+</head>
+
+<body>
+  <div id="swagger-ui"></div>
+  <script src="//cdn.jsdelivr.net/npm/swagger-ui-dist@3/swagger-ui-bundle.js"> </script>
+  <script type="text/javascript">
+    window.onload = function () {
+      // https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration/
+      SwaggerUIBundle({
+        deepLinking: true,
+        dom_id: '#swagger-ui',
+        showExtensions: true,
+        showCommonExtensions: true,
+        url: 'openapi.yml'
+      });
+    };
+  </script>
+</body>
+
+</html>
