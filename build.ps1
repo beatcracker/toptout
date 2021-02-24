@@ -243,7 +243,7 @@ Get telemetry confugration data via API! See [openapi.yaml](https://github.com/b
 #### Example
 
 ```shell
-curl -LX GET 'https://beatcracker.github.io/toptout/api/telemetry/id/powershell-core' -H 'accept: application/json'
+curl -X GET 'https://beatcracker.github.io/toptout/api/telemetry/id/powershell-core/' -H 'accept: application/json'
 ```
 
 ## Details

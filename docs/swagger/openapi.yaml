@@ -16,7 +16,7 @@ tags:
   - name: telemetry
     description: Get telemetry data by application id or category
 paths:
-  /id:
+  /id/:
     get:
       summary: Returns a list of all supported application ids
       tags:
@@ -30,7 +30,7 @@ paths:
                 type: array
                 items:
                   type: string
-  /category:
+  /category/:
     get:
       summary: Returns a list of all supported application categories
       tags:
@@ -44,7 +44,7 @@ paths:
                 type: array
                 items:
                   type: string
-  /telemetry:
+  /telemetry/:
     get:
       summary: Returns telemetry details for all known application ids
       tags:
@@ -58,7 +58,7 @@ paths:
                 type: array
                 items:
                   $ref: https://raw.githubusercontent.com/beatcracker/toptout/master/schema/toptout.schema.json
-  /telemetry/id/{id}:
+  /telemetry/id/{id}/:
     get:
       summary: Returns telemetry details for specific application id
       tags:
@@ -76,7 +76,7 @@ paths:
             application/json:
               schema:
                 $ref: https://raw.githubusercontent.com/beatcracker/toptout/master/schema/toptout.schema.json
-  /telemetry/category/{category}:
+  /telemetry/category/{category}/:
     get:
       summary: Returns telemetry details for applications in specific category
       tags:
