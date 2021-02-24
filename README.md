@@ -24,6 +24,10 @@ The [page](README.md) you see is automatically generated.
 
 [Scripts](/examples/) to disable all known telemetry channels in your shell session.
 
+### API
+
+Get telemetry confugration data via API! See [openapi.yaml](docs/swagger/openapi.yml) definition and try it online using [Swagger-UI](https://beatcracker.github.io/toptout/swagger).
+
 ## Details
 
 ### Contributing
@@ -38,7 +42,6 @@ JSON telemetry data format decscription: [data/README](/data/)
 
 ## Future plans
 
-- API to serve this data online.
 - Automated tool that can ingest the data from the API. You could run it on your machine to detect and configure telemetry in all suported products.
 - ???
 
