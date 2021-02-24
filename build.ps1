@@ -238,7 +238,7 @@ The [page](README.md) you see is automatically generated.
 
 ### API
 
-Get telemetry confugration data via API! See [openapi.yaml](docs/swagger/openapi.yml) definition and try it online using [Swagger-UI](https://beatcracker.github.io/toptout/swagger).
+Get telemetry confugration data via API! See [openapi.yaml](https://github.com/beatcracker/toptout/blob/api-docs/docs/swagger/openapi.yaml) definition and try it online using [Swagger-UI](https://beatcracker.github.io/toptout/swagger).
 
 ## Details
 
