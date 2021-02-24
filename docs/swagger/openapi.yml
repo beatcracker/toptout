@@ -70,7 +70,7 @@ paths:
             type: string
       responses:
         '200':
-          description: An array of JSON objects with telemetry channles data
+          description: An array of JSON objects with telemetry channels data
           content:
             application/json:
               schema:
