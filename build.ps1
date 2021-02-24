@@ -240,6 +240,12 @@ The [page](README.md) you see is automatically generated.
 
 Get telemetry confugration data via API! See [openapi.yaml](https://github.com/beatcracker/toptout/blob/api-docs/docs/swagger/openapi.yaml) definition and try it online using [Swagger-UI](https://beatcracker.github.io/toptout/swagger).
 
+#### Example
+
+```shell
+curl -LX GET 'https://beatcracker.github.io/toptout/api/telemetry/id/powershell-core' -H 'accept: application/json'
+```
+
 ## Details
 
 ### Contributing
