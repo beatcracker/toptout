@@ -6,10 +6,17 @@ info:
 servers:
   - url: https://beatcracker.github.io/toptout/api
     description: Implements static API using GitHub pages
+tags:
+  - name: apps
+    description: Get application ids or categories
+  - name: telemetry
+    description: Get telemetry data by application id or category
 paths:
   /id:
     get:
       summary: Returns a list of all supported application ids
+      tags:
+        - apps
       responses:
         '200':
           description: A JSON array of all supported application ids
@@ -22,6 +29,8 @@ paths:
   /category:
     get:
       summary: Returns a list of all supported application categories
+      tags:
+        - apps
       responses:
         '200':
           description: A JSON array of all supported application categories
@@ -34,6 +43,8 @@ paths:
   /telemetry:
     get:
       summary: Returns telemetry details for all known application ids
+      tags:
+        - telemetry
       responses:
         '200':
           description: An array of JSON objects with telemetry channels data
@@ -46,6 +57,8 @@ paths:
   /telemetry/id/{id}:
     get:
       summary: Returns telemetry details for specific application id
+      tags:
+        - telemetry
       parameters:
         - in: path
           name: id
@@ -61,7 +74,9 @@ paths:
                 $ref: https://raw.githubusercontent.com/beatcracker/toptout/master/schema/toptout.schema.json
   /telemetry/category/{category}:
     get:
-      summary: Returns telemetry details for applications in the specific category
+      summary: Returns telemetry details for applications in specific category
+      tags:
+        - telemetry
       parameters:
         - in: path
           name: category
