@@ -23,7 +23,7 @@
                     "type": "string"
                 },
                 "links": {
-                    "$ref": "#/definitions/ToptoutLinks"
+                    "$ref": "#/definitions/Links"
                 },
                 "telemetry": {
                     "type": "array",
@@ -41,7 +41,7 @@
             ],
             "title": "Toptout"
         },
-        "ToptoutLinks": {
+        "Links": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -73,7 +73,7 @@
             "required": [
                 "main"
             ],
-            "title": "ToptoutLinks"
+            "title": "Links"
         },
         "Telemetry": {
             "type": "object",
@@ -93,7 +93,7 @@
                     "type": "string"
                 },
                 "links": {
-                    "$ref": "#/definitions/ToptoutLinks"
+                    "$ref": "#/definitions/Links"
                 },
                 "target": {
                     "$ref": "#/definitions/Target"
@@ -110,9 +110,6 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "json_file": {
-                    "$ref": "#/definitions/JSONFile"
-                },
                 "exec": {
                     "$ref": "#/definitions/Exec"
                 },
@@ -121,6 +118,9 @@
                 },
                 "plain_file": {
                     "$ref": "#/definitions/PlainFile"
+                },
+                "json_file": {
+                    "$ref": "#/definitions/JSONFile"
                 },
                 "registry": {
                     "$ref": "#/definitions/Registry"
@@ -135,11 +135,6 @@
             "anyOf": [
                 {
                     "required": [
-                        "json_file"
-                    ]
-                },
-                {
-                    "required": [
                         "exec"
                     ]
                 },
@@ -151,6 +146,11 @@
                 {
                     "required": [
                         "plain_file"
+                    ]
+                },
+                {
+                    "required": [
+                        "json_file"
                     ]
                 },
                 {
@@ -206,7 +206,7 @@
             "required": [
                 "scope"
             ],
-            "title": "PlainFile"
+            "title": "Env"
         },
         "EnvProperties": {
             "type": "object",
@@ -265,7 +265,7 @@
             "required": [
                 "scope"
             ],
-            "title": "PlainFile"
+            "title": "Exec"
         },
         "ExecProperties": {
             "type": "object",
@@ -324,7 +324,7 @@
             "required": [
                 "scope"
             ],
-            "title": "PlainFile"
+            "title": "JSONFile"
         },
         "JSONFileProperties": {
             "type": "object",
