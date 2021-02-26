@@ -589,9 +589,13 @@
                     "type": "string"
                 },
                 "opt_in": {
-                    "type": [
-                        "string",
-                        "null"
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
                     ]
                 }
             },
