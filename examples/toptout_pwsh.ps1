@@ -175,14 +175,14 @@ ${env:CHECKPOINT_DISABLE} = 'ANY_VALUE'
 ${env:CHECKPOINT_DISABLE} = 'ANY_VALUE'
 
 # Vagrant
-# hhttps://www.vagrantup.com/
+# https://www.vagrantup.com/
 
 # Vagrant update check
 # https://www.vagrantup.com/docs/other/environmental-variables#vagrant_checkpoint_disable
 ${env:VAGRANT_CHECKPOINT_DISABLE} = 'ANY_VALUE'
 
 # Vagrant
-# hhttps://www.vagrantup.com/
+# https://www.vagrantup.com/
 
 # Vagrant box update check
 # https://www.vagrantup.com/docs/other/environmental-variables#vagrant_box_update_check_disable

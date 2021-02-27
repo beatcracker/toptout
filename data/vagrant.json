@@ -5,7 +5,7 @@
   "category": "DevOps",
   "description": "Vagrant interacts with HashiCorp services to provide update notifications.",
   "links": {
-    "main": "hhttps://www.vagrantup.com/",
+    "main": "https://www.vagrantup.com/",
     "telemetry": "https://www.vagrantup.com/docs/other/environmental-variables",
     "privacy": "https://hashicorp.com/privacy"
   },

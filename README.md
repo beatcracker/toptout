@@ -803,7 +803,7 @@ AUTOMATEDLAB_TELEMETRY_OPTOUT=1
 
 > Consul makes use of a HashiCorp service called Checkpoint which is used to check for updates and critical security bulletins.
 
-- [Telemetry details](hhttps://www.consul.io/docs/troubleshoot/faq#q-what-is-checkpoint-does-consul-call-home)
+- [Telemetry details](https://www.consul.io/docs/troubleshoot/faq#q-what-is-checkpoint-does-consul-call-home)
 - [Privacy policy](https://hashicorp.com/privacy)
 
 List of known telemetry channels:
@@ -992,7 +992,7 @@ Use methods described below to opt-out of this telemetry channel.
 CHECKPOINT_DISABLE=ANY_VALUE
 ```
 
-### [Vagrant](hhttps://www.vagrantup.com/)
+### [Vagrant](https://www.vagrantup.com/)
 
 > Vagrant interacts with HashiCorp services to provide update notifications.
 

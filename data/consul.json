@@ -6,7 +6,7 @@
   "description": "Consul makes use of a HashiCorp service called Checkpoint which is used to check for updates and critical security bulletins.",
   "links": {
     "main": "https://www.consul.io/",
-    "telemetry": "hhttps://www.consul.io/docs/troubleshoot/faq#q-what-is-checkpoint-does-consul-call-home",
+    "telemetry": "https://www.consul.io/docs/troubleshoot/faq#q-what-is-checkpoint-does-consul-call-home",
     "privacy": "https://hashicorp.com/privacy"
   },
   "telemetry": [
