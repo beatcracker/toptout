@@ -14,6 +14,7 @@ Param(
         'api',
         'static-files',
         'openapi-bundle',
+        'openapi-lint',
         'clean'
     )]
     [string[]]$Tasks
@@ -146,6 +147,7 @@ task . -Jobs @(
 
 task api -Jobs @(
     'static-files'
+    'openapi-lint'
     'openapi-bundle'
 )
 
@@ -374,9 +376,7 @@ task static-files {
 
     Write-Build White '  category/'
     New-Item -Path "$ApiDir/category" -ItemType Directory > $null
-    @($data.category | Sort-Object -Unique).ForEach(
-        { "$_".ToLowerInvariant().Replace(' ', '-') } # HACK! Fix by adding category_id to data files
-    ) | ConvertTo-Json -Depth 100 -Compress |
+    $data.category_id | Sort-Object -Unique | ConvertTo-Json -Depth 100 -Compress |
     Out-File -LiteralPath "$ApiDir/category/index.json" -Encoding utf8NoBOM -NoNewline -Force
 
     Write-Build White '  id/'
@@ -401,15 +401,28 @@ task static-files {
     }
 
     Write-Build White '  telemetry/category/'
-    $data_by_category = $data | Group-Object -Property category
-    $data_by_category | ForEach-Object {
-        $category = $_.Name.ToLowerInvariant().Replace(' ', '-')  # HACK! Fix by adding category_id to data files
+    $data_by_category_id = $data | Group-Object -Property category_id
+    $data_by_category_id | ForEach-Object {
+        $category_id = $_.Name
 
-        Write-Build White "    $category/"
-        New-Item -Path "$ApiDir/telemetry/category/$category" -ItemType Directory > $null
+        Write-Build White "    $category_id/"
+        New-Item -Path "$ApiDir/telemetry/category/$category_id" -ItemType Directory > $null
 
         ConvertTo-Json -InputObject @($_.Group) -Depth 100 -Compress |
-        Out-File -LiteralPath "$ApiDir/telemetry/category/$category/index.json" -Encoding utf8NoBOM -NoNewline -Force
+        Out-File -LiteralPath "$ApiDir/telemetry/category/$category_id/index.json" -Encoding utf8NoBOM -NoNewline -Force
+    }
+}
+
+task openapi-lint {
+    Write-Build White 'Linting OpenAPI schema'
+
+    exec {
+        & 'npx' @(
+            '@redocly/openapi-cli'
+            'lint'
+            "$BuildRoot/schema/openapi.yaml"
+            "--config=$BuildRoot/schema/.redocly.lint-ignore.yaml"
+        )
     }
 }
 
@@ -423,6 +436,7 @@ task openapi-bundle {
             "$BuildRoot/schema/openapi.yaml"
             '--output'
             "$BuildRoot/docs/swagger/openapi.yaml"
+            "--config=$BuildRoot/schema/.redocly.lint-ignore.yaml"
         )
     }
 }
