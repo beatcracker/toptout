@@ -148,15 +148,6 @@ task api -Jobs @(
     'openapi-bundle'
 )
 
-task clean-all {
-    Write-Build Yellow 'Clearing the global and local NuGet and cache directories...'
-
-    Invoke-Paket -Arguments @(
-        'clear-cache'
-        '--clear-local'
-    )
-}
-
 task clean {
     Write-Build Yellow 'Clearing local NuGet and cache directories...'
 
