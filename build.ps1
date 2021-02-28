@@ -150,7 +150,7 @@ task api -Jobs @(
 )
 
 task clean {
-    Write-Build Yellow 'Clearing local NuGet and cache directories...'
+    Write-Build Yellow 'Clearing local package directories'
 
     Remove-BuildItem @(
         "$BuildRoot/packages"
