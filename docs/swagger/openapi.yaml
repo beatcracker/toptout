@@ -465,7 +465,10 @@ components:
           type: string
         description:
           type: string
-        category:
+        category_id:
+          type: string
+          pattern: '^[a-z0-9-]+$'
+        category_name:
           type: string
         links:
           $ref: '#/components/schemas/Links'
@@ -475,7 +478,8 @@ components:
             $ref: '#/components/schemas/Telemetry'
       required:
         - description
-        - category
+        - category_id
+        - category_name
         - id
         - links
         - name
