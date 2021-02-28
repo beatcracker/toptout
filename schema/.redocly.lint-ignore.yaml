@@ -1,6 +1,7 @@
 # This file instructs Redocly's linter to ignore the rules contained for specific parts of your API.
 # See https://redoc.ly/docs/cli/ for more information.
 openapi.yaml:
+  # Without tailing slash, GitHub pages will return 301 redirect to the page with trailing slash added
   no-path-trailing-slash:
     - '#/paths/~1id~1'
     - '#/paths/~1category~1'
