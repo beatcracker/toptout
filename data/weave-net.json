@@ -2,7 +2,8 @@
   "id": "weave-net",
   "name": "Weave Net",
   "executable_name": "weave",
-  "category": "DevOps",
+  "category_id": "devops",
+  "category_name": "DevOps",
   "description": "Weave Net periodically contacts Weaveworks servers for available versions. New versions are announced in the log and in the status summary.",
   "links": {
     "main": "https://www.weave.works/",

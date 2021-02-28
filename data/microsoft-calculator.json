@@ -1,7 +1,8 @@
 {
   "id": "microsoft-calculator",
   "name": "Microsoft calculator",
-  "category": "Applications",
+  "category_id": "applications",
+  "category_name": "Applications",
   "description": "This project collects usage data and sends it to Microsoft to help improve our products and services.",
   "links": {
     "main": "https://github.com/Microsoft/calculator",

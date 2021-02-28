@@ -2,7 +2,8 @@
   "id": "wksctl",
   "name": "WKSctl",
   "executable_name": "wksctl",
-  "category": "DevOps",
+  "category_id": "devops",
+  "category_name": "DevOps",
   "description": "wksctl contacts Weaveworks servers for available versions. When a new version is available, wksctl will print out a message along with a URL to download it.",
   "links": {
     "main": "https://www.weave.works/oss/wksctl/",

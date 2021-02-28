@@ -2,7 +2,8 @@
   "id": "tilt",
   "name": "Tilt",
   "executable_name": "tilt",
-  "category": "Cloud",
+  "category_id": "cloud",
+  "category_name": "Cloud",
   "description": "Tilt sends anonymized data about how you use it.",
   "links": {
     "main": "https://tilt.dev",

@@ -2,7 +2,8 @@
   "id": "packer",
   "name": "Packer",
   "executable_name": "packer",
-  "category": "DevOps",
+  "category_id": "devops",
+  "category_name": "DevOps",
   "description": "When Packer is invoked it sometimes calls out to checkpoint.hashicorp.com to look for new versions of Packer.",
   "links": {
     "main": "https://www.packer.io/",

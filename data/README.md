@@ -14,8 +14,10 @@ Describes a product that has one telemetry channel which is controlled by the en
   "name": "Foo Bar",
   // Optional. Provide executable name if presence of this product can be detected by PATH environment variable lookup.
   "executable_name": "foobar",
+  // Unique category id. The API generator uses it to group products.
+  "category_id": "development",
   // Friendly category name. The README generator uses it to group products.
-  "category": "Development",
+  "category_name": "Development",
 
   // Short description of the collected telemetry. Usually copied from the product's documentation.
   "description": "All your base are belong to us.",

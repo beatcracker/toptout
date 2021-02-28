@@ -2,7 +2,8 @@
   "id": "homebrew",
   "name": "Homebrew",
   "executable_name": "brew",
-  "category": "Applications",
+  "category_id": "applications",
+  "category_name": "Applications",
   "description": "Homebrew has begun gathering anonymous aggregate user behaviour analytics and reporting these to Google Analytics.",
   "links": {
     "main": "https://brew.sh",

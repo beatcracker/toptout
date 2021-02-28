@@ -2,7 +2,8 @@
   "id": "gatsby-js",
   "name": "Gatsby",
   "executable_name": "gatsby",
-  "category": "Development",
+  "category_id": "development",
+  "category_name": "Development",
   "description": "Gatsby contains a telemetry feature that collects anonymous usage information that is used to help improve Gatsby for all users. The Gatsby user base is growing very rapidly. It’s important that our small team and the greater community will better understand the usage patterns, so we can best decide how to design future features and prioritize current work.",
   "links": {
     "main": "https://www.gatsbyjs.org",

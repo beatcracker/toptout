@@ -1,7 +1,8 @@
 {
   "id": "automated-lab",
   "name": "AutomatedLab",
-  "category": "DevOps",
+  "category_id": "devops",
+  "category_name": "DevOps",
   "description": "AutomatedLab will start to collect telemetry starting with version 5.0. This is an opt-out collection and you will be asked once to specify whether or not you want to send us telemetry data.",
   "links": {
     "main": "https://github.com/AutomatedLab/AutomatedLab",

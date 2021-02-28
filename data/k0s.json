@@ -2,7 +2,8 @@
   "id": "k0s",
   "name": "k0s",
   "executable_name": "k0s",
-  "category": "DevOps",
+  "category_id": "devops",
+  "category_name": "DevOps",
   "description": "To build better end user experience we collect and send telemetry data from clusters.",
   "links": {
     "main": "https://k8slens.dev/",

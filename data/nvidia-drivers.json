@@ -2,7 +2,8 @@
   "id": "nvidia-drivers",
   "name": "Nvidia drivers",
   "executable_name": "nvcontainer.exe",
-  "category": "Drivers",
+  "category_id": "drivers",
+  "category_name": "Drivers",
   "description": "Details on your device and network configurations, how you are using our products or services (including the software you are using), and details on how your system is performing, so we can optimize hardware and software configurations.",
   "links": {
     "main": "https://www.nvidia.com/en-us/geforce/geforce-experience/",

@@ -2,7 +2,8 @@
   "id": "consul",
   "name": "Consul",
   "executable_name": "consul",
-  "category": "DevOps",
+  "category_id": "devops",
+  "category_name": "DevOps",
   "description": "Consul makes use of a HashiCorp service called Checkpoint which is used to check for updates and critical security bulletins.",
   "links": {
     "main": "https://www.consul.io/",
