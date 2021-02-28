@@ -1,0 +1,106 @@
+# TODO: switch to 3.1.0 when swagger-ui adds support
+# https://github.com/swagger-api/swagger-ui/issues/5879
+# https://github.com/swagger-api/swagger-ui/issues/5891
+
+openapi: 3.0.2
+info:
+  title: Toptout
+  description: Get data about telemetry channels in various applications
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: 0.0.1
+servers:
+  - url: https://beatcracker.github.io/toptout/api
+    description: Implements static API using GitHub pages
+tags:
+  - name: apps
+    description: Get application ids or categories
+  - name: telemetry
+    description: Get telemetry data by application id or category
+paths:
+  /id/:
+    get:
+      summary: Returns a list of all supported application ids
+      operationId: getApplicationId
+      tags:
+        - apps
+      responses:
+        "200":
+          description: A JSON array of all supported application ids
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /category/:
+    get:
+      summary: Returns a list of all supported application categories
+      operationId: getCategoryId
+      tags:
+        - apps
+      responses:
+        "200":
+          description: A JSON array of all supported application categories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /telemetry/:
+    get:
+      summary: Returns telemetry details for all known application ids
+      operationId: getTelemetry
+      tags:
+        - telemetry
+      responses:
+        "200":
+          description: An array of JSON objects with telemetry channels data
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: toptout.schema.json
+  /telemetry/id/{id}/:
+    get:
+      summary: Returns telemetry details for specific application id
+      operationId: getTelemetryById
+      tags:
+        - telemetry
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: A JSON object with telemetry channels data
+          content:
+            application/json:
+              schema:
+                $ref: toptout.schema.json
+  /telemetry/category/{category}/:
+    get:
+      summary: Returns telemetry details for applications in specific category
+      operationId: getTelemetryByCategory
+      tags:
+        - telemetry
+      parameters:
+        - in: path
+          name: category
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: An array of JSON objects with telemetry channels data
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: toptout.schema.json
