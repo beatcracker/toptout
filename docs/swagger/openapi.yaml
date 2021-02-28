@@ -1,14 +1,13 @@
-# TODO: switch to 3.1.0 when swagger-ui adds support
-# https://github.com/swagger-api/swagger-ui/issues/5879
-# https://github.com/swagger-api/swagger-ui/issues/5891
-
 openapi: 3.0.2
 info:
   title: Toptout
   description: Get data about telemetry channels in various applications
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
   version: 0.0.1
 servers:
-  - url: https://beatcracker.github.io/toptout/api
+  - url: 'https://beatcracker.github.io/toptout/api'
     description: Implements static API using GitHub pages
 tags:
   - name: apps
@@ -19,6 +18,7 @@ paths:
   /id/:
     get:
       summary: Returns a list of all supported application ids
+      operationId: getApplicationId
       tags:
         - apps
       responses:
@@ -33,6 +33,7 @@ paths:
   /category/:
     get:
       summary: Returns a list of all supported application categories
+      operationId: getCategoryId
       tags:
         - apps
       responses:
@@ -47,6 +48,7 @@ paths:
   /telemetry/:
     get:
       summary: Returns telemetry details for all known application ids
+      operationId: getTelemetry
       tags:
         - telemetry
       responses:
@@ -57,10 +59,11 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: https://raw.githubusercontent.com/beatcracker/toptout/master/schema/toptout.schema.json
-  /telemetry/id/{id}/:
+                  $ref: '#/components/schemas/Toptout'
+  '/telemetry/id/{id}/':
     get:
       summary: Returns telemetry details for specific application id
+      operationId: getTelemetryById
       tags:
         - telemetry
       parameters:
@@ -75,10 +78,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: https://raw.githubusercontent.com/beatcracker/toptout/master/schema/toptout.schema.json
-  /telemetry/category/{category}/:
+                $ref: '#/components/schemas/Toptout'
+  '/telemetry/category/{category}/':
     get:
       summary: Returns telemetry details for applications in specific category
+      operationId: getTelemetryByCategory
       tags:
         - telemetry
       parameters:
@@ -95,4 +99,384 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: https://raw.githubusercontent.com/beatcracker/toptout/master/schema/toptout.schema.json
+                  $ref: '#/components/schemas/Toptout'
+components:
+  schemas:
+    Links:
+      type: object
+      additionalProperties: false
+      properties:
+        main:
+          type: string
+          format: uri
+          pattern: '^http[s]?:\/\/.+$'
+        telemetry:
+          type: string
+          format: uri
+          pattern: '^http[s]?:\/\/.+$'
+        privacy:
+          type: string
+          format: uri
+          pattern: '^http[s]?:\/\/.+$'
+      required:
+        - main
+      title: Links
+    Path:
+      type: object
+      additionalProperties: false
+      properties:
+        linux:
+          type: string
+        macos:
+          type: string
+        windows:
+          type: string
+        default:
+          type: string
+      anyOf:
+        - required:
+            - default
+        - required:
+            - linux
+        - required:
+            - macos
+        - required:
+            - windows
+      title: Path
+    Value:
+      type: object
+      additionalProperties: false
+      properties:
+        opt_out:
+          type: string
+        opt_in:
+          oneOf:
+            - type: string
+            - type: 'null'
+      required:
+        - opt_in
+        - opt_out
+      title: Value
+    ExecProperties:
+      type: object
+      additionalProperties: false
+      properties:
+        path:
+          $ref: '#/components/schemas/Path'
+        value:
+          $ref: '#/components/schemas/Value'
+      required:
+        - path
+        - value
+      title: ExecProperties
+    Exec:
+      type: object
+      additionalProperties: false
+      properties:
+        scope:
+          type: object
+          additionalProperties: false
+          properties:
+            machine:
+              $ref: '#/components/schemas/ExecProperties'
+            user:
+              $ref: '#/components/schemas/ExecProperties'
+            process:
+              $ref: '#/components/schemas/ExecProperties'
+          anyOf:
+            - required:
+                - machine
+            - required:
+                - process
+            - required:
+                - user
+      required:
+        - scope
+      title: Exec
+    EnvProperties:
+      type: object
+      additionalProperties: false
+      properties:
+        path:
+          $ref: '#/components/schemas/Path'
+        value:
+          $ref: '#/components/schemas/Value'
+      required:
+        - path
+        - value
+      title: EnvProperties
+    Env:
+      type: object
+      additionalProperties: false
+      properties:
+        scope:
+          type: object
+          additionalProperties: false
+          properties:
+            machine:
+              $ref: '#/components/schemas/EnvProperties'
+            user:
+              $ref: '#/components/schemas/EnvProperties'
+            process:
+              $ref: '#/components/schemas/EnvProperties'
+          anyOf:
+            - required:
+                - machine
+            - required:
+                - process
+            - required:
+                - user
+      required:
+        - scope
+      title: Env
+    PlainFileProperties:
+      type: object
+      additionalProperties: false
+      properties:
+        path:
+          $ref: '#/components/schemas/Path'
+        selector:
+          type: string
+        value:
+          $ref: '#/components/schemas/Value'
+        display_value:
+          type: string
+      required:
+        - display_value
+        - path
+        - selector
+        - value
+      title: PlainFileProperties
+    PlainFile:
+      type: object
+      additionalProperties: false
+      properties:
+        scope:
+          type: object
+          additionalProperties: false
+          properties:
+            machine:
+              $ref: '#/components/schemas/PlainFileProperties'
+            user:
+              $ref: '#/components/schemas/PlainFileProperties'
+            process:
+              $ref: '#/components/schemas/PlainFileProperties'
+          anyOf:
+            - required:
+                - machine
+            - required:
+                - process
+            - required:
+                - user
+      required:
+        - scope
+      title: PlainFile
+    JSONFileProperties:
+      type: object
+      additionalProperties: false
+      properties:
+        path:
+          $ref: '#/components/schemas/Path'
+        selector:
+          type: string
+        value:
+          $ref: '#/components/schemas/Value'
+        display_value:
+          type: string
+      required:
+        - display_value
+        - path
+        - selector
+        - value
+      title: JSONFileProperties
+    JSONFile:
+      type: object
+      additionalProperties: false
+      properties:
+        scope:
+          type: object
+          additionalProperties: false
+          properties:
+            machine:
+              $ref: '#/components/schemas/JSONFileProperties'
+            user:
+              $ref: '#/components/schemas/JSONFileProperties'
+            process:
+              $ref: '#/components/schemas/JSONFileProperties'
+          anyOf:
+            - required:
+                - machine
+            - required:
+                - process
+            - required:
+                - user
+      required:
+        - scope
+      title: JSONFile
+    RegistryProperties:
+      type: object
+      additionalProperties: false
+      properties:
+        root:
+          type: string
+          enum:
+            - HKEY_CLASSES_ROOT
+            - HKEY_CURRENT_CONFIG
+            - HKEY_CURRENT_USER
+            - HKEY_CURRENT_USER_LOCAL_SETTINGS
+            - HKEY_LOCAL_MACHINE
+            - HKEY_PERFORMANCE_DATA
+            - HKEY_PERFORMANCE_NLSTEXT
+            - HKEY_PERFORMANCE_TEXT
+            - HKEY_USERS
+        path:
+          type: string
+          pattern: ^(?!\\).+?(?<!\\)$
+        key:
+          type: string
+        type:
+          type: string
+          enum:
+            - REG_BINARY
+            - REG_DWORD
+            - REG_DWORD_LITTLE_ENDIAN
+            - REG_DWORD_BIG_ENDIAN
+            - REG_EXPAND_SZ
+            - REG_LINK
+            - REG_MULTI_SZ
+            - REG_NONE
+            - REG_QWORD
+            - REG_QWORD_LITTLE_ENDIAN
+            - REG_SZ
+        value:
+          $ref: '#/components/schemas/Value'
+      required:
+        - root
+        - path
+        - key
+        - type
+        - value
+      title: RegistryProperties
+    Registry:
+      type: object
+      additionalProperties: false
+      properties:
+        scope:
+          type: object
+          additionalProperties: false
+          properties:
+            machine:
+              $ref: '#/components/schemas/RegistryProperties'
+            user:
+              $ref: '#/components/schemas/RegistryProperties'
+            process:
+              $ref: '#/components/schemas/RegistryProperties'
+          anyOf:
+            - required:
+                - machine
+            - required:
+                - process
+            - required:
+                - user
+      required:
+        - scope
+      title: Registry
+    Noop:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+        link:
+          type: string
+          format: uri
+          pattern: '^http[s]?:\/\/.+$'
+        description:
+          type: string
+      required:
+        - description
+        - link
+        - name
+      title: Noop
+    Target:
+      type: object
+      additionalProperties: false
+      properties:
+        exec:
+          $ref: '#/components/schemas/Exec'
+        env:
+          $ref: '#/components/schemas/Env'
+        plain_file:
+          $ref: '#/components/schemas/PlainFile'
+        json_file:
+          $ref: '#/components/schemas/JSONFile'
+        registry:
+          $ref: '#/components/schemas/Registry'
+        noop:
+          type: array
+          items:
+            $ref: '#/components/schemas/Noop'
+      anyOf:
+        - required:
+            - exec
+        - required:
+            - env
+        - required:
+            - plain_file
+        - required:
+            - json_file
+        - required:
+            - registry
+        - required:
+            - noop
+      title: Target
+    Telemetry:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          pattern: '^[a-z0-9-]+$'
+        name:
+          type: string
+        is_official:
+          type: boolean
+        description:
+          type: string
+        links:
+          $ref: '#/components/schemas/Links'
+        target:
+          $ref: '#/components/schemas/Target'
+      required:
+        - id
+        - name
+        - is_official
+      title: Telemetry
+    Toptout:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          pattern: '^[a-z0-9-]+$'
+        name:
+          type: string
+        executable_name:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        links:
+          $ref: '#/components/schemas/Links'
+        telemetry:
+          type: array
+          items:
+            $ref: '#/components/schemas/Telemetry'
+      required:
+        - description
+        - category
+        - id
+        - links
+        - name
+      title: Toptout
