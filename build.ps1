@@ -136,6 +136,10 @@ task . -Jobs @(
     'api'
 )
 
+task api -Jobs @(
+    'static-files'
+)
+
 task clean-all {
     Write-Build Yellow 'Clearing the global and local NuGet and cache directories...'
 
@@ -347,7 +351,7 @@ task shell {
     }
 }
 
-task api {
+task static-files {
     . "$BuildRoot/helpers/common.ps1"
 
     $DataDir = "$BuildRoot/data"
@@ -363,7 +367,7 @@ task api {
     }
 
     $data = $DataFiles | ForEach-Object {
-        $_ | Get-Content -Raw | ConvertFrom-Json -Depth 100 -AsHashtable
+        $_ | Get-Content -Raw | ConvertFrom-Json -Depth 100
     }
 
     Write-Build White 'Generating API'
@@ -397,14 +401,14 @@ task api {
     }
 
     Write-Build White '  telemetry/category/'
-    $data_by_category = $data | Group-Object -Property category -AsHashTable -AsString
-    $data_by_category.GetEnumerator() | ForEach-Object {
-        $category = $_.Key.ToLowerInvariant().Replace(' ', '-')  # HACK! Fix by adding category_id to data files
+    $data_by_category = $data | Group-Object -Property category
+    $data_by_category | ForEach-Object {
+        $category = $_.Name.ToLowerInvariant().Replace(' ', '-')  # HACK! Fix by adding category_id to data files
 
         Write-Build White "    $category/"
         New-Item -Path "$ApiDir/telemetry/category/$category" -ItemType Directory > $null
 
-        ConvertTo-Json -InputObject @($_.Value) -Depth 100 -Compress |
+        ConvertTo-Json -InputObject @($_.Group) -Depth 100 -Compress |
         Out-File -LiteralPath "$ApiDir/telemetry/category/$category/index.json" -Encoding utf8NoBOM -NoNewline -Force
     }
 }
