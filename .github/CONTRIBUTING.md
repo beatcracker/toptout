@@ -8,6 +8,8 @@ While you can hack around without using provided build script, it is not recomme
 
 On non-Windows systems [Mono](https://www.mono-project.com/) is required for build script to be able to run [Paket](https://fsprojects.github.io/Paket/) to restore dependecies.
 
+[Node.js](https://nodejs.org/en/download/) 12+ is required for bundling OpenAPI schema.
+
 ## Adding new telemetry data file
 
 See [data/README](/data/README.md)
@@ -23,11 +25,13 @@ The provided `build.ps1` script includes several tasks:
 - `test`: run code and data files tests
 - `readme`: generate `README.md`
 - `shell`: generate [example shell scripts](/examples/)
-- `clean-all`: clean global and local NuGet and cache directories
-- `clean`: clean local NuGet and cache directories
+- `api`: invokes two subtasks. These can be run separately if needed.
+  - `static-files`: generate JSON files for static API
+  - `openapi-bundle`: bundle (dereference) OpenAPI defintion. Some tools can't handle uris in `$ref`.
+- `clean`: clean local `Paket` files. This will force re-download of PowerShell dependencies.
 
-If the build script is run without arguments the `test` and `readme` tasks are executed. To execute specific task provide its name as an argument: `./build.ps1 readme`. For more details see [Invoke-Build](https://github.com/nightroman/Invoke-Build) docs.
+If the build script is run without arguments the `test`, `readme`, `shell` and `api` tasks are executed. To execute specific task provide its name as an argument (you can use tab completiton): `./build.ps1 readme`. For more details see [Invoke-Build](https://github.com/nightroman/Invoke-Build) docs.
 
 ### Dependencies
 
-Script and tasks require several dependencies from the [PowerShell Gallery](https://www.powershellgallery.com/). To avoid polluting your environment those dependecies are downloaded on the first run into the `./packages` directory. This is achieved by using [Paket](https://fsprojects.github.io/Paket/) in [magic mode](https://fsprojects.github.io/Paket/bootstrapper.html#Magic-mode).
+Script and tasks require several dependencies from the [PowerShell Gallery](https://www.powershellgallery.com/). To avoid polluting your environment those dependecies are downloaded on the first run into the `./packages` and `./paket-files` directory. This is achieved by using [Paket](https://fsprojects.github.io/Paket/) in [magic mode](https://fsprojects.github.io/Paket/bootstrapper.html#Magic-mode).
