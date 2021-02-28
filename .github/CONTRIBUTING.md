@@ -16,7 +16,7 @@ See [data/README](/data/README.md)
 
 ## Using build script
 
-Contributions need to pass the tests and provide a generated `README.md` file. Build script takes care of that.
+Contributions need to pass the tests and include generated content if applicable (`./README.md`, `./scripts`, `./docs/api`). Build script takes care of that.
 
 ### Tasks
 
@@ -27,6 +27,7 @@ The provided `build.ps1` script includes several tasks:
 - `shell`: generate [example shell scripts](/examples/)
 - `api`: invokes two subtasks. These can be run separately if needed.
   - `static-files`: generate JSON files for static API
+  - `openapi-lint`: lint OpenAPI schema
   - `openapi-bundle`: bundle (dereference) OpenAPI defintion. Some tools can't handle uris in `$ref`.
 - `clean`: clean local `Paket` files. This will force re-download of PowerShell dependencies.
 
