@@ -19,7 +19,11 @@
                 "description": {
                     "type": "string"
                 },
-                "category": {
+                "category_id": {
+                    "type": "string",
+                    "pattern": "^[a-z0-9-]+$"
+                },
+                "category_name": {
                     "type": "string"
                 },
                 "links": {
@@ -34,7 +38,8 @@
             },
             "required": [
                 "description",
-                "category",
+                "category_id",
+                "category_name",
                 "id",
                 "links",
                 "name"
