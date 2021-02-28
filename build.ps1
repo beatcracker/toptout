@@ -7,7 +7,14 @@
 [CmdletBinding()]
 Param(
     [Parameter(Position = 0)]
-    [ValidateNotNullOrEmpty()]
+    [ValidateSet(
+        'test',
+        'readme',
+        'shell',
+        'api',
+        'static-files',
+        'openapi-bundle'
+    )]
     [string[]]$Tasks
 )
 
