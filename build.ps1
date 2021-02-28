@@ -210,8 +210,9 @@ task readme {
 
     $data = $DataFiles | ForEach-Object {
         $_ | Get-Content -Raw | ConvertFrom-Json -Depth 100 -AsHashtable
-    } | Group-Object -Property category -AsHashTable -AsString
+    } | Group-Object -Property category_name -AsHashTable -AsString
 
+    # TODO: use category_id
     $Categories = $data.Keys | Sort-Object
 
     $document = $(
@@ -328,8 +329,9 @@ task shell {
 
     $data = $DataFiles | ForEach-Object {
         $_ | Get-Content -Raw | ConvertFrom-Json -Depth 100 -AsHashtable
-    } | Group-Object -Property category -AsHashTable -AsString
+    } | Group-Object -Property category_name -AsHashTable -AsString
 
+    # TODO: use category_id
     $Categories = $data.Keys | Sort-Object
 
     $ShellList = @(
