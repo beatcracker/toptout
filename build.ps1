@@ -138,6 +138,7 @@ task . -Jobs @(
 
 task api -Jobs @(
     'static-files'
+    'openapi-bundle'
 )
 
 task clean-all {
@@ -410,6 +411,20 @@ task static-files {
 
         ConvertTo-Json -InputObject @($_.Group) -Depth 100 -Compress |
         Out-File -LiteralPath "$ApiDir/telemetry/category/$category/index.json" -Encoding utf8NoBOM -NoNewline -Force
+    }
+}
+
+task openapi-bundle {
+    Write-Build White 'Bundling OpenAPI schema'
+
+    exec {
+        & 'npx' @(
+            '@redocly/openapi-cli'
+            'bundle'
+            "$BuildRoot/schema/openapi.yaml"
+            '--output'
+            "$BuildRoot/docs/swagger/openapi.yaml"
+        )
     }
 }
 
