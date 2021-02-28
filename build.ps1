@@ -13,7 +13,8 @@ Param(
         'shell',
         'api',
         'static-files',
-        'openapi-bundle'
+        'openapi-bundle',
+        'clean'
     )]
     [string[]]$Tasks
 )
