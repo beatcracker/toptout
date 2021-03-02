@@ -75,6 +75,7 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Microsoft 365 | Enterprise](#microsoft-365--enterprise)
   - [Microsoft calculator](#microsoft-calculator)
   - [VSCode](#vscode)
+  - [Windows Terminal](#windows-terminal)
   - [winget](#winget)
 - [Cloud](#cloud)
   - [AWS SAM CLI](#aws-sam-cli)
@@ -378,6 +379,36 @@ Use methods described below to opt-out of this telemetry channel.
   "telemetry.enableCrashReporter": false
 }
 ```
+
+### [Windows Terminal](https://github.com/microsoft/terminal)
+
+> The Windows Terminal client is instrumented to collect usage and diagnostic (error) data and sends it to Microsoft to help improve the product.
+
+- [Telemetry details](https://github.com/microsoft/terminal/issues/5331)
+
+List of known telemetry channels:
+
+#### [Usage and Diagnostic data](https://support.microsoft.com/en-us/help/4468236/diagnostics-feedback-and-privacy-in-windows-10-microsoft-privacy)
+
+Official: ✔
+
+> The Windows Terminal client respects machine wide privacy settings and users can opt-out on their device, as documented in the Microsoft Windows privacy statement.
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Visit link(s) for more details
+
+1. [support.microsoft.com | Diagnostics, feedback, and privacy in Windows 10](https://support.microsoft.com/en-us/windows/diagnostics-feedback-and-privacy-in-windows-10-28808a2b-a31b-dd73-dcd3-4559a5199319)
+
+    > To opt-out, go to 'Start', then select 'Settings' > 'Privacy' > 'Diagnostics & feedback', and select 'Basic'.
+
+##### 2. Set registry key
+
+###### Scope: 💻 Machine
+
+- Path: `HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DataCollection\AllowTelemetry`
+- Type: `REG_DWORD`
+- Value: `1`
 
 ### [winget](https://github.com/microsoft/winget-cli)
 
