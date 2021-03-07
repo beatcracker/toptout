@@ -85,13 +85,18 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Netlify CLI](#netlify-cli)
   - [Stripe CLI](#stripe-cli)
   - [Tilt](#tilt)
+- [Database](#database)
+  - [InfluxDB](#influxdb)
+  - [TimescaleDB ](#timescaledb-)
 - [Development](#development)
   - [Apache Cordova CLI](#apache-cordova-cli)
   - [Gatsby](#gatsby)
   - [Hasura GraphQL engine](#hasura-graphql-engine)
   - [.NET Core SDK](#net-core-sdk)
   - [Next.js](#nextjs)
+  - [Nuxt.js](#nuxtjs)
   - [Prisma](#prisma)
+  - [Rasa](#rasa)
 - [DevOps](#devops)
   - [AutomatedLab](#automatedlab)
   - [Consul](#consul)
@@ -629,6 +634,68 @@ Use methods described below to opt-out of this telemetry channel.
 DO_NOT_TRACK=1
 ```
 
+## Database
+
+### [InfluxDB](https://www.influxdata.com/)
+
+> InfluxData collects information about the usage of InfluxDB. This “phone home” capability is intended to provide us with information about the broader user community and an understanding of how the platform is being used.
+
+- [Telemetry details](https://www.influxdata.com/telemetry/)
+- [Privacy policy](https://www.influxdata.com/legal/privacy-policy/)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Visit link(s) for more details
+
+1. [Disable usage data reporting](https://docs.influxdata.com/influxdb/v2.0/get-started/#influxdb-phone-home)
+
+    > Telemetry reporting is enabled by default. However, we’ve made it as easy as possible to ‘opt-out’ of the reporting. Simply start the InfluxDB process with the --reporting-disabled flag
+
+### [TimescaleDB ](https://www.timescale.com/)
+
+> We enable anonymous usage sharing to help us better understand and assist TimescaleDB users, as well as provide automated version checks.
+
+- [Telemetry details](https://docs.timescale.com/latest/using-timescaledb/telemetry)
+- [Privacy policy](https://www.timescale.com/legal/privacy)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Run command
+
+###### Scope: 💻 Machine
+
+```shell
+psql -c "ALTER SYSTEM SET timescaledb.telemetry_level=off"
+```
+
+##### 2. Edit config file (plaintext)
+
+###### Scope: 👤 User
+
+| OS      | Path                                                                       |
+|---------|----------------------------------------------------------------------------|
+| Linux   | `/usr/local/var/postgres/postgresql.conf`                                  |
+| macOS   | `./Library/PostgreSQL/{postgres_version}/share/postgresql/postgresql.conf` |
+| Windows | `%ProgramFiles%\PostgreSQL\{postgres_version}\postgresql.conf`             |
+
+###### Content
+
+```none
+timescaledb.telemetry_level=off
+```
+
 ## Development
 
 ### [Apache Cordova CLI](https://cordova.apache.org)
@@ -790,6 +857,36 @@ NEXT_TELEMETRY_DISABLED=1
 npx next telemetry disable
 ```
 
+### [Nuxt.js](https://nuxtjs.org/)
+
+> Nuxt Telemetry collects anonymous telemetry data about general usage. This helps us to accurately gauge feature usage and customization across all our users.
+
+- [Telemetry details](https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-telemetry)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+NUXT_TELEMETRY_DISABLED=1
+```
+
+##### 2. Run command
+
+###### Scope: 👤 User
+
+```shell
+nuxt telemetry disable --global
+```
+
 ### [Prisma](https://www.prisma.io/)
 
 > Telemetry helps us better understand how many users are using our products and how often they are using our products.
@@ -828,6 +925,37 @@ Use methods described below to opt-out of this telemetry channel.
 1. [Disable error reporting](https://www.prisma.io/docs/concepts/more/telemetry#error-reporting-1)
 
     > You can opt-out of data collection by responding to the interactive prompt with no.
+
+### [Rasa](https://rasa.com/)
+
+> Rasa uses telemetry to report anonymous usage information. This information is essential to help improve Rasa Open Source for all users.
+
+- [Telemetry details](https://rasa.com/docs/rasa/telemetry/telemetry)
+- [Privacy policy](https://rasa.com/privacy-policy/)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+RASA_TELEMETRY_ENABLED=false
+```
+
+##### 2. Run command
+
+###### Scope: 👤 User
+
+```shell
+rasa telemetry disable
+```
 
 ## DevOps
 

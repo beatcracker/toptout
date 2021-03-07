@@ -96,6 +96,15 @@ export STRIPE_CLI_TELEMETRY_OPTOUT='1'
 # Usage data
 export DO_NOT_TRACK='1'
 
+# TimescaleDB 
+# https://www.timescale.com/
+
+# Usage data
+if command -v 'psql' >/dev/null 2>&1 >/dev/null
+then
+  'psql' -c "ALTER SYSTEM SET timescaledb.telemetry_level=off" >/dev/null 2>&1
+fi
+
 # Apache Cordova CLI
 # https://cordova.apache.org
 
@@ -126,12 +135,24 @@ export DOTNET_CLI_TELEMETRY_OPTOUT='true'
 # Usage data
 export NEXT_TELEMETRY_DISABLED='1'
 
+# Nuxt.js
+# https://nuxtjs.org/
+
+# Usage data
+export NUXT_TELEMETRY_DISABLED='1'
+
 # Prisma
 # https://www.prisma.io/
 
 # Usage data
 # https://www.prisma.io/docs/concepts/more/telemetry#usage-data
 export CHECKPOINT_DISABLE='1'
+
+# Rasa
+# https://rasa.com/
+
+# Usage data
+export RASA_TELEMETRY_ENABLED='false'
 
 # AutomatedLab
 # https://github.com/AutomatedLab/AutomatedLab
