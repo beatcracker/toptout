@@ -32,11 +32,11 @@
           "scope": {
             "user": {
               "path": {
-                "default": "nuxt"
+                "default": "npx"
               },
               "value": {
-                "opt_out": "telemetry disable --global",
-                "opt_in": "telemetry enable --global"
+                "opt_out": "nuxt telemetry disable --global",
+                "opt_in": "nuxt telemetry enable --global"
               }
             }
           }
