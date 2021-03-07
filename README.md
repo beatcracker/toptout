@@ -886,7 +886,7 @@ NUXT_TELEMETRY_DISABLED=1
 ###### Scope: 👤 User
 
 ```shell
-nuxt telemetry disable --global
+npx nuxt telemetry disable --global
 ```
 
 ### [Prisma](https://www.prisma.io/)
