@@ -22,11 +22,19 @@ Describe 'JSON telemetry data' {
 
     $json_files | ForEach-Object {
         Context $_.Name {
-            $content =  $_ | Get-Content -Raw
+            $content = $_ | Get-Content -Raw
             $object = $content | ConvertFrom-Json -Depth 100
 
             It 'Conforms to the schema' {
-                $content | Test-Json -Schema $schema | Should -BeExactly $true
+                # TODO: Figure out a better way to show what's exactly wrong with file
+                $ret = try {
+                    $content | Test-Json -Schema $schema
+                }
+                catch {
+                    $_ | Write-Error
+                }
+
+                 $ret | Should -BeExactly $true
             }
 
             It 'File basename matches id' {
