@@ -24,7 +24,7 @@ The [page](README.md) you see is automatically generated.
 
 [Scripts](/examples/) to disable all known telemetry channels in your shell session.
 
-### API [WIP]
+### API 🚧
 
 Get telemetry configuration data via API! See [openapi.yaml](https://github.com/beatcracker/toptout/blob/master/docs/swagger/openapi.yaml) definition and try it online using [Swagger-UI](https://beatcracker.github.io/toptout/swagger).
 
@@ -56,6 +56,8 @@ JSON telemetry data format decscription: [data/README](/data/)
 - [Console Do Not Track (DNT)](https://consoledonottrack.com)
 
   A proposed unified standard for opting out of telemetry for TUI/console apps: `export DO_NOT_TRACK=1`
+
+  Git: [git.eeqj.de/sneak/consoledonottrack.com](https://git.eeqj.de/sneak/consoledonottrack.com)
 
 - [privacy.sexy](https://privacy.sexy/)
 
