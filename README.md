@@ -49,6 +49,7 @@ JSON telemetry data format decscription: [data/README](/data/)
 ## Future plans
 
 - Automated tool that can ingest the data from the API. You could run it on your machine to detect and configure telemetry in all suported products.
+  - 🚧 [nikvoronin/toptout-cli](https://github.com/nikvoronin/toptout-cli)
 - ???
 
 ## Related projects
