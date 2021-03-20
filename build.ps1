@@ -247,7 +247,7 @@ The page you see has an [awesome-list of telemetry channels](#telemetry-channels
 
 Get telemetry configuration data via API! See [openapi.yaml](https://github.com/beatcracker/toptout/blob/master/docs/swagger/openapi.yaml) definition and try it online using [Swagger-UI](https://beatcracker.github.io/toptout/swagger).
 
-Or try it your shell! ⬇️
+Or try it in your shell! ⬇️
 
 ```shell
 curl -X GET 'https://beatcracker.github.io/toptout/api/telemetry/id/powershell-core/' -H 'accept: application/json'
