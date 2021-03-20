@@ -11,24 +11,24 @@
 Telemetry in software projects is a polarized issue: on the one hand it allows developers to improve their work by collecting various metrics, on the other hand - nobody likes to be spied on.
 The goal of this project is to put you in control. See what data is collected by the tools you use and decide if you want to share it. Then use methods provided here to opt-in or opt-out.
 
-## Real-world applications
+## Usage
 
-The core of this project is a set of JSON files which describe what telemetry is collected and what can be done to enable or disable it.
-This data can be used in various ways. Here are several examples:
+The core of this project is a [set of JSON files](data) which describe what telemetry is collected and what can be done to enable or disable it.
+What you can do with it is only limited by your imagination. Here are several examples to get you strated:
 
-### Documentation
+### 📜 Awesome list
 
-The [page](README.md) you see is automatically generated.
+The page you see has an [awesome-list of telemetry channels](#telemetry-channels) in various apps.
 
-### Scripts
+### 🧯 Scripts
 
 [Scripts](/examples/) to disable all known telemetry channels in your shell session.
 
-### API 🚧
+### 🚧 API
 
 Get telemetry configuration data via API! See [openapi.yaml](https://github.com/beatcracker/toptout/blob/master/docs/swagger/openapi.yaml) definition and try it online using [Swagger-UI](https://beatcracker.github.io/toptout/swagger).
 
-#### Example
+Or try it your shell! ⬇️
 
 ```shell
 curl -X GET 'https://beatcracker.github.io/toptout/api/telemetry/id/powershell-core/' -H 'accept: application/json'
@@ -36,15 +36,15 @@ curl -X GET 'https://beatcracker.github.io/toptout/api/telemetry/id/powershell-c
 
 ## Details
 
+### JSON data format
+
+JSON telemetry data format decscription: [data/README](/data/)
+
 ### Contributing
 
 If the tool you're using is not here you can easily add it by creating a new JSON file describing its telemetry data channels. Pull requests are welcome!
 
-See [CONTRIBUTING](/.github/CONTRIBUTING.md) for details on adding telemetry data and running tests.
-
-### JSON data format
-
-JSON telemetry data format decscription: [data/README](/data/)
+See [CONTRIBUTING](/.github/CONTRIBUTING.md) for details on adding new telemetry data and running tests.
 
 ## Future plans
 
