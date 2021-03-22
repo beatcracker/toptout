@@ -34,6 +34,12 @@ Or try it in your shell! ⬇️
 curl -X GET 'https://beatcracker.github.io/toptout/api/telemetry/id/powershell-core/' -H 'accept: application/json'
 ```
 
+### 🤔 Future plans
+
+- Automated tool that can ingest the data from the API. You could run it on your machine to detect and configure telemetry in all suported products.
+  - 🚧 [nikvoronin/toptout-cli](https://github.com/nikvoronin/toptout-cli)
+- ???
+
 ## Details
 
 ### JSON data format
@@ -45,12 +51,6 @@ JSON telemetry data format decscription: [data/README](/data/)
 If the tool you're using is not here you can easily add it by creating a new JSON file describing its telemetry data channels. Pull requests are welcome!
 
 See [CONTRIBUTING](/.github/CONTRIBUTING.md) for details on adding new telemetry data and running tests.
-
-## Future plans
-
-- Automated tool that can ingest the data from the API. You could run it on your machine to detect and configure telemetry in all suported products.
-  - 🚧 [nikvoronin/toptout-cli](https://github.com/nikvoronin/toptout-cli)
-- ???
 
 ## Related projects
 
