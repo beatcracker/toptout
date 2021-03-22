@@ -33,6 +33,13 @@ The provided `build.ps1` script includes several tasks:
 
 If the build script is run without arguments the `test`, `readme`, `shell` and `api` tasks are executed. To execute specific task provide its name as an argument (you can use tab completiton): `./build.ps1 readme`. For more details see [Invoke-Build](https://github.com/nightroman/Invoke-Build) docs.
 
+Hint, you can run multiple tasks:
+
+```pwsh
+./build.ps1 readme, shell
+./build.ps1 readme shell
+```
+
 ### Dependencies
 
 Script and tasks require several dependencies from the [PowerShell Gallery](https://www.powershellgallery.com/). To avoid polluting your environment those dependecies are downloaded on the first run into the `./packages` and `./paket-files` directory. This is achieved by using [Paket](https://fsprojects.github.io/Paket/) in [magic mode](https://fsprojects.github.io/Paket/bootstrapper.html#Magic-mode).

@@ -6,7 +6,7 @@
 
 [CmdletBinding()]
 Param(
-    [Parameter(Position = 0)]
+    [Parameter(Position = 0, ValueFromRemainingArguments)]
     [ValidateSet(
         'test',
         'readme',
