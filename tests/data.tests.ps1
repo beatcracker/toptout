@@ -34,7 +34,7 @@ Describe 'JSON telemetry data' {
                     $_ | Write-Error
                 }
 
-                 $ret | Should -BeExactly $true
+                $ret | Should -BeExactly $true
             }
 
             It 'File basename matches id' {
