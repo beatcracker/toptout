@@ -210,7 +210,7 @@ task readme {
 
     $data = $DataFiles | ForEach-Object {
         $_ | Get-Content -Raw | ConvertFrom-Json -Depth 100 -AsHashtable
-    } | Group-Object -Property category_name -AsHashTable -AsString
+    } | Group-Object -AsHashTable -AsString -Property @{ e = { $_.category_id, $_.category_name -join '|' } }
 
     # TODO: use category_id
     $Categories = $data.Keys | Sort-Object
@@ -291,19 +291,21 @@ See [CONTRIBUTING](/.github/CONTRIBUTING.md) for details on adding new telemetry
         'Below is automatically generated list of known telemetry channels for various applications.' | Add-Newline
 
         $Categories | ForEach-Object {
-            # https://gist.github.com/asabaylus/3071099#gistcomment-1593627
-            # https://github.com/jch/html-pipeline/blob/master/lib/html/pipeline/toc_filter.rb
+            $cid, $cname = $_.Split('|')
 
-            '- [{0}](#{1})' -f $_, ($_ | ConvertTo-Anchor)
-            $data.$_.name | ForEach-Object {
-                '  - [{0}](#{1})' -f $_, ($_ | ConvertTo-Anchor)
+            '- [{0}](#{1})' -f $cname, $cid
+
+            $data.$_ | ForEach-Object {
+                '  - [{0}](#{1})' -f $_.name, $_.id
             }
         }
 
         Add-Newline
 
-        $Categories | Sort-Object | ForEach-Object {
-            '## {0}' -f $_ | Add-Newline
+        $Categories | ForEach-Object {
+            $cid, $cname = $_.Split('|')
+
+            '## {0}' -f $cname | Add-Newline
 
             $data.$_ | Sort-Object -Property id | ForEach-Object {
                 $_ | ConvertTo-Readme
@@ -334,7 +336,6 @@ task shell {
         $_ | Get-Content -Raw | ConvertFrom-Json -Depth 100 -AsHashtable
     } | Group-Object -Property category_name -AsHashTable -AsString
 
-    # TODO: use category_id
     $Categories = $data.Keys | Sort-Object
 
     $ShellList = @(
