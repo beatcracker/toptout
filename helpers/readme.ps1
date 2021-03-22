@@ -2,6 +2,9 @@
 
 $LF = "`n"
 $CRLF = "`r`n"
+filter ConvertTo-Anchor {
+    ($_ -replace '[^\w- ]').ToLowerInvariant() -replace '\s', '-'
+}
 
 filter Format-MdString {
     Param (
