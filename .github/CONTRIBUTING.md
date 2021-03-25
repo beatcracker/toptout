@@ -25,7 +25,7 @@ The provided `build.ps1` script includes several tasks:
 - `test`: run code and data files tests
 - `readme`: generate `README.md`
 - `shell`: generate [example shell scripts](/examples/)
-- `api`: invokes two subtasks. These can be run separately if needed.
+- `api`: invokes three subtasks. These can be run separately if needed.
   - `static-files`: generate JSON files for static API
   - `openapi-lint`: lint OpenAPI schema
   - `openapi-bundle`: bundle (dereference) OpenAPI defintion. Some tools can't handle uris in `$ref`.
