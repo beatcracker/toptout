@@ -7,9 +7,9 @@
 # https://github.com/mozilla/policy-templates/tree/master/mac
 case "$OSTYPE" in
   darwin*)
-    if command -v 'defaults' >/dev/null 2>&1 >/dev/null
+    if command -v 'defaults' > /dev/null 2>&1 > /dev/null
     then
-      'defaults' write /Library/Preferences/org.mozilla.firefox EnterprisePoliciesEnabled -bool TRUE >/dev/null 2>&1
+      'defaults' write /Library/Preferences/org.mozilla.firefox EnterprisePoliciesEnabled -bool TRUE > /dev/null 2>&1
     fi
   ;;
 esac
@@ -21,9 +21,9 @@ esac
 # https://github.com/mozilla/policy-templates/blob/master/README.md
 case "$OSTYPE" in
   darwin*)
-    if command -v 'defaults' >/dev/null 2>&1 >/dev/null
+    if command -v 'defaults' > /dev/null 2>&1 > /dev/null
     then
-      'defaults' write /Library/Preferences/org.mozilla.firefox DisableTelemetry -bool TRUE >/dev/null 2>&1
+      'defaults' write /Library/Preferences/org.mozilla.firefox DisableTelemetry -bool TRUE > /dev/null 2>&1
     fi
   ;;
 esac
@@ -41,9 +41,9 @@ export HOMEBREW_NO_ANALYTICS='1'
 # https://docs.microsoft.com/en-us/deployoffice/privacy/overview-privacy-controls#diagnostic-data-sent-from-microsoft-365-apps-for-enterprise-to-microsoftd
 case "$OSTYPE" in
   darwin*)
-    if command -v 'defaults' >/dev/null 2>&1 >/dev/null
+    if command -v 'defaults' > /dev/null 2>&1 > /dev/null
     then
-      'defaults' write com.microsoft.office DiagnosticDataTypePreference -string ZeroDiagnosticData >/dev/null 2>&1
+      'defaults' write com.microsoft.office DiagnosticDataTypePreference -string ZeroDiagnosticData > /dev/null 2>&1
     fi
   ;;
 esac
@@ -64,9 +64,9 @@ export AZURE_CORE_COLLECT_TELEMETRY='0'
 # https://cloud.google.com/sdk
 
 # Usage data
-if command -v 'gcloud' >/dev/null 2>&1 >/dev/null
+if command -v 'gcloud' > /dev/null 2>&1 > /dev/null
 then
-  'gcloud' config set disable_usage_reporting true >/dev/null 2>&1
+  'gcloud' config set disable_usage_reporting true > /dev/null 2>&1
 fi
 
 # Netdata
@@ -79,9 +79,9 @@ export DO_NOT_TRACK='1'
 # https://netlify.com
 
 # Usage data
-if command -v 'netlify' >/dev/null 2>&1 >/dev/null
+if command -v 'netlify' > /dev/null 2>&1 > /dev/null
 then
-  'netlify' --telemetry-disable >/dev/null 2>&1
+  'netlify' --telemetry-disable > /dev/null 2>&1
 fi
 
 # Stripe CLI
@@ -100,9 +100,9 @@ export DO_NOT_TRACK='1'
 # https://www.timescale.com/
 
 # Usage data
-if command -v 'psql' >/dev/null 2>&1 >/dev/null
+if command -v 'psql' > /dev/null 2>&1 > /dev/null
 then
-  'psql' -c "ALTER SYSTEM SET timescaledb.telemetry_level=off" >/dev/null 2>&1
+  'psql' -c "ALTER SYSTEM SET timescaledb.telemetry_level=off" > /dev/null 2>&1
 fi
 
 # Apache Cordova CLI

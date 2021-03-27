@@ -23,6 +23,7 @@ Param(
 #region Common variables
 
 $PackageDirPath = Join-Path $PSScriptRoot 'packages'
+$LF = "`n"
 
 #endregion
 
