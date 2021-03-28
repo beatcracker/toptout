@@ -25,7 +25,7 @@ Usage:
 Arguments:
 
   -e : set environment variables.
-        You must source script for this to work: . './${toptout_name}' -e
+       You must source script for this to work: . './${toptout_name}' -e
   -x : execute commands
   -v : verbose
   -d : dry run
