@@ -24,6 +24,10 @@ The page you see has an [awesome-list of telemetry channels](#telemetry-channels
 
 [Scripts](/examples/) to disable all known telemetry channels in your shell session.
 
+<p align="center">
+  <img id="script" src="https://raw.githubusercontent.com/beatcracker/toptout/master/media/script.png">
+</p>
+
 ### 🚧 API
 
 Get telemetry configuration data via API! See [openapi.yaml](https://github.com/beatcracker/toptout/blob/master/docs/swagger/openapi.yaml) definition and try it online using [Swagger-UI](https://beatcracker.github.io/toptout/swagger).
