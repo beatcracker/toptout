@@ -14,27 +14,22 @@
     Show operation log
 
 .Example
-    toptout_pwsh.ps1 -WhatIf
+    toptout_pwsh.ps1 -Env -WhatIf
 
-    Set environment variables and execute commands, dry run mode.
-
-.Example
-    toptout_pwsh.ps1 -ShowLog
-
-    Set environment variables and execute commands, show log.
+    Set environment variables, dry run.
 
 .Example
-    toptout_pwsh.ps1 -Env -ShowLog
+    toptout_pwsh.ps1 -Exec -WhatIf
 
-    Set environment variables, show log.
-
-.Example
-    toptout_pwsh.ps1 -Exec -ShowLog
-
-    Execute commands, show log.
+    Execute commands, dry run.
 
 .Example
-    toptout_pwsh.ps1
+    toptout_pwsh.ps1 -Env -Exec -ShowLog
+
+    Set environment variables and execute commands, verbose log.
+
+.Example
+    toptout_pwsh.ps1 -Env -Exec
 
     Set environment variables and execute commands, silent.
 #>
@@ -121,8 +116,9 @@ function Set-EnvVar {
     }
 }
 
-if (-not $Env -and -not $Exec) {
-    $Env = $Exec = $true
+if (-not $PSBoundParameters.Count) {
+    Get-Help $PSCmdlet.MyInvocation.MyCommand.Definition -Examples
+    return
 }
 
 

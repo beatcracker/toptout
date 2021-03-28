@@ -23,27 +23,22 @@ $ShellHelpersMap = @{
     Show operation log
 
 .Example
-    toptout_pwsh.ps1 -WhatIf
+    toptout_pwsh.ps1 -Env -WhatIf
 
-    Set environment variables and execute commands, dry run mode.
-
-.Example
-    toptout_pwsh.ps1 -ShowLog
-
-    Set environment variables and execute commands, show log.
+    Set environment variables, dry run.
 
 .Example
-    toptout_pwsh.ps1 -Env -ShowLog
+    toptout_pwsh.ps1 -Exec -WhatIf
 
-    Set environment variables, show log.
-
-.Example
-    toptout_pwsh.ps1 -Exec -ShowLog
-
-    Execute commands, show log.
+    Execute commands, dry run.
 
 .Example
-    toptout_pwsh.ps1
+    toptout_pwsh.ps1 -Env -Exec -ShowLog
+
+    Set environment variables and execute commands, verbose log.
+
+.Example
+    toptout_pwsh.ps1 -Env -Exec
 
     Set environment variables and execute commands, silent.
 #>
@@ -130,12 +125,113 @@ function Set-EnvVar {
     }
 }
 
-if (-not $Env -and -not $Exec) {
-    $Env = $Exec = $true
+if (-not $PSBoundParameters.Count) {
+    Get-Help $PSCmdlet.MyInvocation.MyCommand.Definition -Examples
+    return
 }
 
 '@
-    bash = '#!/usr/bin/env bash'
+    bash = @'
+#!/usr/bin/env bash
+
+cleanup () {
+  unset $(compgen -v | grep '^toptout_')
+}
+
+trap cleanup RETURN EXIT
+
+toptout_name="$(basename "${BASH_SOURCE[0]}")"
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]
+then
+  toptout_sourced='False'
+else
+  toptout_sourced='True'
+fi
+
+toptout_usage="
+Usage:
+
+  . './${toptout_name}' -exvdh
+
+Arguments:
+
+  -e : set environment variables.
+       You must source script for this to work: . './${toptout_name}' -e
+  -x : execute commands
+  -v : verbose
+  -d : dry run
+  -h : this help"
+
+toptout_warn=$'
+WARNING:
+  -e specified, but script is not sourced!
+  Environment variables wouldn\'t be exported to your shell session.'
+
+toptout_env='False'
+toptout_exec='False'
+toptout_dry='False'
+toptout_verbose='False'
+
+OPTIND=1
+
+while getopts ":exdvh" opt
+do
+  case $opt in
+  e)
+    toptout_env='True'
+    [[ "${toptout_sourced}" != 'True' ]] && echo "${toptout_warn}"
+  ;;
+  x)
+    toptout_exec='True'
+  ;;
+  d)
+    toptout_dry='True'
+  ;;
+  v)
+    toptout_verbose='True'
+  ;;
+  h|\?)
+    toptout_help='True'
+    >&2 echo "${toptout_usage}"
+  ;;
+  esac
+done
+
+if [[ -n "${toptout_help}" ]]
+then
+  [[ "${toptout_sourced}" == 'True' ]] && return || exit
+fi
+
+if [[ "${toptout_env}" == 'False' && "${toptout_exec}" == 'False' ]]
+then
+  echo "${toptout_usage}"
+  [[ "${toptout_sourced}" == 'True' ]] && return || exit
+fi
+
+[[ "${toptout_verbose}" == 'True' ]] && echo "
+Current settings:
+
+  Set environment variables: ${toptout_env}
+  Execute commands         : ${toptout_exec}
+  Verbose                  : ${toptout_verbose}
+  Dry run                  : ${toptout_dry}
+"
+
+run_cmd () {
+  if command -v "${1}" > /dev/null 2>&1
+  then
+    [[ "${toptout_verbose}" == 'True' ]] && echo "Executing command: ${1} ${2}"
+    [[ "${toptout_dry}" == 'False' ]] && "${1}" ${2}
+  fi
+}
+
+set_env () {
+  [[ "${toptout_verbose}" == 'True' ]] && echo "Setting environment variable: ${1}=${2}"
+  [[ "${toptout_dry}" == 'False' ]] && export "${1}"="${2}"
+}
+
+'@
 }
 
 $ShellSwitchMap = @{
@@ -200,12 +296,11 @@ default {{
 
 $ShellCmdMap = @{
     bash = @{
-        env  = "export {0}='{1}'"
+        env  = @'
+[[ "${{toptout_env}}" == 'True' ]] && set_env '{0}' '{1}'
+'@
         exec = @'
-if command -v '{0}' > /dev/null 2>&1 > /dev/null
-then
-  '{0}' {1} > /dev/null 2>&1
-fi
+[[ "${{toptout_exec}}" == 'True' ]] && run_cmd '{0}' '{1}'
 '@
     }
     pwsh = @{
@@ -221,7 +316,6 @@ if ($Exec) {{
 '@
     }
 }
-
 
 filter Select-LowestScope {
     foreach ($scope in 'process', 'user', 'machine') {
