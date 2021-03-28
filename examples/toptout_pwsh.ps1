@@ -4,6 +4,9 @@
 .Synopsis
     Toptout shell script: Disable known telemetry channels for apps
 
+.Link
+    https://beatcracker.github.io/toptout/
+
 .Parameter Env
     Set environment variables that disable telemetry
 
@@ -77,8 +80,8 @@ function Invoke-ShellCommand {
 
         if ($PSCmdlet.ShouldProcess($LoggedCommand, 'Execute command')) {
             if ($ShowLog) {
-                Write-Host 'Executing command: ' -ForegroundColor Green -NoNewline
-                Write-Host $LoggedCommand -ForegroundColor Yellow
+                Write-Host 'Executing command           : ' -ForegroundColor DarkGreen -NoNewline
+                Write-Host $LoggedCommand -ForegroundColor DarkYellow
             }
 
             $ret = Start-Process -FilePath $Command -ArgumentList $Arguments -NoNewWindow -Wait
@@ -108,8 +111,8 @@ function Set-EnvVar {
 
     if ($PSCmdlet.ShouldProcess($EnvVar, 'Set environment variable')) {
         if ($ShowLog) {
-            Write-Host 'Setting environment variable: ' -ForegroundColor Green -NoNewline
-            Write-Host "$EnvVar" -ForegroundColor Yellow
+            Write-Host 'Setting environment variable: ' -ForegroundColor DarkGreen -NoNewline
+            Write-Host "$EnvVar" -ForegroundColor DarkYellow
         }
 
         [System.Environment]::SetEnvironmentVariable($Name, $Value)
@@ -121,6 +124,34 @@ if (-not $PSBoundParameters.Count) {
     return
 }
 
+if ($ShowLog) {
+@"
+    ______            __              __
+   /_  __/___  ____  / /_____  __  __/ /_
+    / / / __ \/ __ \/ __/ __ \/ / / / __/
+   / / / /_/ / /_/ / /_/ /_/ / /_/ / /_
+  /_/  \____/ .___/\__/\____/\__,_/\__/
+            /_/
+"@ | Write-Host -ForegroundColor Magenta
+
+@"
+
+Easily opt-out from telemetry collection
+________________________________________
+
+ https://beatcracker.github.io/toptout/
+________________________________________
+
+Current settings:
+
+  Set environment variables: $Env
+  Execute commands         : $Exec
+  Verbose                  : $ShowLog
+  Dry run                  : $WhatIfPreference
+________________________________________
+
+"@ | Write-Host
+}
 
 # Firefox
 # https://www.mozilla.org/firefox/

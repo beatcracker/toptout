@@ -13,6 +13,9 @@ $ShellHelpersMap = @{
 .Synopsis
     Toptout shell script: Disable known telemetry channels for apps
 
+.Link
+    https://beatcracker.github.io/toptout/
+
 .Parameter Env
     Set environment variables that disable telemetry
 
@@ -86,8 +89,8 @@ function Invoke-ShellCommand {
 
         if ($PSCmdlet.ShouldProcess($LoggedCommand, 'Execute command')) {
             if ($ShowLog) {
-                Write-Host 'Executing command: ' -ForegroundColor Green -NoNewline
-                Write-Host $LoggedCommand -ForegroundColor Yellow
+                Write-Host 'Executing command           : ' -ForegroundColor DarkGreen -NoNewline
+                Write-Host $LoggedCommand -ForegroundColor DarkYellow
             }
 
             $ret = Start-Process -FilePath $Command -ArgumentList $Arguments -NoNewWindow -Wait
@@ -117,8 +120,8 @@ function Set-EnvVar {
 
     if ($PSCmdlet.ShouldProcess($EnvVar, 'Set environment variable')) {
         if ($ShowLog) {
-            Write-Host 'Setting environment variable: ' -ForegroundColor Green -NoNewline
-            Write-Host "$EnvVar" -ForegroundColor Yellow
+            Write-Host 'Setting environment variable: ' -ForegroundColor DarkGreen -NoNewline
+            Write-Host "$EnvVar" -ForegroundColor DarkYellow
         }
 
         [System.Environment]::SetEnvironmentVariable($Name, $Value)
@@ -130,9 +133,39 @@ if (-not $PSBoundParameters.Count) {
     return
 }
 
+if ($ShowLog) {
+@"
+    ______            __              __
+   /_  __/___  ____  / /_____  __  __/ /_
+    / / / __ \/ __ \/ __/ __ \/ / / / __/
+   / / / /_/ / /_/ / /_/ /_/ / /_/ / /_
+  /_/  \____/ .___/\__/\____/\__,_/\__/
+            /_/
+"@ | Write-Host -ForegroundColor Magenta
+
+@"
+
+Easily opt-out from telemetry collection
+________________________________________
+
+ https://beatcracker.github.io/toptout/
+________________________________________
+
+Current settings:
+
+  Set environment variables: $Env
+  Execute commands         : $Exec
+  Verbose                  : $ShowLog
+  Dry run                  : $WhatIfPreference
+________________________________________
+
+"@ | Write-Host
+}
 '@
     bash = @'
 #!/usr/bin/env bash
+
+# https://beatcracker.github.io/toptout/
 
 cleanup () {
   unset $(compgen -v | grep '^toptout_')
@@ -180,7 +213,7 @@ do
   case $opt in
   e)
     toptout_env='True'
-    [[ "${toptout_sourced}" != 'True' ]] && echo "${toptout_warn}"
+    [[ "${toptout_sourced}" != 'True' ]] && echo -e "\033[31m${toptout_warn}\033[0m"
   ;;
   x)
     toptout_exec='True'
@@ -209,28 +242,41 @@ then
   [[ "${toptout_sourced}" == 'True' ]] && return || exit
 fi
 
-[[ "${toptout_verbose}" == 'True' ]] && echo "
+run_cmd () {
+  if command -v "${1}" > /dev/null 2>&1
+  then
+    [[ "${toptout_verbose}" == 'True' ]] && echo -e "\033[32mExecuting command           :\033[0m \033[33m${1} ${2}\033[0m"
+    [[ "${toptout_dry}" == 'False' ]] && "${1}" ${2}
+  fi
+}
+
+set_env () {
+  [[ "${toptout_verbose}" == 'True' ]] && echo -e "\033[32mSetting environment variable:\033[0m \033[33m${1}=${2}\033[0m"
+  [[ "${toptout_dry}" == 'False' ]] && export "${1}"="${2}"
+}
+
+[[ "${toptout_verbose}" == 'True' ]] && echo -e "\033[95m
+    ______            __              __
+   /_  __/___  ____  / /_____  __  __/ /_
+    / / / __ \/ __ \/ __/ __ \/ / / / __/
+   / / / /_/ / /_/ / /_/ /_/ / /_/ / /_
+  /_/  \____/ .___/\__/\____/\__,_/\__/
+            /_/
+\033[0m
+Easily opt-out from telemetry collection
+________________________________________
+
+ https://beatcracker.github.io/toptout/
+________________________________________
+
 Current settings:
 
   Set environment variables: ${toptout_env}
   Execute commands         : ${toptout_exec}
   Verbose                  : ${toptout_verbose}
   Dry run                  : ${toptout_dry}
+________________________________________
 "
-
-run_cmd () {
-  if command -v "${1}" > /dev/null 2>&1
-  then
-    [[ "${toptout_verbose}" == 'True' ]] && echo "Executing command: ${1} ${2}"
-    [[ "${toptout_dry}" == 'False' ]] && "${1}" ${2}
-  fi
-}
-
-set_env () {
-  [[ "${toptout_verbose}" == 'True' ]] && echo "Setting environment variable: ${1}=${2}"
-  [[ "${toptout_dry}" == 'False' ]] && export "${1}"="${2}"
-}
-
 '@
 }
 

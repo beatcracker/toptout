@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# https://beatcracker.github.io/toptout/
+
 cleanup () {
   unset $(compgen -v | grep '^toptout_')
 }
@@ -23,7 +25,7 @@ Usage:
 Arguments:
 
   -e : set environment variables.
-       You must source script for this to work: . './${toptout_name}' -e
+        You must source script for this to work: . './${toptout_name}' -e
   -x : execute commands
   -v : verbose
   -d : dry run
@@ -46,7 +48,7 @@ do
   case $opt in
   e)
     toptout_env='True'
-    [[ "${toptout_sourced}" != 'True' ]] && echo "${toptout_warn}"
+    [[ "${toptout_sourced}" != 'True' ]] && echo -e "\033[31m${toptout_warn}\033[0m"
   ;;
   x)
     toptout_exec='True'
@@ -75,28 +77,41 @@ then
   [[ "${toptout_sourced}" == 'True' ]] && return || exit
 fi
 
-[[ "${toptout_verbose}" == 'True' ]] && echo "
+run_cmd () {
+  if command -v "${1}" > /dev/null 2>&1
+  then
+    [[ "${toptout_verbose}" == 'True' ]] && echo -e "\033[32mExecuting command           :\033[0m \033[33m${1} ${2}\033[0m"
+    [[ "${toptout_dry}" == 'False' ]] && "${1}" ${2}
+  fi
+}
+
+set_env () {
+  [[ "${toptout_verbose}" == 'True' ]] && echo -e "\033[32mSetting environment variable:\033[0m \033[33m${1}=${2}\033[0m"
+  [[ "${toptout_dry}" == 'False' ]] && export "${1}"="${2}"
+}
+
+[[ "${toptout_verbose}" == 'True' ]] && echo -e "\033[95m
+    ______            __              __
+   /_  __/___  ____  / /_____  __  __/ /_
+    / / / __ \/ __ \/ __/ __ \/ / / / __/
+   / / / /_/ / /_/ / /_/ /_/ / /_/ / /_
+  /_/  \____/ .___/\__/\____/\__,_/\__/
+            /_/
+\033[0m
+Easily opt-out from telemetry collection
+________________________________________
+
+ https://beatcracker.github.io/toptout/
+________________________________________
+
 Current settings:
 
   Set environment variables: ${toptout_env}
   Execute commands         : ${toptout_exec}
   Verbose                  : ${toptout_verbose}
   Dry run                  : ${toptout_dry}
+________________________________________
 "
-
-run_cmd () {
-  if command -v "${1}" > /dev/null 2>&1
-  then
-    [[ "${toptout_verbose}" == 'True' ]] && echo "Executing command: ${1} ${2}"
-    [[ "${toptout_dry}" == 'False' ]] && "${1}" ${2}
-  fi
-}
-
-set_env () {
-  [[ "${toptout_verbose}" == 'True' ]] && echo "Setting environment variable: ${1}=${2}"
-  [[ "${toptout_dry}" == 'False' ]] && export "${1}"="${2}"
-}
-
 
 # Firefox
 # https://www.mozilla.org/firefox/
