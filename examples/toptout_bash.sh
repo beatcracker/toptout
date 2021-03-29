@@ -48,7 +48,7 @@ do
   case $opt in
   e)
     toptout_env='True'
-    [[ "${toptout_sourced}" != 'True' ]] && echo -e "\033[31m${toptout_warn}\033[0m"
+    [[ "${toptout_sourced}" != 'True' ]] && >&2 echo -e "\033[31m${toptout_warn}\033[0m"
   ;;
   x)
     toptout_exec='True'
@@ -61,7 +61,7 @@ do
   ;;
   h|\?)
     toptout_help='True'
-    >&2 echo "${toptout_usage}"
+    echo "${toptout_usage}"
   ;;
   esac
 done
