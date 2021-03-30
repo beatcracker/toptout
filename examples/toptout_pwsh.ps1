@@ -272,6 +272,14 @@ if ($Env) {
     Set-EnvVar -Name 'CI' -Value 'ANY_VALUE' -ShowLog:$ShowLog
 }
 
+# DVC
+# https://dvc.org/
+
+# Usage Analytics
+if ($Exec) {
+    Invoke-ShellCommand -Command 'dvc' -Arguments 'config core.analytics false --global' -ShowLog:$ShowLog
+}
+
 # Flutter
 # https://flutter.dev/
 

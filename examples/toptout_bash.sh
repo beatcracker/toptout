@@ -206,6 +206,12 @@ esac
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'CI' 'ANY_VALUE'
 
+# DVC
+# https://dvc.org/
+
+# Usage Analytics
+[[ "${toptout_exec}" == 'True' ]] && run_cmd 'dvc' 'config core.analytics false --global'
+
 # Flutter
 # https://flutter.dev/
 

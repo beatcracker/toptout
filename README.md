@@ -97,6 +97,7 @@ Below is automatically generated list of known telemetry channels for various ap
   - [TimescaleDB ](#timescaledb-)
 - [Development](#development)
   - [Apache Cordova CLI](#apache-cordova-cli)
+  - [DVC](#dvc)
   - [Flutter](#flutter)
   - [Gatsby](#gatsby)
   - [Hasura GraphQL engine](#hasura-graphql-engine)
@@ -735,6 +736,35 @@ CI=ANY_VALUE
 
 ```shell
 cordova telemetry off
+```
+
+### [DVC](https://dvc.org/)
+
+> To help us better understand how DVC is used and improve it, DVC captures and reports anonymized usage statistics.
+
+- [Telemetry details](https://dvc.org/doc/user-guide/analytics)
+- [Privacy policy](https://dvc.org/doc/user-guide/privacy)
+
+List of known telemetry channels:
+
+#### Usage Analytics
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Run command
+
+###### Scope: 💻 Machine
+
+```shell
+dvc config core.analytics false --system
+```
+
+###### Scope: 👤 User
+
+```shell
+dvc config core.analytics false --global
 ```
 
 ### [Flutter](https://flutter.dev/)
