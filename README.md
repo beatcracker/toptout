@@ -97,6 +97,7 @@ Below is automatically generated list of known telemetry channels for various ap
   - [TimescaleDB ](#timescaledb-)
 - [Development](#development)
   - [Apache Cordova CLI](#apache-cordova-cli)
+  - [Flutter](#flutter)
   - [Gatsby](#gatsby)
   - [Hasura GraphQL engine](#hasura-graphql-engine)
   - [.NET Core SDK](#net-core-sdk)
@@ -734,6 +735,29 @@ CI=ANY_VALUE
 
 ```shell
 cordova telemetry off
+```
+
+### [Flutter](https://flutter.dev/)
+
+> If you have not opted-out of Flutter’s analytics and crash reporting, when a flutter command crashes it attempts to send a crash report to Google in order to help Google contribute improvements to Flutter over time.
+
+- [Telemetry details](https://flutter.dev/docs/reference/crash-reporting)
+- [Privacy policy](https://policies.google.com/privacy)
+
+List of known telemetry channels:
+
+#### Crash reporting
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Run command
+
+###### Scope: 👤 User
+
+```shell
+flutter config --no-analytics
 ```
 
 ### [Gatsby](https://www.gatsbyjs.org)

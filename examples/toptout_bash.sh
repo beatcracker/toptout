@@ -206,6 +206,12 @@ esac
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'CI' 'ANY_VALUE'
 
+# Flutter
+# https://flutter.dev/
+
+# Crash reporting
+[[ "${toptout_exec}" == 'True' ]] && run_cmd 'flutter' 'config --no-analytics'
+
 # Gatsby
 # https://www.gatsbyjs.org
 

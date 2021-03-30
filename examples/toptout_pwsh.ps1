@@ -272,6 +272,14 @@ if ($Env) {
     Set-EnvVar -Name 'CI' -Value 'ANY_VALUE' -ShowLog:$ShowLog
 }
 
+# Flutter
+# https://flutter.dev/
+
+# Crash reporting
+if ($Exec) {
+    Invoke-ShellCommand -Command 'flutter' -Arguments 'config --no-analytics' -ShowLog:$ShowLog
+}
+
 # Gatsby
 # https://www.gatsbyjs.org
 
