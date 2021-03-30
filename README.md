@@ -92,6 +92,8 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Netlify CLI](#netlify-cli)
   - [Stripe CLI](#stripe-cli)
   - [Tilt](#tilt)
+- [Communications](#communications)
+  - [Mattermost Server](#mattermost-server)
 - [Database](#database)
   - [InfluxDB](#influxdb)
   - [TimescaleDB ](#timescaledb-)
@@ -641,6 +643,49 @@ Use methods described below to opt-out of this telemetry channel.
 
 ```none
 DO_NOT_TRACK=1
+```
+
+## Communications
+
+### [Mattermost Server](https://mattermost.com/)
+
+> As described in the privacy policy in each Mattermost server, telemetry data optionally shared from your Mattermost servers is used to identify security and reliability issues, to analyze and fix software problems, to help improve the quality of Mattermost software and related services, and to make design decisions for future releases.
+
+- [Telemetry details](https://docs.mattermost.com/administration/telemetry.html)
+- [Privacy policy](https://about.mattermost.com/default-privacy-policy/)
+
+List of known telemetry channels:
+
+#### [Diagnostic data](https://docs.mattermost.com/administration/telemetry.html#error-and-diagnostics-reporting-feature)
+
+Official: ❌
+
+- [Telemetry details](https://github.com/mattermost/mattermost-server/issues/9466)
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+MM_LOGSETTINGS_ENABLEDIAGNOSTICS=false
+```
+
+#### [Security Update Check](https://docs.mattermost.com/administration/telemetry.html#security-update-check-feature)
+
+Official: ❌
+
+- [Telemetry details](https://github.com/mattermost/mattermost-server/issues/9466)
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+MM_SERVICESETTINGS_ENABLESECURITYFIXALERT=false
 ```
 
 ## Database

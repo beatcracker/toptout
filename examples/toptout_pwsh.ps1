@@ -256,6 +256,24 @@ if ($Env) {
     Set-EnvVar -Name 'DO_NOT_TRACK' -Value '1' -ShowLog:$ShowLog
 }
 
+# Mattermost Server
+# https://mattermost.com/
+
+# Diagnostic data
+# https://docs.mattermost.com/administration/telemetry.html#error-and-diagnostics-reporting-feature
+if ($Env) {
+    Set-EnvVar -Name 'MM_LOGSETTINGS_ENABLEDIAGNOSTICS' -Value 'false' -ShowLog:$ShowLog
+}
+
+# Mattermost Server
+# https://mattermost.com/
+
+# Security Update Check
+# https://docs.mattermost.com/administration/telemetry.html#security-update-check-feature
+if ($Env) {
+    Set-EnvVar -Name 'MM_SERVICESETTINGS_ENABLESECURITYFIXALERT' -Value 'false' -ShowLog:$ShowLog
+}
+
 # TimescaleDB 
 # https://www.timescale.com/
 

@@ -194,6 +194,20 @@ esac
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'DO_NOT_TRACK' '1'
 
+# Mattermost Server
+# https://mattermost.com/
+
+# Diagnostic data
+# https://docs.mattermost.com/administration/telemetry.html#error-and-diagnostics-reporting-feature
+[[ "${toptout_env}" == 'True' ]] && set_env 'MM_LOGSETTINGS_ENABLEDIAGNOSTICS' 'false'
+
+# Mattermost Server
+# https://mattermost.com/
+
+# Security Update Check
+# https://docs.mattermost.com/administration/telemetry.html#security-update-check-feature
+[[ "${toptout_env}" == 'True' ]] && set_env 'MM_SERVICESETTINGS_ENABLESECURITYFIXALERT' 'false'
+
 # TimescaleDB 
 # https://www.timescale.com/
 
