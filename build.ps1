@@ -426,6 +426,7 @@ task openapi-lint {
 
     exec {
         & 'npx' @(
+            '--yes'
             '@redocly/openapi-cli'
             'lint'
             "$BuildRoot/schema/openapi.yaml"
@@ -439,6 +440,7 @@ task openapi-bundle {
 
     exec {
         & 'npx' @(
+            '--yes'
             '@redocly/openapi-cli'
             'bundle'
             "$BuildRoot/schema/openapi.yaml"
