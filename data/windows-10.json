@@ -49,23 +49,23 @@
             "link": "https://www.ghacks.net/2015/08/14/comparison-of-windows-10-privacy-tools/"
           },
           {
+            "name": "github.com | Windows 10 Sophia Script",
+            "description": "A PowerShell module for Windows 10 fine-tuning and automating the routine tasks 🏆",
+            "link": "https://github.com/farag2/Windows-10-Sophia-Script"
+          },
+          {
             "name": "github.com | crazy-max/WindowsSpyBlocker",
             "description": "🛡 Block spying and tracking on Windows",
             "link": "https://github.com/crazy-max/WindowsSpyBlocker"
           },
           {
-            "name": "github.com | Disassembler0/Win10-Initial-Setup-Script",
-            "description": "PowerShell script for automation of routine tasks done after fresh installations of Windows 10 / Server 2016 / Server 2019",
-            "link": "https://github.com/Disassembler0/Win10-Initial-Setup-Script"
+            "name": "github.com | builtbybel/Privatezilla",
+            "description": "Privatezilla is the simplest way to perform a quick privacy and security check of your Windows 10 copy.",
+            "link": "https://github.com/builtbybel/privatezilla"
           },
           {
-            "name": "github.com | builtbybel/spydish",
-            "description": "👀👮🐢🔥The Spydish app is the simplest way to perform a quick privacy and security check of your Windows 10 installation",
-            "link": "https://github.com/builtbybel/spydish"
-          },
-          {
-            "name": "github.com | builtbybel/sharpapp",
-            "description": "💩⭐️🚀A #app with cutting edge technology to #minimize windows-10 telemetry and #maximize privacy plus many more",
+            "name": "github.com | builtbybel/SharpApp",
+            "description": "💩⭐️🚀A #app with cutting edge technology to minimize windows-10 telemetry and maximize privacy plus many more",
             "link": "https://github.com/builtbybel/sharpapp"
           }
         ]

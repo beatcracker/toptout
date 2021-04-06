@@ -1443,21 +1443,21 @@ Use methods described below to opt-out of this telemetry channel.
 
     > We update the listing regularly. Please let us know about any updates that we may have missed, and about new programs that you found that are not on it already.
 
-2. [github.com | crazy-max/WindowsSpyBlocker](https://github.com/crazy-max/WindowsSpyBlocker)
+2. [github.com | Windows 10 Sophia Script](https://github.com/farag2/Windows-10-Sophia-Script)
+
+    > A PowerShell module for Windows 10 fine-tuning and automating the routine tasks 🏆
+
+3. [github.com | crazy-max/WindowsSpyBlocker](https://github.com/crazy-max/WindowsSpyBlocker)
 
     > 🛡 Block spying and tracking on Windows
 
-3. [github.com | Disassembler0/Win10-Initial-Setup-Script](https://github.com/Disassembler0/Win10-Initial-Setup-Script)
+4. [github.com | builtbybel/Privatezilla](https://github.com/builtbybel/privatezilla)
 
-    > PowerShell script for automation of routine tasks done after fresh installations of Windows 10 / Server 2016 / Server 2019
+    > Privatezilla is the simplest way to perform a quick privacy and security check of your Windows 10 copy.
 
-4. [github.com | builtbybel/spydish](https://github.com/builtbybel/spydish)
+5. [github.com | builtbybel/SharpApp](https://github.com/builtbybel/sharpapp)
 
-    > 👀👮🐢🔥The Spydish app is the simplest way to perform a quick privacy and security check of your Windows 10 installation
-
-5. [github.com | builtbybel/sharpapp](https://github.com/builtbybel/sharpapp)
-
-    > 💩⭐️🚀A #app with cutting edge technology to #minimize windows-10 telemetry and #maximize privacy plus many more
+    > 💩⭐️🚀A #app with cutting edge technology to minimize windows-10 telemetry and maximize privacy plus many more
 
 ## Shells
 
