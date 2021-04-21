@@ -100,6 +100,7 @@ Below is automatically generated list of known telemetry channels for various ap
 - [Development](#development)
   - [Apache Cordova CLI](#apache-cordova-cli)
   - [DVC](#dvc)
+  - [Ember CLI](#ember-cli)
   - [Flutter](#flutter)
   - [Gatsby](#gatsby)
   - [Hasura GraphQL engine](#hasura-graphql-engine)
@@ -811,6 +812,44 @@ dvc config core.analytics false --system
 ```shell
 dvc config core.analytics false --global
 ```
+
+### [Ember CLI](https://cli.emberjs.com/)
+
+> Ember-cli tracks (only) the following data points: ember-cli version, build/rebuild/live-reload times, how many errors occurred.
+
+- [Telemetry details](https://github.com/ember-cli/ember-cli/blob/master/docs/analytics.md)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Edit config file (JSON)
+
+###### Scope: 👤 User
+
+| OS      | Path                       |
+|---------|----------------------------|
+| Linux   | `$HOME/.ember-cli`         |
+| macOS   | `$HOME/.ember-cli`         |
+| Windows | `%USERPROFILE%\.ember-cli` |
+
+###### Content
+
+```json
+{
+  "disableAnalytics": true
+}
+```
+
+##### 2. Visit link(s) for more details
+
+1. [Disable usage data reporting](https://github.com/ember-cli/ember-cli/pull/2923)
+
+    > You can also disable analytics on per-command basis by adding '--disable-analytics' option
 
 ### [Flutter](https://flutter.dev/)
 
