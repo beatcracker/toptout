@@ -242,6 +242,7 @@ Use methods described below to opt-out of this telemetry channel.
 > Homebrew has begun gathering anonymous aggregate user behaviour analytics and reporting these to Google Analytics.
 
 - [Telemetry details](https://docs.brew.sh/Analytics)
+- Privacy policy: ❌
 
 List of known telemetry channels:
 
@@ -402,6 +403,7 @@ Use methods described below to opt-out of this telemetry channel.
 > The Windows Terminal client is instrumented to collect usage and diagnostic (error) data and sends it to Microsoft to help improve the product.
 
 - [Telemetry details](https://github.com/microsoft/terminal/issues/5331)
+- Privacy policy: ❌
 
 List of known telemetry channels:
 
@@ -629,6 +631,7 @@ STRIPE_CLI_TELEMETRY_OPTOUT=1
 > Tilt sends anonymized data about how you use it.
 
 - [Telemetry details](https://docs.tilt.dev/telemetry_faq.html)
+- Privacy policy: ❌
 
 List of known telemetry channels:
 
@@ -818,6 +821,7 @@ dvc config core.analytics false --global
 > Ember-cli tracks (only) the following data points: ember-cli version, build/rebuild/live-reload times, how many errors occurred.
 
 - [Telemetry details](https://github.com/ember-cli/ember-cli/blob/master/docs/analytics.md)
+- Privacy policy: ❌
 
 List of known telemetry channels:
 
@@ -1007,6 +1011,7 @@ npx next telemetry disable
 > Nuxt Telemetry collects anonymous telemetry data about general usage. This helps us to accurately gauge feature usage and customization across all our users.
 
 - [Telemetry details](https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-telemetry)
+- Privacy policy: ❌
 
 List of known telemetry channels:
 
@@ -1109,6 +1114,7 @@ rasa telemetry disable
 > AutomatedLab will start to collect telemetry starting with version 5.0. This is an opt-out collection and you will be asked once to specify whether or not you want to send us telemetry data.
 
 - [Telemetry details](https://github.com/AutomatedLab/AutomatedLab/wiki/Lab-Telemetry)
+- Privacy policy: ❌
 
 List of known telemetry channels:
 

@@ -138,6 +138,9 @@ filter ConvertTo-Readme {
     if ($_.links.privacy) {
         '- [Privacy policy]({0})' -f $_.links.privacy
     }
+    else {
+        '- Privacy policy: ❌'
+    }
 
     if ($_.links.Keys.Count -gt 1) {
         Add-Newline
