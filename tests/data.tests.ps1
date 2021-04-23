@@ -48,6 +48,19 @@ Describe 'JSON telemetry data' {
                 }
             }
 
+            It '"display_value" in "json_file" should be valid JSON' {
+                foreach ($t in $object.telemetry) {
+                    if ($t.target.json_file) {
+                        foreach ($scope in 'process', 'user', 'machine') {
+                            $dv = $t.target.json_file.scope.$scope.display_value
+                            if ($dv) {
+                                $dv | Test-Json | Should -BeExactly $true
+                            }
+                        }
+                    }
+                }
+            }
+
             It 'Using LF, not CRLF' {
                 $content -match "`r`n" | Should -BeExactly $false
             }
