@@ -98,12 +98,15 @@ Below is automatically generated list of known telemetry channels for various ap
   - [InfluxDB](#influxdb)
   - [TimescaleDB ](#timescaledb-)
 - [Development](#development)
+  - [Angular](#angular)
   - [Apache Cordova CLI](#apache-cordova-cli)
   - [DVC](#dvc)
   - [Ember CLI](#ember-cli)
   - [Flutter](#flutter)
   - [Gatsby](#gatsby)
   - [Hasura GraphQL engine](#hasura-graphql-engine)
+  - [ML.NET CLI](#mlnet-cli)
+  - [mssql-cli](#mssql-cli)
   - [.NET Core SDK](#net-core-sdk)
   - [Next.js](#nextjs)
   - [Nuxt.js](#nuxtjs)
@@ -756,6 +759,87 @@ timescaledb.telemetry_level=off
 
 ## Development
 
+### [Angular](https://angular.io)
+
+> When installing the Angular CLI or upgrading an existing version, you are prompted to allow global collection of usage statistics. If you say no or skip the prompt, no data is collected.
+
+- [Telemetry details](https://angular.io/cli/analytics)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### [Usage data](https://angular.io/analytics)
+
+Official: ✔
+
+- [Telemetry details](https://github.com/angular/angular-cli/blob/master/docs/design/analytics.md#disabling-usage-analytics)
+
+> Share usage data with Angular team.
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+NG_CLI_ANALYTICS=false
+```
+
+##### 2. Run command
+
+###### Scope: 👤 User
+
+```shell
+ng analytics off
+```
+
+#### [Usage data (custom)](https://angular.io/cli/usage-analytics-gathering)
+
+Official: ✔
+
+- [Telemetry details](https://angular.io/cli/usage-analytics-gathering)
+
+> Gather usage data in your own Google Analytics. This configuration option is separate from and in addition to other usage analytics that your users may be sharing with Google.
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+NG_CLI_ANALYTICS_SHARE=false
+```
+
+##### 2. Run command
+
+###### Scope: 👤 User
+
+```shell
+ng config --global --remove cli.analyticsSharing
+```
+
+##### 3. Edit config file (JSON)
+
+###### Scope: 👤 User
+
+| OS      | Path                                 |
+|---------|--------------------------------------|
+| Linux   | `$HOME/.angular-config.json`         |
+| macOS   | `$HOME/.angular-config.json`         |
+| Windows | `%USERPROFILE%\.angular-config.json` |
+
+###### Content
+
+```json
+{
+  "cli": {
+    "analyticsSharing": ""
+  }
+}
+```
+
 ### [Apache Cordova CLI](https://cordova.apache.org)
 
 > We use the gathered information to help us make our tool more useful and to better understand how it is used. We do not track or collect personally identifiable information or associate gathered data with any personally identifying information from other sources.
@@ -950,6 +1034,52 @@ HASURA_GRAPHQL_ENABLE_TELEMETRY=false
 {
   "enable_telemetry": false
 }
+```
+
+### [ML.NET CLI](https://docs.microsoft.com/en-us/dotnet/machine-learning/automate-training-with-cli)
+
+> The ML.NET CLI includes a telemetry feature that collects anonymous usage data that is aggregated for use by Microsoft.
+
+- [Telemetry details](https://docs.microsoft.com/en-us/dotnet/machine-learning/resources/ml-net-cli-telemetry)
+- [Privacy policy](https://privacy.microsoft.com/en-us/privacystatement)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+MLDOTNET_CLI_TELEMETRY_OPTOUT=True
+```
+
+### [mssql-cli](https://github.com/dbcli/mssql-cli)
+
+> By default, Microsoft collects anonymous usage data in order to improve the user experience. The usage data collected allows the team to prioritize features and bug fixes.
+
+- [Telemetry details](https://github.com/dbcli/mssql-cli/blob/master/doc/telemetry_guide.md)
+- [Privacy policy](https://privacy.microsoft.com/en-us/privacystatement)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+MSSQL_CLI_TELEMETRY_OPTOUT=True
 ```
 
 ### [.NET Core SDK](https://docs.microsoft.com/en-us/dotnet/core/tools/index)

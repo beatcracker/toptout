@@ -214,6 +214,20 @@ esac
 # Usage data
 [[ "${toptout_exec}" == 'True' ]] && run_cmd 'psql' '-c "ALTER SYSTEM SET timescaledb.telemetry_level=off"'
 
+# Angular
+# https://angular.io
+
+# Usage data
+# https://angular.io/analytics
+[[ "${toptout_env}" == 'True' ]] && set_env 'NG_CLI_ANALYTICS' 'false'
+
+# Angular
+# https://angular.io
+
+# Usage data (custom)
+# https://angular.io/cli/usage-analytics-gathering
+[[ "${toptout_env}" == 'True' ]] && set_env 'NG_CLI_ANALYTICS_SHARE' 'false'
+
 # Apache Cordova CLI
 # https://cordova.apache.org
 
@@ -243,6 +257,18 @@ esac
 
 # Usage data (CLI and Console)
 [[ "${toptout_env}" == 'True' ]] && set_env 'HASURA_GRAPHQL_ENABLE_TELEMETRY' 'false'
+
+# ML.NET CLI
+# https://docs.microsoft.com/en-us/dotnet/machine-learning/automate-training-with-cli
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'MLDOTNET_CLI_TELEMETRY_OPTOUT' 'True'
+
+# mssql-cli
+# https://github.com/dbcli/mssql-cli
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'MSSQL_CLI_TELEMETRY_OPTOUT' 'True'
 
 # .NET Core SDK
 # https://docs.microsoft.com/en-us/dotnet/core/tools/index

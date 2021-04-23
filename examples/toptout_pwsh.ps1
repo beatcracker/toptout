@@ -282,6 +282,24 @@ if ($Exec) {
     Invoke-ShellCommand -Command 'psql' -Arguments '-c "ALTER SYSTEM SET timescaledb.telemetry_level=off"' -ShowLog:$ShowLog
 }
 
+# Angular
+# https://angular.io
+
+# Usage data
+# https://angular.io/analytics
+if ($Env) {
+    Set-EnvVar -Name 'NG_CLI_ANALYTICS' -Value 'false' -ShowLog:$ShowLog
+}
+
+# Angular
+# https://angular.io
+
+# Usage data (custom)
+# https://angular.io/cli/usage-analytics-gathering
+if ($Env) {
+    Set-EnvVar -Name 'NG_CLI_ANALYTICS_SHARE' -Value 'false' -ShowLog:$ShowLog
+}
+
 # Apache Cordova CLI
 # https://cordova.apache.org
 
@@ -320,6 +338,22 @@ if ($Env) {
 # Usage data (CLI and Console)
 if ($Env) {
     Set-EnvVar -Name 'HASURA_GRAPHQL_ENABLE_TELEMETRY' -Value 'false' -ShowLog:$ShowLog
+}
+
+# ML.NET CLI
+# https://docs.microsoft.com/en-us/dotnet/machine-learning/automate-training-with-cli
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'MLDOTNET_CLI_TELEMETRY_OPTOUT' -Value 'True' -ShowLog:$ShowLog
+}
+
+# mssql-cli
+# https://github.com/dbcli/mssql-cli
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'MSSQL_CLI_TELEMETRY_OPTOUT' -Value 'True' -ShowLog:$ShowLog
 }
 
 # .NET Core SDK
