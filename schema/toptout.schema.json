@@ -17,14 +17,16 @@
                     "type": "string"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "pattern": "^[\\S]+(\\s+[\\S]+)*$"
                 },
                 "category_id": {
                     "type": "string",
                     "pattern": "^[a-z0-9-]+$"
                 },
                 "category_name": {
-                    "type": "string"
+                    "type": "string",
+                    "pattern": "^[\\S]+(\\s+[\\S]+)*$"
                 },
                 "links": {
                     "$ref": "#/definitions/Links"
@@ -80,13 +82,15 @@
                     "pattern": "^[a-z0-9-]+$"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "pattern": "^[\\S]+(\\s+[\\S]+)*$"
                 },
                 "is_official": {
                     "type": "boolean"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "pattern": "^[\\S]+(\\s+[\\S]+)*$"
                 },
                 "links": {
                     "$ref": "#/definitions/Links"
@@ -523,7 +527,8 @@
                     "pattern": "^http[s]?:\\/\\/.+$"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "pattern": "^[\\S]+(\\s+[\\S]+)*$"
                 }
             },
             "required": [
