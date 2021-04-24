@@ -393,6 +393,7 @@ components:
           pattern: '^http[s]?:\/\/.+$'
         description:
           type: string
+          pattern: '^[\S]+(\s+[\S]+)*$'
       required:
         - description
         - link
@@ -439,10 +440,12 @@ components:
           pattern: '^[a-z0-9-]+$'
         name:
           type: string
+          pattern: '^[\S]+(\s+[\S]+)*$'
         is_official:
           type: boolean
         description:
           type: string
+          pattern: '^[\S]+(\s+[\S]+)*$'
         links:
           $ref: '#/components/schemas/Links'
         target:
@@ -465,11 +468,13 @@ components:
           type: string
         description:
           type: string
+          pattern: '^[\S]+(\s+[\S]+)*$'
         category_id:
           type: string
           pattern: '^[a-z0-9-]+$'
         category_name:
           type: string
+          pattern: '^[\S]+(\s+[\S]+)*$'
         links:
           $ref: '#/components/schemas/Links'
         telemetry:

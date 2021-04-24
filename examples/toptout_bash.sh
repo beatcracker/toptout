@@ -228,6 +228,18 @@ esac
 # https://angular.io/cli/usage-analytics-gathering
 [[ "${toptout_env}" == 'True' ]] && set_env 'NG_CLI_ANALYTICS_SHARE' 'false'
 
+# Carbon Design System
+# https://www.carbondesignsystem.com/
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'CARBON_TELEMETRY_DISABLED' '1'
+
+# choosenim
+# https://github.com/dom96/choosenim
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'CHOOSENIM_NO_ANALYTICS' '1'
+
 # Apache Cordova CLI
 # https://cordova.apache.org
 
@@ -300,6 +312,12 @@ esac
 
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'RASA_TELEMETRY_ENABLED' 'false'
+
+# Salto CLI
+# https://www.salto.io/
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'SALTO_TELEMETRY_DISABLE ' '1'
 
 # AutomatedLab
 # https://github.com/AutomatedLab/AutomatedLab

@@ -99,6 +99,8 @@ Below is automatically generated list of known telemetry channels for various ap
   - [TimescaleDB ](#timescaledb-)
 - [Development](#development)
   - [Angular](#angular)
+  - [Carbon Design System](#carbon-design-system)
+  - [choosenim](#choosenim)
   - [Apache Cordova CLI](#apache-cordova-cli)
   - [DVC](#dvc)
   - [Ember CLI](#ember-cli)
@@ -112,6 +114,7 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Nuxt.js](#nuxtjs)
   - [Prisma](#prisma)
   - [Rasa](#rasa)
+  - [Salto CLI](#salto-cli)
 - [DevOps](#devops)
   - [AutomatedLab](#automatedlab)
   - [Consul](#consul)
@@ -840,6 +843,52 @@ ng config --global --remove cli.analyticsSharing
 }
 ```
 
+### [Carbon Design System](https://www.carbondesignsystem.com/)
+
+> Carbon contains a telemetry feature that collects usage information for IBM and Carbon Design System properties.
+
+- [Telemetry details](https://www.carbondesignsystem.com/help/faq/#telemetry)
+- [Privacy policy](https://www.ibm.com/privacy)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+CARBON_TELEMETRY_DISABLED=1
+```
+
+### [choosenim](https://github.com/dom96/choosenim)
+
+> Starting with version 0.3.0, choosenim has the ability to gather anonymous aggregate user behaviour analytics and to report them to Google Analytics.
+
+- [Telemetry details](https://github.com/dom96/choosenim/blob/master/analytics.md)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+CHOOSENIM_NO_ANALYTICS=1
+```
+
 ### [Apache Cordova CLI](https://cordova.apache.org)
 
 > We use the gathered information to help us make our tool more useful and to better understand how it is used. We do not track or collect personally identifiable information or associate gathered data with any personally identifying information from other sources.
@@ -1237,6 +1286,46 @@ RASA_TELEMETRY_ENABLED=false
 rasa telemetry disable
 ```
 
+### [Salto CLI](https://www.salto.io/)
+
+> Telemetry refers to the collection of non personally identifiable data. The data is being used to improve the product's performance, as well as detect bugs and issues.
+
+- [Telemetry details](https://github.com/salto-io/salto/blob/master/docs/telemetry.md)
+- [Privacy policy](https://www.salto.io/privacy-policy)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+SALTO_TELEMETRY_DISABLE =1
+```
+
+##### 2. Edit config file (plaintext)
+
+###### Scope: 👤 User
+
+| OS      | Path                                            |
+|---------|-------------------------------------------------|
+| Linux   | `$HOME/.salto/salto.config/config.nacl`         |
+| macOS   | `$HOME/.salto/salto.config/config.nacl`         |
+| Windows | `%USERPROFILE%\.salto\salto.config\config.nacl` |
+
+###### Content
+
+```none
+AppConfig:
+              telemetry: false
+```
+
 ## DevOps
 
 ### [AutomatedLab](https://github.com/AutomatedLab/AutomatedLab)
@@ -1564,6 +1653,8 @@ List of known telemetry channels:
 #### [Diagnostic data](https://www.gamersnexus.net/industry/2672-geforce-experience-data-transfer-analysis)
 
 Official: ❌
+
+> Analyzing GeForce Experience Data Transfers with Packet Monitoring
 
 Use methods described below to opt-out of this telemetry channel.
 

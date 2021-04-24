@@ -300,6 +300,22 @@ if ($Env) {
     Set-EnvVar -Name 'NG_CLI_ANALYTICS_SHARE' -Value 'false' -ShowLog:$ShowLog
 }
 
+# Carbon Design System
+# https://www.carbondesignsystem.com/
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'CARBON_TELEMETRY_DISABLED' -Value '1' -ShowLog:$ShowLog
+}
+
+# choosenim
+# https://github.com/dom96/choosenim
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'CHOOSENIM_NO_ANALYTICS' -Value '1' -ShowLog:$ShowLog
+}
+
 # Apache Cordova CLI
 # https://cordova.apache.org
 
@@ -395,6 +411,14 @@ if ($Env) {
 # Usage data
 if ($Env) {
     Set-EnvVar -Name 'RASA_TELEMETRY_ENABLED' -Value 'false' -ShowLog:$ShowLog
+}
+
+# Salto CLI
+# https://www.salto.io/
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'SALTO_TELEMETRY_DISABLE ' -Value '1' -ShowLog:$ShowLog
 }
 
 # AutomatedLab
