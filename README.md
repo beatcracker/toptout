@@ -95,18 +95,25 @@ Below is automatically generated list of known telemetry channels for various ap
 - [Communications](#communications)
   - [Mattermost Server](#mattermost-server)
 - [Database](#database)
+  - [Feast](#feast)
   - [InfluxDB](#influxdb)
+  - [Quilt](#quilt)
   - [TimescaleDB ](#timescaledb-)
 - [Development](#development)
   - [Angular](#angular)
+  - [Appc Daemon](#appc-daemon)
   - [Carbon Design System](#carbon-design-system)
   - [choosenim](#choosenim)
   - [Apache Cordova CLI](#apache-cordova-cli)
+  - [.NET Interactive](#net-interactive)
+  - [dotnet-svcutil](#dotnet-svcutil)
   - [DVC](#dvc)
   - [Ember CLI](#ember-cli)
   - [Flutter](#flutter)
   - [Gatsby](#gatsby)
   - [Hasura GraphQL engine](#hasura-graphql-engine)
+  - [Ionic CLI](#ionic-cli)
+  - [MeiliSearch](#meilisearch)
   - [ML.NET CLI](#mlnet-cli)
   - [mssql-cli](#mssql-cli)
   - [.NET Core SDK](#net-core-sdk)
@@ -115,11 +122,13 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Prisma](#prisma)
   - [Rasa](#rasa)
   - [Salto CLI](#salto-cli)
+  - [Serverless Framework](#serverless-framework)
 - [DevOps](#devops)
   - [AutomatedLab](#automatedlab)
   - [Consul](#consul)
   - [k0s](#k0s)
   - [Packer](#packer)
+  - [Telepresence](#telepresence)
   - [Terraform](#terraform)
   - [Cloud Development Kit for Terraform](#cloud-development-kit-for-terraform)
   - [Vagrant](#vagrant)
@@ -700,6 +709,29 @@ MM_SERVICESETTINGS_ENABLESECURITYFIXALERT=false
 
 ## Database
 
+### [Feast](https://feast.dev/)
+
+> The Feast maintainers use anonymous usage statistics to help shape the Feast roadmap.
+
+- [Telemetry details](https://docs.feast.dev/feast-on-kubernetes/advanced-1/telemetry)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+FEAST_TELEMETRY=False
+```
+
 ### [InfluxDB](https://www.influxdata.com/)
 
 > InfluxData collects information about the usage of InfluxDB. This “phone home” capability is intended to provide us with information about the broader user community and an understanding of how the platform is being used.
@@ -720,6 +752,37 @@ Use methods described below to opt-out of this telemetry channel.
 1. [Disable usage data reporting](https://docs.influxdata.com/influxdb/v2.0/get-started/#influxdb-phone-home)
 
     > Telemetry reporting is enabled by default. However, we’ve made it as easy as possible to ‘opt-out’ of the reporting. Simply start the InfluxDB process with the --reporting-disabled flag
+
+### [Quilt](https://quiltdata.com/)
+
+> Quilt collect anonymous usage statistics to find bugs and prioritize features.
+
+- [Telemetry details](https://docs.quiltdata.com/more/faq#does-quilt3-collect-anonymous-usage-statistics)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+QUILT_DISABLE_USAGE_METRICS=True
+```
+
+##### 2. Run command
+
+###### Scope: 👤 User
+
+```shell
+quilt3 disable-telemetry
+```
 
 ### [TimescaleDB ](https://www.timescale.com/)
 
@@ -843,6 +906,37 @@ ng config --global --remove cli.analyticsSharing
 }
 ```
 
+### [Appc Daemon](https://github.com/appcelerator/appc-daemon)
+
+> The telemetry system is implemented in the appcd-telemetry pacakge and provides a service for collecting time and counter-based information and sending it to the Appc cloud for processing.
+
+- [Telemetry details](https://github.com/appcelerator/appc-daemon/blob/master/docs/Development/appcd/Architecture/Telemetry.md)
+- [Privacy policy](https://www.axway.com/en/privacy-statement)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+APPCD_TELEMETRY=0
+```
+
+##### 2. Run command
+
+###### Scope: 👤 User
+
+```shell
+appcd config set telemetry.enabled false --force
+```
+
 ### [Carbon Design System](https://www.carbondesignsystem.com/)
 
 > Carbon contains a telemetry feature that collects usage information for IBM and Carbon Design System properties.
@@ -918,6 +1012,52 @@ CI=ANY_VALUE
 
 ```shell
 cordova telemetry off
+```
+
+### [.NET Interactive](https://github.com/dotnet/interactive)
+
+> Telemetry is collected when .NET Interactive is started. Once .NET Interactive is running, we do not collect telemetry from any further user actions.
+
+- [Telemetry details](https://github.com/dotnet/interactive/blob/main/docs/README.md#telemetry)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT=1
+```
+
+### [dotnet-svcutil](https://docs.microsoft.com/en-us/dotnet/core/additional-tools/dotnet-svcutil-guide)
+
+> Anonymous telemetry information collection.
+
+- [Telemetry details](https://github.com/dotnet/wcf/blob/main/release-notes/dotnet-svcutil-notes.md)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+DOTNET_SVCUTIL_TELEMETRY_OPTOUT=1
 ```
 
 ### [DVC](https://dvc.org/)
@@ -1083,6 +1223,52 @@ HASURA_GRAPHQL_ENABLE_TELEMETRY=false
 {
   "enable_telemetry": false
 }
+```
+
+### [Ionic CLI](https://ionicframework.com/)
+
+> The CLI sends usage data to Ionic to create a better experience.
+
+- [Telemetry details](https://ionicframework.com/docs/cli/configuration#telemetry)
+- [Privacy policy](https://ionicframework.com/privacy)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Run command
+
+###### Scope: 👤 User
+
+```shell
+ionic config set --global telemetry false
+```
+
+### [MeiliSearch](https://github.com/meilisearch/MeiliSearch)
+
+> MeiliSearch collects anonymous data regarding general usage. This helps us better understand developers' usage of MeiliSearch features. We also use Sentry to make us crash and error reports.
+
+- [Telemetry details](https://github.com/meilisearch/MeiliSearch/blob/main/README.md#telemetry)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data and crash reports
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+MEILI_NO_ANALYTICS=true
 ```
 
 ### [ML.NET CLI](https://docs.microsoft.com/en-us/dotnet/machine-learning/automate-training-with-cli)
@@ -1326,6 +1512,37 @@ AppConfig:
               telemetry: false
 ```
 
+### [Serverless Framework](https://www.serverless.com/)
+
+> Serverless Framework collects anonymous telemetry data in order to better understand the needs of our users and to help drive better prioritization of improvements and more informed decisions.
+
+- [Telemetry details](https://www.serverless.com/framework/docs/telemetry/)
+- [Privacy policy](https://app.serverless.com/legal/privacy)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+SLS_TELEMETRY_DISABLED=1
+```
+
+##### 2. Run command
+
+###### Scope: 👤 User
+
+```shell
+serverless slstats --disable
+```
+
 ## DevOps
 
 ### [AutomatedLab](https://github.com/AutomatedLab/AutomatedLab)
@@ -1463,6 +1680,29 @@ Use methods described below to opt-out of this telemetry channel.
 
 ```none
 CHECKPOINT_DISABLE=1
+```
+
+### [Telepresence](https://www.telepresence.io/)
+
+> Telepresence collects some basic information about its users so it can send important client notices, such as new version availability and security bulletins. We also use the information to aggregate basic usage analytics anonymously.
+
+- [Telemetry details](https://github.com/telepresenceio/telepresence#usage-reporting)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+SCOUT_DISABLE=1
 ```
 
 ### [Terraform](https://www.terraform.io/)

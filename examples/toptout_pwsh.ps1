@@ -274,6 +274,22 @@ if ($Env) {
     Set-EnvVar -Name 'MM_SERVICESETTINGS_ENABLESECURITYFIXALERT' -Value 'false' -ShowLog:$ShowLog
 }
 
+# Feast
+# https://feast.dev/
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'FEAST_TELEMETRY' -Value 'False' -ShowLog:$ShowLog
+}
+
+# Quilt
+# https://quiltdata.com/
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'QUILT_DISABLE_USAGE_METRICS' -Value 'True' -ShowLog:$ShowLog
+}
+
 # TimescaleDB 
 # https://www.timescale.com/
 
@@ -300,6 +316,14 @@ if ($Env) {
     Set-EnvVar -Name 'NG_CLI_ANALYTICS_SHARE' -Value 'false' -ShowLog:$ShowLog
 }
 
+# Appc Daemon
+# https://github.com/appcelerator/appc-daemon
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'APPCD_TELEMETRY' -Value '0' -ShowLog:$ShowLog
+}
+
 # Carbon Design System
 # https://www.carbondesignsystem.com/
 
@@ -322,6 +346,22 @@ if ($Env) {
 # Usage data
 if ($Env) {
     Set-EnvVar -Name 'CI' -Value 'ANY_VALUE' -ShowLog:$ShowLog
+}
+
+# .NET Interactive
+# https://github.com/dotnet/interactive
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT' -Value '1' -ShowLog:$ShowLog
+}
+
+# dotnet-svcutil
+# https://docs.microsoft.com/en-us/dotnet/core/additional-tools/dotnet-svcutil-guide
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'DOTNET_SVCUTIL_TELEMETRY_OPTOUT' -Value '1' -ShowLog:$ShowLog
 }
 
 # DVC
@@ -354,6 +394,22 @@ if ($Env) {
 # Usage data (CLI and Console)
 if ($Env) {
     Set-EnvVar -Name 'HASURA_GRAPHQL_ENABLE_TELEMETRY' -Value 'false' -ShowLog:$ShowLog
+}
+
+# Ionic CLI
+# https://ionicframework.com/
+
+# Usage data
+if ($Exec) {
+    Invoke-ShellCommand -Command 'ionic' -Arguments 'config set --global telemetry false' -ShowLog:$ShowLog
+}
+
+# MeiliSearch
+# https://github.com/meilisearch/MeiliSearch
+
+# Usage data and crash reports
+if ($Env) {
+    Set-EnvVar -Name 'MEILI_NO_ANALYTICS' -Value 'true' -ShowLog:$ShowLog
 }
 
 # ML.NET CLI
@@ -421,6 +477,14 @@ if ($Env) {
     Set-EnvVar -Name 'SALTO_TELEMETRY_DISABLE ' -Value '1' -ShowLog:$ShowLog
 }
 
+# Serverless Framework
+# https://www.serverless.com/
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'SLS_TELEMETRY_DISABLED' -Value '1' -ShowLog:$ShowLog
+}
+
 # AutomatedLab
 # https://github.com/AutomatedLab/AutomatedLab
 
@@ -444,6 +508,14 @@ if ($Env) {
 # Update check
 if ($Env) {
     Set-EnvVar -Name 'CHECKPOINT_DISABLE' -Value '1' -ShowLog:$ShowLog
+}
+
+# Telepresence
+# https://www.telepresence.io/
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'SCOUT_DISABLE' -Value '1' -ShowLog:$ShowLog
 }
 
 # Terraform

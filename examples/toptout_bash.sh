@@ -208,6 +208,18 @@ esac
 # https://docs.mattermost.com/administration/telemetry.html#security-update-check-feature
 [[ "${toptout_env}" == 'True' ]] && set_env 'MM_SERVICESETTINGS_ENABLESECURITYFIXALERT' 'false'
 
+# Feast
+# https://feast.dev/
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'FEAST_TELEMETRY' 'False'
+
+# Quilt
+# https://quiltdata.com/
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'QUILT_DISABLE_USAGE_METRICS' 'True'
+
 # TimescaleDB 
 # https://www.timescale.com/
 
@@ -228,6 +240,12 @@ esac
 # https://angular.io/cli/usage-analytics-gathering
 [[ "${toptout_env}" == 'True' ]] && set_env 'NG_CLI_ANALYTICS_SHARE' 'false'
 
+# Appc Daemon
+# https://github.com/appcelerator/appc-daemon
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'APPCD_TELEMETRY' '0'
+
 # Carbon Design System
 # https://www.carbondesignsystem.com/
 
@@ -245,6 +263,18 @@ esac
 
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'CI' 'ANY_VALUE'
+
+# .NET Interactive
+# https://github.com/dotnet/interactive
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT' '1'
+
+# dotnet-svcutil
+# https://docs.microsoft.com/en-us/dotnet/core/additional-tools/dotnet-svcutil-guide
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'DOTNET_SVCUTIL_TELEMETRY_OPTOUT' '1'
 
 # DVC
 # https://dvc.org/
@@ -269,6 +299,18 @@ esac
 
 # Usage data (CLI and Console)
 [[ "${toptout_env}" == 'True' ]] && set_env 'HASURA_GRAPHQL_ENABLE_TELEMETRY' 'false'
+
+# Ionic CLI
+# https://ionicframework.com/
+
+# Usage data
+[[ "${toptout_exec}" == 'True' ]] && run_cmd 'ionic' 'config set --global telemetry false'
+
+# MeiliSearch
+# https://github.com/meilisearch/MeiliSearch
+
+# Usage data and crash reports
+[[ "${toptout_env}" == 'True' ]] && set_env 'MEILI_NO_ANALYTICS' 'true'
 
 # ML.NET CLI
 # https://docs.microsoft.com/en-us/dotnet/machine-learning/automate-training-with-cli
@@ -319,6 +361,12 @@ esac
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'SALTO_TELEMETRY_DISABLE ' '1'
 
+# Serverless Framework
+# https://www.serverless.com/
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'SLS_TELEMETRY_DISABLED' '1'
+
 # AutomatedLab
 # https://github.com/AutomatedLab/AutomatedLab
 
@@ -337,6 +385,12 @@ esac
 
 # Update check
 [[ "${toptout_env}" == 'True' ]] && set_env 'CHECKPOINT_DISABLE' '1'
+
+# Telepresence
+# https://www.telepresence.io/
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'SCOUT_DISABLE' '1'
 
 # Terraform
 # https://www.terraform.io/
