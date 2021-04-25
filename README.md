@@ -74,6 +74,10 @@ See [CONTRIBUTING](/.github/CONTRIBUTING.md) for details on adding new telemetry
 
   A lot of software enables telemetry by default unless an environment variable is set. This repository collects telemetry opt-out environment variables from across the web.
 
+- [herrbischoff/telemetry](https://github.com/herrbischoff/telemetry)
+
+  How to disable most data collection happening in your software and on your devices.
+
 ## Telemetry channels
 
 Below is automatically generated list of known telemetry channels for various applications.
