@@ -104,35 +104,46 @@ components:
   schemas:
     Links:
       type: object
+      description: 'Contains links to the main product page, telemetry and privacy policy.'
       additionalProperties: false
       properties:
         main:
           type: string
           format: uri
           pattern: '^http[s]?:\/\/.+$'
+          description: Link to the product's website. Mandatory.
         telemetry:
           type: string
           format: uri
           pattern: '^http[s]?:\/\/.+$'
+          description: Link to the product's general telemetry description. Optional.
         privacy:
           type: string
           format: uri
           pattern: '^http[s]?:\/\/.+$'
+          description: Link to the product's privacy policy. Optional.
       required:
         - main
       title: Links
     Path:
       type: object
+      description: >-
+        Item path. For environment variables this would be name, for files -
+        full path.
       additionalProperties: false
       properties:
         linux:
           type: string
+          description: This path should be used on Linux.
         macos:
           type: string
+          description: This path should be used on macOS.
         windows:
           type: string
+          description: This path should be used on Windows.
         default:
           type: string
+          description: 'if no OS-specific path is specified, this one should be used.'
       anyOf:
         - required:
             - default
@@ -145,20 +156,29 @@ components:
       title: Path
     Value:
       type: object
+      description: Opt-in/out values
       additionalProperties: false
       properties:
         opt_out:
           type: string
+          description: This value will opt-OUT of the telemetry collection.
         opt_in:
           oneOf:
             - type: string
+              description: >-
+                This value will opt-IN of the telemetry collection. Use null to
+                indicate that value should be removed.
             - type: 'null'
+              description: >-
+                This value will opt--IN to the telemetry collection. Use null to
+                indicate that value should be removed.
       required:
         - opt_in
         - opt_out
       title: Value
     ExecProperties:
       type: object
+      description: Describes command name and arguments.
       additionalProperties: false
       properties:
         path:
@@ -171,18 +191,26 @@ components:
       title: ExecProperties
     Exec:
       type: object
+      description: '"Execute command". Run command with arguments.'
       additionalProperties: false
       properties:
         scope:
           type: object
+          description: >-
+            Target scope. You can use multiple scopes: machine (applies to all
+            users of the computer), user (applies to current user of the
+            computer), process (applies to current process only).
           additionalProperties: false
           properties:
             machine:
               $ref: '#/components/schemas/ExecProperties'
+              description: Configures telemetry channel for all users of the computer.
             user:
               $ref: '#/components/schemas/ExecProperties'
+              description: Configures telemetry channel for current user of the computer.
             process:
               $ref: '#/components/schemas/ExecProperties'
+              description: Configures telemetry channel for process only.
           anyOf:
             - required:
                 - machine
@@ -195,6 +223,7 @@ components:
       title: Exec
     EnvProperties:
       type: object
+      description: Describe variable name and applicable values
       additionalProperties: false
       properties:
         path:
@@ -207,18 +236,30 @@ components:
       title: EnvProperties
     Env:
       type: object
+      description: >-
+        "Environment variable" target. Set or remove environment variable.
+        Environment variables are by design configured in process scope. There
+        are mechanisms to configure them for every new process, but it's up to
+        OS/shell.
       additionalProperties: false
       properties:
         scope:
           type: object
+          description: >-
+            Target scope. You can use multiple scopes: machine (applies to all
+            users of the computer), user (applies to current user of the
+            computer), process (applies to current process only).
           additionalProperties: false
           properties:
             machine:
               $ref: '#/components/schemas/EnvProperties'
+              description: Configures telemetry channel for all users of the computer.
             user:
               $ref: '#/components/schemas/EnvProperties'
+              description: Configures telemetry channel for current user of the computer.
             process:
               $ref: '#/components/schemas/EnvProperties'
+              description: Configures telemetry channel for process only.
           anyOf:
             - required:
                 - machine
@@ -231,6 +272,7 @@ components:
       title: Env
     PlainFileProperties:
       type: object
+      description: 'Describes file path, selector for target property and values.'
       additionalProperties: false
       properties:
         path:
@@ -249,18 +291,26 @@ components:
       title: PlainFileProperties
     PlainFile:
       type: object
+      description: '"Plaintext file". Modify plaintext file.'
       additionalProperties: false
       properties:
         scope:
           type: object
+          description: >-
+            Target scope. You can use multiple scopes: machine (applies to all
+            users of the computer), user (applies to current user of the
+            computer), process (applies to current process only).
           additionalProperties: false
           properties:
             machine:
               $ref: '#/components/schemas/PlainFileProperties'
+              description: Configures telemetry channel for all users of the computer.
             user:
               $ref: '#/components/schemas/PlainFileProperties'
+              description: Configures telemetry channel for current user of the computer.
             process:
               $ref: '#/components/schemas/PlainFileProperties'
+              description: Configures telemetry channel for process only.
           anyOf:
             - required:
                 - machine
@@ -273,6 +323,7 @@ components:
       title: PlainFile
     JSONFileProperties:
       type: object
+      description: 'Describes file path, selector for target property and values.'
       additionalProperties: false
       properties:
         path:
@@ -291,18 +342,26 @@ components:
       title: JSONFileProperties
     JSONFile:
       type: object
+      description: '"JSON file". Modify JSON file.'
       additionalProperties: false
       properties:
         scope:
           type: object
+          description: >-
+            Target scope. You can use multiple scopes: machine (applies to all
+            users of the computer), user (applies to current user of the
+            computer), process (applies to current process only).
           additionalProperties: false
           properties:
             machine:
               $ref: '#/components/schemas/JSONFileProperties'
+              description: Configures telemetry channel for all users of the computer.
             user:
               $ref: '#/components/schemas/JSONFileProperties'
+              description: Configures telemetry channel for current user of the computer.
             process:
               $ref: '#/components/schemas/JSONFileProperties'
+              description: Configures telemetry channel for process only.
           anyOf:
             - required:
                 - machine
@@ -315,10 +374,14 @@ components:
       title: JSONFile
     RegistryProperties:
       type: object
+      description: Describes registry path and keys/values.
       additionalProperties: false
       properties:
         root:
           type: string
+          description: >-
+            Registry hive name:
+            https://docs.microsoft.com/en-us/windows/win32/sysinfo/predefined-keys
           enum:
             - HKEY_CLASSES_ROOT
             - HKEY_CURRENT_CONFIG
@@ -331,11 +394,14 @@ components:
             - HKEY_USERS
         path:
           type: string
+          description: Registry key path.
           pattern: ^(?!\\).+?(?<!\\)$
         key:
           type: string
+          description: Registry key name.
         type:
           type: string
+          description: Registry key type.
           enum:
             - REG_BINARY
             - REG_DWORD
@@ -360,17 +426,25 @@ components:
     Registry:
       type: object
       additionalProperties: false
+      description: '"Windows regustry". Modify keys/values in Windows registry.'
       properties:
         scope:
           type: object
+          description: >-
+            Target scope. You can use multiple scopes: machine (applies to all
+            users of the computer), user (applies to current user of the
+            computer), process (applies to current process only).
           additionalProperties: false
           properties:
             machine:
               $ref: '#/components/schemas/RegistryProperties'
+              description: Configures telemetry channel for all users of the computer.
             user:
               $ref: '#/components/schemas/RegistryProperties'
+              description: Configures telemetry channel for current user of the computer.
             process:
               $ref: '#/components/schemas/RegistryProperties'
+              description: Configures telemetry channel for process only.
           anyOf:
             - required:
                 - machine
@@ -383,17 +457,24 @@ components:
       title: Registry
     Noop:
       type: object
+      description: >-
+        "No operation". Use this for links to third-party telemetry
+        configuration tools, that are not supported by this schema.
       additionalProperties: false
       properties:
         name:
           type: string
+          pattern: '^[\S]+(\s+[\S]+)*$'
+          description: Friendly name. No leading/trailing whitespace allowed.
         link:
           type: string
           format: uri
           pattern: '^http[s]?:\/\/.+$'
+          description: 'Link to website. Example: https://example.com.'
         description:
           type: string
           pattern: '^[\S]+(\s+[\S]+)*$'
+          description: Friendly description. No leading/trailing whitespace allowed.
       required:
         - description
         - link
@@ -401,6 +482,10 @@ components:
       title: Noop
     Target:
       type: object
+      description: >-
+        Describes telemetry channel configuration options. Optional, since you
+        may wish to describe telemetry channels that don't provide a ways to
+        control them.
       additionalProperties: false
       properties:
         exec:
@@ -433,19 +518,28 @@ components:
       title: Target
     Telemetry:
       type: object
+      description: 'Describes single telemetry channel (version check, analytics, etc..).'
       additionalProperties: false
       properties:
         id:
           type: string
           pattern: '^[a-z0-9-]+$'
+          description: >-
+            Telemetry channel unique ID. Use [a-z0-9-] character set. Must be
+            unique in this array. Example: usage-data.
         name:
           type: string
           pattern: '^[\S]+(\s+[\S]+)*$'
+          description: >-
+            Friendly name of the channel. No leading/trailing whitespace
+            allowed. Example: Usage data.
         is_official:
           type: boolean
+          description: 'Specify, if this channel oficially supports opt-in/opt-out.'
         description:
           type: string
           pattern: '^[\S]+(\s+[\S]+)*$'
+          description: 'Optional description. Example: Disable usage data reporting.'
         links:
           $ref: '#/components/schemas/Links'
         target:
@@ -462,23 +556,43 @@ components:
         id:
           type: string
           pattern: '^[a-z0-9-]+$'
+          description: >-
+            Product unique ID. Use [a-z0-9-] character set. Must be unique
+            across all files. Example: foo-bar.
         name:
           type: string
+          description: 'Friendly name of the product. Example: Foo Bar.'
         executable_name:
           type: string
+          description: >-
+            Optional. Provide executable name if presence of this product can be
+            detected by PATH environment variable lookup.
         description:
           type: string
           pattern: '^[\S]+(\s+[\S]+)*$'
+          description: >-
+            Short description of the collected telemetry. Usually copied from
+            the product's documentation.
         category_id:
           type: string
           pattern: '^[a-z0-9-]+$'
+          description: >-
+            Unique category id. Use [a-z0-9-] character set. The API generator
+            uses it to group products. Example: development.
         category_name:
           type: string
           pattern: '^[\S]+(\s+[\S]+)*$'
+          description: >-
+            Friendly category name. The README generator uses it to group
+            products. Example: Development.
         links:
           $ref: '#/components/schemas/Links'
         telemetry:
           type: array
+          description: >-
+            Telemetry channels list. Contains name and optionally desription and
+            opt-in/out methods. Optional, since you may wish to add a product
+            that contains telemetry but doesn't provide a way to control it.
           items:
             $ref: '#/components/schemas/Telemetry'
       required:
