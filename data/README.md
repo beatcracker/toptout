@@ -14,14 +14,14 @@ Describes a product that has one telemetry channel which is controlled by the en
   "name": "Foo Bar",
   // Optional. Provide executable name if presence of this product can be detected by PATH environment variable lookup.
   "executable_name": "foobar",
-  // Unique category id. The API generator uses it to group products.
+  // Unique category id. Use [a-z0-9-] character set. The API generator uses it to group products.
   "category_id": "development",
-  // Friendly category name. The README generator uses it to group products.
+  // Friendly category name. No leading/trailing whitespace allowed. The README generator uses it to group products.
   "category_name": "Development",
 
   // Short description of the collected telemetry. Usually copied from the product's documentation.
   "description": "All your base are belong to us.",
-  // Links object
+  // Contains links to the main product page, telemetry and privacy policy.
   "links": {
     // Link to the product's website. Mandatory.
     "main": "https://example.com",
@@ -37,7 +37,7 @@ Describes a product that has one telemetry channel which is controlled by the en
       // Telemetry channel unique ID. Use [a-z0-9-] character set.
       // Must be unique in this list.
       "id": "usage-data",
-      // Friendly name of the product
+      // Friendly name of the channel. No leading/trailing whitespace allowed.
       "name": "Usage data",
       // Optional description
       "description": "Disable usage data reporting",
@@ -53,18 +53,18 @@ Describes a product that has one telemetry channel which is controlled by the en
         "privacy": "https://example.com/foobar/privacy##usage-data"
       },
       // Target object.
-      // Optional, since you may wish to describe multiple telemetry channels that don't provide a ways to control them.
+      // Optional, since you may wish to describe telemetry channels that don't provide a ways to control them.
       "target": {
         // "Environment variable" target.
         // Set or remove environment variable.
         //
-        // Environment variables are by design configured per procces.
+        // Environment variables are by design configured in process scope.
         // There are mechanisms to configure them for every new process, but it's up to OS/shell.
         "env": {
           // Target scope. You can use multiple scopes.
           // machine - configures telemetry channel for all users of the computer
           // user    - configures telemetry channel for current user of the computer
-          // process - configures telemetry channel for process only
+          // process - configureDescribe s telemetry channel for process only
           "scope": {
             "process": {
               // Path object. Contains environment variable name for various OSes.
@@ -113,7 +113,7 @@ Indicates that this specific telemetry channel is controlled by the environment 
   // process - configures telemetry channel for process only
   "scope": {
     // Environment variables are by design configured per procces.
-    // There are mechanisms to configure them for every new process, but it's up to OS/
+    // There are mechanisms to configure them for every new process, but it's up to OS/shell.
     "process": {
       // Path object. Contains environment variable name for various OSes.
       // Allowed keys: default, linux, macos, windows
@@ -303,7 +303,7 @@ Indicates that this specific telemetry channel is controlled by setting the Wind
 
 ### No operation
 
-Indicates that user should visit an external link to get details about configuring this telemetry channel. Use this for links to third-party telemetry configuration tools, that are not officially supported.
+Indicates that user should visit an external link to get details about configuring this telemetry channel. Use this for links to third-party telemetry configuration tools, that are not supported by this schema.
 
 ```jsonc
 "noop": [
