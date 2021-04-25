@@ -1509,7 +1509,7 @@ SALTO_TELEMETRY_DISABLE =1
 
 ```none
 AppConfig:
-              telemetry: false
+    telemetry: false
 ```
 
 ### [Serverless Framework](https://www.serverless.com/)
