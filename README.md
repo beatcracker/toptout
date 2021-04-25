@@ -70,6 +70,10 @@ See [CONTRIBUTING](/.github/CONTRIBUTING.md) for details on adding new telemetry
 
   GitHub: [undergroundwires/privacy.sexy](https://github.com/undergroundwires/privacy.sexy)
 
+- [rljacobson/OptOutEnv](https://github.com/rljacobson/OptOutEnv)
+
+  A lot of software enables telemetry by default unless an environment variable is set. This repository collects telemetry opt-out environment variables from across the web.
+
 ## Telemetry channels
 
 Below is automatically generated list of known telemetry channels for various applications.
