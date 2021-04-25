@@ -2,6 +2,14 @@
 
 The telemetry data file is a JSON document conforming to the JSON Schema: [toptout.schema.json](../schema/toptout.schema.json). See [JSON Schema](https://json-schema.org) website for more information.
 
+## IDE support
+
+You can use [Visual Studio Code](https://code.visualstudio.com/) to get instant data file validation against schema, information about properties on hover and autocomplete support.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/beatcracker/toptout/master/media/vscode.png">
+</p>
+
 ## Basic example
 
 Describes a product that has one telemetry channel which is controlled by the environment variable.
