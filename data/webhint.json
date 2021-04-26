@@ -1,0 +1,47 @@
+{
+  "id": "webhint",
+  "name": "webhint",
+  "executable_name": "hint",
+  "category_id": "development",
+  "category_name": "Development",
+  "description": "At the end of the second run webhint we will ask if you want to send limited usage information to help us to build a better product.",
+  "links": {
+    "main": "https://webhint.io/",
+    "telemetry": "https://webhint.io/docs/user-guide/telemetry/summary/"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "is_official": true,
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "HINT_TELEMETRY"
+              },
+              "value": {
+                "opt_out": "off",
+                "opt_in": "on"
+              }
+            }
+          }
+        },
+        "exec": {
+          "scope": {
+            "user": {
+              "path": {
+                "default": "hint"
+              },
+              "value": {
+                "opt_out": "--telemetry=off",
+                "opt_in": "--telemetry=on"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
