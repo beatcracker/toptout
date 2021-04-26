@@ -246,6 +246,12 @@ esac
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'APPCD_TELEMETRY' '0'
 
+# Arduino CLI
+# https://arduino.github.io/arduino-cli/latest/
+
+# Internal metrics
+[[ "${toptout_env}" == 'True' ]] && set_env 'ARDUINO_METRICS_ENABLED' 'false'
+
 # Carbon Design System
 # https://www.carbondesignsystem.com/
 
@@ -367,11 +373,50 @@ esac
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'SLS_TELEMETRY_DISABLED' '1'
 
+# Salesforce CLI
+# https://developer.salesforce.com/tools/sfdxcli
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'SFDX_DISABLE_TELEMETRY' 'true'
+
+# Strapi
+# https://strapi.io/
+
+# Usage data
+# https://strapi.io/documentation/developer-docs/latest/setup-deployment-guides/configurations.html#environment
+[[ "${toptout_env}" == 'True' ]] && set_env 'STRAPI_TELEMETRY_DISABLED' 'true'
+
+# Strapi
+# https://strapi.io/
+
+# Update check
+# https://strapi.io/documentation/developer-docs/latest/setup-deployment-guides/configurations.html#environment
+[[ "${toptout_env}" == 'True' ]] && set_env 'STRAPI_DISABLE_UPDATE_NOTIFICATION' 'true'
+
+# webhint
+# https://webhint.io/
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'HINT_TELEMETRY' 'off'
+
+# Yarn 2
+# https://yarnpkg.com/
+
+# Usage data
+# https://yarnpkg.com/advanced/telemetry
+[[ "${toptout_exec}" == 'True' ]] && run_cmd 'yarn' 'config set --home enableTelemetry 0'
+
 # AutomatedLab
 # https://github.com/AutomatedLab/AutomatedLab
 
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'AUTOMATEDLAB_TELEMETRY_OPTOUT' '1'
+
+# Batect
+# https://batect.dev/
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'BATECT_ENABLE_TELEMETRY' 'false'
 
 # Consul
 # https://www.consul.io/
@@ -380,11 +425,31 @@ esac
 # https://www.consul.io/docs/agent/options#disable_update_check
 [[ "${toptout_env}" == 'True' ]] && set_env 'CHECKPOINT_DISABLE' 'ANY_VALUE'
 
+# Infracost
+# https://www.infracost.io/
+
+# Usage data
+# https://www.infracost.io/docs/integrations/environment_variables/#infracost_self_hosted_telemetry
+[[ "${toptout_env}" == 'True' ]] && set_env 'INFRACOST_SELF_HOSTED_TELEMETRY' 'false'
+
+# Infracost
+# https://www.infracost.io/
+
+# Update check
+# https://www.infracost.io/docs/integrations/environment_variables/#infracost_skip_update_check
+[[ "${toptout_env}" == 'True' ]] && set_env 'INFRACOST_SKIP_UPDATE_CHECK' 'true'
+
 # Packer
 # https://www.packer.io/
 
 # Update check
 [[ "${toptout_env}" == 'True' ]] && set_env 'CHECKPOINT_DISABLE' '1'
+
+# Skaffold
+# https://skaffold.dev/
+
+# Usage data
+[[ "${toptout_exec}" == 'True' ]] && run_cmd 'skaffold' 'config set --global collect-metrics false'
 
 # Telepresence
 # https://www.telepresence.io/

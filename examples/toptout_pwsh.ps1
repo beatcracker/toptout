@@ -324,6 +324,14 @@ if ($Env) {
     Set-EnvVar -Name 'APPCD_TELEMETRY' -Value '0' -ShowLog:$ShowLog
 }
 
+# Arduino CLI
+# https://arduino.github.io/arduino-cli/latest/
+
+# Internal metrics
+if ($Env) {
+    Set-EnvVar -Name 'ARDUINO_METRICS_ENABLED' -Value 'false' -ShowLog:$ShowLog
+}
+
 # Carbon Design System
 # https://www.carbondesignsystem.com/
 
@@ -485,12 +493,63 @@ if ($Env) {
     Set-EnvVar -Name 'SLS_TELEMETRY_DISABLED' -Value '1' -ShowLog:$ShowLog
 }
 
+# Salesforce CLI
+# https://developer.salesforce.com/tools/sfdxcli
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'SFDX_DISABLE_TELEMETRY' -Value 'true' -ShowLog:$ShowLog
+}
+
+# Strapi
+# https://strapi.io/
+
+# Usage data
+# https://strapi.io/documentation/developer-docs/latest/setup-deployment-guides/configurations.html#environment
+if ($Env) {
+    Set-EnvVar -Name 'STRAPI_TELEMETRY_DISABLED' -Value 'true' -ShowLog:$ShowLog
+}
+
+# Strapi
+# https://strapi.io/
+
+# Update check
+# https://strapi.io/documentation/developer-docs/latest/setup-deployment-guides/configurations.html#environment
+if ($Env) {
+    Set-EnvVar -Name 'STRAPI_DISABLE_UPDATE_NOTIFICATION' -Value 'true' -ShowLog:$ShowLog
+}
+
+# webhint
+# https://webhint.io/
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'HINT_TELEMETRY' -Value 'off' -ShowLog:$ShowLog
+}
+
+# Yarn 2
+# https://yarnpkg.com/
+
+# Usage data
+# https://yarnpkg.com/advanced/telemetry
+if ($Exec) {
+    Invoke-ShellCommand -Command 'yarn' -Arguments 'config set --home enableTelemetry 0' -ShowLog:$ShowLog
+}
+
 # AutomatedLab
 # https://github.com/AutomatedLab/AutomatedLab
 
 # Usage data
 if ($Env) {
     Set-EnvVar -Name 'AUTOMATEDLAB_TELEMETRY_OPTOUT' -Value '1' -ShowLog:$ShowLog
+}
+
+# Batect
+# https://batect.dev/
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'BATECT_ENABLE_TELEMETRY' -Value 'false' -ShowLog:$ShowLog
 }
 
 # Consul
@@ -502,12 +561,38 @@ if ($Env) {
     Set-EnvVar -Name 'CHECKPOINT_DISABLE' -Value 'ANY_VALUE' -ShowLog:$ShowLog
 }
 
+# Infracost
+# https://www.infracost.io/
+
+# Usage data
+# https://www.infracost.io/docs/integrations/environment_variables/#infracost_self_hosted_telemetry
+if ($Env) {
+    Set-EnvVar -Name 'INFRACOST_SELF_HOSTED_TELEMETRY' -Value 'false' -ShowLog:$ShowLog
+}
+
+# Infracost
+# https://www.infracost.io/
+
+# Update check
+# https://www.infracost.io/docs/integrations/environment_variables/#infracost_skip_update_check
+if ($Env) {
+    Set-EnvVar -Name 'INFRACOST_SKIP_UPDATE_CHECK' -Value 'true' -ShowLog:$ShowLog
+}
+
 # Packer
 # https://www.packer.io/
 
 # Update check
 if ($Env) {
     Set-EnvVar -Name 'CHECKPOINT_DISABLE' -Value '1' -ShowLog:$ShowLog
+}
+
+# Skaffold
+# https://skaffold.dev/
+
+# Usage data
+if ($Exec) {
+    Invoke-ShellCommand -Command 'skaffold' -Arguments 'config set --global collect-metrics false' -ShowLog:$ShowLog
 }
 
 # Telepresence
