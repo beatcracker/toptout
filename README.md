@@ -110,6 +110,7 @@ Below is automatically generated list of known telemetry channels for various ap
 - [Development](#development)
   - [Angular](#angular)
   - [Appc Daemon](#appc-daemon)
+  - [Arduino CLI](#arduino-cli)
   - [Carbon Design System](#carbon-design-system)
   - [choosenim](#choosenim)
   - [Apache Cordova CLI](#apache-cordova-cli)
@@ -131,11 +132,18 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Rasa](#rasa)
   - [Salto CLI](#salto-cli)
   - [Serverless Framework](#serverless-framework)
+  - [Salesforce CLI](#salesforce-cli)
+  - [Strapi](#strapi)
+  - [webhint](#webhint)
+  - [Yarn 2](#yarn-2)
 - [DevOps](#devops)
   - [AutomatedLab](#automatedlab)
+  - [Batect](#batect)
   - [Consul](#consul)
+  - [Infracost](#infracost)
   - [k0s](#k0s)
   - [Packer](#packer)
+  - [Skaffold](#skaffold)
   - [Telepresence](#telepresence)
   - [Terraform](#terraform)
   - [Cloud Development Kit for Terraform](#cloud-development-kit-for-terraform)
@@ -945,6 +953,35 @@ APPCD_TELEMETRY=0
 appcd config set telemetry.enabled false --force
 ```
 
+### [Arduino CLI](https://arduino.github.io/arduino-cli/latest/)
+
+> No data is currently gathered from users of the CLI. Arduino CLI can be launched as a gRPC server via the daemon command. To provide observability for the gRPC server activities besides logs, the daemon mode activates and exposes by default a Prometheus endpoint (http://localhost:9090/metrics) that can be fetched for metrics data
+
+- [Telemetry details](https://arduino.github.io/arduino-cli/latest/getting-started/#using-the-daemon-mode-and-the-grpc-interface)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Internal metrics
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+ARDUINO_METRICS_ENABLED=false
+```
+
+##### 2. Visit link(s) for more details
+
+1. [Internal metrics (config file)](https://arduino.github.io/arduino-cli/latest/getting-started/#using-the-daemon-mode-and-the-grpc-interface)
+
+    > The metrics settings are exposed via the metrics section in the CLI configuration
+
 ### [Carbon Design System](https://www.carbondesignsystem.com/)
 
 > Carbon contains a telemetry feature that collects usage information for IBM and Carbon Design System properties.
@@ -1551,6 +1588,156 @@ SLS_TELEMETRY_DISABLED=1
 serverless slstats --disable
 ```
 
+### [Salesforce CLI](https://developer.salesforce.com/tools/sfdxcli)
+
+> Salesforce collects usage data and metrics (telemetry) to help improve Salesforce CLI. We collect anonymous information related to the use of the CLI and plug-ins, such as which commands and parameters were run, and performance and error data.
+
+- [Telemetry details](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_dev_cli_telemetry.htm)
+- [Privacy policy](https://www.salesforce.com/company/privacy.jsp)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+SFDX_DISABLE_TELEMETRY=true
+```
+
+##### 2. Run command
+
+###### Scope: 👤 User
+
+```shell
+sfdx config:set disableTelemetry=true --global
+```
+
+### [Strapi](https://strapi.io/)
+
+> Strapi contains a feature in which anonymous and otherwise non-sensitive data is collected. This data is collectively aggregated for all our users, which when taken together give us a better global understanding of how users are interacting and using Strapi.
+
+- [Telemetry details](https://strapi.io/documentation/developer-docs/latest/getting-started/usage-information.html)
+- [Privacy policy](https://strapi.io/privacy)
+
+List of known telemetry channels:
+
+#### [Usage data](https://strapi.io/documentation/developer-docs/latest/setup-deployment-guides/configurations.html#environment)
+
+Official: ✔
+
+> Don't send telemetry usage data to Strapi.
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+STRAPI_TELEMETRY_DISABLED=true
+```
+
+#### Usage data (per-project)
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Visit link(s) for more details
+
+1. [Disable per-project usage data reporting](https://strapi.io/documentation/developer-docs/latest/getting-started/usage-information.html#opt-out)
+
+    > Should you decide to opt-out, you may do so by removing the 'uuid' property in the 'package.json' file located within the root of your project. This will automatically disable this feature.
+
+#### [Update check](https://strapi.io/documentation/developer-docs/latest/setup-deployment-guides/configurations.html#environment)
+
+Official: ✔
+
+> Don't show the notification message about updating strapi in the terminal.
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+STRAPI_DISABLE_UPDATE_NOTIFICATION=true
+```
+
+### [webhint](https://webhint.io/)
+
+> At the end of the second run webhint we will ask if you want to send limited usage information to help us to build a better product.
+
+- [Telemetry details](https://webhint.io/docs/user-guide/telemetry/summary/)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+HINT_TELEMETRY=off
+```
+
+##### 2. Run command
+
+###### Scope: 👤 User
+
+```shell
+hint --telemetry=off
+```
+
+### [Yarn 2](https://yarnpkg.com/)
+
+> Data are sent via batches, roughly every seven days. This prevents us from tracking your usage with a too high granularity, leaving us only the most useful information to do our job efficiently.
+
+- [Telemetry details](https://yarnpkg.com/advanced/telemetry)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### [Usage data](https://yarnpkg.com/advanced/telemetry)
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Run command
+
+###### Scope: 👤 User
+
+```shell
+yarn config set --home enableTelemetry 0
+```
+
+#### [Usage data (per-project)](https://yarnpkg.com/advanced/telemetry)
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Visit link(s) for more details
+
+1. [Disable per-project usage data reporting](https://yarnpkg.com/advanced/telemetry#how-can-i-disable-it)
+
+    > To disable it on a project (including for anyone who would clone it), run: yarn config set enableTelemetry 0
+
 ## DevOps
 
 ### [AutomatedLab](https://github.com/AutomatedLab/AutomatedLab)
@@ -1584,6 +1771,63 @@ AUTOMATEDLAB_TELEMETRY_OPTOUT=1
 |---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Other   | `pwsh -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Import-Module AutomatedLab -ErrorAction Stop ; Disable-LabTelemetry -ErrorAction Stop"`       |
 | Windows | `powershell -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Import-Module AutomatedLab -ErrorAction Stop ; Disable-LabTelemetry -ErrorAction Stop"` |
+
+### [Batect](https://batect.dev/)
+
+> No personally identifiable information or telemetry information is sent to the API as part of this process.
+
+- [Telemetry details](https://batect.dev/privacy/#what-data-is-collected-and-how-it-is-used)
+- [Privacy policy](https://batect.dev/privacy/)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+BATECT_ENABLE_TELEMETRY=false
+```
+
+##### 2. Run command
+
+###### Scope: 👤 User
+
+```shell
+batect --permanently-enable-telemetry
+```
+
+#### Usage data (per-invocation)
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Visit link(s) for more details
+
+1. [Disable telemetry collection or uploading for a single invocation.](https://batect.dev/docs/reference/cli/#--no-telemetry)
+
+    > If you would like to disable telemetry collection or uploading for a single invocation, pass the --no-telemetry flag, for example: ./batect --no-telemetry the-task
+
+#### [Update check](https://strapi.io/documentation/developer-docs/latest/setup-deployment-guides/configurations.html#environment)
+
+Official: ✔
+
+> Don't show the notification message about updating strapi in the terminal.
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Visit link(s) for more details
+
+1. [Disable update check](https://batect.dev/docs/reference/cli/#--no-update-notification)
+
+    > Batect automatically checks for updates at most once every 24 hours and displays a notification if a newer version is available. Passing this flag will disable both the update check and notification: --no-update-notification.
 
 ### [Consul](https://www.consul.io/)
 
@@ -1646,6 +1890,46 @@ Path: `some-dir/example.json`
 }
 ```
 
+### [Infracost](https://www.infracost.io/)
+
+> When using a self-hosted Cloud Pricing API, Infracost CLI will send telemetry data.
+
+- [Privacy policy](https://www.infracost.io/docs/privacy-policy)
+
+List of known telemetry channels:
+
+#### [Usage data](https://www.infracost.io/docs/integrations/environment_variables/#infracost_self_hosted_telemetry)
+
+Official: ✔
+
+> Opt-out of telemetry when using a self-hosted Cloud Pricing API.
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+INFRACOST_SELF_HOSTED_TELEMETRY=false
+```
+
+#### [Update check](https://www.infracost.io/docs/integrations/environment_variables/#infracost_skip_update_check)
+
+Official: ✔
+
+> Skip the Infracost update check.
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+INFRACOST_SKIP_UPDATE_CHECK=true
+```
+
 ### [k0s](https://k8slens.dev/)
 
 > To build better end user experience we collect and send telemetry data from clusters.
@@ -1688,6 +1972,29 @@ Use methods described below to opt-out of this telemetry channel.
 
 ```none
 CHECKPOINT_DISABLE=1
+```
+
+### [Skaffold](https://skaffold.dev/)
+
+> To help prioritize features and work on improving Skaffold, we collect anonymized Skaffold usage data. Usage data does not include any argument values or personal information.
+
+- [Telemetry details](https://skaffold.dev/docs/resources/telemetry/)
+- [Privacy policy](https://policies.google.com/privacy)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Run command
+
+###### Scope: 👤 User
+
+```shell
+skaffold config set --global collect-metrics false
 ```
 
 ### [Telepresence](https://www.telepresence.io/)
