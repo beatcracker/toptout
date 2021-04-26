@@ -14,7 +14,7 @@ $ShellHelpersMap = @{
     Toptout shell script: Disable known telemetry channels for apps
 
 .Link
-    https://beatcracker.github.io/toptout/
+    https://toptout.me
 
 .Parameter Env
     Set environment variables that disable telemetry
@@ -148,7 +148,7 @@ if ($ShowLog) {
 Easily opt-out from telemetry collection
 ________________________________________
 
- https://beatcracker.github.io/toptout/
+           https://toptout.me
 ________________________________________
 
 Current settings:
@@ -165,7 +165,7 @@ ________________________________________
     bash = @'
 #!/usr/bin/env bash
 
-# https://beatcracker.github.io/toptout/
+# https://toptout.me
 
 cleanup () {
   unset $(compgen -v | grep '^toptout_')
@@ -266,7 +266,7 @@ set_env () {
 Easily opt-out from telemetry collection
 ________________________________________
 
- https://beatcracker.github.io/toptout/
+           https://toptout.me
 ________________________________________
 
 Current settings:

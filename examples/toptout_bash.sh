@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# https://beatcracker.github.io/toptout/
+# https://toptout.me
 
 cleanup () {
   unset $(compgen -v | grep '^toptout_')
@@ -101,7 +101,7 @@ set_env () {
 Easily opt-out from telemetry collection
 ________________________________________
 
- https://beatcracker.github.io/toptout/
+           https://toptout.me
 ________________________________________
 
 Current settings:

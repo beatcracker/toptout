@@ -11,7 +11,7 @@ info:
     url: https://opensource.org/licenses/MIT
   version: 0.0.1
 servers:
-  - url: https://beatcracker.github.io/toptout/api
+  - url: https://toptout.me/api
     description: Implements static API using GitHub pages
 tags:
   - name: apps

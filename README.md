@@ -30,12 +30,12 @@ The page you see has an [awesome-list of telemetry channels](#telemetry-channels
 
 ### 🚧 API
 
-Get telemetry configuration data via API! See [openapi.yaml](https://github.com/beatcracker/toptout/blob/master/docs/swagger/openapi.yaml) definition and try it online using [Swagger-UI](https://beatcracker.github.io/toptout/swagger).
+Get telemetry configuration data via API! See [openapi.yaml](https://github.com/beatcracker/toptout/blob/master/docs/swagger/openapi.yaml) definition and try it online using [Swagger-UI](https://toptout.me/swagger).
 
 Or try it in your shell! ⬇️
 
 ```shell
-curl -X GET 'https://beatcracker.github.io/toptout/api/telemetry/id/powershell-core/' -H 'accept: application/json'
+curl -X GET 'https://toptout.me/api/telemetry/id/powershell-core/' -H 'accept: application/json'
 ```
 
 ### 🤔 Future plans
