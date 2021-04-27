@@ -14,7 +14,7 @@ You can use [Visual Studio Code](https://code.visualstudio.com/) to get instant 
 
 Describes a product that has one telemetry channel which is controlled by the environment variable.
 
-```jsonc
+```json5
 {
   // Product unique ID. Use [a-z0-9-] character set. Must be unique across all files.
   "id": "foo-bar",
@@ -113,7 +113,7 @@ Product can have multiple telemetry channels. Some of them could be controlled b
 
 Indicates that this specific telemetry channel is controlled by the environment variable.
 
-```jsonc
+```json5
 "env": {
   // Target scope. You can use multiple scopes.
   // machine - configures telemetry channel for all users of the computer
@@ -147,7 +147,7 @@ Indicates that this specific telemetry channel is controlled by the environment 
 
 Indicates that this specific telemetry channel is controlled by executing shell command.
 
-```jsonc
+```json5
 "exec": {
   // Target scope. You can use multiple scopes.
   // machine - configures telemetry channel for all users of the computer
@@ -178,7 +178,7 @@ Indicates that this specific telemetry channel is controlled by executing shell 
 
 Indicates that this specific telemetry channel is controlled by setting the value in the JSON file.
 
-```jsonc
+```json5
 "json_file": {
   // Target scope. You can use multiple scopes.
   // machine - configures telemetry channel for all users of the computer
@@ -216,7 +216,7 @@ Indicates that this specific telemetry channel is controlled by setting the valu
 
 Indicates that this specific telemetry channel is controlled by setting the value in the plaintext file.
 
-```jsonc
+```json5
 "plain_file": {
   // Target scope. You can use multiple scopes.
   // machine - configures telemetry channel for all users of the computer
@@ -281,7 +281,7 @@ Indicates that this specific telemetry channel is controlled by setting the valu
 
 Indicates that this specific telemetry channel is controlled by setting the Windows registry keys and values.
 
-```jsonc
+```json5
 "registry": {
   // Target scope. You can use multiple scopes.
   // machine - configures telemetry channel for all users of the computer
@@ -313,7 +313,7 @@ Indicates that this specific telemetry channel is controlled by setting the Wind
 
 Indicates that user should visit an external link to get details about configuring this telemetry channel. Use this for links to third-party telemetry configuration tools, that are not supported by this schema.
 
-```jsonc
+```json5
 "noop": [
   {
     "name": "Disable FooBar telemetry",
