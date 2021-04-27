@@ -28,7 +28,14 @@
               }
             }
           }
-        }
+        },
+        "noop": [
+          {
+            "name": "Disable telemetry in PowerShell Core 6.0",
+            "description": "You can opt-out from telemetry by creating 'DELETE_ME_TO_DISABLE_CONSOLEHOST_TELEMETRY' file in the directory where 'pwsh' binary is installed.",
+            "link": "https://docs.microsoft.com/en-us/powershell/scripting/whats-new/what-s-new-in-powershell-core-61#telemetry-can-only-be-disabled-with-an-environment-variable"
+          }
+        ]
       }
     }
   ]
