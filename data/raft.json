@@ -1,0 +1,32 @@
+{
+  "id": "raft",
+  "name": "REST API Fuzz Testing (RAFT)",
+  "executable_name": "raft",
+  "category_id": "development",
+  "category_name": "Development",
+  "description": "By default, we collect anonymous usage data from your RAFT instance, which helps us understand how users use RAFT and the problems they experience, which in turn, helps us improve the quality of the offering over time.",
+  "links": {
+    "main": "https://github.com/microsoft/rest-api-fuzz-testing",
+    "telemetry": "https://github.com/microsoft/rest-api-fuzz-testing/blob/main/docs/how-to-deploy.md#telemetry",
+    "privacy": "https://privacy.microsoft.com/en-us/privacystatement"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "links": {
+        "main": "https://github.com/microsoft/rest-api-fuzz-testing/blob/main/docs/how-to-deploy.md#telemetry"
+      },
+      "is_official": true,
+      "target": {
+        "noop": [
+          {
+            "name": "Disable metrics in config file",
+            "description": "The first time you use this command, RAFT will create an empty 'defaults.json' file in the CLI directory on your local machine. Set the 'metricsOptIn' field in this file set to 'false'",
+            "link": "https://github.com/microsoft/rest-api-fuzz-testing/blob/main/docs/how-to-deploy.md#telemetry"
+          }
+        ]
+      }
+    }
+  ]
+}
