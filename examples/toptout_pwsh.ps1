@@ -356,6 +356,15 @@ if ($Env) {
     Set-EnvVar -Name 'CI' -Value 'ANY_VALUE' -ShowLog:$ShowLog
 }
 
+# Cube.js
+# https://cube.dev/
+
+# Usage data
+# https://cube.dev/docs/reference/environment-variables#general
+if ($Env) {
+    Set-EnvVar -Name 'CUBEJS_TELEMETRY' -Value 'false' -ShowLog:$ShowLog
+}
+
 # .NET Interactive
 # https://github.com/dotnet/interactive
 
@@ -550,6 +559,15 @@ if ($Env) {
 # Usage data
 if ($Env) {
     Set-EnvVar -Name 'BATECT_ENABLE_TELEMETRY' -Value 'false' -ShowLog:$ShowLog
+}
+
+# Chef Workstation
+# https://docs.chef.io/workstation/
+
+# Usage data
+# https://docs.chef.io/workstation/privacy/#opting-out
+if ($Env) {
+    Set-EnvVar -Name 'CHEF_TELEMETRY_OPT_OUT' -Value '1' -ShowLog:$ShowLog
 }
 
 # Consul

@@ -270,6 +270,13 @@ esac
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'CI' 'ANY_VALUE'
 
+# Cube.js
+# https://cube.dev/
+
+# Usage data
+# https://cube.dev/docs/reference/environment-variables#general
+[[ "${toptout_env}" == 'True' ]] && set_env 'CUBEJS_TELEMETRY' 'false'
+
 # .NET Interactive
 # https://github.com/dotnet/interactive
 
@@ -417,6 +424,13 @@ esac
 
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'BATECT_ENABLE_TELEMETRY' 'false'
+
+# Chef Workstation
+# https://docs.chef.io/workstation/
+
+# Usage data
+# https://docs.chef.io/workstation/privacy/#opting-out
+[[ "${toptout_env}" == 'True' ]] && set_env 'CHEF_TELEMETRY_OPT_OUT' '1'
 
 # Consul
 # https://www.consul.io/

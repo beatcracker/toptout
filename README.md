@@ -114,6 +114,7 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Carbon Design System](#carbon-design-system)
   - [choosenim](#choosenim)
   - [Apache Cordova CLI](#apache-cordova-cli)
+  - [Cube.js](#cubejs)
   - [.NET Interactive](#net-interactive)
   - [dotnet-svcutil](#dotnet-svcutil)
   - [DVC](#dvc)
@@ -139,6 +140,8 @@ Below is automatically generated list of known telemetry channels for various ap
 - [DevOps](#devops)
   - [AutomatedLab](#automatedlab)
   - [Batect](#batect)
+  - [Chef Automate](#chef-automate)
+  - [Chef Workstation](#chef-workstation)
   - [Consul](#consul)
   - [Infracost](#infracost)
   - [k0s](#k0s)
@@ -1059,6 +1062,41 @@ CI=ANY_VALUE
 cordova telemetry off
 ```
 
+### [Cube.js](https://cube.dev/)
+
+> Cube.js collects high-level anonymous usage statistics for servers started in development mode. It doesn't track any credentials, schema contents or queries issued. This statistics is used solely for the purpose of constant cube.js improvement.
+
+- [Telemetry details](https://cube.dev/docs/config#options-reference-telemetry)
+- [Privacy policy](https://cube.dev/privacy-policy)
+
+List of known telemetry channels:
+
+#### [Usage data](https://cube.dev/docs/reference/environment-variables#general)
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+CUBEJS_TELEMETRY=false
+```
+
+#### Usage data (per-project)
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Visit link(s) for more details
+
+1. [Disable per-project usage data reporting](https://cube.dev/docs/config#options-reference-telemetry)
+
+    > You can opt out by setting telemetry option to false: `module.exports = { telemetry: false, };`
+
 ### [.NET Interactive](https://github.com/dotnet/interactive)
 
 > Telemetry is collected when .NET Interactive is started. Once .NET Interactive is running, we do not collect telemetry from any further user actions.
@@ -1828,6 +1866,71 @@ Use methods described below to opt-out of this telemetry channel.
 1. [Disable update check](https://batect.dev/docs/reference/cli/#--no-update-notification)
 
     > Batect automatically checks for updates at most once every 24 hours and displays a notification if a newer version is available. Passing this flag will disable both the update check and notification: --no-update-notification.
+
+### [Chef Automate](https://docs.chef.io/workstation/)
+
+> Users of this Chef Automate server may elect to share user-anonymized usage data with Chef Software, Inc. Chef uses this shared data to improve Chef Automate.
+
+- [Telemetry details](https://docs.chef.io/automate/telemetry/)
+- [Privacy policy](https://www.chef.io/privacy-policy/)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Visit link(s) for more details
+
+1. [Server-side configuration](https://docs.chef.io/automate/telemetry/)
+
+    > Admins can opt out of telemetry for the Automate server and all of its users, by editing an existing `configuration.toml` or create a new TOML file.
+
+2. [Individual user configuration](https://docs.chef.io/automate/telemetry/)
+
+    > Individual users can opt out of telemetry by unchecking the telemetry box on the welcome pop-up the first time they log into Automate. To opt out of telemetry at any later point in time, navigate to the profile icon, select “About Chef Automate” from the drop-down, and uncheck the telemetry checkbox.
+
+### [Chef Workstation](https://docs.chef.io/workstation/)
+
+> In order to continually improve Chef Workstation, we collect information to help us identify bugs and understand how people interact with Chef Workstation.
+
+- [Telemetry details](https://docs.chef.io/workstation/privacy/)
+- [Privacy policy](https://www.chef.io/privacy-policy/)
+
+List of known telemetry channels:
+
+#### [Usage data](https://docs.chef.io/workstation/privacy/#opting-out)
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+CHEF_TELEMETRY_OPT_OUT=1
+```
+
+##### 2. Edit config file (plaintext)
+
+###### Scope: 👤 User
+
+| OS      | Path                                          |
+|---------|-----------------------------------------------|
+| Linux   | `$HOME/.chef-workstation/config.toml`         |
+| macOS   | `$HOME/.chef-workstation/config.toml`         |
+| Windows | `%USERPROFILE%\.chef-workstation\config.toml` |
+
+###### Content
+
+```none
+[telemetry]
+enabled=false
+```
 
 ### [Consul](https://www.consul.io/)
 
