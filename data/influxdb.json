@@ -14,8 +14,41 @@
     {
       "id": "usage-data",
       "name": "Usage data",
+      "links": {
+        "main": "https://docs.influxdata.com/influxdb/v2.0/reference/config-options/"
+      },
       "is_official": true,
       "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "INFLUXD_REPORTING_DISABLED"
+              },
+              "value": {
+                "opt_out": "true",
+                "opt_in": null
+              }
+            }
+          }
+        },
+        "plain_file": {
+          "scope": {
+            "user": {
+              "path": {
+                "linux": "$INFLUXD_CONFIG_PATH/config.yaml",
+                "macos": "$INFLUXD_CONFIG_PATH/config.yaml",
+                "windows": "%INFLUXD_CONFIG_PATH%\\config.yaml"
+              },
+              "selector": "^[ \\t]*telemetry:[ \\t]*\\n[ \\t]*enabled[ \\t]*:[ \\t]*(.+)[ \\t]*$",
+              "value": {
+                "opt_out": "telemetry:\nenabled: false",
+                "opt_in": "telemetry:\nenabled: true"
+              },
+              "display_value": "[telemetry]\nenabled: false"
+            }
+          }
+        },
         "noop": [
           {
             "name": "Disable usage data reporting",
