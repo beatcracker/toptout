@@ -42,10 +42,10 @@
               },
               "selector": "^[ \\t]*telemetry:[ \\t]*\\n[ \\t]*enabled[ \\t]*:[ \\t]*(.+)[ \\t]*$",
               "value": {
-                "opt_out": "telemetry:\nenabled: false",
-                "opt_in": "telemetry:\nenabled: true"
+                "opt_out": "telemetry:\n  enabled: false",
+                "opt_in": "telemetry:\n  enabled: true"
               },
-              "display_value": "[telemetry]\nenabled: false"
+              "display_value": "telemetry:\n  enabled: false"
             }
           }
         },

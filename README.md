@@ -797,8 +797,8 @@ INFLUXD_REPORTING_DISABLED=true
 ###### Content
 
 ```none
-[telemetry]
-enabled: false
+telemetry:
+  enabled: false
 ```
 
 ### [Quilt](https://quiltdata.com/)
