@@ -1,80 +1,80 @@
 {
-    "id": "batect",
-    "name": "Batect",
-    "executable_name": "batect",
-    "category_id": "devops",
-    "category_name": "DevOps",
-    "description": "No personally identifiable information or telemetry information is sent to the API as part of this process.",
-    "links": {
-        "main": "https://batect.dev/",
-        "telemetry": "https://batect.dev/privacy/#what-data-is-collected-and-how-it-is-used",
-        "privacy": "https://batect.dev/privacy/"
-    },
-    "telemetry": [
-        {
-            "id": "usage-data",
-            "name": "Usage data",
-            "is_official": true,
-            "target": {
-                "env": {
-                    "scope": {
-                        "process": {
-                            "path": {
-                                "default": "BATECT_ENABLE_TELEMETRY"
-                            },
-                            "value": {
-                                "opt_out": "false",
-                                "opt_in": null
-                            }
-                        }
-                    }
-                },
-                "exec": {
-                    "scope": {
-                        "user": {
-                            "path": {
-                                "default": "batect"
-                            },
-                            "value": {
-                                "opt_out": "--permanently-enable-telemetry",
-                                "opt_in": "--permanently-enable-telemetry"
-                            }
-                        }
-                    }
-                }
+  "id": "batect",
+  "name": "Batect",
+  "executable_name": "batect",
+  "category_id": "devops",
+  "category_name": "DevOps",
+  "description": "No personally identifiable information or telemetry information is sent to the API as part of this process.",
+  "links": {
+    "main": "https://batect.dev/",
+    "telemetry": "https://batect.dev/privacy/#what-data-is-collected-and-how-it-is-used",
+    "privacy": "https://batect.dev/privacy/"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "is_official": true,
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "BATECT_ENABLE_TELEMETRY"
+              },
+              "value": {
+                "opt_out": "false",
+                "opt_in": null
+              }
             }
+          }
         },
-        {
-            "id": "usage-data-invocation",
-            "name": "Usage data (per-invocation)",
-            "is_official": true,
-            "target": {
-                "noop": [
-                    {
-                        "name": "Disable telemetry collection or uploading for a single invocation.",
-                        "description": "If you would like to disable telemetry collection or uploading for a single invocation, pass the --no-telemetry flag, for example: ./batect --no-telemetry the-task",
-                        "link": "https://batect.dev/docs/reference/cli/#--no-telemetry"
-                    }
-                ]
+        "exec": {
+          "scope": {
+            "user": {
+              "path": {
+                "default": "batect"
+              },
+              "value": {
+                "opt_out": "--permanently-enable-telemetry",
+                "opt_in": "--permanently-enable-telemetry"
+              }
             }
-        },
-        {
-            "id": "update-check",
-            "name": "Update check",
-            "description": "Don't show the notification message about updating strapi in the terminal.",
-            "links": {
-                "main": "https://strapi.io/documentation/developer-docs/latest/setup-deployment-guides/configurations.html#environment"
-            },
-            "is_official": true,
-            "target": {
-                "noop": [
-                    {
-                        "name": "Disable update check",
-                        "description": "Batect automatically checks for updates at most once every 24 hours and displays a notification if a newer version is available. Passing this flag will disable both the update check and notification: --no-update-notification.",
-                        "link": "https://batect.dev/docs/reference/cli/#--no-update-notification"
-                    }
-                ]
-            }
+          }
         }
-    ]
+      }
+    },
+    {
+      "id": "usage-data-invocation",
+      "name": "Usage data (per-invocation)",
+      "is_official": true,
+      "target": {
+        "noop": [
+          {
+            "name": "Disable telemetry collection or uploading for a single invocation.",
+            "description": "If you would like to disable telemetry collection or uploading for a single invocation, pass the --no-telemetry flag, for example: ./batect --no-telemetry the-task",
+            "link": "https://batect.dev/docs/reference/cli/#--no-telemetry"
+          }
+        ]
+      }
+    },
+    {
+      "id": "update-check",
+      "name": "Update check",
+      "description": "Don't show the notification message about updating strapi in the terminal.",
+      "links": {
+        "main": "https://strapi.io/documentation/developer-docs/latest/setup-deployment-guides/configurations.html#environment"
+      },
+      "is_official": true,
+      "target": {
+        "noop": [
+          {
+            "name": "Disable update check",
+            "description": "Batect automatically checks for updates at most once every 24 hours and displays a notification if a newer version is available. Passing this flag will disable both the update check and notification: --no-update-notification.",
+            "link": "https://batect.dev/docs/reference/cli/#--no-update-notification"
+          }
+        ]
+      }
+    }
+  ]
 }
