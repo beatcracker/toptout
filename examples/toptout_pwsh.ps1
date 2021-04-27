@@ -282,6 +282,15 @@ if ($Env) {
     Set-EnvVar -Name 'FEAST_TELEMETRY' -Value 'False' -ShowLog:$ShowLog
 }
 
+# InfluxDB
+# https://www.influxdata.com/
+
+# Usage data
+# https://docs.influxdata.com/influxdb/v2.0/reference/config-options/
+if ($Env) {
+    Set-EnvVar -Name 'INFLUXD_REPORTING_DISABLED' -Value 'true' -ShowLog:$ShowLog
+}
+
 # Quilt
 # https://quiltdata.com/
 
@@ -332,6 +341,15 @@ if ($Env) {
     Set-EnvVar -Name 'ARDUINO_METRICS_ENABLED' -Value 'false' -ShowLog:$ShowLog
 }
 
+# Bot Framework CLI
+# https://github.com/microsoft/botframework-cli
+
+# Usage data
+# https://github.com/microsoft/botframework-cli/tree/main/packages/cli#bf-configsettelemetry
+if ($Env) {
+    Set-EnvVar -Name 'BF_CLI_TELEMETRY' -Value 'false' -ShowLog:$ShowLog
+}
+
 # Carbon Design System
 # https://www.carbondesignsystem.com/
 
@@ -363,6 +381,15 @@ if ($Env) {
 # https://cube.dev/docs/reference/environment-variables#general
 if ($Env) {
     Set-EnvVar -Name 'CUBEJS_TELEMETRY' -Value 'false' -ShowLog:$ShowLog
+}
+
+# Dagster
+# https://dagster.io/
+
+# Usage data (environment variable)
+# https://github.com/dagster-io/dagster/blob/master/python_modules/dagit/dagit/telemetry.py
+if ($Env) {
+    Set-EnvVar -Name 'DAGSTER_DISABLE_TELEMETRY' -Value 'ANY_VALUE' -ShowLog:$ShowLog
 }
 
 # .NET Interactive
@@ -484,6 +511,15 @@ if ($Env) {
 # Usage data
 if ($Env) {
     Set-EnvVar -Name 'RASA_TELEMETRY_ENABLED' -Value 'false' -ShowLog:$ShowLog
+}
+
+# RESTler
+# https://github.com/microsoft/restler-fuzzer
+
+# Usage data
+# https://github.com/microsoft/restler-fuzzer/blob/main/docs/user-guide/Telemetry.md
+if ($Env) {
+    Set-EnvVar -Name 'RESTLER_TELEMETRY_OPTOUT' -Value '1' -ShowLog:$ShowLog
 }
 
 # Salto CLI

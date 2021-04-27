@@ -111,10 +111,12 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Angular](#angular)
   - [Appc Daemon](#appc-daemon)
   - [Arduino CLI](#arduino-cli)
+  - [Bot Framework CLI](#bot-framework-cli)
   - [Carbon Design System](#carbon-design-system)
   - [choosenim](#choosenim)
   - [Apache Cordova CLI](#apache-cordova-cli)
   - [Cube.js](#cubejs)
+  - [Dagster](#dagster)
   - [.NET Interactive](#net-interactive)
   - [dotnet-svcutil](#dotnet-svcutil)
   - [DVC](#dvc)
@@ -130,7 +132,9 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Next.js](#nextjs)
   - [Nuxt.js](#nuxtjs)
   - [Prisma](#prisma)
+  - [REST API Fuzz Testing (RAFT)](#rest-api-fuzz-testing-raft)
   - [Rasa](#rasa)
+  - [RESTler](#restler)
   - [Salto CLI](#salto-cli)
   - [Serverless Framework](#serverless-framework)
   - [Salesforce CLI](#salesforce-cli)
@@ -760,17 +764,42 @@ FEAST_TELEMETRY=False
 
 List of known telemetry channels:
 
-#### Usage data
+#### [Usage data](https://docs.influxdata.com/influxdb/v2.0/reference/config-options/)
 
 Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-##### 1. Visit link(s) for more details
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+INFLUXD_REPORTING_DISABLED=true
+```
+
+##### 2. Visit link(s) for more details
 
 1. [Disable usage data reporting](https://docs.influxdata.com/influxdb/v2.0/get-started/#influxdb-phone-home)
 
     > Telemetry reporting is enabled by default. However, we’ve made it as easy as possible to ‘opt-out’ of the reporting. Simply start the InfluxDB process with the --reporting-disabled flag
+
+##### 3. Edit config file (plaintext)
+
+###### Scope: 👤 User
+
+| OS      | Path                                |
+|---------|-------------------------------------|
+| Linux   | `$INFLUXD_CONFIG_PATH/config.yaml`  |
+| macOS   | `$INFLUXD_CONFIG_PATH/config.yaml`  |
+| Windows | `%INFLUXD_CONFIG_PATH%\config.yaml` |
+
+###### Content
+
+```none
+[telemetry]
+enabled: false
+```
 
 ### [Quilt](https://quiltdata.com/)
 
@@ -985,6 +1014,37 @@ ARDUINO_METRICS_ENABLED=false
 
     > The metrics settings are exposed via the metrics section in the CLI configuration
 
+### [Bot Framework CLI](https://github.com/microsoft/botframework-cli)
+
+> Privacy is very important to us. BF CLI contains optional instrumentation that is designed to help us improve the tool based on anonymous usage patterns. It is disabled, opted-out by default.
+
+- [Telemetry details](https://github.com/microsoft/botframework-cli#privacy)
+- [Privacy policy](https://privacy.microsoft.com/en-us/privacystatement)
+
+List of known telemetry channels:
+
+#### [Usage data](https://github.com/microsoft/botframework-cli/tree/main/packages/cli#bf-configsettelemetry)
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+BF_CLI_TELEMETRY=false
+```
+
+##### 2. Run command
+
+###### Scope: 👤 User
+
+```shell
+bf config:set:telemetry --disable
+```
+
 ### [Carbon Design System](https://www.carbondesignsystem.com/)
 
 > Carbon contains a telemetry feature that collects usage information for IBM and Carbon Design System properties.
@@ -1096,6 +1156,52 @@ Use methods described below to opt-out of this telemetry channel.
 1. [Disable per-project usage data reporting](https://cube.dev/docs/config#options-reference-telemetry)
 
     > You can opt out by setting telemetry option to false: `module.exports = { telemetry: false, };`
+
+### [Dagster](https://dagster.io/)
+
+> As an open source project, we collect usage statistics to better understand how users engage with Dagster and to inform development priorities.
+
+- [Telemetry details](https://docs.dagster.io/getting-started/telemetry)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data (config file)
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Edit config file (plaintext)
+
+###### Scope: 👤 User
+
+| OS      | Path                          |
+|---------|-------------------------------|
+| Linux   | `$DAGSTER_HOME/dagster.yaml`  |
+| macOS   | `$DAGSTER_HOME/dagster.yaml`  |
+| Windows | `%DAGSTER_HOME%\dagster.yaml` |
+
+###### Content
+
+```none
+[telemetry]
+enabled: false
+```
+
+#### [Usage data (environment variable)](https://github.com/dagster-io/dagster/blob/master/python_modules/dagit/dagit/telemetry.py)
+
+Official: ❌
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+DAGSTER_DISABLE_TELEMETRY=ANY_VALUE
+```
 
 ### [.NET Interactive](https://github.com/dotnet/interactive)
 
@@ -1524,6 +1630,27 @@ Use methods described below to opt-out of this telemetry channel.
 
     > You can opt-out of data collection by responding to the interactive prompt with no.
 
+### [REST API Fuzz Testing (RAFT)](https://github.com/microsoft/rest-api-fuzz-testing)
+
+> By default, we collect anonymous usage data from your RAFT instance, which helps us understand how users use RAFT and the problems they experience, which in turn, helps us improve the quality of the offering over time.
+
+- [Telemetry details](https://github.com/microsoft/rest-api-fuzz-testing/blob/main/docs/how-to-deploy.md#telemetry)
+- [Privacy policy](https://privacy.microsoft.com/en-us/privacystatement)
+
+List of known telemetry channels:
+
+#### [Usage data](https://github.com/microsoft/rest-api-fuzz-testing/blob/main/docs/how-to-deploy.md#telemetry)
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Visit link(s) for more details
+
+1. [Disable metrics in config file](https://github.com/microsoft/rest-api-fuzz-testing/blob/main/docs/how-to-deploy.md#telemetry)
+
+    > The first time you use this command, RAFT will create an empty 'defaults.json' file in the CLI directory on your local machine. Set the 'metricsOptIn' field in this file set to 'false'
+
 ### [Rasa](https://rasa.com/)
 
 > Rasa uses telemetry to report anonymous usage information. This information is essential to help improve Rasa Open Source for all users.
@@ -1553,6 +1680,29 @@ RASA_TELEMETRY_ENABLED=false
 
 ```shell
 rasa telemetry disable
+```
+
+### [RESTler](https://github.com/microsoft/restler-fuzzer)
+
+> RESTler collects telemetry in order to understand usage and prioritize improvements.
+
+- [Telemetry details](https://github.com/microsoft/restler-fuzzer/tree/main#data-collection)
+- [Privacy policy](https://privacy.microsoft.com/en-us/privacystatement)
+
+List of known telemetry channels:
+
+#### [Usage data](https://github.com/microsoft/restler-fuzzer/blob/main/docs/user-guide/Telemetry.md)
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+RESTLER_TELEMETRY_OPTOUT=1
 ```
 
 ### [Salto CLI](https://www.salto.io/)
@@ -2407,3 +2557,9 @@ Use methods described below to opt-out of this telemetry channel.
 ```none
 POWERSHELL_TELEMETRY_OPTOUT=1
 ```
+
+##### 2. Visit link(s) for more details
+
+1. [Disable telemetry in PowerShell Core 6.0](https://docs.microsoft.com/en-us/powershell/scripting/whats-new/what-s-new-in-powershell-core-61#telemetry-can-only-be-disabled-with-an-environment-variable)
+
+    > You can opt-out from telemetry by creating 'DELETE_ME_TO_DISABLE_CONSOLEHOST_TELEMETRY' file in the directory where 'pwsh' binary is installed.

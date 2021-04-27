@@ -214,6 +214,13 @@ esac
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'FEAST_TELEMETRY' 'False'
 
+# InfluxDB
+# https://www.influxdata.com/
+
+# Usage data
+# https://docs.influxdata.com/influxdb/v2.0/reference/config-options/
+[[ "${toptout_env}" == 'True' ]] && set_env 'INFLUXD_REPORTING_DISABLED' 'true'
+
 # Quilt
 # https://quiltdata.com/
 
@@ -252,6 +259,13 @@ esac
 # Internal metrics
 [[ "${toptout_env}" == 'True' ]] && set_env 'ARDUINO_METRICS_ENABLED' 'false'
 
+# Bot Framework CLI
+# https://github.com/microsoft/botframework-cli
+
+# Usage data
+# https://github.com/microsoft/botframework-cli/tree/main/packages/cli#bf-configsettelemetry
+[[ "${toptout_env}" == 'True' ]] && set_env 'BF_CLI_TELEMETRY' 'false'
+
 # Carbon Design System
 # https://www.carbondesignsystem.com/
 
@@ -276,6 +290,13 @@ esac
 # Usage data
 # https://cube.dev/docs/reference/environment-variables#general
 [[ "${toptout_env}" == 'True' ]] && set_env 'CUBEJS_TELEMETRY' 'false'
+
+# Dagster
+# https://dagster.io/
+
+# Usage data (environment variable)
+# https://github.com/dagster-io/dagster/blob/master/python_modules/dagit/dagit/telemetry.py
+[[ "${toptout_env}" == 'True' ]] && set_env 'DAGSTER_DISABLE_TELEMETRY' 'ANY_VALUE'
 
 # .NET Interactive
 # https://github.com/dotnet/interactive
@@ -367,6 +388,13 @@ esac
 
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'RASA_TELEMETRY_ENABLED' 'false'
+
+# RESTler
+# https://github.com/microsoft/restler-fuzzer
+
+# Usage data
+# https://github.com/microsoft/restler-fuzzer/blob/main/docs/user-guide/Telemetry.md
+[[ "${toptout_env}" == 'True' ]] && set_env 'RESTLER_TELEMETRY_OPTOUT' '1'
 
 # Salto CLI
 # https://www.salto.io/
