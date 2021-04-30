@@ -40,7 +40,7 @@ curl -X GET 'https://toptout.me/api/telemetry/id/powershell-core/' -H 'accept: a
 
 ### 🤔 Future plans
 
-- Automated tool that can ingest the data from the API. You could run it on your machine to detect and configure telemetry in all suported products.
+- Automated tool that can ingest the data from the API. You could run it on your machine to detect and configure telemetry in all supported products.
   - 🚧 [nikvoronin/toptout-cli](https://github.com/nikvoronin/toptout-cli)
 - ???
 
@@ -48,7 +48,7 @@ curl -X GET 'https://toptout.me/api/telemetry/id/powershell-core/' -H 'accept: a
 
 ### JSON data format
 
-JSON telemetry data format decscription: [data/README](/data/)
+JSON telemetry data format description: [data/README](/data/)
 
 ### Contributing
 
@@ -2487,7 +2487,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 List of known telemetry channels:
 
-#### [Usage data | Enterpise](https://docs.microsoft.com/en-us/windows/privacy/configure-windows-diagnostic-data-in-your-organization)
+#### [Usage data | Enterprise](https://docs.microsoft.com/en-us/windows/privacy/configure-windows-diagnostic-data-in-your-organization)
 
 Official: ✔
 

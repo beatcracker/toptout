@@ -13,7 +13,7 @@
   "telemetry": [
     {
       "id": "usage-data-enterprise",
-      "name": "Usage data | Enterpise",
+      "name": "Usage data | Enterprise",
       "description": "Applies to: Windows 10 Enterprise/Education, Windows Server 2016 and newer",
       "is_official": true,
       "links": {
