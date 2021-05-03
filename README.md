@@ -117,6 +117,7 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Apache Cordova CLI](#apache-cordova-cli)
   - [Cube.js](#cubejs)
   - [Dagster](#dagster)
+  - [Docker Desktop](#docker-desktop)
   - [.NET Interactive](#net-interactive)
   - [dotnet-svcutil](#dotnet-svcutil)
   - [DVC](#dvc)
@@ -1202,6 +1203,87 @@ Use methods described below to opt-out of this telemetry channel.
 ```none
 DAGSTER_DISABLE_TELEMETRY=ANY_VALUE
 ```
+
+### [Docker Desktop](https://www.docker.com/products/docker-desktop)
+
+> Docker Desktop tracks all app interactions, checks for updates and sends crash reports.
+
+- [Privacy policy](https://www.docker.com/legal/privacy)
+
+List of known telemetry channels:
+
+#### [Usage data](https://github.com/docker/for-mac/issues/2122)
+
+Official: ❌
+
+> All app interactions are tracked via [segment.com](https://segment.com/)
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Visit link(s) for more details
+
+1. [Block tracking](https://linuxize.com/post/how-to-edit-your-hosts-file/)
+
+    > Add this record to your hosts file to block access to Segment
+    >  ```
+    > 0.0.0.0 api.segment.io
+    > ```
+
+#### [Customer experience data](https://github.com/docker/for-mac/issues/2122)
+
+Official: ❌
+
+> Customer experience is tracked via [www.wootric.com](https://www.wootric.com/)
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Visit link(s) for more details
+
+1. [Block tracking](https://linuxize.com/post/how-to-edit-your-hosts-file/)
+
+    > Add this record to your hosts file to block access to Wootric
+    >  ```
+    > 0.0.0.0 api.wootric.com
+    > ```
+
+#### [Crash data](https://github.com/docker/for-mac/issues/2122)
+
+Official: ❌
+
+> Crash reports are uploaded to the [www.bugsnag.com](https://www.bugsnag.com/)
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Visit link(s) for more details
+
+1. [Block crash reports](https://linuxize.com/post/how-to-edit-your-hosts-file/)
+
+    > Add this record to your hosts file to block access to Bugsnag
+    > ```
+    > 0.0.0.0 notify.bugsnag.com
+    > 0.0.0.0 sessions.bugsnag.com
+    > ```
+
+#### [Update check](https://docs.docker.com/docker-for-windows/install/#automatic-updates)
+
+Official: ❌
+
+> Updates are forced, unless you upgrade to a paid plan
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Visit link(s) for more details
+
+1. [Block update check](https://linuxize.com/post/how-to-edit-your-hosts-file/)
+
+    > Add this record to your hosts file to block update checks
+    > ```
+    > 0.0.0.0 desktop.docker.com
+    > ```
+
+2. [github.com | RektInator/kill-docker-auto-update](https://github.com/RektInator/kill-docker-auto-update)
+
+    > This repository contains patched binaries that disable the auto-updating process of Docker Desktop. If you rather patch the binaries yourself, the instructions can be found under [Patching Docker Manually](https://github.com/RektInator/kill-docker-auto-update#patching-docker-manually).
 
 ### [.NET Interactive](https://github.com/dotnet/interactive)
 
