@@ -206,7 +206,7 @@ filter ConvertTo-Readme {
                 foreach ($item in $tm.target.$tg) {
 
                     '{0}. [{1}]({2})' -f $noop_counter, $item.name, $item.link | Add-NewLine
-                    '    > {0}' -f $item.description | Add-Newline
+                    '    > {0}' -f ($item.description -replace '(\r\n|\r|\n)', '$1    > ') | Add-Newline
 
                     $noop_counter++ > $null
                 }
