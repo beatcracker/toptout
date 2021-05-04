@@ -299,7 +299,7 @@ if ($Env) {
     Set-EnvVar -Name 'QUILT_DISABLE_USAGE_METRICS' -Value 'True' -ShowLog:$ShowLog
 }
 
-# TimescaleDB 
+# TimescaleDB
 # https://www.timescale.com/
 
 # Usage data
@@ -331,6 +331,23 @@ if ($Env) {
 # Usage data
 if ($Env) {
     Set-EnvVar -Name 'APPCD_TELEMETRY' -Value '0' -ShowLog:$ShowLog
+}
+
+# App Center CLI
+# https://github.com/microsoft/appcenter-cli/
+
+# Usage data (command)
+if ($Exec) {
+    Invoke-ShellCommand -Command 'appcenter' -Arguments 'telemetry off' -ShowLog:$ShowLog
+}
+
+# App Center CLI
+# https://github.com/microsoft/appcenter-cli/
+
+# Usage data (env. var)
+# https://github.com/microsoft/appcenter-cli/blob/master/src/util/profile/telemetry.ts
+if ($Env) {
+    Set-EnvVar -Name 'MOBILE_CENTER_TELEMETRY' -Value 'off' -ShowLog:$ShowLog
 }
 
 # Arduino CLI
@@ -496,6 +513,22 @@ if ($Env) {
     Set-EnvVar -Name 'NUXT_TELEMETRY_DISABLED' -Value '1' -ShowLog:$ShowLog
 }
 
+# Ory
+# https://www.ory.sh/
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'SQA_OPT_OUT' -Value 'true' -ShowLog:$ShowLog
+}
+
+# Oryx
+# https://github.com/microsoft/Oryx
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'ORYX_DISABLE_TELEMETRY' -Value 'true' -ShowLog:$ShowLog
+}
+
 # Prisma
 # https://www.prisma.io/
 
@@ -520,6 +553,14 @@ if ($Env) {
 # https://github.com/microsoft/restler-fuzzer/blob/main/docs/user-guide/Telemetry.md
 if ($Env) {
     Set-EnvVar -Name 'RESTLER_TELEMETRY_OPTOUT' -Value '1' -ShowLog:$ShowLog
+}
+
+# Rover CLI
+# https://www.apollographql.com/docs/rover/
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'APOLLO_TELEMETRY_DISABLED' -Value '1' -ShowLog:$ShowLog
 }
 
 # Salto CLI
@@ -570,6 +611,14 @@ if ($Env) {
 # Usage data
 if ($Env) {
     Set-EnvVar -Name 'HINT_TELEMETRY' -Value 'off' -ShowLog:$ShowLog
+}
+
+# Webiny
+# https://www.webiny.com/
+
+# Usage data
+if ($Exec) {
+    Invoke-ShellCommand -Command 'yarn' -Arguments 'webiny disable-tracking' -ShowLog:$ShowLog
 }
 
 # Yarn 2

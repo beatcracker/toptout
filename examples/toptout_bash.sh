@@ -227,7 +227,7 @@ esac
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'QUILT_DISABLE_USAGE_METRICS' 'True'
 
-# TimescaleDB 
+# TimescaleDB
 # https://www.timescale.com/
 
 # Usage data
@@ -252,6 +252,19 @@ esac
 
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'APPCD_TELEMETRY' '0'
+
+# App Center CLI
+# https://github.com/microsoft/appcenter-cli/
+
+# Usage data (command)
+[[ "${toptout_exec}" == 'True' ]] && run_cmd 'appcenter' 'telemetry off'
+
+# App Center CLI
+# https://github.com/microsoft/appcenter-cli/
+
+# Usage data (env. var)
+# https://github.com/microsoft/appcenter-cli/blob/master/src/util/profile/telemetry.ts
+[[ "${toptout_env}" == 'True' ]] && set_env 'MOBILE_CENTER_TELEMETRY' 'off'
 
 # Arduino CLI
 # https://arduino.github.io/arduino-cli/latest/
@@ -376,6 +389,18 @@ esac
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'NUXT_TELEMETRY_DISABLED' '1'
 
+# Ory
+# https://www.ory.sh/
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'SQA_OPT_OUT' 'true'
+
+# Oryx
+# https://github.com/microsoft/Oryx
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'ORYX_DISABLE_TELEMETRY' 'true'
+
 # Prisma
 # https://www.prisma.io/
 
@@ -395,6 +420,12 @@ esac
 # Usage data
 # https://github.com/microsoft/restler-fuzzer/blob/main/docs/user-guide/Telemetry.md
 [[ "${toptout_env}" == 'True' ]] && set_env 'RESTLER_TELEMETRY_OPTOUT' '1'
+
+# Rover CLI
+# https://www.apollographql.com/docs/rover/
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'APOLLO_TELEMETRY_DISABLED' '1'
 
 # Salto CLI
 # https://www.salto.io/
@@ -433,6 +464,12 @@ esac
 
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'HINT_TELEMETRY' 'off'
+
+# Webiny
+# https://www.webiny.com/
+
+# Usage data
+[[ "${toptout_exec}" == 'True' ]] && run_cmd 'yarn' 'webiny disable-tracking'
 
 # Yarn 2
 # https://yarnpkg.com/

@@ -105,11 +105,13 @@ Below is automatically generated list of known telemetry channels for various ap
 - [Database](#database)
   - [Feast](#feast)
   - [InfluxDB](#influxdb)
+  - [Materialize](#materialize)
   - [Quilt](#quilt)
-  - [TimescaleDB ](#timescaledb-)
+  - [TimescaleDB](#timescaledb)
 - [Development](#development)
   - [Angular](#angular)
   - [Appc Daemon](#appc-daemon)
+  - [App Center CLI](#app-center-cli)
   - [Arduino CLI](#arduino-cli)
   - [Bot Framework CLI](#bot-framework-cli)
   - [Carbon Design System](#carbon-design-system)
@@ -132,15 +134,19 @@ Below is automatically generated list of known telemetry channels for various ap
   - [.NET Core SDK](#net-core-sdk)
   - [Next.js](#nextjs)
   - [Nuxt.js](#nuxtjs)
+  - [Ory](#ory)
+  - [Oryx](#oryx)
   - [Prisma](#prisma)
   - [REST API Fuzz Testing (RAFT)](#rest-api-fuzz-testing-raft)
   - [Rasa](#rasa)
   - [RESTler](#restler)
+  - [Rover CLI](#rover-cli)
   - [Salto CLI](#salto-cli)
   - [Serverless Framework](#serverless-framework)
   - [Salesforce CLI](#salesforce-cli)
   - [Strapi](#strapi)
   - [webhint](#webhint)
+  - [Webiny](#webiny)
   - [Yarn 2](#yarn-2)
 - [DevOps](#devops)
   - [AutomatedLab](#automatedlab)
@@ -802,6 +808,30 @@ telemetry:
   enabled: false
 ```
 
+### [Materialize](https://materialize.com/)
+
+> Unless disabled, upon startup and once an hour materialized reports some anonymous telemetry data to a central server operated by materialize.com.
+
+- [Telemetry details](https://materialize.io/docs/cli/#telemetry)
+- [Privacy policy](https://materialize.com/privacy-policy/)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Visit link(s) for more details
+
+1. [Disable telemetry for a single invocation](https://materialize.com/docs/cli/#telemetry)
+
+    > If you would like to disable telemetry collection or uploading for a single invocation, pass the `--disable-telemetry` flag, for example:
+    > ```shell
+    > materialized --disable-telemetry
+    > ```
+
 ### [Quilt](https://quiltdata.com/)
 
 > Quilt collect anonymous usage statistics to find bugs and prioritize features.
@@ -833,7 +863,7 @@ QUILT_DISABLE_USAGE_METRICS=True
 quilt3 disable-telemetry
 ```
 
-### [TimescaleDB ](https://www.timescale.com/)
+### [TimescaleDB](https://www.timescale.com/)
 
 > We enable anonymous usage sharing to help us better understand and assist TimescaleDB users, as well as provide automated version checks.
 
@@ -984,6 +1014,65 @@ APPCD_TELEMETRY=0
 
 ```shell
 appcd config set telemetry.enabled false --force
+```
+
+### [App Center CLI](https://github.com/microsoft/appcenter-cli/)
+
+> App Center CLI would like to collect data about how users use CLI commands and some problems they encounter.
+
+- Privacy policy: ❌
+List of known telemetry channels:
+
+#### Usage data (command)
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Run command
+
+###### Scope: 👤 User
+
+```shell
+appcenter telemetry off
+```
+
+#### [Usage data (env. var)](https://github.com/microsoft/appcenter-cli/blob/master/src/util/profile/telemetry.ts)
+
+Official: ❌
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+MOBILE_CENTER_TELEMETRY=off
+```
+
+#### [Usage data (JSON file)](https://github.com/microsoft/appcenter-cli/blob/master/src/util/profile/telemetry.ts)
+
+Official: ❌
+
+> Empty JSON file will disable telemetry.
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Edit config file (plaintext)
+
+###### Scope: 👤 User
+
+| OS      | Path                                                 |
+|---------|------------------------------------------------------|
+| Linux   | `$HOME/.appcenter-cli/telemetryEnabled.json`         |
+| macOS   | `$HOME/.appcenter-cli/telemetryEnabled.json`         |
+| Windows | `%USERPROFILE%\.appcenter-cli\telemetryEnabled.json` |
+
+###### Content
+
+```none
+
 ```
 
 ### [Arduino CLI](https://arduino.github.io/arduino-cli/latest/)
@@ -1673,6 +1762,65 @@ NUXT_TELEMETRY_DISABLED=1
 npx nuxt telemetry disable --global
 ```
 
+### [Ory](https://www.ory.sh/)
+
+> Ory's services collect summarized, anonymized data that can optionally be turned off.
+
+- [Telemetry details](https://www.ory.sh/docs/ecosystem/sqa/)
+- [Privacy policy](https://www.ory.sh/docs/ecosystem/sqa/#data-privacy)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ❌
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+SQA_OPT_OUT=true
+```
+
+##### 2. Visit link(s) for more details
+
+1. [Using commandline flag](https://www.ory.sh/docs/ecosystem/sqa/#opt-out)
+
+    > Provide `--sqa-opt-out` flag to Ory product.
+
+2. [Using config file](https://www.ory.sh/docs/ecosystem/sqa/#opt-out)
+
+    > Set the yaml configuration key (if supported by Ory product):
+    > ```yaml
+    > sqa.opt_out=true
+    > ```
+
+### [Oryx](https://github.com/microsoft/Oryx)
+
+> When utilized within Azure services, this project collects usage data and sends it to Microsoft to help improve our products and services.
+
+- [Telemetry details](https://github.com/microsoft/Oryx#datatelemetry)
+- [Privacy policy](https://privacy.microsoft.com/en-us/privacystatement)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+ORYX_DISABLE_TELEMETRY=true
+```
+
 ### [Prisma](https://www.prisma.io/)
 
 > Telemetry helps us better understand how many users are using our products and how often they are using our products.
@@ -1785,6 +1933,29 @@ Use methods described below to opt-out of this telemetry channel.
 
 ```none
 RESTLER_TELEMETRY_OPTOUT=1
+```
+
+### [Rover CLI](https://www.apollographql.com/docs/rover/)
+
+> By default, Rover collects some anonymous usage data to help us improve the tool.
+
+- [Telemetry details](https://www.apollographql.com/docs/rover/privacy/)
+- [Privacy policy](https://www.apollographql.com/Apollo-Privacy-Policy.pdf)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+APOLLO_TELEMETRY_DISABLED=1
 ```
 
 ### [Salto CLI](https://www.salto.io/)
@@ -1971,6 +2142,29 @@ HINT_TELEMETRY=off
 
 ```shell
 hint --telemetry=off
+```
+
+### [Webiny](https://www.webiny.com/)
+
+> By default, Webiny collects anonymous usage information, which is exclusively used for improving the product and understanding usage patterns.
+
+- [Telemetry details](https://www.webiny.com/telemetry/)
+- [Privacy policy](https://www.webiny.com/privacy-policy)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Run command
+
+###### Scope: 👤 User
+
+```shell
+yarn webiny disable-tracking
 ```
 
 ### [Yarn 2](https://yarnpkg.com/)
