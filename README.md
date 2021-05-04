@@ -1186,8 +1186,8 @@ Use methods described below to opt-out of this telemetry channel.
 ###### Content
 
 ```none
-[telemetry]
-enabled: false
+telemetry:
+  enabled: false
 ```
 
 #### [Usage data (environment variable)](https://github.com/dagster-io/dagster/blob/master/python_modules/dagit/dagit/telemetry.py)
