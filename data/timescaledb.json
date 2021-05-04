@@ -1,6 +1,6 @@
 {
   "id": "timescaledb",
-  "name": "TimescaleDB ",
+  "name": "TimescaleDB",
   "executable_name": "psql",
   "category_id": "database",
   "category_name": "Database",
