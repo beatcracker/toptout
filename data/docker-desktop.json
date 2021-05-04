@@ -1,6 +1,7 @@
 {
   "id": "docker-desktop",
   "name": "Docker Desktop",
+  "executable_name": "com.docker.cli",
   "category_id": "development",
   "category_name": "Development",
   "description": "Docker Desktop tracks all app interactions, checks for updates and sends crash reports.",
