@@ -1,0 +1,84 @@
+{
+  "id": "appcenter-cli",
+  "name": "App Center CLI",
+  "executable_name": "appcenter",
+  "category_id": "development",
+  "category_name": "Development",
+  "description": "App Center CLI would like to collect data about how users use CLI commands and some problems they encounter.",
+  "links": {
+    "main": "https://github.com/microsoft/appcenter-cli/"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data-exec",
+      "name": "Usage data (command)",
+      "is_official": true,
+      "target": {
+        "exec": {
+          "scope": {
+            "user": {
+              "path": {
+                "default": "appcenter"
+              },
+              "value": {
+                "opt_out": "telemetry off",
+                "opt_in": " telemetry on"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "usage-data-env",
+      "name": "Usage data (env. var)",
+      "is_official": false,
+      "links": {
+        "main": "https://github.com/microsoft/appcenter-cli/blob/master/src/util/profile/telemetry.ts"
+      },
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "MOBILE_CENTER_TELEMETRY"
+              },
+              "value": {
+                "opt_out": "off",
+                "opt_in": null
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "usage-data-file",
+      "name": "Usage data (JSON file)",
+      "is_official": false,
+      "description": "Empty JSON file will disable telemetry.",
+      "links": {
+        "main": "https://github.com/microsoft/appcenter-cli/blob/master/src/util/profile/telemetry.ts"
+      },
+      "target": {
+        "plain_file": {
+          "scope": {
+            "user": {
+              "path": {
+                "linux": "$HOME/.appcenter-cli/telemetryEnabled.json",
+                "macos": "$HOME/.appcenter-cli/telemetryEnabled.json",
+                "windows": "%USERPROFILE%\\.appcenter-cli\\telemetryEnabled.json"
+              },
+              "selector": "^(.+)$",
+              "value": {
+                "opt_out": "",
+                "opt_in": "enabled"
+              },
+              "display_value": ""
+            }
+          }
+        }
+      }
+    }
+  ]
+}
