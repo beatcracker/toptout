@@ -116,6 +116,7 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Bot Framework CLI](#bot-framework-cli)
   - [Carbon Design System](#carbon-design-system)
   - [choosenim](#choosenim)
+  - [code-server](#code-server)
   - [Apache Cordova CLI](#apache-cordova-cli)
   - [Cube.js](#cubejs)
   - [Dagster](#dagster)
@@ -124,6 +125,7 @@ Below is automatically generated list of known telemetry channels for various ap
   - [dotnet-svcutil](#dotnet-svcutil)
   - [DVC](#dvc)
   - [Ember CLI](#ember-cli)
+  - [Flagsmith API](#flagsmith-api)
   - [Flutter](#flutter)
   - [Gatsby](#gatsby)
   - [Hasura GraphQL engine](#hasura-graphql-engine)
@@ -136,9 +138,11 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Nuxt.js](#nuxtjs)
   - [Ory](#ory)
   - [Oryx](#oryx)
+  - [Pants](#pants)
   - [Prisma](#prisma)
   - [REST API Fuzz Testing (RAFT)](#rest-api-fuzz-testing-raft)
   - [Rasa](#rasa)
+  - [React Native for Windows + macOS](#react-native-for-windows--macos)
   - [RESTler](#restler)
   - [Rover CLI](#rover-cli)
   - [Salto CLI](#salto-cli)
@@ -157,6 +161,7 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Infracost](#infracost)
   - [k0s](#k0s)
   - [Packer](#packer)
+  - [PnP PowerShell](#pnp-powershell)
   - [Skaffold](#skaffold)
   - [Telepresence](#telepresence)
   - [Terraform](#terraform)
@@ -1181,6 +1186,27 @@ Use methods described below to opt-out of this telemetry channel.
 CHOOSENIM_NO_ANALYTICS=1
 ```
 
+### [code-server](https://github.com/cdr/code-server)
+
+> We use the data collected only to improve code-server.
+
+- [Telemetry details](https://github.com/cdr/code-server/blob/main/docs/FAQ.md#how-can-i-disable-telemetry)
+- [Privacy policy](https://coder.com/legal/privacy-policy)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ❌
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Visit link(s) for more details
+
+1. [Using commandline flag](https://github.com/cdr/code-server/blob/main/docs/FAQ.md#how-can-i-disable-telemetry)
+
+    > Use the `--disable-telemetry` flag to completely disable telemetry.
+
 ### [Apache Cordova CLI](https://cordova.apache.org)
 
 > We use the gathered information to help us make our tool more useful and to better understand how it is used. We do not track or collect personally identifiable information or associate gathered data with any personally identifying information from other sources.
@@ -1487,6 +1513,29 @@ Use methods described below to opt-out of this telemetry channel.
 1. [Disable usage data reporting](https://github.com/ember-cli/ember-cli/pull/2923)
 
     > You can also disable analytics on per-command basis by adding '--disable-analytics' option
+
+### [Flagsmith API](https://flagsmith.com/)
+
+> Flagsmith collects information about self hosted installations. This helps us understand how the platform is being used. This data is never shared outside of the organisation, and is anonymous by design.
+
+- [Telemetry details](https://flagsmith.com/privacy-policy/)
+- [Privacy policy](https://docs.flagsmith.com/deployment-overview/#api-telemetry)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+TELEMETRY_DISABLED=ANY_VALUE
+```
 
 ### [Flutter](https://flutter.dev/)
 
@@ -1821,6 +1870,43 @@ Use methods described below to opt-out of this telemetry channel.
 ORYX_DISABLE_TELEMETRY=true
 ```
 
+### [Pants](https://www.pantsbuild.org/)
+
+> Pants can optionally send anonymized telemetry to the Pants project. This data helps us develop and improve Pants by detecting bugs, analyzing usage patterns, and so on. Telemetry is sent in the background, so it doesn't slow down your Pants runs. No telemetry is sent until you opt in to this feature.
+
+- [Telemetry details](https://www.pantsbuild.org/docs/anonymous-telemetry)
+- [Privacy policy](https://www.pantsbuild.org/docs/anonymous-telemetry#data-policies)
+
+List of known telemetry channels:
+
+#### [Usage data](https://www.pantsbuild.org/docs/reference-anonymous-telemetry)
+
+Official: ❌
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+PANTS_ANONYMOUS_TELEMETRY_ENABLED=false
+```
+
+##### 2. Visit link(s) for more details
+
+1. [Using commandline flag](https://www.pantsbuild.org/docs/reference-anonymous-telemetry#section-enabled)
+
+    > Provide `--no-anonymous-telemetry-enabled` flag.
+
+2. [Using config file](https://www.pantsbuild.org/docs/anonymous-telemetry#opting-in-to-telemetry)
+
+    > To explicitly opt out of telemetry and silence any logging about it add this to your `pants.toml`:
+    > ```toml
+    > [anonymous-telemetry]
+    > enabled = false
+    > ```
+
 ### [Prisma](https://www.prisma.io/)
 
 > Telemetry helps us better understand how many users are using our products and how often they are using our products.
@@ -1911,6 +1997,31 @@ RASA_TELEMETRY_ENABLED=false
 ```shell
 rasa telemetry disable
 ```
+
+### [React Native for Windows + macOS](https://microsoft.github.io/react-native-windows/)
+
+> Some build-time tools will send telemetry to Microsoft by default. No telemetry is collected or transmitted in the final app.
+
+- [Telemetry details](https://www.pantsbuild.org/docs/anonymous-telemetry)
+- [Privacy policy](https://privacy.microsoft.com/en-us/privacystatement)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ❌
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Visit link(s) for more details
+
+1. [react-native-windows/cli | Using commandline flag](https://github.com/microsoft/react-native-windows/blob/master/packages/@react-native-windows/cli/README.md)
+
+    > Provide `--no-telemetry` flag.
+
+2. [react-native-windows-init | Using commandline flag](https://github.com/microsoft/react-native-windows/blob/master/packages/react-native-windows-init/README.md)
+
+    > Provide `--no-telemetry` flag.
 
 ### [RESTler](https://github.com/microsoft/restler-fuzzer)
 
@@ -2501,6 +2612,64 @@ Use methods described below to opt-out of this telemetry channel.
 
 ```none
 CHECKPOINT_DISABLE=1
+```
+
+### [PnP PowerShell](https://pnp.github.io/powershell/)
+
+> By default PnP PowerShell will report its usage to the PnP Team.
+
+- [Telemetry details](https://pnp.github.io/powershell/articles/configuration.html)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### [Usage data (env. var)](https://pnp.github.io/powershell/articles/configuration.html#disable-or-enable-telemetry)
+
+Official: ✔
+
+> By default PnP PowerShell will report its usage to the PnP Team. We collection information about the version of PnP PowerShell and the cmdlet executed. Notice that we will not include parameters used and we will not include any values of parameters.
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+PNPPOWERSHELL_DISABLETELEMETRY=true
+```
+
+#### [Usage data (cmdlet)](https://pnp.github.io/powershell/cmdlets/Enable-PnPPowerShellTelemetry.html?q=telemetry)
+
+Official: ✔
+
+> In order to help to make PnP PowerShell better, we can track anonymous telemetry. We track the version of the cmdlets you are using, which cmdlet you are executing and which version of SharePoint you are connecting to.
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Run command
+
+###### Scope: 👤 User
+
+| OS      | Command                                                                                                                                                                                     |
+|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Other   | `pwsh -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Import-Module PnP.PowerShell -ErrorAction Stop ; Disable-PnPPowerShellTelemetry -Force -ErrorAction Stop"`       |
+| Windows | `powershell -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Import-Module PnP.PowerShell -ErrorAction Stop ; Disable-PnPPowerShellTelemetry -Force -ErrorAction Stop"` |
+
+#### [Update check](https://pnp.github.io/powershell/articles/updatenotifications.html)
+
+Official: ✔
+
+> One time per PowerShell session PnP PowerShell will check for new versions when you execute `Connect-PnPOnline`.
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+PNPPOWERSHELL_UPDATECHECK=false
 ```
 
 ### [Skaffold](https://skaffold.dev/)

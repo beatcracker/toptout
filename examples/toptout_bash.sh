@@ -3,6 +3,7 @@
 # https://toptout.me
 
 cleanup () {
+  # We're sourced, so cleanup is needed
   unset $(compgen -v | grep '^toptout_')
 }
 
@@ -77,12 +78,24 @@ then
   [[ "${toptout_sourced}" == 'True' ]] && return || exit
 fi
 
+in_path () {
+  for item in "$@"
+  do
+    [[ "${toptout_verbose}" == 'True' ]] && echo -en "  Cheking if \033[32m${item}\033[0m is in PATH: "
+    if command -v "${item}" > /dev/null 2>&1
+    then
+      [[ "${toptout_verbose}" == 'True' ]] && echo -e "\033[32mTrue\033[0m"
+      return 0
+    else
+      [[ "${toptout_verbose}" == 'True' ]] && echo -e "\033[33mFalse\033[0m"
+    fi
+  done
+  return 1
+}
+
 run_cmd () {
-  if command -v "${1}" > /dev/null 2>&1
-  then
-    [[ "${toptout_verbose}" == 'True' ]] && echo -e "\033[32mExecuting command           :\033[0m \033[33m${1} ${2}\033[0m"
-    [[ "${toptout_dry}" == 'False' ]] && "${1}" ${2}
-  fi
+  [[ "${toptout_verbose}" == 'True' ]] && echo -e "\033[32mExecuting command           :\033[0m \033[33m${1} ${2}\033[0m"
+  [[ "${toptout_dry}" == 'False' ]] && "${1}" ${2}
 }
 
 set_env () {
@@ -120,7 +133,16 @@ ________________________________________
 # https://github.com/mozilla/policy-templates/tree/master/mac
 case "$OSTYPE" in
   darwin*)
-    [[ "${toptout_exec}" == 'True' ]] && run_cmd 'defaults' 'write /Library/Preferences/org.mozilla.firefox EnterprisePoliciesEnabled -bool TRUE'
+    if [[ "${toptout_exec}" == 'True' ]]
+    then
+      if in_path 'firefox'
+      then
+        if in_path 'defaults'
+        then
+          run_cmd 'defaults' 'write /Library/Preferences/org.mozilla.firefox EnterprisePoliciesEnabled -bool TRUE'
+        fi
+      fi
+    fi
   ;;
 esac
 
@@ -131,7 +153,16 @@ esac
 # https://github.com/mozilla/policy-templates/blob/master/README.md
 case "$OSTYPE" in
   darwin*)
-    [[ "${toptout_exec}" == 'True' ]] && run_cmd 'defaults' 'write /Library/Preferences/org.mozilla.firefox DisableTelemetry -bool TRUE'
+    if [[ "${toptout_exec}" == 'True' ]]
+    then
+      if in_path 'firefox'
+      then
+        if in_path 'defaults'
+        then
+          run_cmd 'defaults' 'write /Library/Preferences/org.mozilla.firefox DisableTelemetry -bool TRUE'
+        fi
+      fi
+    fi
   ;;
 esac
 
@@ -148,7 +179,16 @@ esac
 # https://docs.microsoft.com/en-us/deployoffice/privacy/overview-privacy-controls#diagnostic-data-sent-from-microsoft-365-apps-for-enterprise-to-microsoftd
 case "$OSTYPE" in
   darwin*)
-    [[ "${toptout_exec}" == 'True' ]] && run_cmd 'defaults' 'write com.microsoft.office DiagnosticDataTypePreference -string ZeroDiagnosticData'
+    if [[ "${toptout_exec}" == 'True' ]]
+    then
+      if in_path 'winword'
+      then
+        if in_path 'defaults'
+        then
+          run_cmd 'defaults' 'write com.microsoft.office DiagnosticDataTypePreference -string ZeroDiagnosticData'
+        fi
+      fi
+    fi
   ;;
 esac
 
@@ -168,7 +208,13 @@ esac
 # https://cloud.google.com/sdk
 
 # Usage data
-[[ "${toptout_exec}" == 'True' ]] && run_cmd 'gcloud' 'config set disable_usage_reporting true'
+if [[ "${toptout_exec}" == 'True' ]]
+then
+  if in_path 'gcloud'
+  then
+    run_cmd 'gcloud' 'config set disable_usage_reporting true'
+  fi
+fi
 
 # Netdata
 # https://www.netdata.cloud
@@ -180,7 +226,13 @@ esac
 # https://netlify.com
 
 # Usage data
-[[ "${toptout_exec}" == 'True' ]] && run_cmd 'netlify' '--telemetry-disable'
+if [[ "${toptout_exec}" == 'True' ]]
+then
+  if in_path 'netlify'
+  then
+    run_cmd 'netlify' '--telemetry-disable'
+  fi
+fi
 
 # Stripe CLI
 # https://stripe.com/docs/stripe-cli
@@ -231,7 +283,13 @@ esac
 # https://www.timescale.com/
 
 # Usage data
-[[ "${toptout_exec}" == 'True' ]] && run_cmd 'psql' '-c "ALTER SYSTEM SET timescaledb.telemetry_level=off"'
+if [[ "${toptout_exec}" == 'True' ]]
+then
+  if in_path 'psql'
+  then
+    run_cmd 'psql' '-c "ALTER SYSTEM SET timescaledb.telemetry_level=off"'
+  fi
+fi
 
 # Angular
 # https://angular.io
@@ -257,7 +315,13 @@ esac
 # https://github.com/microsoft/appcenter-cli/
 
 # Usage data (command)
-[[ "${toptout_exec}" == 'True' ]] && run_cmd 'appcenter' 'telemetry off'
+if [[ "${toptout_exec}" == 'True' ]]
+then
+  if in_path 'appcenter'
+  then
+    run_cmd 'appcenter' 'telemetry off'
+  fi
+fi
 
 # App Center CLI
 # https://github.com/microsoft/appcenter-cli/
@@ -327,13 +391,31 @@ esac
 # https://dvc.org/
 
 # Usage Analytics
-[[ "${toptout_exec}" == 'True' ]] && run_cmd 'dvc' 'config core.analytics false --global'
+if [[ "${toptout_exec}" == 'True' ]]
+then
+  if in_path 'dvc'
+  then
+    run_cmd 'dvc' 'config core.analytics false --global'
+  fi
+fi
+
+# Flagsmith API
+# https://flagsmith.com/
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'TELEMETRY_DISABLED' 'ANY_VALUE'
 
 # Flutter
 # https://flutter.dev/
 
 # Crash reporting
-[[ "${toptout_exec}" == 'True' ]] && run_cmd 'flutter' 'config --no-analytics'
+if [[ "${toptout_exec}" == 'True' ]]
+then
+  if in_path 'flutter'
+  then
+    run_cmd 'flutter' 'config --no-analytics'
+  fi
+fi
 
 # Gatsby
 # https://www.gatsbyjs.org
@@ -351,7 +433,13 @@ esac
 # https://ionicframework.com/
 
 # Usage data
-[[ "${toptout_exec}" == 'True' ]] && run_cmd 'ionic' 'config set --global telemetry false'
+if [[ "${toptout_exec}" == 'True' ]]
+then
+  if in_path 'ionic'
+  then
+    run_cmd 'ionic' 'config set --global telemetry false'
+  fi
+fi
 
 # MeiliSearch
 # https://github.com/meilisearch/MeiliSearch
@@ -400,6 +488,13 @@ esac
 
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'ORYX_DISABLE_TELEMETRY' 'true'
+
+# Pants
+# https://www.pantsbuild.org/
+
+# Usage data
+# https://www.pantsbuild.org/docs/reference-anonymous-telemetry
+[[ "${toptout_env}" == 'True' ]] && set_env 'PANTS_ANONYMOUS_TELEMETRY_ENABLED' 'false'
 
 # Prisma
 # https://www.prisma.io/
@@ -469,14 +564,29 @@ esac
 # https://www.webiny.com/
 
 # Usage data
-[[ "${toptout_exec}" == 'True' ]] && run_cmd 'yarn' 'webiny disable-tracking'
+if [[ "${toptout_exec}" == 'True' ]]
+then
+  if in_path 'webiny'
+  then
+    if in_path 'yarn'
+    then
+      run_cmd 'yarn' 'webiny disable-tracking'
+    fi
+  fi
+fi
 
 # Yarn 2
 # https://yarnpkg.com/
 
 # Usage data
 # https://yarnpkg.com/advanced/telemetry
-[[ "${toptout_exec}" == 'True' ]] && run_cmd 'yarn' 'config set --home enableTelemetry 0'
+if [[ "${toptout_exec}" == 'True' ]]
+then
+  if in_path 'yarn'
+  then
+    run_cmd 'yarn' 'config set --home enableTelemetry 0'
+  fi
+fi
 
 # AutomatedLab
 # https://github.com/AutomatedLab/AutomatedLab
@@ -524,11 +634,31 @@ esac
 # Update check
 [[ "${toptout_env}" == 'True' ]] && set_env 'CHECKPOINT_DISABLE' '1'
 
+# PnP PowerShell
+# https://pnp.github.io/powershell/
+
+# Usage data (env. var)
+# https://pnp.github.io/powershell/articles/configuration.html#disable-or-enable-telemetry
+[[ "${toptout_env}" == 'True' ]] && set_env 'PNPPOWERSHELL_DISABLETELEMETRY' 'true'
+
+# PnP PowerShell
+# https://pnp.github.io/powershell/
+
+# Update check
+# https://pnp.github.io/powershell/articles/updatenotifications.html
+[[ "${toptout_env}" == 'True' ]] && set_env 'PNPPOWERSHELL_UPDATECHECK' 'false'
+
 # Skaffold
 # https://skaffold.dev/
 
 # Usage data
-[[ "${toptout_exec}" == 'True' ]] && run_cmd 'skaffold' 'config set --global collect-metrics false'
+if [[ "${toptout_exec}" == 'True' ]]
+then
+  if in_path 'skaffold'
+  then
+    run_cmd 'skaffold' 'config set --global collect-metrics false'
+  fi
+fi
 
 # Telepresence
 # https://www.telepresence.io/

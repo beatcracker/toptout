@@ -61,6 +61,22 @@ function Get-OsMoniker {
     }
 }
 
+function Test-InPath {
+    Param(
+        [switch]$ShowLog
+    )
+
+    foreach ($item in $args) {
+        if ($ShowLog) { Write-Host "  Cheking if '$item' is in PATH: " -ForegroundColor Gray -NoNewLine}
+        if (Get-Command -Name $item -CommandType Application -ErrorAction SilentlyContinue) {
+            if ($ShowLog) { Write-Host $true -ForegroundColor DarkGreen}
+            return $true
+        }
+        if ($ShowLog) { Write-Host $false -ForegroundColor DarkYellow}
+    }
+    return $false
+}
+
 function Invoke-ShellCommand {
     [CmdletBinding(SupportsShouldProcess = $true)]
     Param (
@@ -75,20 +91,18 @@ function Invoke-ShellCommand {
         [switch]$ShowLog
     )
 
-    if (Get-Command -Name $Command -CommandType Application -ErrorAction SilentlyContinue) {
-        $LoggedCommand = "$Command $Arguments"
+    $LoggedCommand = "$Command $Arguments"
 
-        if ($PSCmdlet.ShouldProcess($LoggedCommand, 'Execute command')) {
-            if ($ShowLog) {
-                Write-Host 'Executing command           : ' -ForegroundColor DarkGreen -NoNewline
-                Write-Host $LoggedCommand -ForegroundColor DarkYellow
-            }
+    if ($PSCmdlet.ShouldProcess($LoggedCommand, 'Execute command')) {
+        if ($ShowLog) {
+            Write-Host 'Executing command           : ' -ForegroundColor DarkGreen -NoNewline
+            Write-Host $LoggedCommand -ForegroundColor DarkYellow
+        }
 
-            $ret = Start-Process -FilePath $Command -ArgumentList $Arguments -NoNewWindow -Wait
+        $ret = Start-Process -FilePath $Command -ArgumentList $Arguments -NoNewWindow -Wait
 
-            if ($ShowLog) {
-                Write-Host $ret -ForegroundColor White
-            }
+        if ($ShowLog) {
+            Write-Host $ret -ForegroundColor White
         }
     }
 }
@@ -159,11 +173,15 @@ ________________________________________
 # Enable policies (macOS)
 # https://github.com/mozilla/policy-templates/tree/master/mac
 switch (Get-OsMoniker) {
-  'macos' {
-    if ($Exec) {
-        Invoke-ShellCommand -Command 'defaults' -Arguments 'write /Library/Preferences/org.mozilla.firefox EnterprisePoliciesEnabled -bool TRUE' -ShowLog:$ShowLog
+    'macos' {
+        if ($Exec) {
+            if (Test-InPath 'firefox' -ShowLog:$ShowLog) {
+                if (Test-InPath 'defaults' -ShowLog:$ShowLog) {
+                    Invoke-ShellCommand -Command 'defaults' -Arguments 'write /Library/Preferences/org.mozilla.firefox EnterprisePoliciesEnabled -bool TRUE' -ShowLog:$ShowLog
+                }
+            }
+        }
     }
-  }
 }
 
 # Firefox
@@ -172,11 +190,15 @@ switch (Get-OsMoniker) {
 # Usage data
 # https://github.com/mozilla/policy-templates/blob/master/README.md
 switch (Get-OsMoniker) {
-  'macos' {
-    if ($Exec) {
-        Invoke-ShellCommand -Command 'defaults' -Arguments 'write /Library/Preferences/org.mozilla.firefox DisableTelemetry -bool TRUE' -ShowLog:$ShowLog
+    'macos' {
+        if ($Exec) {
+            if (Test-InPath 'firefox' -ShowLog:$ShowLog) {
+                if (Test-InPath 'defaults' -ShowLog:$ShowLog) {
+                    Invoke-ShellCommand -Command 'defaults' -Arguments 'write /Library/Preferences/org.mozilla.firefox DisableTelemetry -bool TRUE' -ShowLog:$ShowLog
+                }
+            }
+        }
     }
-  }
 }
 
 # Homebrew
@@ -193,11 +215,15 @@ if ($Env) {
 # Diagnostic data
 # https://docs.microsoft.com/en-us/deployoffice/privacy/overview-privacy-controls#diagnostic-data-sent-from-microsoft-365-apps-for-enterprise-to-microsoftd
 switch (Get-OsMoniker) {
-  'macos' {
-    if ($Exec) {
-        Invoke-ShellCommand -Command 'defaults' -Arguments 'write com.microsoft.office DiagnosticDataTypePreference -string ZeroDiagnosticData' -ShowLog:$ShowLog
+    'macos' {
+        if ($Exec) {
+            if (Test-InPath 'winword' -ShowLog:$ShowLog) {
+                if (Test-InPath 'defaults' -ShowLog:$ShowLog) {
+                    Invoke-ShellCommand -Command 'defaults' -Arguments 'write com.microsoft.office DiagnosticDataTypePreference -string ZeroDiagnosticData' -ShowLog:$ShowLog
+                }
+            }
+        }
     }
-  }
 }
 
 # AWS SAM CLI
@@ -221,7 +247,9 @@ if ($Env) {
 
 # Usage data
 if ($Exec) {
-    Invoke-ShellCommand -Command 'gcloud' -Arguments 'config set disable_usage_reporting true' -ShowLog:$ShowLog
+    if (Test-InPath 'gcloud' -ShowLog:$ShowLog) {
+        Invoke-ShellCommand -Command 'gcloud' -Arguments 'config set disable_usage_reporting true' -ShowLog:$ShowLog
+    }
 }
 
 # Netdata
@@ -237,7 +265,9 @@ if ($Env) {
 
 # Usage data
 if ($Exec) {
-    Invoke-ShellCommand -Command 'netlify' -Arguments '--telemetry-disable' -ShowLog:$ShowLog
+    if (Test-InPath 'netlify' -ShowLog:$ShowLog) {
+        Invoke-ShellCommand -Command 'netlify' -Arguments '--telemetry-disable' -ShowLog:$ShowLog
+    }
 }
 
 # Stripe CLI
@@ -304,7 +334,9 @@ if ($Env) {
 
 # Usage data
 if ($Exec) {
-    Invoke-ShellCommand -Command 'psql' -Arguments '-c "ALTER SYSTEM SET timescaledb.telemetry_level=off"' -ShowLog:$ShowLog
+    if (Test-InPath 'psql' -ShowLog:$ShowLog) {
+        Invoke-ShellCommand -Command 'psql' -Arguments '-c "ALTER SYSTEM SET timescaledb.telemetry_level=off"' -ShowLog:$ShowLog
+    }
 }
 
 # Angular
@@ -338,7 +370,9 @@ if ($Env) {
 
 # Usage data (command)
 if ($Exec) {
-    Invoke-ShellCommand -Command 'appcenter' -Arguments 'telemetry off' -ShowLog:$ShowLog
+    if (Test-InPath 'appcenter' -ShowLog:$ShowLog) {
+        Invoke-ShellCommand -Command 'appcenter' -Arguments 'telemetry off' -ShowLog:$ShowLog
+    }
 }
 
 # App Center CLI
@@ -430,7 +464,17 @@ if ($Env) {
 
 # Usage Analytics
 if ($Exec) {
-    Invoke-ShellCommand -Command 'dvc' -Arguments 'config core.analytics false --global' -ShowLog:$ShowLog
+    if (Test-InPath 'dvc' -ShowLog:$ShowLog) {
+        Invoke-ShellCommand -Command 'dvc' -Arguments 'config core.analytics false --global' -ShowLog:$ShowLog
+    }
+}
+
+# Flagsmith API
+# https://flagsmith.com/
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'TELEMETRY_DISABLED' -Value 'ANY_VALUE' -ShowLog:$ShowLog
 }
 
 # Flutter
@@ -438,7 +482,9 @@ if ($Exec) {
 
 # Crash reporting
 if ($Exec) {
-    Invoke-ShellCommand -Command 'flutter' -Arguments 'config --no-analytics' -ShowLog:$ShowLog
+    if (Test-InPath 'flutter' -ShowLog:$ShowLog) {
+        Invoke-ShellCommand -Command 'flutter' -Arguments 'config --no-analytics' -ShowLog:$ShowLog
+    }
 }
 
 # Gatsby
@@ -462,7 +508,9 @@ if ($Env) {
 
 # Usage data
 if ($Exec) {
-    Invoke-ShellCommand -Command 'ionic' -Arguments 'config set --global telemetry false' -ShowLog:$ShowLog
+    if (Test-InPath 'ionic' -ShowLog:$ShowLog) {
+        Invoke-ShellCommand -Command 'ionic' -Arguments 'config set --global telemetry false' -ShowLog:$ShowLog
+    }
 }
 
 # MeiliSearch
@@ -527,6 +575,15 @@ if ($Env) {
 # Usage data
 if ($Env) {
     Set-EnvVar -Name 'ORYX_DISABLE_TELEMETRY' -Value 'true' -ShowLog:$ShowLog
+}
+
+# Pants
+# https://www.pantsbuild.org/
+
+# Usage data
+# https://www.pantsbuild.org/docs/reference-anonymous-telemetry
+if ($Env) {
+    Set-EnvVar -Name 'PANTS_ANONYMOUS_TELEMETRY_ENABLED' -Value 'false' -ShowLog:$ShowLog
 }
 
 # Prisma
@@ -618,7 +675,11 @@ if ($Env) {
 
 # Usage data
 if ($Exec) {
-    Invoke-ShellCommand -Command 'yarn' -Arguments 'webiny disable-tracking' -ShowLog:$ShowLog
+    if (Test-InPath 'webiny' -ShowLog:$ShowLog) {
+        if (Test-InPath 'yarn' -ShowLog:$ShowLog) {
+            Invoke-ShellCommand -Command 'yarn' -Arguments 'webiny disable-tracking' -ShowLog:$ShowLog
+        }
+    }
 }
 
 # Yarn 2
@@ -627,7 +688,9 @@ if ($Exec) {
 # Usage data
 # https://yarnpkg.com/advanced/telemetry
 if ($Exec) {
-    Invoke-ShellCommand -Command 'yarn' -Arguments 'config set --home enableTelemetry 0' -ShowLog:$ShowLog
+    if (Test-InPath 'yarn' -ShowLog:$ShowLog) {
+        Invoke-ShellCommand -Command 'yarn' -Arguments 'config set --home enableTelemetry 0' -ShowLog:$ShowLog
+    }
 }
 
 # AutomatedLab
@@ -690,12 +753,32 @@ if ($Env) {
     Set-EnvVar -Name 'CHECKPOINT_DISABLE' -Value '1' -ShowLog:$ShowLog
 }
 
+# PnP PowerShell
+# https://pnp.github.io/powershell/
+
+# Usage data (env. var)
+# https://pnp.github.io/powershell/articles/configuration.html#disable-or-enable-telemetry
+if ($Env) {
+    Set-EnvVar -Name 'PNPPOWERSHELL_DISABLETELEMETRY' -Value 'true' -ShowLog:$ShowLog
+}
+
+# PnP PowerShell
+# https://pnp.github.io/powershell/
+
+# Update check
+# https://pnp.github.io/powershell/articles/updatenotifications.html
+if ($Env) {
+    Set-EnvVar -Name 'PNPPOWERSHELL_UPDATECHECK' -Value 'false' -ShowLog:$ShowLog
+}
+
 # Skaffold
 # https://skaffold.dev/
 
 # Usage data
 if ($Exec) {
-    Invoke-ShellCommand -Command 'skaffold' -Arguments 'config set --global collect-metrics false' -ShowLog:$ShowLog
+    if (Test-InPath 'skaffold' -ShowLog:$ShowLog) {
+        Invoke-ShellCommand -Command 'skaffold' -Arguments 'config set --global collect-metrics false' -ShowLog:$ShowLog
+    }
 }
 
 # Telepresence
