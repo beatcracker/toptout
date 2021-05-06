@@ -467,11 +467,13 @@ $ShellIndenthMap = @{
 }
 
 filter Indent {
+    # $Count IS used, PSScriptAnalyzer is just not smart enough yet to figure it out
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', '')]
     Param(
-        [int]$Indent = 0
+        [int]$Count = 0
     )
 
-    ($_ -split '\r\n|\r|\n').ForEach( { ' ' * $Indent + $_ } ) -join $LF
+    ($_ -split '\r\n|\r|\n').ForEach( { ' ' * $Count + $_ } ) -join $LF
 }
 
 filter Select-LowestScope {
@@ -513,11 +515,13 @@ function Get-ShellScriptHelpers {
 filter ConvertTo-ShellScript {
     # $Shell IS used, PSScriptAnalyzer is just not smart enough yet to figure it out
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', '')]
+    # $is_applicable IS used, PSScriptAnalyzer is just not smart enough yet to figure it out
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVarsMoreThanAssignments', '')]
     Param (
         [ValidateSet('bash', 'pwsh')]
         [string]$Shell
     )
-    
+
     # Save input object in case we need its props later
     $data = $_
 
@@ -575,17 +579,17 @@ filter ConvertTo-ShellScript {
 
                                 # If we can detect app by PATH lookup, insert additional code block to handle that
                                 if ($data.executable_name.Count -and $ShellLookupMap.$Shell.ContainsKey($_.Key)) {
-                                    $ShellLookupMap.$Shell.($_.Key).InvokeReturnAsIs($data.executable_name, $kv.Value) -f $ret | Indent $ShellIndenthMap.$Shell
+                                    $ShellLookupMap.$Shell.($_.Key).InvokeReturnAsIs($data.executable_name, $kv.Value) -f $ret | Indent -Count $ShellIndenthMap.$Shell
                                 }
                                 else {
-                                    $ret | Indent $ShellIndenthMap.$Shell
+                                    $ret | Indent -Count $ShellIndenthMap.$Shell
                                 }
                             )
                         }
 
                         # Finish rendering case/switch block
                         $ShellSwitchMap.$Shell -f (
-                            ($cases -join $LF) | Indent $ShellIndenthMap.$Shell
+                            ($cases -join $LF) | Indent -Count $ShellIndenthMap.$Shell
                         )
                     }
                     Add-Newline
