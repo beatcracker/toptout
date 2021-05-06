@@ -2009,7 +2009,7 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ❌
+Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
