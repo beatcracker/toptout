@@ -1,7 +1,9 @@
 {
   "id": "net-core-sdk",
   "name": ".NET Core SDK",
-  "executable_name": "dotnet",
+  "executable_name": [
+    "dotnet"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "The NET Core SDK includes a telemetry feature that collects usage data and exception information when the .NET Core CLI crashes. The .NET Core CLI comes with the .NET Core SDK and is the set of verbs that enable you to build, test, and publish your .NET Core apps. It's important that the .NET team understands how the tools are used so they can be improved. Information on failures helps the team resolve problems and fix bugs.",

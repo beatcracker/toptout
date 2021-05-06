@@ -1,7 +1,9 @@
 {
   "id": "winget-cli",
   "name": "winget",
-  "executable_name": "winget",
+  "executable_name": [
+    "winget"
+  ],
   "category_id": "applications",
   "category_name": "Applications",
   "description": "The winget.exe client is instrumented to collect usage and diagnostic (error) data and sends it to Microsoft to help improve the product.",

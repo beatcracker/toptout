@@ -1,7 +1,9 @@
 {
   "id": "code-server",
   "name": "code-server",
-  "executable_name": "code-server",
+  "executable_name": [
+    "code-server"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "We use the data collected only to improve code-server.",

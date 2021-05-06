@@ -1,7 +1,9 @@
 {
   "id": "arduino-cli",
   "name": "Arduino CLI",
-  "executable_name": "arduino-cli",
+  "executable_name": [
+    "arduino-cli"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "No data is currently gathered from users of the CLI. Arduino CLI can be launched as a gRPC server via the daemon command. To provide observability for the gRPC server activities besides logs, the daemon mode activates and exposes by default a Prometheus endpoint (http://localhost:9090/metrics) that can be fetched for metrics data",

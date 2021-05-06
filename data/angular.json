@@ -1,7 +1,9 @@
 {
   "id": "angular",
   "name": "Angular",
-  "executable_name": "ng",
+  "executable_name": [
+    "ng"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "When installing the Angular CLI or upgrading an existing version, you are prompted to allow global collection of usage statistics. If you say no or skip the prompt, no data is collected.",

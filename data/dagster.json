@@ -1,7 +1,9 @@
 {
   "id": "dagster",
   "name": "Dagster",
-  "executable_name": "dagster",
+  "executable_name": [
+    "dagster"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "As an open source project, we collect usage statistics to better understand how users engage with Dagster and to inform development priorities.",

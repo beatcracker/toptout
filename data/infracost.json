@@ -1,7 +1,9 @@
 {
   "id": "infracost",
   "name": "Infracost",
-  "executable_name": "infracost",
+  "executable_name": [
+    "infracost"
+  ],
   "category_id": "devops",
   "category_name": "DevOps",
   "description": "When using a self-hosted Cloud Pricing API, Infracost CLI will send telemetry data.",

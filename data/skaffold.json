@@ -1,7 +1,9 @@
 {
   "id": "skaffold",
   "name": "Skaffold",
-  "executable_name": "skaffold",
+  "executable_name": [
+    "skaffold"
+  ],
   "category_id": "devops",
   "category_name": "DevOps",
   "description": "To help prioritize features and work on improving Skaffold, we collect anonymized Skaffold usage data. Usage data does not include any argument values or personal information.",

@@ -1,7 +1,9 @@
 {
   "id": "dotnet-interactive",
   "name": ".NET Interactive",
-  "executable_name": "dotnet",
+  "executable_name": [
+    "dotnet"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "Telemetry is collected when .NET Interactive is started. Once .NET Interactive is running, we do not collect telemetry from any further user actions.",

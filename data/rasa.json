@@ -1,7 +1,9 @@
 {
   "id": "rasa",
   "name": "Rasa",
-  "executable_name": "rasa",
+  "executable_name": [
+    "rasa"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "Rasa uses telemetry to report anonymous usage information. This information is essential to help improve Rasa Open Source for all users.",

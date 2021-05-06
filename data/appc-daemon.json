@@ -1,7 +1,9 @@
 {
   "id": "appc-daemon",
   "name": "Appc Daemon",
-  "executable_name": "appcd",
+  "executable_name": [
+    "appcd"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "The telemetry system is implemented in the appcd-telemetry pacakge and provides a service for collecting time and counter-based information and sending it to the Appc cloud for processing.",

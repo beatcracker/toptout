@@ -1,7 +1,9 @@
 {
   "id": "botframework-cli",
   "name": "Bot Framework CLI",
-  "executable_name": "bf",
+  "executable_name": [
+    "bf"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "Privacy is very important to us. BF CLI contains optional instrumentation that is designed to help us improve the tool based on anonymous usage patterns. It is disabled, opted-out by default.",

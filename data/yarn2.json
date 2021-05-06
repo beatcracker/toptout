@@ -1,7 +1,9 @@
 {
   "id": "yarn2",
   "name": "Yarn 2",
-  "executable_name": "yarn",
+  "executable_name": [
+    "yarn"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "Data are sent via batches, roughly every seven days. This prevents us from tracking your usage with a too high granularity, leaving us only the most useful information to do our job efficiently.",

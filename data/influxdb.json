@@ -1,7 +1,9 @@
 {
   "id": "influxdb",
   "name": "InfluxDB",
-  "executable_name": "influxd",
+  "executable_name": [
+    "influxd"
+  ],
   "category_id": "database",
   "category_name": "Database",
   "description": "InfluxData collects information about the usage of InfluxDB. This “phone home” capability is intended to provide us with information about the broader user community and an understanding of how the platform is being used.",

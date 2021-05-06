@@ -1,7 +1,9 @@
 {
   "id": "ionic-cli",
   "name": "Ionic CLI",
-  "executable_name": "ionic",
+  "executable_name": [
+    "ionic"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "The CLI sends usage data to Ionic to create a better experience.",

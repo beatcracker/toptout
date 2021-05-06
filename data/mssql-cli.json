@@ -1,7 +1,9 @@
 {
   "id": "mssql-cli",
   "name": "mssql-cli",
-  "executable_name": "mssql-cli",
+  "executable_name": [
+    "mssql-cli"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "By default, Microsoft collects anonymous usage data in order to improve the user experience. The usage data collected allows the team to prioritize features and bug fixes.",

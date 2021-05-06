@@ -1,7 +1,9 @@
 {
   "id": "windows-terminal",
   "name": "Windows Terminal",
-  "executable_name": "wt",
+  "executable_name": [
+    "wt"
+  ],
   "category_id": "applications",
   "category_name": "Applications",
   "description": "The Windows Terminal client is instrumented to collect usage and diagnostic (error) data and sends it to Microsoft to help improve the product.",

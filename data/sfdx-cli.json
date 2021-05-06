@@ -1,7 +1,9 @@
 {
   "id": "sfdx-cli",
   "name": "Salesforce CLI",
-  "executable_name": "sfdx",
+  "executable_name": [
+    "sfdx"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "Salesforce collects usage data and metrics (telemetry) to help improve Salesforce CLI. We collect anonymous information related to the use of the CLI and plug-ins, such as which commands and parameters were run, and performance and error data.",

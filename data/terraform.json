@@ -1,7 +1,9 @@
 {
   "id": "terraform",
   "name": "Terraform",
-  "executable_name": "terraform",
+  "executable_name": [
+    "terraform"
+  ],
   "category_id": "devops",
   "category_name": "DevOps",
   "description": "The Terraform CLI commands interact with the HashiCorp service Checkpoint to check for the availability of new versions and for critical security bulletins about the current version.",

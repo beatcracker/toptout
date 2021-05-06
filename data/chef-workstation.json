@@ -1,7 +1,9 @@
 {
   "id": "chef-workstation",
   "name": "Chef Workstation",
-  "executable_name": "chef",
+  "executable_name": [
+    "chef"
+  ],
   "category_id": "devops",
   "category_name": "DevOps",
   "description": "In order to continually improve Chef Workstation, we collect information to help us identify bugs and understand how people interact with Chef Workstation.",

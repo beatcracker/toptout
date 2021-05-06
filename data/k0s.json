@@ -1,7 +1,9 @@
 {
   "id": "k0s",
   "name": "k0s",
-  "executable_name": "k0s",
+  "executable_name": [
+    "k0s"
+  ],
   "category_id": "devops",
   "category_name": "DevOps",
   "description": "To build better end user experience we collect and send telemetry data from clusters.",

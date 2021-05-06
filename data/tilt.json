@@ -1,7 +1,9 @@
 {
   "id": "tilt",
   "name": "Tilt",
-  "executable_name": "tilt",
+  "executable_name": [
+    "tilt"
+  ],
   "category_id": "cloud",
   "category_name": "Cloud",
   "description": "Tilt sends anonymized data about how you use it.",

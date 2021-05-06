@@ -1,7 +1,9 @@
 {
   "id": "strapi",
   "name": "Strapi",
-  "executable_name": "strapi",
+  "executable_name": [
+    "strapi"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "Strapi contains a feature in which anonymous and otherwise non-sensitive data is collected. This data is collectively aggregated for all our users, which when taken together give us a better global understanding of how users are interacting and using Strapi.",

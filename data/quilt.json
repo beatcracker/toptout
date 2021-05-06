@@ -1,7 +1,9 @@
 {
   "id": "quilt",
   "name": "Quilt",
-  "executable_name": "quilt3",
+  "executable_name": [
+    "quilt3"
+  ],
   "category_id": "database",
   "category_name": "Database",
   "description": "Quilt collect anonymous usage statistics to find bugs and prioritize features.",

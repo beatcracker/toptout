@@ -1,7 +1,9 @@
 {
   "id": "vscode",
   "name": "VSCode",
-  "executable_name": "code",
+  "executable_name": [
+    "code"
+  ],
   "category_id": "applications",
   "category_name": "Applications",
   "description": "Visual Studio Code collects telemetry data, which is used to help understand how to improve the product.",

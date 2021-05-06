@@ -1,7 +1,9 @@
 {
   "id": "dvc",
   "name": "DVC",
-  "executable_name": "dvc",
+  "executable_name": [
+    "dvc"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "To help us better understand how DVC is used and improve it, DVC captures and reports anonymized usage statistics.",

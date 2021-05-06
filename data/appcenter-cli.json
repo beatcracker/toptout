@@ -1,7 +1,9 @@
 {
   "id": "appcenter-cli",
   "name": "App Center CLI",
-  "executable_name": "appcenter",
+  "executable_name": [
+    "appcenter"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "App Center CLI would like to collect data about how users use CLI commands and some problems they encounter.",

@@ -1,7 +1,9 @@
 {
   "id": "batect",
   "name": "Batect",
-  "executable_name": "batect",
+  "executable_name": [
+    "batect"
+  ],
   "category_id": "devops",
   "category_name": "DevOps",
   "description": "No personally identifiable information or telemetry information is sent to the API as part of this process.",

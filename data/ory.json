@@ -1,7 +1,9 @@
 {
   "id": "ory",
   "name": "Ory",
-  "executable_name": "ory",
+  "executable_name": [
+    "ory"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "Ory's services collect summarized, anonymized data that can optionally be turned off.",

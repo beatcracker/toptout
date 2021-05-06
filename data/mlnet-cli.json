@@ -1,7 +1,9 @@
 {
   "id": "mlnet-cli",
   "name": "ML.NET CLI",
-  "executable_name": "mlnet",
+  "executable_name": [
+    "mlnet"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "The ML.NET CLI includes a telemetry feature that collects anonymous usage data that is aggregated for use by Microsoft.",

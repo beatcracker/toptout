@@ -1,7 +1,9 @@
 {
   "id": "materialize",
   "name": "Materialize",
-  "executable_name": "materialize",
+  "executable_name": [
+    "materialize"
+  ],
   "category_id": "database",
   "category_name": "Database",
   "description": "Unless disabled, upon startup and once an hour materialized reports some anonymous telemetry data to a central server operated by materialize.com.",

@@ -1,7 +1,9 @@
 {
   "id": "timescaledb",
   "name": "TimescaleDB",
-  "executable_name": "psql",
+  "executable_name": [
+    "psql"
+  ],
   "category_id": "database",
   "category_name": "Database",
   "description": "We enable anonymous usage sharing to help us better understand and assist TimescaleDB users, as well as provide automated version checks.",

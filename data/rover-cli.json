@@ -1,7 +1,9 @@
 {
   "id": "rover-cli",
   "name": "Rover CLI",
-  "executable_name": "rover",
+  "executable_name": [
+    "rover"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "By default, Rover collects some anonymous usage data to help us improve the tool.",

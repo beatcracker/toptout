@@ -1,7 +1,9 @@
 {
   "id": "raft",
   "name": "REST API Fuzz Testing (RAFT)",
-  "executable_name": "raft",
+  "executable_name": [
+    "raft"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "By default, we collect anonymous usage data from your RAFT instance, which helps us understand how users use RAFT and the problems they experience, which in turn, helps us improve the quality of the offering over time.",

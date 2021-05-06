@@ -1,7 +1,9 @@
 {
   "id": "cube-js",
   "name": "Cube.js",
-  "executable_name": "cubejs-cli",
+  "executable_name": [
+    "cubejs-cli"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "Cube.js collects high-level anonymous usage statistics for servers started in development mode. It doesn't track any credentials, schema contents or queries issued. This statistics is used solely for the purpose of constant cube.js improvement.",

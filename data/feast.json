@@ -1,7 +1,9 @@
 {
   "id": "feast",
   "name": "Feast",
-  "executable_name": "feast",
+  "executable_name": [
+    "feast"
+  ],
   "category_id": "database",
   "category_name": "Database",
   "description": "The Feast maintainers use anonymous usage statistics to help shape the Feast roadmap.",

@@ -1,7 +1,9 @@
 {
   "id": "restler",
   "name": "RESTler",
-  "executable_name": "restler",
+  "executable_name": [
+    "restler"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "RESTler collects telemetry in order to understand usage and prioritize improvements.",

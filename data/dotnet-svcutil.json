@@ -1,7 +1,9 @@
 {
   "id": "dotnet-svcutil",
   "name": "dotnet-svcutil",
-  "executable_name": "dotnet-svcutil",
+  "executable_name": [
+    "dotnet-svcutil"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "Anonymous telemetry information collection.",

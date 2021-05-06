@@ -1,7 +1,9 @@
 {
   "id": "chef-automate",
   "name": "Chef Automate",
-  "executable_name": "chef-automate",
+  "executable_name": [
+    "chef-automate"
+  ],
   "category_id": "devops",
   "category_name": "DevOps",
   "description": "Users of this Chef Automate server may elect to share user-anonymized usage data with Chef Software, Inc. Chef uses this shared data to improve Chef Automate.",

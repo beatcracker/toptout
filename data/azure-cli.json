@@ -1,7 +1,9 @@
 {
   "id": "azure-cli",
   "name": "Azure CLI",
-  "executable_name": "az",
+  "executable_name": [
+    "az"
+  ],
   "category_id": "cloud",
   "category_name": "Cloud",
   "description": "Allow Microsoft to collect anonymous data on the usage of the CLI.",

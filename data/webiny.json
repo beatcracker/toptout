@@ -1,7 +1,9 @@
 {
   "id": "webiny",
   "name": "Webiny",
-  "executable_name": "webiny",
+  "executable_name": [
+    "webiny"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "By default, Webiny collects anonymous usage information, which is exclusively used for improving the product and understanding usage patterns.",

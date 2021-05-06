@@ -1,7 +1,9 @@
 {
   "id": "oryx",
   "name": "Oryx",
-  "executable_name": "oryx",
+  "executable_name": [
+    "oryx"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "When utilized within Azure services, this project collects usage data and sends it to Microsoft to help improve our products and services.",

@@ -1,7 +1,9 @@
 {
   "id": "vagrant",
   "name": "Vagrant",
-  "executable_name": "vagrant",
+  "executable_name": [
+    "vagrant"
+  ],
   "category_id": "devops",
   "category_name": "DevOps",
   "description": "Vagrant interacts with HashiCorp services to provide update notifications.",

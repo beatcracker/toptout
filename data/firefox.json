@@ -1,7 +1,9 @@
 {
   "id": "firefox",
   "name": "Firefox",
-  "executable_name": "firefox",
+  "executable_name": [
+    "firefox"
+  ],
   "category_id": "applications",
   "category_name": "Applications",
   "description": "Telemetry collects information about your Firefox browsing experience to improve Firefox features, browser performance and stability.",

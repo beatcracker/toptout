@@ -1,7 +1,9 @@
 {
   "id": "pants",
   "name": "Pants",
-  "executable_name": "pants",
+  "executable_name": [
+    "pants"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "Pants can optionally send anonymized telemetry to the Pants project. This data helps us develop and improve Pants by detecting bugs, analyzing usage patterns, and so on. Telemetry is sent in the background, so it doesn't slow down your Pants runs. No telemetry is sent until you opt in to this feature.",

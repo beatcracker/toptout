@@ -1,7 +1,9 @@
 {
   "id": "choosenim",
   "name": "choosenim",
-  "executable_name": "choosenim",
+  "executable_name": [
+    "choosenim"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "Starting with version 0.3.0, choosenim has the ability to gather anonymous aggregate user behaviour analytics and to report them to Google Analytics.",

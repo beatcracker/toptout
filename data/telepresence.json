@@ -1,7 +1,9 @@
 {
   "id": "telepresence",
   "name": "Telepresence",
-  "executable_name": "telepresence",
+  "executable_name": [
+    "telepresence"
+  ],
   "category_id": "devops",
   "category_name": "DevOps",
   "description": "Telepresence collects some basic information about its users so it can send important client notices, such as new version availability and security bulletins. We also use the information to aggregate basic usage analytics anonymously.",

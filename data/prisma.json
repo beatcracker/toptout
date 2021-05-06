@@ -1,7 +1,9 @@
 {
   "id": "prisma",
   "name": "Prisma",
-  "executable_name": "prisma",
+  "executable_name": [
+    "prisma"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "Telemetry helps us better understand how many users are using our products and how often they are using our products.",

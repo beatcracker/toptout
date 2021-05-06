@@ -1,7 +1,9 @@
 {
   "id": "meilisearch",
   "name": "MeiliSearch",
-  "executable_name": "meilisearch",
+  "executable_name": [
+    "meilisearch"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "MeiliSearch collects anonymous data regarding general usage. This helps us better understand developers' usage of MeiliSearch features. We also use Sentry to make us crash and error reports.",

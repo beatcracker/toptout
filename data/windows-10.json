@@ -1,7 +1,9 @@
 {
   "id": "windows-10",
   "name": "Windows 10",
-  "executable_name": "winver",
+  "executable_name": [
+    "winver"
+  ],
   "category_id": "operating-systems",
   "category_name": "Operating systems",
   "description": "Microsoft collects Windows diagnostic data to solve problems and to keep Windows up to date, secure, and operating properly.",

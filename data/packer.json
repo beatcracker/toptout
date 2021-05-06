@@ -1,7 +1,9 @@
 {
   "id": "packer",
   "name": "Packer",
-  "executable_name": "packer",
+  "executable_name": [
+    "packer"
+  ],
   "category_id": "devops",
   "category_name": "DevOps",
   "description": "When Packer is invoked it sometimes calls out to checkpoint.hashicorp.com to look for new versions of Packer.",

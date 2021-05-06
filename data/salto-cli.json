@@ -1,7 +1,9 @@
 {
   "id": "salto-cli",
   "name": "Salto CLI",
-  "executable_name": "salto",
+  "executable_name": [
+    "salto"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "Telemetry refers to the collection of non personally identifiable data. The data is being used to improve the product's performance, as well as detect bugs and issues.",

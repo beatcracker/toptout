@@ -1,7 +1,9 @@
 {
   "id": "k8slens",
   "name": "Lens",
-  "executable_name": "Lens",
+  "executable_name": [
+    "Lens"
+  ],
   "category_id": "applications",
   "category_name": "Applications",
   "description": "Lens collects telemetry data, which is used to help us understand how to improve the product. For example, this usage data helps us to debug issues and to prioritize new features.",

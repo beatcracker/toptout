@@ -1,7 +1,9 @@
 {
   "id": "nuxt-js",
   "name": "Nuxt.js",
-  "executable_name": "nuxt",
+  "executable_name": [
+    "nuxt"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "Nuxt Telemetry collects anonymous telemetry data about general usage. This helps us to accurately gauge feature usage and customization across all our users.",

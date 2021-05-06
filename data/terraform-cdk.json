@@ -1,7 +1,9 @@
 {
   "id": "terraform-cdk",
   "name": "Cloud Development Kit for Terraform",
-  "executable_name": "cdktf-cli",
+  "executable_name": [
+    "cdktf-cli"
+  ],
   "category_id": "devops",
   "category_name": "DevOps",
   "description": "CDK for Terraform CLI (cdktf-cli) interacts with a HashiCorp service called Checkpoint to report project metrics such as cdktf version, project language, provider name, platform name, and other details that help guide the project maintainers with feature and roadmap decisions.",

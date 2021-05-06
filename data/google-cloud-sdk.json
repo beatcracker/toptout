@@ -1,7 +1,9 @@
 {
   "id": "google-cloud-sdk",
   "name": "Google Cloud SDK",
-  "executable_name": "gcloud",
+  "executable_name": [
+    "gcloud"
+  ],
   "category_id": "cloud",
   "category_name": "Cloud",
   "description": "Unless you opt-in during Google Cloud SDK installation, Cloud SDK software does not collect usage statistics. You can help Google to prioritize Google Cloud SDK features and improvements by permitting Cloud SDK to send command-line command usage statistics to Google.",

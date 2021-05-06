@@ -1,7 +1,9 @@
 {
   "id": "ember-cli",
   "name": "Ember CLI",
-  "executable_name": "ember",
+  "executable_name": [
+    "ember"
+  ],
   "category_id": "development",
   "category_name": "Development",
   "description": "Ember-cli tracks (only) the following data points: ember-cli version, build/rebuild/live-reload times, how many errors occurred.",
