@@ -2,9 +2,6 @@
 
 $LF = "`n"
 
-$PadRegex = [regex]'(?m)^(.)'
-$PadReplace = '  $1'
-
 $ShellHelpersMap = @{
     pwsh = @'
 #Requires -Version 5
@@ -70,6 +67,22 @@ function Get-OsMoniker {
     }
 }
 
+function Test-InPath {
+    Param(
+        [switch]$ShowLog
+    )
+
+    foreach ($item in $args) {
+        if ($ShowLog) { Write-Host "  Cheking if '$item' is in PATH: " -ForegroundColor Gray -NoNewLine}
+        if (Get-Command -Name $item -CommandType Application -ErrorAction SilentlyContinue) {
+            if ($ShowLog) { Write-Host $true -ForegroundColor DarkGreen}
+            return $true
+        }
+        if ($ShowLog) { Write-Host $false -ForegroundColor DarkYellow}
+    }
+    return $false
+}
+
 function Invoke-ShellCommand {
     [CmdletBinding(SupportsShouldProcess = $true)]
     Param (
@@ -84,20 +97,18 @@ function Invoke-ShellCommand {
         [switch]$ShowLog
     )
 
-    if (Get-Command -Name $Command -CommandType Application -ErrorAction SilentlyContinue) {
-        $LoggedCommand = "$Command $Arguments"
+    $LoggedCommand = "$Command $Arguments"
 
-        if ($PSCmdlet.ShouldProcess($LoggedCommand, 'Execute command')) {
-            if ($ShowLog) {
-                Write-Host 'Executing command           : ' -ForegroundColor DarkGreen -NoNewline
-                Write-Host $LoggedCommand -ForegroundColor DarkYellow
-            }
+    if ($PSCmdlet.ShouldProcess($LoggedCommand, 'Execute command')) {
+        if ($ShowLog) {
+            Write-Host 'Executing command           : ' -ForegroundColor DarkGreen -NoNewline
+            Write-Host $LoggedCommand -ForegroundColor DarkYellow
+        }
 
-            $ret = Start-Process -FilePath $Command -ArgumentList $Arguments -NoNewWindow -Wait
+        $ret = Start-Process -FilePath $Command -ArgumentList $Arguments -NoNewWindow -Wait
 
-            if ($ShowLog) {
-                Write-Host $ret -ForegroundColor White
-            }
+        if ($ShowLog) {
+            Write-Host $ret -ForegroundColor White
         }
     }
 }
@@ -168,6 +179,7 @@ ________________________________________
 # https://toptout.me
 
 cleanup () {
+  # We're sourced, so cleanup is needed
   unset $(compgen -v | grep '^toptout_')
 }
 
@@ -242,12 +254,24 @@ then
   [[ "${toptout_sourced}" == 'True' ]] && return || exit
 fi
 
+in_path () {
+  for item in "$@"
+  do
+    [[ "${toptout_verbose}" == 'True' ]] && echo -en "  Cheking if \033[32m${item}\033[0m is in PATH: "
+    if command -v "${item}" > /dev/null 2>&1
+    then
+      [[ "${toptout_verbose}" == 'True' ]] && echo -e "\033[32mTrue\033[0m"
+      return 0
+    else
+      [[ "${toptout_verbose}" == 'True' ]] && echo -e "\033[33mFalse\033[0m"
+    fi
+  done
+  return 1
+}
+
 run_cmd () {
-  if command -v "${1}" > /dev/null 2>&1
-  then
-    [[ "${toptout_verbose}" == 'True' ]] && echo -e "\033[32mExecuting command           :\033[0m \033[33m${1} ${2}\033[0m"
-    [[ "${toptout_dry}" == 'False' ]] && "${1}" ${2}
-  fi
+  [[ "${toptout_verbose}" == 'True' ]] && echo -e "\033[32mExecuting command           :\033[0m \033[33m${1} ${2}\033[0m"
+  [[ "${toptout_dry}" == 'False' ]] && "${1}" ${2}
 }
 
 set_env () {
@@ -346,7 +370,7 @@ $ShellCmdMap = @{
 [[ "${{toptout_env}}" == 'True' ]] && set_env '{0}' '{1}'
 '@
         exec = @'
-[[ "${{toptout_exec}}" == 'True' ]] && run_cmd '{0}' '{1}'
+run_cmd '{0}' '{1}'
 '@
     }
     pwsh = @{
@@ -356,11 +380,98 @@ if ($Env) {{
 }}
 '@
         exec = @'
-if ($Exec) {{
-    Invoke-ShellCommand -Command '{0}' -Arguments '{1}' -ShowLog:$ShowLog
-}}
+Invoke-ShellCommand -Command '{0}' -Arguments '{1}' -ShowLog:$ShowLog
 '@
     }
+}
+
+$ShellLookupMap = @{
+    bash = @{
+        exec = {
+            Param(
+                [Parameter(Position = 0)]
+                [ValidateNotNullOrEmpty()]
+                [string[]]$detect,
+
+                [Parameter(Position = 1)]
+                [ValidateNotNullOrEmpty()]
+                [string]$command
+            )
+
+            if ($detect.Count -eq 1 -and $detect[0] -eq $command) {
+                @"
+if [[ "`${{toptout_exec}}" == 'True' ]]
+then
+  if in_path '$command'
+  then
+    {0}
+  fi
+fi
+"@
+            }
+            else {
+                @"
+if [[ "`${{toptout_exec}}" == 'True' ]]
+then
+  if in_path $($detect.ForEach({"'$_'"}) -join ' ')
+  then
+    if in_path '$command'
+    then
+      {0}
+    fi
+  fi
+fi
+"@
+            }
+        }
+    }
+    pwsh = @{
+        exec = {
+            Param(
+                [Parameter(Position = 0)]
+                [ValidateNotNullOrEmpty()]
+                [string[]]$detect,
+
+                [Parameter(Position = 1)]
+                [ValidateNotNullOrEmpty()]
+                [string]$command
+            )
+
+            if ($detect.Count -eq 1 -and $detect[0] -eq $command) {
+                @"
+if (`$Exec) {{
+    if (Test-InPath '$command' -ShowLog:`$ShowLog) {{
+        {0}
+    }}
+}}
+"@
+            }
+            else {
+                @"
+if (`$Exec) {{
+    if (Test-InPath $($detect.ForEach({"'$_'"}) -join ' ') -ShowLog:`$ShowLog) {{
+        if (Test-InPath '$command' -ShowLog:`$ShowLog) {{
+            {0}
+        }}
+    }}
+}}
+"@
+            }
+        }
+    }
+}
+
+$ShellIndenthMap = @{
+    bash = 2
+    pwsh = 4
+}
+
+filter Indent {
+    Param(
+        [int]$Indent = 0
+    )
+
+    ($_ -split '\r\n|\r|\n').ForEach( { ' ' * $Indent + $_ } ) -join $LF
 }
 
 filter Select-LowestScope {
@@ -406,34 +517,75 @@ filter ConvertTo-ShellScript {
         [ValidateSet('bash', 'pwsh')]
         [string]$Shell
     )
+    
+    # Save input object in case we need its props later
+    $data = $_
 
+    # Loop through telemetry objects, if any
     foreach ($telemetry in $_.telemetry) {
 
+        # Get action with lowest impact: env is first, then exec...
         $target = $telemetry.target | Select-LowestImpact
 
+        $is_applicable = $true
         $code = if ($target) {
+
+            # Output comments
             '# {0}' -f $telemetry.name
             if ($telemetry.links.main) { '# {0}' -f $telemetry.links.main }
 
+            # Iterate over targets map
             $target.GetEnumerator() | ForEach-Object {
 
+                # Exit early this is exec block, but we can't autodetect installed app via PATH lookup
+                if ($_.Key -eq 'exec' -and -not $data.executable_name.Count) {
+                    $is_applicable = $false
+                    return
+                }
+
+                # Proceed if we have mapping to code block (env/exec, etc...)
                 if ($_.Key -and $ShellCmdMap.$Shell.ContainsKey($_.Key)) {
+
+                    # Get lowest applicable scope (process/user/machine)
                     $scope = $_.Value | Select-LowestScope
 
+                    # Check if we have only 'default' path and no OS-specific keys
                     if ($scope.path | Test-IsDefaultOnly) {
-                        $ShellCmdMap.$Shell.($_.Key) -f $scope.path.default, $scope.value.opt_out
+
+                        # Render code block
+                        $ret = $ShellCmdMap.$Shell.($_.Key) -f $scope.path.default, $scope.value.opt_out
+
+                        # If we can detect app by PATH lookup, insert additional code block to handle that
+                        if ($data.executable_name.Count -and $ShellLookupMap.$Shell.ContainsKey($_.Key)) {
+                            $ShellLookupMap.$Shell.($_.Key).InvokeReturnAsIs($data.executable_name, $scope.path.default) -f $ret
+                        }
+                        else {
+                            $ret
+                        }
                     }
                     else {
+                        # We have per-OS entires, interate over them
                         $cases = foreach ($kv in $scope.path.GetEnumerator() | Sort-Object { $_.Key }) {
-                            $ShellCaseMap.$Shell.($kv.Key) -f (
-                                (
-                                    $ShellCmdMap.$Shell.($_.Key) -f $kv.Value, $scope.value.opt_out
-                                ) -replace $PadRegex, $PadReplace
+
+                            # Render code block
+                            $ret = $ShellCmdMap.$Shell.($_.Key) -f $kv.Value, $scope.value.opt_out
+
+                            # Render internal case blocks for case/switch code block
+                            $ShellCaseMap.$Shell.($kv.Key) -f $(
+
+                                # If we can detect app by PATH lookup, insert additional code block to handle that
+                                if ($data.executable_name.Count -and $ShellLookupMap.$Shell.ContainsKey($_.Key)) {
+                                    $ShellLookupMap.$Shell.($_.Key).InvokeReturnAsIs($data.executable_name, $kv.Value) -f $ret | Indent $ShellIndenthMap.$Shell
+                                }
+                                else {
+                                    $ret | Indent $ShellIndenthMap.$Shell
+                                }
                             )
                         }
 
+                        # Finish rendering case/switch block
                         $ShellSwitchMap.$Shell -f (
-                            ($cases -join $LF) -replace $PadRegex, $PadReplace
+                            ($cases -join $LF) | Indent $ShellIndenthMap.$Shell
                         )
                     }
                     Add-Newline
@@ -441,7 +593,8 @@ filter ConvertTo-ShellScript {
             }
         }
 
-        if ($code) {
+        # Output fully rendered code block if any
+        if ($is_applicable -and $code) {
             '# {0}' -f $_.name
             '# {0}' -f $_.links.main
             Add-Newline
