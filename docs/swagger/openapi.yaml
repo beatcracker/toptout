@@ -562,19 +562,24 @@ components:
         name:
           type: string
           pattern: '^[\S]+(\s+[\S]+)*$'
-          description: 'Friendly name of the product. Example: Foo Bar.'
-        executable_name:
-          type: string
-          pattern: '^[\S]+(\s+[\S]+)*$'
           description: >-
-            Optional. Provide executable name if presence of this product can be
-            detected by PATH environment variable lookup.
+            Friendly name of the product. No leading/trailing whitespace
+            allowed. Example: Foo Bar.
+        executable_name:
+          type: array
+          items:
+            type: string
+            pattern: '^[\S]+(\s+[\S]+)*$'
+            description: >-
+              Optional. Provide executable name(s) if presence of this product
+              can be detected by PATH environment variable lookup. No
+              leading/trailing whitespace allowed.
         description:
           type: string
           pattern: '^[\S]+(\s+[\S]+)*$'
           description: >-
             Short description of the collected telemetry. Usually copied from
-            the product's documentation.
+            the product's documentation. No leading/trailing whitespace allowed.
         category_id:
           type: string
           pattern: '^[a-z0-9-]+$'
@@ -586,7 +591,8 @@ components:
           pattern: '^[\S]+(\s+[\S]+)*$'
           description: >-
             Friendly category name. The README generator uses it to group
-            products. Example: Development.
+            products. No leading/trailing whitespace allowed. Example:
+            Development.
         links:
           $ref: '#/components/schemas/Links'
         telemetry:
