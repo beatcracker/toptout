@@ -18,7 +18,7 @@
     {
       "id": "usage-data",
       "name": "Usage data",
-      "is_official": false,
+      "is_official": true,
       "target": {
         "noop": [
           {
