@@ -3,6 +3,7 @@
   "name": "PnP PowerShell",
   "category_id": "devops",
   "category_name": "DevOps",
+  "description": "By default PnP PowerShell will report its usage to the PnP Team.",
   "links": {
     "main": "https://pnp.github.io/powershell/",
     "telemetry": "https://pnp.github.io/powershell/articles/configuration.html"
