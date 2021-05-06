@@ -18,16 +18,18 @@ Describes a product that has one telemetry channel which is controlled by the en
 {
   // Product unique ID. Use [a-z0-9-] character set. Must be unique across all files.
   "id": "foo-bar",
-  // Friendly name of the product
+  // Friendly name of the product. No leading/trailing whitespace allowed.
   "name": "Foo Bar",
-  // Optional. Provide executable name if presence of this product can be detected by PATH environment variable lookup.
-  "executable_name": "foobar",
+  // Optional. Provide executable name(s) if presence of this product can be detected by PATH environment variable lookup. No leading/trailing whitespace allowed.
+  "executable_name": [
+    "foobar"
+  ],
   // Unique category id. Use [a-z0-9-] character set. The API generator uses it to group products.
   "category_id": "development",
-  // Friendly category name. No leading/trailing whitespace allowed. The README generator uses it to group products.
+  // Friendly category name. The README generator uses it to group products. No leading/trailing whitespace allowed.
   "category_name": "Development",
 
-  // Short description of the collected telemetry. Usually copied from the product's documentation.
+  // Short description of the collected telemetry. Usually copied from the product's documentation. No leading/trailing whitespace allowed.
   "description": "All your base are belong to us.",
   // Contains links to the main product page, telemetry and privacy policy.
   "links": {
@@ -311,18 +313,18 @@ Indicates that this specific telemetry channel is controlled by setting the Wind
 
 ### No operation
 
-Indicates that user should visit an external link to get details about configuring this telemetry channel. Use this for links to third-party telemetry configuration tools, that are not supported by this schema.
+Indicates that user should visit an external link to get details about configuring this telemetry channel. Use this for links to third-party telemetry configuration tools, that are not supported by this schema. You can use `markdown` in the description field.
 
 ```json5
 "noop": [
   {
     "name": "Disable FooBar telemetry",
-    "description": "This unoffical patch disables telemetry in FooBar app.",
+    "description": "This unoffical patch disables telemetry in [FooBar](https://example.com/foobar) app.",
     "link": "https://example.com/foobar-telemetry-patch"
   },
   {
     "name": "Block FooBar telemetry hosts",
-    "description": "This hosts file will block FooBar app telemetry endpoints.",
+    "description": "This hosts file will block [FooBar](https://example.com/foobar) app telemetry endpoints.",
     "link": "https://example.com/foobar-telemetry-hosts"
   }
 ]
