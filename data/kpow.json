@@ -1,0 +1,38 @@
+{
+  "id": "kpow",
+  "name": "kPow",
+  "category_id": "devops",
+  "category_name": "DevOps",
+  "description": "The kPow UI records product usage with Google Analytics. We receive the standard Google Analytics data set (page views, location, etc). We also receive a small number of custom events when you take user action (topic-create, topic-delete, sample-topic, etc).",
+  "links": {
+    "main": "https://kpow.io/",
+    "telemetry": "https://docs.kpow.io/about/data-collection",
+    "privacy": "https://operatr.io/privacy/"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "description": "Trial users cannot opt out of product telemetry. Licensed users can configure the following environment variable to opt out of product telemetry.",
+      "is_official": true,
+      "links": {
+        "main": "https://docs.kpow.io/about/data-collection#how-do-i-opt-out"
+      },
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "ALLOW_UI_ANALYTICS"
+              },
+              "value": {
+                "opt_out": "false",
+                "opt_in": null
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
