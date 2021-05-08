@@ -260,6 +260,18 @@ fi
 # https://docs.mattermost.com/administration/telemetry.html#security-update-check-feature
 [[ "${toptout_env}" == 'True' ]] && set_env 'MM_SERVICESETTINGS_ENABLESECURITYFIXALERT' 'false'
 
+# Aerospike
+# https://aerospike.com/
+
+# Usage data
+if [[ "${toptout_exec}" == 'True' ]]
+then
+  if in_path '/opt/aerospike/telemetry/telemetry.py'
+  then
+    run_cmd '/opt/aerospike/telemetry/telemetry.py' '/etc/aerospike/telemetry.conf --disable'
+  fi
+fi
+
 # Feast
 # https://feast.dev/
 
@@ -272,6 +284,12 @@ fi
 # Usage data
 # https://docs.influxdata.com/influxdb/v2.0/reference/config-options/
 [[ "${toptout_env}" == 'True' ]] && set_env 'INFLUXD_REPORTING_DISABLED' 'true'
+
+# Meltano
+# https://www.meltano.com/
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'MELTANO_DISABLE_TRACKING' 'True'
 
 # Quilt
 # https://quiltdata.com/
@@ -627,6 +645,20 @@ fi
 # Update check
 # https://www.infracost.io/docs/integrations/environment_variables/#infracost_skip_update_check
 [[ "${toptout_env}" == 'True' ]] && set_env 'INFRACOST_SKIP_UPDATE_CHECK' 'true'
+
+# kics
+# https://kics.io/
+
+# Usage data
+# https://docs.kics.io/latest/usage/commands/#disable_telemetry
+[[ "${toptout_env}" == 'True' ]] && set_env 'KICS_COLLECT_TELEMETRY' '0'
+
+# kPow
+# https://kpow.io/
+
+# Usage data
+# https://docs.kpow.io/about/data-collection#how-do-i-opt-out
+[[ "${toptout_env}" == 'True' ]] && set_env 'ALLOW_UI_ANALYTICS' 'false'
 
 # Packer
 # https://www.packer.io/

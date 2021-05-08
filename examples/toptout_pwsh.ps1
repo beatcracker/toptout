@@ -304,6 +304,16 @@ if ($Env) {
     Set-EnvVar -Name 'MM_SERVICESETTINGS_ENABLESECURITYFIXALERT' -Value 'false' -ShowLog:$ShowLog
 }
 
+# Aerospike
+# https://aerospike.com/
+
+# Usage data
+if ($Exec) {
+    if (Test-InPath '/opt/aerospike/telemetry/telemetry.py' -ShowLog:$ShowLog) {
+        Invoke-ShellCommand -Command '/opt/aerospike/telemetry/telemetry.py' -Arguments '/etc/aerospike/telemetry.conf --disable' -ShowLog:$ShowLog
+    }
+}
+
 # Feast
 # https://feast.dev/
 
@@ -319,6 +329,14 @@ if ($Env) {
 # https://docs.influxdata.com/influxdb/v2.0/reference/config-options/
 if ($Env) {
     Set-EnvVar -Name 'INFLUXD_REPORTING_DISABLED' -Value 'true' -ShowLog:$ShowLog
+}
+
+# Meltano
+# https://www.meltano.com/
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'MELTANO_DISABLE_TRACKING' -Value 'True' -ShowLog:$ShowLog
 }
 
 # Quilt
@@ -743,6 +761,24 @@ if ($Env) {
 # https://www.infracost.io/docs/integrations/environment_variables/#infracost_skip_update_check
 if ($Env) {
     Set-EnvVar -Name 'INFRACOST_SKIP_UPDATE_CHECK' -Value 'true' -ShowLog:$ShowLog
+}
+
+# kics
+# https://kics.io/
+
+# Usage data
+# https://docs.kics.io/latest/usage/commands/#disable_telemetry
+if ($Env) {
+    Set-EnvVar -Name 'KICS_COLLECT_TELEMETRY' -Value '0' -ShowLog:$ShowLog
+}
+
+# kPow
+# https://kpow.io/
+
+# Usage data
+# https://docs.kpow.io/about/data-collection#how-do-i-opt-out
+if ($Env) {
+    Set-EnvVar -Name 'ALLOW_UI_ANALYTICS' -Value 'false' -ShowLog:$ShowLog
 }
 
 # Packer

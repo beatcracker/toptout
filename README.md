@@ -103,9 +103,11 @@ Below is automatically generated list of known telemetry channels for various ap
 - [Communications](#communications)
   - [Mattermost Server](#mattermost-server)
 - [Database](#database)
+  - [Aerospike](#aerospike)
   - [Feast](#feast)
   - [InfluxDB](#influxdb)
   - [Materialize](#materialize)
+  - [Meltano](#meltano)
   - [Quilt](#quilt)
   - [TimescaleDB](#timescaledb)
 - [Development](#development)
@@ -114,6 +116,7 @@ Below is automatically generated list of known telemetry channels for various ap
   - [App Center CLI](#app-center-cli)
   - [Arduino CLI](#arduino-cli)
   - [Bot Framework CLI](#bot-framework-cli)
+  - [BuildBuddy](#buildbuddy)
   - [Carbon Design System](#carbon-design-system)
   - [choosenim](#choosenim)
   - [code-server](#code-server)
@@ -160,6 +163,8 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Consul](#consul)
   - [Infracost](#infracost)
   - [k0s](#k0s)
+  - [kics](#kics)
+  - [kPow](#kpow)
   - [Packer](#packer)
   - [PnP PowerShell](#pnp-powershell)
   - [Skaffold](#skaffold)
@@ -744,6 +749,42 @@ MM_SERVICESETTINGS_ENABLESECURITYFIXALERT=false
 
 ## Database
 
+### [Aerospike](https://aerospike.com/)
+
+> Aerospike Telemetry is a feature that allows us to collect certain use data - not the database data - on your Aerospike Community Edition server use.
+
+- [Telemetry details](https://aerospike.com/aerospike-telemetry/)
+- [Privacy policy](https://aerospike.com/forms/privacy-policy/)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Run command
+
+###### Scope: 💻 Machine
+
+```shell
+/opt/aerospike/telemetry/telemetry.py /etc/aerospike/telemetry.conf --disable
+```
+
+##### 2. Edit config file (plaintext)
+
+###### Scope: 💻 Machine
+
+Path: `/etc/aerospike/telemetry.conf`
+
+###### Content
+
+```none
+[main]
+disable = true
+```
+
 ### [Feast](https://feast.dev/)
 
 > The Feast maintainers use anonymous usage statistics to help shape the Feast roadmap.
@@ -836,6 +877,39 @@ Use methods described below to opt-out of this telemetry channel.
     > ```shell
     > materialized --disable-telemetry
     > ```
+
+### [Meltano](https://www.meltano.com/)
+
+> By default, Meltano shares anonymous usage data with the Meltano team using Google Analytics.
+
+- [Telemetry details](https://www.meltano.com/docs/settings.html#send-anonymous-usage-stats)
+- [Privacy policy](https://www.meltano.com/privacy.html/)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+MELTANO_DISABLE_TRACKING=True
+```
+
+##### 2. Visit link(s) for more details
+
+1. [New project](https://www.meltano.com/docs/command-line-interface.html#init)
+
+    > When creating a new project, pass `--no_usage_stats` to meltano init
+
+2. [Existing project](https://www.meltano.com/docs/settings.html#send-anonymous-usage-stats)
+
+    > In an existing project, disable `send_anonymous_usage_stats` setting
 
 ### [Quilt](https://quiltdata.com/)
 
@@ -1139,6 +1213,43 @@ BF_CLI_TELEMETRY=false
 ```shell
 bf config:set:telemetry --disable
 ```
+
+### [BuildBuddy](https://www.buildbuddy.io/)
+
+> At BuildBuddy, we collect telemetry for the purpose of helping us build a better BuildBuddy.
+
+- [Telemetry details](https://docs.buildbuddy.io/docs/config-telemetry/)
+- [Privacy policy](https://www.buildbuddy.io/privacy)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+> The telemetry data we collect is reported once per day and contains only aggregate stats like invocation counts and feature usage information. Our telemetry infrastructure is also used to report when important security updates are available.
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Visit link(s) for more details
+
+1. [Telemetry | Using commandline flag](https://docs.buildbuddy.io/docs/config-telemetry/)
+
+    > Provide `---disable_telemetry=true` flag.
+
+#### Google Analytics
+
+Official: ✔
+
+> We also use Google Analytics to collect pseudonymized usage data about how users are using the BuildBuddy product and how well it is performing.
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Visit link(s) for more details
+
+1. [Google Analytics | Using commandline flag](https://docs.buildbuddy.io/docs/config-telemetry/)
+
+    > Provide `--disable_ga=true` flag.
 
 ### [Carbon Design System](https://www.carbondesignsystem.com/)
 
@@ -2002,7 +2113,6 @@ rasa telemetry disable
 
 > Some build-time tools will send telemetry to Microsoft by default. No telemetry is collected or transmitted in the final app.
 
-- [Telemetry details](https://www.pantsbuild.org/docs/anonymous-telemetry)
 - [Privacy policy](https://privacy.microsoft.com/en-us/privacystatement)
 
 List of known telemetry channels:
@@ -2590,6 +2700,52 @@ Use methods described below to opt-out of this telemetry channel.
 1. [Disable usage data reporting](https://docs.k8slens.dev/v4.1.2/getting-started/preferences/#disable-telemetry-reporting)
 
     > It is enabled by default and can be disabled by settings corresponding option as 'false'.
+
+### [kics](https://kics.io/)
+
+> Kics is using Sentry's application monitoring platform: https://sentry.io/
+
+- Privacy policy: ❌
+List of known telemetry channels:
+
+#### [Usage data](https://docs.kics.io/latest/usage/commands/#disable_telemetry)
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+KICS_COLLECT_TELEMETRY=0
+```
+
+### [kPow](https://kpow.io/)
+
+> The kPow UI records product usage with Google Analytics. We receive the standard Google Analytics data set (page views, location, etc). We also receive a small number of custom events when you take user action (topic-create, topic-delete, sample-topic, etc).
+
+- [Telemetry details](https://docs.kpow.io/about/data-collection)
+- [Privacy policy](https://operatr.io/privacy/)
+
+List of known telemetry channels:
+
+#### [Usage data](https://docs.kpow.io/about/data-collection#how-do-i-opt-out)
+
+Official: ✔
+
+> Trial users cannot opt out of product telemetry. Licensed users can configure the following environment variable to opt out of product telemetry.
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+ALLOW_UI_ANALYTICS=false
+```
 
 ### [Packer](https://www.packer.io/)
 
