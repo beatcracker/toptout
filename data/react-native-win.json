@@ -11,7 +11,6 @@
   "description": "Some build-time tools will send telemetry to Microsoft by default. No telemetry is collected or transmitted in the final app.",
   "links": {
     "main": "https://microsoft.github.io/react-native-windows/",
-    "telemetry": "https://www.pantsbuild.org/docs/anonymous-telemetry",
     "privacy": "https://privacy.microsoft.com/en-us/privacystatement"
   },
   "telemetry": [
