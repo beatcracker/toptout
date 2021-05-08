@@ -142,7 +142,7 @@ filter ConvertTo-Readme {
         '- Privacy policy: ❌'
     }
 
-    if ($_.links.Keys.Count -gt 1) {
+    if ($_.links.Keys.Count) {
         Add-Newline
     }
 

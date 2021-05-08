@@ -1100,6 +1100,7 @@ appcd config set telemetry.enabled false --force
 > App Center CLI would like to collect data about how users use CLI commands and some problems they encounter.
 
 - Privacy policy: ❌
+
 List of known telemetry channels:
 
 #### Usage data (command)
@@ -2706,6 +2707,7 @@ Use methods described below to opt-out of this telemetry channel.
 > Kics is using Sentry's application monitoring platform: https://sentry.io/
 
 - Privacy policy: ❌
+
 List of known telemetry channels:
 
 #### [Usage data](https://docs.kics.io/latest/usage/commands/#disable_telemetry)
