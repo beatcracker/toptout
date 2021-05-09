@@ -567,13 +567,13 @@ components:
             allowed. Example: Foo Bar.
         executable_name:
           type: array
+          description: >-
+            Optional. Provide executable name(s) if presence of this product can
+            be detected by PATH environment variable lookup. No leading/trailing
+            whitespace allowed.
           items:
             type: string
             pattern: '^[\S]+(\s+[\S]+)*$'
-            description: >-
-              Optional. Provide executable name(s) if presence of this product
-              can be detected by PATH environment variable lookup. No
-              leading/trailing whitespace allowed.
         description:
           type: string
           pattern: '^[\S]+(\s+[\S]+)*$'
