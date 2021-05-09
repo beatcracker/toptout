@@ -426,7 +426,7 @@ components:
     Registry:
       type: object
       additionalProperties: false
-      description: '"Windows regustry". Modify keys/values in Windows registry.'
+      description: '"Windows registry". Modify keys/values in Windows registry.'
       properties:
         scope:
           type: object
