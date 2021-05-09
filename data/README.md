@@ -1,6 +1,6 @@
 # Telemetry data files
 
-The telemetry data file is a JSON document conforming to the JSON Schema: [toptout.schema.json](../schema/toptout.schema.json). See [JSON Schema](https://json-schema.org) website for more information.
+The telemetry data file is a JSON document conforming to the JSON Schema: [toptout.schema.json](https://github.com/beatcracker/toptout/blob/master/schema/toptout.schema.json). See [JSON Schema](https://json-schema.org) website for more information.
 
 ## IDE support
 
