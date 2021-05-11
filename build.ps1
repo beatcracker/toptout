@@ -297,6 +297,10 @@ See [CONTRIBUTING](/.github/CONTRIBUTING.md) for details on adding new telemetry
 
   How to disable most data collection happening in your software and on your devices.
 
+- [Distro Telemetry Watch](https://www.summertime.tech/dtw.EN.html)
+
+  List of Linux distributions, ranked by included telemetry.
+
 '@
         '## Telemetry channels' | Add-Newline
 
