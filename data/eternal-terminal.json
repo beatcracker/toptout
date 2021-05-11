@@ -1,0 +1,36 @@
+{
+  "id": "eternal-terminal",
+  "name": "Eternal Terminal",
+  "executable_name": [
+    "et"
+  ],
+  "category_id": "applications",
+  "category_name": "Applications",
+  "description": "Eternal Terminal collects crashes and errors in order to help us improve your experience. The data collected is anonymous.",
+  "links": {
+    "main": "https://github.com/MisterTea/EternalTerminal",
+    "telemetry": "https://github.com/MisterTea/EternalTerminal/blob/55aafce51b7199908423efb4d4e69a4f61b22069/src/terminal/TelemetryService.cpp#L117-L120"
+  },
+  "telemetry": [
+    {
+      "id": "crash-data",
+      "name": "Crash data",
+      "is_official": true,
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "ET_NO_TELEMETRY"
+              },
+              "value": {
+                "opt_out": "ANY_VALUE",
+                "opt_in": null
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
