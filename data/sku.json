@@ -1,0 +1,36 @@
+{
+  "id": "sku",
+  "name": "SKU",
+  "executable_name": [
+    "sku"
+  ],
+  "category_id": "development",
+  "category_name": "Development",
+  "description": "To help us improve sku, please install our private telemetry package that gives us insights on usage, errors and performance.",
+  "links": {
+    "main": "https://github.com/seek-oss/sku",
+    "telemetry": "https://github.com/seek-oss/sku/pull/495"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "is_official": true,
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "SKU_TELEMETRY"
+              },
+              "value": {
+                "opt_out": "false",
+                "opt_in": null
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
