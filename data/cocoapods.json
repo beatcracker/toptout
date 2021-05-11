@@ -1,0 +1,36 @@
+{
+  "id": "cocoapods",
+  "name": "CocoaPods",
+  "executable_name": [
+    "pod"
+  ],
+  "category_id": "development",
+  "category_name": "Development",
+  "description": "First up, we don't want to know anything about your app. So in order to know unique targets we use your project's target UUID as an identifier. These are a hash of your MAC address, Xcode's process id and the time of target creation (but we only know the UUID/hash, so your MAC address is unknown to us). These UUIDs never change in a project's lifetime (contrary to, for example, the bundle identifier). We double hash it just to be super safe.",
+  "links": {
+    "main": "https://cocoapods.org/",
+    "telemetry": "https://blog.cocoapods.org/Stats/"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "is_official": true,
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "COCOAPODS_DISABLE_STATS"
+              },
+              "value": {
+                "opt_out": "true",
+                "opt_in": null
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
