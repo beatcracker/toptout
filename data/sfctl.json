@@ -1,0 +1,37 @@
+{
+  "id": "sfctl",
+  "name": "Azure Service Fabric CLI",
+  "executable_name": [
+    "sfctl"
+  ],
+  "category_id": "devops",
+  "category_name": "DevOps",
+  "description": "Sfctl telemetry collects command name without parameters provided or their values, sfctl version, OS type, python version, the success or failure of the command, the error message returned.",
+  "links": {
+    "main": "https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-sfctl",
+    "telemetry": "https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-sfctl-settings-telemetry",
+    "privacy": "https://privacy.microsoft.com/en-us/privacystatement"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "is_official": true,
+      "target": {
+        "exec": {
+          "scope": {
+            "user": {
+              "path": {
+                "default": "sfctl"
+              },
+              "value": {
+                "opt_out": "settings telemetry set_telemetry --off",
+                "opt_in": "settings telemetry set_telemetry --on"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
