@@ -1,0 +1,36 @@
+{
+  "id": "wapm-cli",
+  "name": "WAPM CLI",
+  "executable_name": [
+    "wapm"
+  ],
+  "category_id": "development",
+  "category_name": "Development",
+  "description": "During the alpha, telemetry (specifically error logging to Sentry) is enabled by default in the WAPM CLI. We send and record information such as IP address, operating system name and version, and the error/panic message.",
+  "links": {
+    "main": "https://wasmer.io/",
+    "telemetry": "https://docs.wasmer.io/ecosystem/wapm/cli#telemetry"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "is_official": true,
+      "target": {
+        "exec": {
+          "scope": {
+            "user": {
+              "path": {
+                "default": "wapm"
+              },
+              "value": {
+                "opt_out": "config set telemetry.enabled false",
+                "opt_in": "config set telemetry.enabled true"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
