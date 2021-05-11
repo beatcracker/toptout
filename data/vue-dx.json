@@ -1,0 +1,33 @@
+{
+  "id": "vue-dx",
+  "name": "VueDX",
+  "category_id": "development",
+  "category_name": "Development",
+  "description": "This package contains telemetry and submits various actions to Sentry.io.",
+  "links": {
+    "main": "https://github.com/znck/vue-developer-experience",
+    "telemetry": "https://github.com/znck/vue-developer-experience"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "is_official": true,
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "VUEDX_TELEMETRY"
+              },
+              "value": {
+                "opt_out": "off",
+                "opt_in": null
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
