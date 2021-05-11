@@ -126,6 +126,12 @@ Current settings:
 ________________________________________
 "
 
+# Eternal Terminal
+# https://github.com/MisterTea/EternalTerminal
+
+# Crash data
+[[ "${toptout_env}" == 'True' ]] && set_env 'ET_NO_TELEMETRY' 'ANY_VALUE'
+
 # Firefox
 # https://www.mozilla.org/firefox/
 
@@ -373,6 +379,12 @@ fi
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'CHOOSENIM_NO_ANALYTICS' '1'
 
+# CocoaPods
+# https://cocoapods.org/
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'COCOAPODS_DISABLE_STATS' 'true'
+
 # Apache Cordova CLI
 # https://cordova.apache.org
 
@@ -416,6 +428,12 @@ then
     run_cmd 'dvc' 'config core.analytics false --global'
   fi
 fi
+
+# Fastlane
+# https://fastlane.tools/
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'FASTLANE_OPT_OUT_USAGE' 'YES'
 
 # Flagsmith API
 # https://flagsmith.com/
@@ -558,6 +576,12 @@ fi
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'SFDX_DISABLE_TELEMETRY' 'true'
 
+# SKU
+# https://github.com/seek-oss/sku
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'SKU_TELEMETRY' 'false'
+
 # Strapi
 # https://strapi.io/
 
@@ -571,6 +595,24 @@ fi
 # Update check
 # https://strapi.io/documentation/developer-docs/latest/setup-deployment-guides/configurations.html#environment
 [[ "${toptout_env}" == 'True' ]] && set_env 'STRAPI_DISABLE_UPDATE_NOTIFICATION' 'true'
+
+# VueDX
+# https://github.com/znck/vue-developer-experience
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'VUEDX_TELEMETRY' 'off'
+
+# WAPM CLI
+# https://wasmer.io/
+
+# Usage data
+if [[ "${toptout_exec}" == 'True' ]]
+then
+  if in_path 'wapm'
+  then
+    run_cmd 'wapm' 'config set telemetry.enabled false'
+  fi
+fi
 
 # webhint
 # https://webhint.io/
@@ -632,6 +674,18 @@ fi
 # https://www.consul.io/docs/agent/options#disable_update_check
 [[ "${toptout_env}" == 'True' ]] && set_env 'CHECKPOINT_DISABLE' 'ANY_VALUE'
 
+# F5 BIG-IP Terraform provider
+# https://registry.terraform.io/providers/F5Networks/bigip/latest/docs
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'TEEM_DISABLE' 'true'
+
+# F5 CLI
+# https://clouddocs.f5.com/sdk/f5-cli/
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'F5_ALLOW_TELEMETRY' 'false'
+
 # Infracost
 # https://www.infracost.io/
 
@@ -679,6 +733,18 @@ fi
 # Update check
 # https://pnp.github.io/powershell/articles/updatenotifications.html
 [[ "${toptout_env}" == 'True' ]] && set_env 'PNPPOWERSHELL_UPDATECHECK' 'false'
+
+# Azure Service Fabric CLI
+# https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-sfctl
+
+# Usage data
+if [[ "${toptout_exec}" == 'True' ]]
+then
+  if in_path 'sfctl'
+  then
+    run_cmd 'sfctl' 'settings telemetry set_telemetry --off'
+  fi
+fi
 
 # Skaffold
 # https://skaffold.dev/

@@ -167,6 +167,14 @@ ________________________________________
 "@ | Write-Host
 }
 
+# Eternal Terminal
+# https://github.com/MisterTea/EternalTerminal
+
+# Crash data
+if ($Env) {
+    Set-EnvVar -Name 'ET_NO_TELEMETRY' -Value 'ANY_VALUE' -ShowLog:$ShowLog
+}
+
 # Firefox
 # https://www.mozilla.org/firefox/
 
@@ -435,6 +443,14 @@ if ($Env) {
     Set-EnvVar -Name 'CHOOSENIM_NO_ANALYTICS' -Value '1' -ShowLog:$ShowLog
 }
 
+# CocoaPods
+# https://cocoapods.org/
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'COCOAPODS_DISABLE_STATS' -Value 'true' -ShowLog:$ShowLog
+}
+
 # Apache Cordova CLI
 # https://cordova.apache.org
 
@@ -485,6 +501,14 @@ if ($Exec) {
     if (Test-InPath 'dvc' -ShowLog:$ShowLog) {
         Invoke-ShellCommand -Command 'dvc' -Arguments 'config core.analytics false --global' -ShowLog:$ShowLog
     }
+}
+
+# Fastlane
+# https://fastlane.tools/
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'FASTLANE_OPT_OUT_USAGE' -Value 'YES' -ShowLog:$ShowLog
 }
 
 # Flagsmith API
@@ -662,6 +686,14 @@ if ($Env) {
     Set-EnvVar -Name 'SFDX_DISABLE_TELEMETRY' -Value 'true' -ShowLog:$ShowLog
 }
 
+# SKU
+# https://github.com/seek-oss/sku
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'SKU_TELEMETRY' -Value 'false' -ShowLog:$ShowLog
+}
+
 # Strapi
 # https://strapi.io/
 
@@ -678,6 +710,24 @@ if ($Env) {
 # https://strapi.io/documentation/developer-docs/latest/setup-deployment-guides/configurations.html#environment
 if ($Env) {
     Set-EnvVar -Name 'STRAPI_DISABLE_UPDATE_NOTIFICATION' -Value 'true' -ShowLog:$ShowLog
+}
+
+# VueDX
+# https://github.com/znck/vue-developer-experience
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'VUEDX_TELEMETRY' -Value 'off' -ShowLog:$ShowLog
+}
+
+# WAPM CLI
+# https://wasmer.io/
+
+# Usage data
+if ($Exec) {
+    if (Test-InPath 'wapm' -ShowLog:$ShowLog) {
+        Invoke-ShellCommand -Command 'wapm' -Arguments 'config set telemetry.enabled false' -ShowLog:$ShowLog
+    }
 }
 
 # webhint
@@ -745,6 +795,22 @@ if ($Env) {
     Set-EnvVar -Name 'CHECKPOINT_DISABLE' -Value 'ANY_VALUE' -ShowLog:$ShowLog
 }
 
+# F5 BIG-IP Terraform provider
+# https://registry.terraform.io/providers/F5Networks/bigip/latest/docs
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'TEEM_DISABLE' -Value 'true' -ShowLog:$ShowLog
+}
+
+# F5 CLI
+# https://clouddocs.f5.com/sdk/f5-cli/
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'F5_ALLOW_TELEMETRY' -Value 'false' -ShowLog:$ShowLog
+}
+
 # Infracost
 # https://www.infracost.io/
 
@@ -805,6 +871,16 @@ if ($Env) {
 # https://pnp.github.io/powershell/articles/updatenotifications.html
 if ($Env) {
     Set-EnvVar -Name 'PNPPOWERSHELL_UPDATECHECK' -Value 'false' -ShowLog:$ShowLog
+}
+
+# Azure Service Fabric CLI
+# https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-sfctl
+
+# Usage data
+if ($Exec) {
+    if (Test-InPath 'sfctl' -ShowLog:$ShowLog) {
+        Invoke-ShellCommand -Command 'sfctl' -Arguments 'settings telemetry set_telemetry --off' -ShowLog:$ShowLog
+    }
 }
 
 # Skaffold

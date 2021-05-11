@@ -84,6 +84,7 @@ Below is automatically generated list of known telemetry channels for various ap
 
 - [Applications](#applications)
   - [Atom](#atom)
+  - [Eternal Terminal](#eternal-terminal)
   - [Firefox](#firefox)
   - [Homebrew](#homebrew)
   - [Lens](#lens)
@@ -119,6 +120,7 @@ Below is automatically generated list of known telemetry channels for various ap
   - [BuildBuddy](#buildbuddy)
   - [Carbon Design System](#carbon-design-system)
   - [choosenim](#choosenim)
+  - [CocoaPods](#cocoapods)
   - [code-server](#code-server)
   - [Apache Cordova CLI](#apache-cordova-cli)
   - [Cube.js](#cubejs)
@@ -128,6 +130,7 @@ Below is automatically generated list of known telemetry channels for various ap
   - [dotnet-svcutil](#dotnet-svcutil)
   - [DVC](#dvc)
   - [Ember CLI](#ember-cli)
+  - [Fastlane](#fastlane)
   - [Flagsmith API](#flagsmith-api)
   - [Flutter](#flutter)
   - [Gatsby](#gatsby)
@@ -151,7 +154,10 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Salto CLI](#salto-cli)
   - [Serverless Framework](#serverless-framework)
   - [Salesforce CLI](#salesforce-cli)
+  - [SKU](#sku)
   - [Strapi](#strapi)
+  - [VueDX](#vuedx)
+  - [WAPM CLI](#wapm-cli)
   - [webhint](#webhint)
   - [Webiny](#webiny)
   - [Yarn 2](#yarn-2)
@@ -161,12 +167,15 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Chef Automate](#chef-automate)
   - [Chef Workstation](#chef-workstation)
   - [Consul](#consul)
+  - [F5 BIG-IP Terraform provider](#f5-big-ip-terraform-provider)
+  - [F5 CLI](#f5-cli)
   - [Infracost](#infracost)
   - [k0s](#k0s)
   - [kics](#kics)
   - [kPow](#kpow)
   - [Packer](#packer)
   - [PnP PowerShell](#pnp-powershell)
+  - [Azure Service Fabric CLI](#azure-service-fabric-cli)
   - [Skaffold](#skaffold)
   - [Telepresence](#telepresence)
   - [Terraform](#terraform)
@@ -214,6 +223,29 @@ Use methods described below to opt-out of this telemetry channel.
 
 ```none
 atom.config.set('core.telemetryConsent', 'no')
+```
+
+### [Eternal Terminal](https://github.com/MisterTea/EternalTerminal)
+
+> Eternal Terminal collects crashes and errors in order to help us improve your experience. The data collected is anonymous.
+
+- [Telemetry details](https://github.com/MisterTea/EternalTerminal/blob/55aafce51b7199908423efb4d4e69a4f61b22069/src/terminal/TelemetryService.cpp#L117-L120)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Crash data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+ET_NO_TELEMETRY=ANY_VALUE
 ```
 
 ### [Firefox](https://www.mozilla.org/firefox/)
@@ -1298,6 +1330,29 @@ Use methods described below to opt-out of this telemetry channel.
 CHOOSENIM_NO_ANALYTICS=1
 ```
 
+### [CocoaPods](https://cocoapods.org/)
+
+> First up, we don't want to know anything about your app. So in order to know unique targets we use your project's target UUID as an identifier. These are a hash of your MAC address, Xcode's process id and the time of target creation (but we only know the UUID/hash, so your MAC address is unknown to us). These UUIDs never change in a project's lifetime (contrary to, for example, the bundle identifier). We double hash it just to be super safe.
+
+- [Telemetry details](https://blog.cocoapods.org/Stats/)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+COCOAPODS_DISABLE_STATS=true
+```
+
 ### [code-server](https://github.com/cdr/code-server)
 
 > We use the data collected only to improve code-server.
@@ -1625,6 +1680,35 @@ Use methods described below to opt-out of this telemetry channel.
 1. [Disable usage data reporting](https://github.com/ember-cli/ember-cli/pull/2923)
 
     > You can also disable analytics on per-command basis by adding '--disable-analytics' option
+
+### [Fastlane](https://fastlane.tools/)
+
+> fastlane tracks a few key metrics to understand how developers are using the tool and to help us know what areas need improvement. No personal/sensitive information is ever collected.
+
+- [Telemetry details](https://docs.fastlane.tools/#metrics)
+- [Privacy policy](https://www.google.com/policies/privacy/)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+FASTLANE_OPT_OUT_USAGE=YES
+```
+
+##### 2. Visit link(s) for more details
+
+1. [Per-project (Fastfile)](http://docs.fastlane.tools/actions/opt_out_usage/#opt_out_usage)
+
+    > Add `opt_out_usage` at the top of your Fastfile to disable metrics collection.
 
 ### [Flagsmith API](https://flagsmith.com/)
 
@@ -2282,6 +2366,29 @@ SFDX_DISABLE_TELEMETRY=true
 sfdx config:set disableTelemetry=true --global
 ```
 
+### [SKU](https://github.com/seek-oss/sku)
+
+> To help us improve sku, please install our private telemetry package that gives us insights on usage, errors and performance.
+
+- [Telemetry details](https://github.com/seek-oss/sku/pull/495)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+SKU_TELEMETRY=false
+```
+
 ### [Strapi](https://strapi.io/)
 
 > Strapi contains a feature in which anonymous and otherwise non-sensitive data is collected. This data is collectively aggregated for all our users, which when taken together give us a better global understanding of how users are interacting and using Strapi.
@@ -2333,6 +2440,52 @@ Use methods described below to opt-out of this telemetry channel.
 
 ```none
 STRAPI_DISABLE_UPDATE_NOTIFICATION=true
+```
+
+### [VueDX](https://github.com/znck/vue-developer-experience)
+
+> This package contains telemetry and submits various actions to Sentry.io.
+
+- [Telemetry details](https://github.com/znck/vue-developer-experience)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+VUEDX_TELEMETRY=off
+```
+
+### [WAPM CLI](https://wasmer.io/)
+
+> During the alpha, telemetry (specifically error logging to Sentry) is enabled by default in the WAPM CLI. We send and record information such as IP address, operating system name and version, and the error/panic message.
+
+- [Telemetry details](https://docs.wasmer.io/ecosystem/wapm/cli#telemetry)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Run command
+
+###### Scope: 👤 User
+
+```shell
+wapm config set telemetry.enabled false
 ```
 
 ### [webhint](https://webhint.io/)
@@ -2641,6 +2794,52 @@ Path: `some-dir/example.json`
 }
 ```
 
+### [F5 BIG-IP Terraform provider](https://registry.terraform.io/providers/F5Networks/bigip/latest/docs)
+
+> The F5 BIG-IP provider gathers non-identifiable usage data for the purposes of improving the product as outlined in the end user license agreement for BIG-IP.
+
+- [Telemetry details](https://registry.terraform.io/providers/F5Networks/bigip/latest/docs#note)
+- [Privacy policy](https://www.f5.com/company/policies/privacy-policy)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+TEEM_DISABLE=true
+```
+
+### [F5 CLI](https://clouddocs.f5.com/sdk/f5-cli/)
+
+> F5 collects non-personal telemetry data to help improve the CLI.
+
+- [Telemetry details](https://clouddocs.f5.com/sdk/f5-cli/examples/faq.html)
+- [Privacy policy](https://www.f5.com/company/policies/privacy-policy)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+F5_ALLOW_TELEMETRY=false
+```
+
 ### [Infracost](https://www.infracost.io/)
 
 > When using a self-hosted Cloud Pricing API, Infracost CLI will send telemetry data.
@@ -2828,6 +3027,29 @@ Use methods described below to opt-out of this telemetry channel.
 
 ```none
 PNPPOWERSHELL_UPDATECHECK=false
+```
+
+### [Azure Service Fabric CLI](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-sfctl)
+
+> Sfctl telemetry collects command name without parameters provided or their values, sfctl version, OS type, python version, the success or failure of the command, the error message returned.
+
+- [Telemetry details](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-sfctl-settings-telemetry)
+- [Privacy policy](https://privacy.microsoft.com/en-us/privacystatement)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Run command
+
+###### Scope: 👤 User
+
+```shell
+sfctl settings telemetry set_telemetry --off
 ```
 
 ### [Skaffold](https://skaffold.dev/)
