@@ -193,6 +193,15 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Windows 10](#windows-10)
 - [Shells](#shells)
   - [PowerShell Core](#powershell-core)
+- [VSCode extension](#vscode-extension)
+  - [Azure Application Insights (VSCode)](#azure-application-insights-vscode)
+  - [docs-yaml (VSCode)](#docs-yaml-vscode)
+  - [ESP-IDF (VSCode)](#esp-idf-vscode)
+  - [Julia (VSCode)](#julia-vscode)
+  - [PrintCode (VSCode)](#printcode-vscode)
+  - [REST Client (VSCode)](#rest-client-vscode)
+  - [Serverless IDE (VSCode)](#serverless-ide-vscode)
+  - [Terminal (VSCode)](#terminal-vscode)
 
 ## Applications
 
@@ -3392,3 +3401,299 @@ POWERSHELL_TELEMETRY_OPTOUT=1
 1. [Disable telemetry in PowerShell Core 6.0](https://docs.microsoft.com/en-us/powershell/scripting/whats-new/what-s-new-in-powershell-core-61#telemetry-can-only-be-disabled-with-an-environment-variable)
 
     > You can opt-out from telemetry by creating 'DELETE_ME_TO_DISABLE_CONSOLEHOST_TELEMETRY' file in the directory where 'pwsh' binary is installed.
+
+## VSCode extension
+
+### [Azure Application Insights (VSCode)](https://marketplace.visualstudio.com/items?itemName=VisualStudioOnlineApplicationInsights.application-insights)
+
+> The software may collect information about you and your use of the software and send it to Microsoft.
+
+- [Telemetry details](https://github.com/microsoft/applicationinsights-vscode/blob/master/README.md#privacy-statement)
+- [Privacy policy](https://privacy.microsoft.com/en-us/privacystatement)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ❌
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+AITOOLSVSCODE_DISABLETELEMETRY=ANY_VALUE
+```
+
+### [docs-yaml (VSCode)](https://marketplace.visualstudio.com/items?itemName=docsmsft.docs-yaml)
+
+> The software may collect information about you and your use of the software and send it to Microsoft.
+
+- [Telemetry details](https://github.com/microsoft/docs-yaml/blob/main/PRIVACY.md)
+- [Privacy policy](https://privacy.microsoft.com/en-us/privacystatement)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ❌
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Edit config file (JSON)
+
+###### Scope: 👤 User
+
+| OS      | Path                                                        |
+|---------|-------------------------------------------------------------|
+| Linux   | `$HOME/.config/Code/User/settings.json`                     |
+| macOS   | `$HOME/Library/Application Support/Code/User/settings.json` |
+| Windows | `%APPDATA%\Code\User\settings.json`                         |
+
+###### Content
+
+```json
+{
+  "docsYaml.telemetry.enableTelemetry": false
+}
+```
+
+##### 2. Visit link(s) for more details
+
+1. [Usage data](https://github.com/microsoft/docs-yaml/blob/main/PRIVACY.md)
+
+    > Follow the steps below to disable data collection:
+    > 
+    > 1. In Visual Studio Code: _File_ > _Preferences_ > _Settings_
+    > 1. Navigate to _Extensions_ > _Docs Yaml_
+    > 1. Uncheck _Enable usage data and errors to be sent to an online service._
+
+### [ESP-IDF (VSCode)](https://marketplace.visualstudio.com/items?itemName=espressif.esp-idf-extension)
+
+> We collect telemetry data, from vscode extension which is used to help understand how to improve the extension. For example, this usage data helps to debug issues, such as slow start-up times, and to prioritize new features.
+
+- [Telemetry details](https://github.com/espressif/vscode-esp-idf-extension/blob/master/docs/TELEMETRY.md)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Edit config file (JSON)
+
+###### Scope: 👤 User
+
+| OS      | Path                                                        |
+|---------|-------------------------------------------------------------|
+| Linux   | `$HOME/.config/Code/User/settings.json`                     |
+| macOS   | `$HOME/Library/Application Support/Code/User/settings.json` |
+| Windows | `%APPDATA%\Code\User\settings.json`                         |
+
+###### Content
+
+```json
+{
+  "idf.telemetry": false
+}
+```
+
+### [Julia (VSCode)](https://www.julia-vscode.org/)
+
+> You can help improve the Julia VS Code extension by sending usage statistics and exceptions to the development team. By default, telemetry and crash report data are not collected, but rather the user has to opt-in to have their data sent.
+
+- [Telemetry details](https://www.julia-vscode.org/docs/stable/userguide/privacy/#Collecting-Data-1)
+- [Privacy policy](https://www.julia-vscode.org/docs/stable/userguide/privacy/#Using-Collected-Data-1)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+> Anonymous, non-identifying usage and error data is sent to the development team.
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Edit config file (JSON)
+
+###### Scope: 👤 User
+
+| OS      | Path                                                        |
+|---------|-------------------------------------------------------------|
+| Linux   | `$HOME/.config/Code/User/settings.json`                     |
+| macOS   | `$HOME/Library/Application Support/Code/User/settings.json` |
+| Windows | `%APPDATA%\Code\User\settings.json`                         |
+
+###### Content
+
+```json
+{
+  "julia.enableTelemetryjulia.enableTelemetry": false
+}
+```
+
+#### Crash data
+
+Official: ✔
+
+> Stack traces from errors in the extension are sent to the development team. Those stack traces can contain identifying information, for example filenames.
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Edit config file (JSON)
+
+###### Scope: 👤 User
+
+| OS      | Path                                                        |
+|---------|-------------------------------------------------------------|
+| Linux   | `$HOME/.config/Code/User/settings.json`                     |
+| macOS   | `$HOME/Library/Application Support/Code/User/settings.json` |
+| Windows | `%APPDATA%\Code\User\settings.json`                         |
+
+###### Content
+
+```json
+{
+  "julia.enableCrashReporter": false
+}
+```
+
+### [PrintCode (VSCode)](https://marketplace.visualstudio.com/items?itemName=nobuhito.printcode)
+
+> PrintCode records product usage with Google Analytics.
+
+- [Telemetry details](https://github.com/nobuhito/vscode.printcode/blob/master/README.md#configuration-options)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Edit config file (JSON)
+
+###### Scope: 👤 User
+
+| OS      | Path                                                        |
+|---------|-------------------------------------------------------------|
+| Linux   | `$HOME/.config/Code/User/settings.json`                     |
+| macOS   | `$HOME/Library/Application Support/Code/User/settings.json` |
+| Windows | `%APPDATA%\Code\User\settings.json`                         |
+
+###### Content
+
+```json
+{
+  "printcode.disableTelemetry": false
+}
+```
+
+### [REST Client (VSCode)](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
+
+> REST Client sends out anonymous usage data.
+
+- [Telemetry details](https://github.com/Huachao/vscode-restclient#settings)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Edit config file (JSON)
+
+###### Scope: 👤 User
+
+| OS      | Path                                                        |
+|---------|-------------------------------------------------------------|
+| Linux   | `$HOME/.config/Code/User/settings.json`                     |
+| macOS   | `$HOME/Library/Application Support/Code/User/settings.json` |
+| Windows | `%APPDATA%\Code\User\settings.json`                         |
+
+###### Content
+
+```json
+{
+  "rest-client.enableTelemetry": false
+}
+```
+
+### [Serverless IDE (VSCode)](https://marketplace.visualstudio.com/items?itemName=ThreadHeap.serverless-ide-vscode)
+
+> ServerlessIDE collects anonymous information related to the usage of the extensions, such as which commands were run, as well as performance and error data.
+
+- [Telemetry details](https://github.com/threadheap/serverless-ide-vscode/blob/master/packages/vscode/README.md#telemetry)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data and crash reports
+
+Official: ✔
+
+> We also respect the global telemetry setting [telemetry.enableTelemetry](https://toptout.me/#/?id=vscode); if that is set to false, ServerlessIDE telemetry is disabled.
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Edit config file (JSON)
+
+###### Scope: 👤 User
+
+| OS      | Path                                                        |
+|---------|-------------------------------------------------------------|
+| Linux   | `$HOME/.config/Code/User/settings.json`                     |
+| macOS   | `$HOME/Library/Application Support/Code/User/settings.json` |
+| Windows | `%APPDATA%\Code\User\settings.json`                         |
+
+###### Content
+
+```json
+{
+  "serverlessIDE.telemetry.enableTelemetry": false
+}
+```
+
+### [Terminal (VSCode)](https://marketplace.visualstudio.com/items?itemName=formulahendry.terminal)
+
+> Terminal uses Application Insights to track telemetry data. By default, telemetry data collection is turned on.
+
+- [Telemetry details](https://github.com/formulahendry/vscode-terminal/tree/master#telemetry-data)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Edit config file (JSON)
+
+###### Scope: 👤 User
+
+| OS      | Path                                                        |
+|---------|-------------------------------------------------------------|
+| Linux   | `$HOME/.config/Code/User/settings.json`                     |
+| macOS   | `$HOME/Library/Application Support/Code/User/settings.json` |
+| Windows | `%APPDATA%\Code\User\settings.json`                         |
+
+###### Content
+
+```json
+{
+  "terminal.enableAppInsights": false
+}
+```

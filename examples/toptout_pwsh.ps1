@@ -959,3 +959,11 @@ if ($Env) {
 if ($Env) {
     Set-EnvVar -Name 'POWERSHELL_TELEMETRY_OPTOUT' -Value '1' -ShowLog:$ShowLog
 }
+
+# Azure Application Insights (VSCode)
+# https://marketplace.visualstudio.com/items?itemName=VisualStudioOnlineApplicationInsights.application-insights
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'AITOOLSVSCODE_DISABLETELEMETRY' -Value 'ANY_VALUE' -ShowLog:$ShowLog
+}

@@ -808,3 +808,9 @@ fi
 
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'POWERSHELL_TELEMETRY_OPTOUT' '1'
+
+# Azure Application Insights (VSCode)
+# https://marketplace.visualstudio.com/items?itemName=VisualStudioOnlineApplicationInsights.application-insights
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'AITOOLSVSCODE_DISABLETELEMETRY' 'ANY_VALUE'
