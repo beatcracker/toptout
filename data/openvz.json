@@ -1,0 +1,31 @@
+{
+  "id": "openvz",
+  "name": "OpenVZ",
+  "executable_name": [
+    "vzstats"
+  ],
+  "category_id": "devops",
+  "category_name": "DevOps",
+  "description": "vzstats is a tool to gather OpenVZ usage statistics.",
+  "links": {
+    "main": "https://openvz.org/",
+    "telemetry": "https://wiki.openvz.org/Vzstats",
+    "privacy": "https://wiki.openvz.org/Vzstats#What_about_my_privacy.3F"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "is_official": true,
+      "target": {
+        "noop": [
+          {
+            "name": "Disable usage data reporting",
+            "description": "You can completely disable vzstats client on a machine by executing the following command:\n```shell\nmkdir -p /etc/vz\ntouch /etc/vz/vzstats-disable```",
+            "link": "https://wiki.openvz.org/Vzstats#How_to_opt-out"
+          }
+        ]
+      }
+    }
+  ]
+}
