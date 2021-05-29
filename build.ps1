@@ -223,6 +223,7 @@ task readme {
 
 <p align="center">
   <a href="https://github.com/beatcracker/toptout/actions?query=workflow%3ATests"><img alt="GitHub Actions status" src="https://github.com/beatcracker/toptout/workflows/Tests/badge.svg"></a>
+  <a href="https://twitter.com/toptout_me"><img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/toptout_me?style=social"></a>
 </p>
 
 # Easily opt-out from telemetry collection
