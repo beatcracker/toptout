@@ -178,6 +178,12 @@ esac
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'HOMEBREW_NO_ANALYTICS' '1'
 
+# LYNX VFX
+# https://github.com/LucaScheller/VFX-LYNX
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'LYNX_ANALYTICS' '0'
+
 # Microsoft 365 | Enterprise
 # https://www.microsoft.com/en-us/microsoft-365/enterprise
 
@@ -221,6 +227,13 @@ then
     run_cmd 'gcloud' 'config set disable_usage_reporting true'
   fi
 fi
+
+# Hoockdeck CLI
+# https://hookdeck.com/
+
+# Usage data
+# https://github.com/hookdeck/hookdeck-cli/blob/8c2e18bfd5d413e1d2418c5a73d56791b3bfb513/pkg/hookdeck/client.go#L56-L61
+[[ "${toptout_env}" == 'True' ]] && set_env 'HOOKDECK_CLI_TELEMETRY_OPTOUT' 'ANY_VALUE'
 
 # Netdata
 # https://www.netdata.cloud
@@ -465,6 +478,17 @@ fi
 # Usage data (CLI and Console)
 [[ "${toptout_env}" == 'True' ]] && set_env 'HASURA_GRAPHQL_ENABLE_TELEMETRY' 'false'
 
+# ImageGear
+# https://www.accusoft.com/products/imagegear-collection/imagegear/
+
+# Usage data
+# https://help.accusoft.com/ImageGear/v18.8/Linux/Installation.html
+case "$OSTYPE" in
+  linux*)
+    [[ "${toptout_env}" == 'True' ]] && set_env 'IG_PRO_OPT_OUT' 'YES'
+  ;;
+esac
+
 # Ionic CLI
 # https://ionicframework.com/
 
@@ -596,6 +620,12 @@ fi
 # https://strapi.io/documentation/developer-docs/latest/setup-deployment-guides/configurations.html#environment
 [[ "${toptout_env}" == 'True' ]] && set_env 'STRAPI_DISABLE_UPDATE_NOTIFICATION' 'true'
 
+# Tuist
+# https://tuist.io/
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'TUIST_STATS_OPT_OUT' '1'
+
 # VueDX
 # https://github.com/znck/vue-developer-experience
 
@@ -674,6 +704,12 @@ fi
 # https://www.consul.io/docs/agent/options#disable_update_check
 [[ "${toptout_env}" == 'True' ]] && set_env 'CHECKPOINT_DISABLE' 'ANY_VALUE'
 
+# decK
+# https://github.com/Kong/deck
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'DECK_ANALYTICS' 'off'
+
 # F5 BIG-IP Terraform provider
 # https://registry.terraform.io/providers/F5Networks/bigip/latest/docs
 
@@ -713,6 +749,12 @@ fi
 # Usage data
 # https://docs.kpow.io/about/data-collection#how-do-i-opt-out
 [[ "${toptout_env}" == 'True' ]] && set_env 'ALLOW_UI_ANALYTICS' 'false'
+
+# MSLab
+# https://github.com/microsoft/MSLab
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'MSLAB_TELEMETRY_LEVEL' 'None'
 
 # Packer
 # https://www.packer.io/
@@ -803,11 +845,25 @@ fi
 # Update check
 [[ "${toptout_env}" == 'True' ]] && set_env 'CHECKPOINT_DISABLE' '1'
 
+# AccessMap
+# https://www.accessmap.io/
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'ANALYTICS' 'no'
+
 # PowerShell Core
 # https://github.com/powershell/powershell
 
 # Usage data
+# https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_telemetry
 [[ "${toptout_env}" == 'True' ]] && set_env 'POWERSHELL_TELEMETRY_OPTOUT' '1'
+
+# PowerShell Core
+# https://github.com/powershell/powershell
+
+# Update check
+# https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_update_notification
+[[ "${toptout_env}" == 'True' ]] && set_env 'POWERSHELL_UPDATECHECK' 'Off'
 
 # Azure Application Insights (VSCode)
 # https://marketplace.visualstudio.com/items?itemName=VisualStudioOnlineApplicationInsights.application-insights

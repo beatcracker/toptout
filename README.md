@@ -4,6 +4,7 @@
 
 <p align="center">
   <a href="https://github.com/beatcracker/toptout/actions?query=workflow%3ATests"><img alt="GitHub Actions status" src="https://github.com/beatcracker/toptout/workflows/Tests/badge.svg"></a>
+  <a href="https://twitter.com/toptout_me"><img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/toptout_me?style=social"></a>
 </p>
 
 # Easily opt-out from telemetry collection
@@ -92,6 +93,7 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Firefox](#firefox)
   - [Homebrew](#homebrew)
   - [Lens](#lens)
+  - [LYNX VFX](#lynx-vfx)
   - [Microsoft 365 | Enterprise](#microsoft-365--enterprise)
   - [Microsoft calculator](#microsoft-calculator)
   - [VSCode](#vscode)
@@ -101,6 +103,7 @@ Below is automatically generated list of known telemetry channels for various ap
   - [AWS SAM CLI](#aws-sam-cli)
   - [Azure CLI](#azure-cli)
   - [Google Cloud SDK](#google-cloud-sdk)
+  - [Hoockdeck CLI](#hoockdeck-cli)
   - [Netdata](#netdata)
   - [Netlify CLI](#netlify-cli)
   - [Stripe CLI](#stripe-cli)
@@ -139,6 +142,7 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Flutter](#flutter)
   - [Gatsby](#gatsby)
   - [Hasura GraphQL engine](#hasura-graphql-engine)
+  - [ImageGear](#imagegear)
   - [Ionic CLI](#ionic-cli)
   - [MeiliSearch](#meilisearch)
   - [ML.NET CLI](#mlnet-cli)
@@ -160,6 +164,7 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Salesforce CLI](#salesforce-cli)
   - [SKU](#sku)
   - [Strapi](#strapi)
+  - [Tuist](#tuist)
   - [VueDX](#vuedx)
   - [WAPM CLI](#wapm-cli)
   - [webhint](#webhint)
@@ -171,12 +176,15 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Chef Automate](#chef-automate)
   - [Chef Workstation](#chef-workstation)
   - [Consul](#consul)
+  - [decK](#deck)
   - [F5 BIG-IP Terraform provider](#f5-big-ip-terraform-provider)
   - [F5 CLI](#f5-cli)
   - [Infracost](#infracost)
   - [k0s](#k0s)
   - [kics](#kics)
   - [kPow](#kpow)
+  - [MSLab](#mslab)
+  - [OpenVZ](#openvz)
   - [Packer](#packer)
   - [PnP PowerShell](#pnp-powershell)
   - [Azure Service Fabric CLI](#azure-service-fabric-cli)
@@ -191,6 +199,8 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Nvidia drivers](#nvidia-drivers)
 - [Operating systems](#operating-systems)
   - [Windows 10](#windows-10)
+- [Other](#other)
+  - [AccessMap](#accessmap)
 - [Shells](#shells)
   - [PowerShell Core](#powershell-core)
 - [VSCode extension](#vscode-extension)
@@ -388,6 +398,47 @@ Use methods described below to opt-out of this telemetry channel.
 1. [Disable usage data reporting](https://docs.k8slens.dev/v4.1.2/getting-started/preferences/#disable-telemetry-reporting)
 
     > If you don't wish to send usage data to Mirantis, you can disable the "Telemetry & Usage Tracking" in the Lens preferences.
+
+### [LYNX VFX](https://github.com/LucaScheller/VFX-LYNX)
+
+> When using LYNX, non personal data can be optionally collected via Google Analytics. This helps us get feedback and prioritize the development to give you the best possible version of our product in future releases.
+
+- [Telemetry details](https://github.com/LucaScheller/VFX-LYNX#analytics)
+- [Privacy policy](https://www.lucascheller.de/imprint-privacypolicy/)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+LYNX_ANALYTICS=0
+```
+
+##### 2. Edit config file (JSON)
+
+###### Scope: 👤 User
+
+| OS    | Path               |
+|-------|--------------------|
+| Linux | `/etc/LYNX.config` |
+
+###### Content
+
+```json
+{
+  "ANALYTICS": {
+    "enabled": 0
+  }
+}
+```
 
 ### [Microsoft 365 | Enterprise](https://www.microsoft.com/en-us/microsoft-365/enterprise)
 
@@ -637,6 +688,28 @@ Use methods described below to opt-out of this telemetry channel.
 
 ```shell
 gcloud config set disable_usage_reporting true
+```
+
+### [Hoockdeck CLI](https://hookdeck.com/)
+
+> Telemetry data is sent to Hookdeck.
+
+- [Privacy policy](https://hookdeck.com/terms)
+
+List of known telemetry channels:
+
+#### [Usage data](https://github.com/hookdeck/hookdeck-cli/blob/8c2e18bfd5d413e1d2418c5a73d56791b3bfb513/pkg/hookdeck/client.go#L56-L61)
+
+Official: ❌
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+HOOKDECK_CLI_TELEMETRY_OPTOUT=ANY_VALUE
 ```
 
 ### [Netdata](https://www.netdata.cloud)
@@ -1843,6 +1916,32 @@ HASURA_GRAPHQL_ENABLE_TELEMETRY=false
 }
 ```
 
+### [ImageGear](https://www.accusoft.com/products/imagegear-collection/imagegear/)
+
+> By using the TOOLKIT with an Evaluation License, you hereby agree to allow ACCUSOFT to collect and monitor data about which of the TOOLKIT API calls you use and which of our sample programs you use. We use this tracking information to determine which areas of the TOOLKIT are most (and least) popular to improve our SDK capabilities and our samples in the future. The tracking information is anonymized in such a way that neither ACCUSOFT nor anybody else can associate this information with you. Please note that no usage data is collected for a licensed TOOLKIT.
+
+- [Telemetry details](https://www.accusoft.com/company/legal/toolkit-software-license-agreement/)
+- [Privacy policy](https://www.accusoft.com/company/privacy-statement/)
+
+List of known telemetry channels:
+
+#### [Usage data](https://help.accusoft.com/ImageGear/v18.8/Linux/Installation.html)
+
+Official: ❌
+
+> ImageGear for C and C++
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+| OS    | Variable Name    |
+|-------|------------------|
+| Linux | `IG_PRO_OPT_OUT` |
+Value: `YES`
+
 ### [Ionic CLI](https://ionicframework.com/)
 
 > The CLI sends usage data to Ionic to create a better experience.
@@ -2455,6 +2554,29 @@ Use methods described below to opt-out of this telemetry channel.
 STRAPI_DISABLE_UPDATE_NOTIFICATION=true
 ```
 
+### [Tuist](https://tuist.io/)
+
+> Tuist sends some anonymous analytics events to track the usage of the tool.
+
+- [Telemetry details](https://docs.tuist.io/guides/stats/)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+TUIST_STATS_OPT_OUT=1
+```
+
 ### [VueDX](https://github.com/znck/vue-developer-experience)
 
 > This package contains telemetry and submits various actions to Sentry.io.
@@ -2807,6 +2929,29 @@ Path: `some-dir/example.json`
 }
 ```
 
+### [decK](https://github.com/Kong/deck)
+
+> decK collects anonymized data to track feature adoption.
+
+- [Telemetry details](https://docs.konghq.com/deck/commands/#analytics)
+- [Privacy policy](http://konghq.com/privacy/)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+DECK_ANALYTICS=off
+```
+
 ### [F5 BIG-IP Terraform provider](https://registry.terraform.io/providers/F5Networks/bigip/latest/docs)
 
 > The F5 BIG-IP provider gathers non-identifiable usage data for the purposes of improving the product as outlined in the end user license agreement for BIG-IP.
@@ -2960,6 +3105,53 @@ Use methods described below to opt-out of this telemetry channel.
 ```none
 ALLOW_UI_ANALYTICS=false
 ```
+
+### [MSLab](https://github.com/microsoft/MSLab)
+
+> The software may collect information about you and your use of the software and send it to Microsoft. Microsoft may use this information to provide services and improve our products and services.
+
+- [Telemetry details](https://github.com/microsoft/MSLab/blob/master/Docs/mslab-telemetry.md)
+- [Privacy policy](https://privacy.microsoft.com/en-us/privacystatement)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+MSLAB_TELEMETRY_LEVEL=None
+```
+
+### [OpenVZ](https://openvz.org/)
+
+> vzstats is a tool to gather OpenVZ usage statistics.
+
+- [Telemetry details](https://wiki.openvz.org/Vzstats)
+- [Privacy policy](https://wiki.openvz.org/Vzstats#What_about_my_privacy.3F)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Visit link(s) for more details
+
+1. [Disable usage data reporting](https://wiki.openvz.org/Vzstats#How_to_opt-out)
+
+    > You can completely disable vzstats client on a machine by executing the following command:
+    > ```shell
+    > mkdir -p /etc/vz
+    > touch /etc/vz/vzstats-disable```
 
 ### [Packer](https://www.packer.io/)
 
@@ -3371,20 +3563,46 @@ Use methods described below to opt-out of this telemetry channel.
 
     > 💩⭐️🚀A #app with cutting edge technology to minimize windows-10 telemetry and maximize privacy plus many more
 
-## Shells
+## Other
 
-### [PowerShell Core](https://github.com/powershell/powershell)
+### [AccessMap](https://www.accessmap.io/)
 
-> PowerShell Core sends basic telemetry data to Microsoft when it is launched. The data includes the OS name, OS version, and PowerShell version. This data allows us to better understand the environments where PowerShell is used and enables us to prioritize new features and fixes.
+> AccessMap tracks website interactions to do research on user interactions and root out bugs.
 
-- [Telemetry details](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_telemetry)
-- [Privacy policy](https://privacy.microsoft.com/privacystatement)
+- [Telemetry details](https://github.com/AccessMap/accessmap/blob/master/README.md#analytics)
+- Privacy policy: ❌
 
 List of known telemetry channels:
 
 #### Usage data
 
 Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+ANALYTICS=no
+```
+
+## Shells
+
+### [PowerShell Core](https://github.com/powershell/powershell)
+
+> PowerShell Core sends basic telemetry data to Microsoft and queries an online service to determine if a newer version is available.
+
+- [Privacy policy](https://privacy.microsoft.com/privacystatement)
+
+List of known telemetry channels:
+
+#### [Usage data](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_telemetry)
+
+Official: ✔
+
+> PowerShell sends basic telemetry data to Microsoft. This data allows us to better understand the environments where PowerShell is used and enables us to prioritize new features and fixes.
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3401,6 +3619,22 @@ POWERSHELL_TELEMETRY_OPTOUT=1
 1. [Disable telemetry in PowerShell Core 6.0](https://docs.microsoft.com/en-us/powershell/scripting/whats-new/what-s-new-in-powershell-core-61#telemetry-can-only-be-disabled-with-an-environment-variable)
 
     > You can opt-out from telemetry by creating 'DELETE_ME_TO_DISABLE_CONSOLEHOST_TELEMETRY' file in the directory where 'pwsh' binary is installed.
+
+#### [Update check](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_update_notification)
+
+Official: ✔
+
+> PowerShell uses update notifications to alert users to the existence of updates to PowerShell. Once per day, PowerShell queries an online service to determine if a newer version is available.
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+POWERSHELL_UPDATECHECK=Off
+```
 
 ## VSCode extension
 

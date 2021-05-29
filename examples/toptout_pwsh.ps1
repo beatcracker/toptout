@@ -217,6 +217,14 @@ if ($Env) {
     Set-EnvVar -Name 'HOMEBREW_NO_ANALYTICS' -Value '1' -ShowLog:$ShowLog
 }
 
+# LYNX VFX
+# https://github.com/LucaScheller/VFX-LYNX
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'LYNX_ANALYTICS' -Value '0' -ShowLog:$ShowLog
+}
+
 # Microsoft 365 | Enterprise
 # https://www.microsoft.com/en-us/microsoft-365/enterprise
 
@@ -258,6 +266,15 @@ if ($Exec) {
     if (Test-InPath 'gcloud' -ShowLog:$ShowLog) {
         Invoke-ShellCommand -Command 'gcloud' -Arguments 'config set disable_usage_reporting true' -ShowLog:$ShowLog
     }
+}
+
+# Hoockdeck CLI
+# https://hookdeck.com/
+
+# Usage data
+# https://github.com/hookdeck/hookdeck-cli/blob/8c2e18bfd5d413e1d2418c5a73d56791b3bfb513/pkg/hookdeck/client.go#L56-L61
+if ($Env) {
+    Set-EnvVar -Name 'HOOKDECK_CLI_TELEMETRY_OPTOUT' -Value 'ANY_VALUE' -ShowLog:$ShowLog
 }
 
 # Netdata
@@ -545,6 +562,19 @@ if ($Env) {
     Set-EnvVar -Name 'HASURA_GRAPHQL_ENABLE_TELEMETRY' -Value 'false' -ShowLog:$ShowLog
 }
 
+# ImageGear
+# https://www.accusoft.com/products/imagegear-collection/imagegear/
+
+# Usage data
+# https://help.accusoft.com/ImageGear/v18.8/Linux/Installation.html
+switch (Get-OsMoniker) {
+    'linux' {
+        if ($Env) {
+            Set-EnvVar -Name 'IG_PRO_OPT_OUT' -Value 'YES' -ShowLog:$ShowLog
+        }
+    }
+}
+
 # Ionic CLI
 # https://ionicframework.com/
 
@@ -712,6 +742,14 @@ if ($Env) {
     Set-EnvVar -Name 'STRAPI_DISABLE_UPDATE_NOTIFICATION' -Value 'true' -ShowLog:$ShowLog
 }
 
+# Tuist
+# https://tuist.io/
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'TUIST_STATS_OPT_OUT' -Value '1' -ShowLog:$ShowLog
+}
+
 # VueDX
 # https://github.com/znck/vue-developer-experience
 
@@ -795,6 +833,14 @@ if ($Env) {
     Set-EnvVar -Name 'CHECKPOINT_DISABLE' -Value 'ANY_VALUE' -ShowLog:$ShowLog
 }
 
+# decK
+# https://github.com/Kong/deck
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'DECK_ANALYTICS' -Value 'off' -ShowLog:$ShowLog
+}
+
 # F5 BIG-IP Terraform provider
 # https://registry.terraform.io/providers/F5Networks/bigip/latest/docs
 
@@ -845,6 +891,14 @@ if ($Env) {
 # https://docs.kpow.io/about/data-collection#how-do-i-opt-out
 if ($Env) {
     Set-EnvVar -Name 'ALLOW_UI_ANALYTICS' -Value 'false' -ShowLog:$ShowLog
+}
+
+# MSLab
+# https://github.com/microsoft/MSLab
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'MSLAB_TELEMETRY_LEVEL' -Value 'None' -ShowLog:$ShowLog
 }
 
 # Packer
@@ -952,12 +1006,30 @@ if ($Env) {
     Set-EnvVar -Name 'CHECKPOINT_DISABLE' -Value '1' -ShowLog:$ShowLog
 }
 
+# AccessMap
+# https://www.accessmap.io/
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'ANALYTICS' -Value 'no' -ShowLog:$ShowLog
+}
+
 # PowerShell Core
 # https://github.com/powershell/powershell
 
 # Usage data
+# https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_telemetry
 if ($Env) {
     Set-EnvVar -Name 'POWERSHELL_TELEMETRY_OPTOUT' -Value '1' -ShowLog:$ShowLog
+}
+
+# PowerShell Core
+# https://github.com/powershell/powershell
+
+# Update check
+# https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_update_notification
+if ($Env) {
+    Set-EnvVar -Name 'POWERSHELL_UPDATECHECK' -Value 'Off' -ShowLog:$ShowLog
 }
 
 # Azure Application Insights (VSCode)
