@@ -1,0 +1,37 @@
+{
+  "id": "deck",
+  "name": "decK",
+  "executable_name": [
+    "deck"
+  ],
+  "category_id": "devops",
+  "category_name": "DevOps",
+  "description": "decK collects anonymized data to track feature adoption.",
+  "links": {
+    "main": "https://github.com/Kong/deck",
+    "telemetry": "https://docs.konghq.com/deck/commands/#analytics",
+    "privacy": "http://konghq.com/privacy/"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "is_official": true,
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "DECK_ANALYTICS"
+              },
+              "value": {
+                "opt_out": "off",
+                "opt_in": null
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
