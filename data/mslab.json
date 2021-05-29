@@ -1,0 +1,34 @@
+{
+  "id": "mslab",
+  "name": "MSLab",
+  "category_id": "devops",
+  "category_name": "DevOps",
+  "description": "The software may collect information about you and your use of the software and send it to Microsoft. Microsoft may use this information to provide services and improve our products and services.",
+  "links": {
+    "main": "https://github.com/microsoft/MSLab",
+    "telemetry": "https://github.com/microsoft/MSLab/blob/master/Docs/mslab-telemetry.md",
+    "privacy": "https://privacy.microsoft.com/en-us/privacystatement"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "is_official": true,
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "MSLAB_TELEMETRY_LEVEL"
+              },
+              "value": {
+                "opt_out": "None",
+                "opt_in": null
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
