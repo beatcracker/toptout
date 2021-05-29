@@ -1,0 +1,36 @@
+{
+  "id": "tuist",
+  "name": "Tuist",
+  "executable_name": [
+    "tuist"
+  ],
+  "category_id": "development",
+  "category_name": "Development",
+  "description": "Tuist sends some anonymous analytics events to track the usage of the tool.",
+  "links": {
+    "main": "https://tuist.io/",
+    "telemetry": "https://docs.tuist.io/guides/stats/"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "is_official": true,
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "TUIST_STATS_OPT_OUT"
+              },
+              "value": {
+                "opt_out": "1",
+                "opt_in": null
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
