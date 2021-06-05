@@ -100,6 +100,7 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Windows Terminal](#windows-terminal)
   - [winget](#winget)
 - [Cloud](#cloud)
+  - [Automagica](#automagica)
   - [AWS SAM CLI](#aws-sam-cli)
   - [Azure CLI](#azure-cli)
   - [Google Cloud SDK](#google-cloud-sdk)
@@ -154,10 +155,13 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Oryx](#oryx)
   - [Pants](#pants)
   - [Prisma](#prisma)
+  - [ROSE Code Accelerator SDK](#rose-code-accelerator-sdk)
   - [REST API Fuzz Testing (RAFT)](#rest-api-fuzz-testing-raft)
   - [Rasa](#rasa)
   - [React Native for Windows + macOS](#react-native-for-windows--macos)
   - [RESTler](#restler)
+  - [Rockset CLI](#rockset-cli)
+  - [Testim Root Cause](#testim-root-cause)
   - [Rover CLI](#rover-cli)
   - [Salto CLI](#salto-cli)
   - [Serverless Framework](#serverless-framework)
@@ -184,6 +188,7 @@ Below is automatically generated list of known telemetry channels for various ap
   - [kics](#kics)
   - [kPow](#kpow)
   - [MSLab](#mslab)
+  - [Nuke](#nuke)
   - [OpenVZ](#openvz)
   - [Packer](#packer)
   - [PnP PowerShell](#pnp-powershell)
@@ -612,6 +617,29 @@ Use methods described below to opt-out of this telemetry channel.
 - Value: `1`
 
 ## Cloud
+
+### [Automagica](https://automagica.com/)
+
+> This allows us to collect information on the usage of certain Automagica functionalities in order for us to keep improving the software.
+
+- [Telemetry details](https://telemetry.automagica.com/)
+- [Privacy policy](https://automagica.com/privacy-policy/)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+AUTOMAGICA_NO_TELEMETRY=ANY_VALUE
+```
 
 ### [AWS SAM CLI](https://aws.amazon.com/serverless/sam/)
 
@@ -2254,6 +2282,47 @@ Use methods described below to opt-out of this telemetry channel.
 
     > You can opt-out of data collection by responding to the interactive prompt with no.
 
+### [ROSE Code Accelerator SDK](https://www.microsoft.com/en-us/research/group/prose/)
+
+> PROSE sends telemetry information for the purpose of improving the product. The data collected is not used to identify any person.
+
+- [Telemetry details](https://docs.microsoft.com/en-us/python/api/overview/azure/prose/config#configuration-settings)
+- [Privacy policy](https://privacy.microsoft.com/en-us/privacystatement)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+PROSE_TELEMETRY_OPTOUT=ANY_VALUE
+```
+
+##### 2. Edit config file (JSON)
+
+###### Scope: 👤 User
+
+| OS      | Path                                      |
+|---------|-------------------------------------------|
+| Linux   | `$HOME/.config/prose/config.json`         |
+| macOS   | `$HOME/.config/prose/config.json`         |
+| Windows | `%USERPROFILE%\.config\prose\config.json` |
+
+###### Content
+
+```json
+{
+  "telemetry_opt_out": true
+}
+```
+
 ### [REST API Fuzz Testing (RAFT)](https://github.com/microsoft/rest-api-fuzz-testing)
 
 > By default, we collect anonymous usage data from your RAFT instance, which helps us understand how users use RAFT and the problems they experience, which in turn, helps us improve the quality of the offering over time.
@@ -2351,6 +2420,52 @@ Use methods described below to opt-out of this telemetry channel.
 
 ```none
 RESTLER_TELEMETRY_OPTOUT=1
+```
+
+### [Rockset CLI](https://rockset.com/)
+
+> The Rockset CLI includes a telemetry feature that collects some usage data. This feature is enabled by default. We never log any sensitive data, query text, or query result data.
+
+- [Telemetry details](https://github.com/rockset/rockset-js/blob/master/packages/cli/README.md#telemetry)
+- [Privacy policy](https://rockset.com/legal/privacy-policy)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+ROCKSET_CLI_TELEMETRY_OPTOUT=1
+```
+
+### [Testim Root Cause](https://github.com/testimio/root-cause)
+
+> As part of an incubating feature, we are collection some basic telemetry & usage statistics.
+
+- [Telemetry details](https://github.com/testimio/root-cause/blob/main/docs/failure-suggestions-telemetry.md)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+SUGGESTIONS_OPT_OUT=ANY_VALUE
 ```
 
 ### [Rover CLI](https://www.apollographql.com/docs/rover/)
@@ -3127,6 +3242,29 @@ Use methods described below to opt-out of this telemetry channel.
 
 ```none
 MSLAB_TELEMETRY_LEVEL=None
+```
+
+### [Nuke](https://nuke.build/)
+
+> As an effort to improve NUKE and to provide you with a better and more tailored experience, we include a telemetry feature that collects anonymous usage data and enables us to make more informed decisions for the future development.
+
+- [Telemetry details](https://nuke.build/docs/getting-started/telemetry.html)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+NUKE_TELEMETRY_OPTOUT=1
 ```
 
 ### [OpenVZ](https://openvz.org/)

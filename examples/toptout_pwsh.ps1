@@ -242,6 +242,14 @@ switch (Get-OsMoniker) {
     }
 }
 
+# Automagica
+# https://automagica.com/
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'AUTOMAGICA_NO_TELEMETRY' -Value 'ANY_VALUE' -ShowLog:$ShowLog
+}
+
 # AWS SAM CLI
 # https://aws.amazon.com/serverless/sam/
 
@@ -667,6 +675,14 @@ if ($Env) {
     Set-EnvVar -Name 'CHECKPOINT_DISABLE' -Value '1' -ShowLog:$ShowLog
 }
 
+# ROSE Code Accelerator SDK
+# https://www.microsoft.com/en-us/research/group/prose/
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'PROSE_TELEMETRY_OPTOUT' -Value 'ANY_VALUE' -ShowLog:$ShowLog
+}
+
 # Rasa
 # https://rasa.com/
 
@@ -682,6 +698,22 @@ if ($Env) {
 # https://github.com/microsoft/restler-fuzzer/blob/main/docs/user-guide/Telemetry.md
 if ($Env) {
     Set-EnvVar -Name 'RESTLER_TELEMETRY_OPTOUT' -Value '1' -ShowLog:$ShowLog
+}
+
+# Rockset CLI
+# https://rockset.com/
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'ROCKSET_CLI_TELEMETRY_OPTOUT' -Value '1' -ShowLog:$ShowLog
+}
+
+# Testim Root Cause
+# https://github.com/testimio/root-cause
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'SUGGESTIONS_OPT_OUT' -Value 'ANY_VALUE' -ShowLog:$ShowLog
 }
 
 # Rover CLI
@@ -899,6 +931,14 @@ if ($Env) {
 # Usage data
 if ($Env) {
     Set-EnvVar -Name 'MSLAB_TELEMETRY_LEVEL' -Value 'None' -ShowLog:$ShowLog
+}
+
+# Nuke
+# https://nuke.build/
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'NUKE_TELEMETRY_OPTOUT' -Value '1' -ShowLog:$ShowLog
 }
 
 # Packer

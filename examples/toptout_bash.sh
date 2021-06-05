@@ -204,6 +204,12 @@ case "$OSTYPE" in
   ;;
 esac
 
+# Automagica
+# https://automagica.com/
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'AUTOMAGICA_NO_TELEMETRY' 'ANY_VALUE'
+
 # AWS SAM CLI
 # https://aws.amazon.com/serverless/sam/
 
@@ -563,6 +569,12 @@ fi
 # https://www.prisma.io/docs/concepts/more/telemetry#usage-data
 [[ "${toptout_env}" == 'True' ]] && set_env 'CHECKPOINT_DISABLE' '1'
 
+# ROSE Code Accelerator SDK
+# https://www.microsoft.com/en-us/research/group/prose/
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'PROSE_TELEMETRY_OPTOUT' 'ANY_VALUE'
+
 # Rasa
 # https://rasa.com/
 
@@ -575,6 +587,18 @@ fi
 # Usage data
 # https://github.com/microsoft/restler-fuzzer/blob/main/docs/user-guide/Telemetry.md
 [[ "${toptout_env}" == 'True' ]] && set_env 'RESTLER_TELEMETRY_OPTOUT' '1'
+
+# Rockset CLI
+# https://rockset.com/
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'ROCKSET_CLI_TELEMETRY_OPTOUT' '1'
+
+# Testim Root Cause
+# https://github.com/testimio/root-cause
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'SUGGESTIONS_OPT_OUT' 'ANY_VALUE'
 
 # Rover CLI
 # https://www.apollographql.com/docs/rover/
@@ -755,6 +779,12 @@ fi
 
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'MSLAB_TELEMETRY_LEVEL' 'None'
+
+# Nuke
+# https://nuke.build/
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'NUKE_TELEMETRY_OPTOUT' '1'
 
 # Packer
 # https://www.packer.io/
