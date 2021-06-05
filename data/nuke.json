@@ -1,0 +1,36 @@
+{
+  "id": "nuke",
+  "name": "Nuke",
+  "executable_name": [
+    "nuke"
+  ],
+  "category_id": "devops",
+  "category_name": "DevOps",
+  "description": "As an effort to improve NUKE and to provide you with a better and more tailored experience, we include a telemetry feature that collects anonymous usage data and enables us to make more informed decisions for the future development.",
+  "links": {
+    "main": "https://nuke.build/",
+    "telemetry": "https://nuke.build/docs/getting-started/telemetry.html"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "is_official": true,
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "NUKE_TELEMETRY_OPTOUT"
+              },
+              "value": {
+                "opt_out": "1",
+                "opt_in": null
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
