@@ -155,7 +155,7 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Oryx](#oryx)
   - [Pants](#pants)
   - [Prisma](#prisma)
-  - [ROSE Code Accelerator SDK](#rose-code-accelerator-sdk)
+  - [PROSE Code Accelerator SDK](#prose-code-accelerator-sdk)
   - [REST API Fuzz Testing (RAFT)](#rest-api-fuzz-testing-raft)
   - [Rasa](#rasa)
   - [React Native for Windows + macOS](#react-native-for-windows--macos)
@@ -2282,7 +2282,7 @@ Use methods described below to opt-out of this telemetry channel.
 
     > You can opt-out of data collection by responding to the interactive prompt with no.
 
-### [ROSE Code Accelerator SDK](https://www.microsoft.com/en-us/research/group/prose/)
+### [PROSE Code Accelerator SDK](https://www.microsoft.com/en-us/research/group/prose/)
 
 > PROSE sends telemetry information for the purpose of improving the product. The data collected is not used to identify any person.
 

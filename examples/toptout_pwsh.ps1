@@ -675,7 +675,7 @@ if ($Env) {
     Set-EnvVar -Name 'CHECKPOINT_DISABLE' -Value '1' -ShowLog:$ShowLog
 }
 
-# ROSE Code Accelerator SDK
+# PROSE Code Accelerator SDK
 # https://www.microsoft.com/en-us/research/group/prose/
 
 # Usage data

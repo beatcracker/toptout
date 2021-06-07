@@ -569,7 +569,7 @@ fi
 # https://www.prisma.io/docs/concepts/more/telemetry#usage-data
 [[ "${toptout_env}" == 'True' ]] && set_env 'CHECKPOINT_DISABLE' '1'
 
-# ROSE Code Accelerator SDK
+# PROSE Code Accelerator SDK
 # https://www.microsoft.com/en-us/research/group/prose/
 
 # Usage data

@@ -1,6 +1,6 @@
 {
   "id": "prose-sdk",
-  "name": "ROSE Code Accelerator SDK",
+  "name": "PROSE Code Accelerator SDK",
   "category_id": "development",
   "category_name": "Development",
   "description": "PROSE sends telemetry information for the purpose of improving the product. The data collected is not used to identify any person.",
