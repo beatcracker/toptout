@@ -226,13 +226,7 @@ esac
 # https://cloud.google.com/sdk
 
 # Usage data
-if [[ "${toptout_exec}" == 'True' ]]
-then
-  if in_path 'gcloud'
-  then
-    run_cmd 'gcloud' 'config set disable_usage_reporting true'
-  fi
-fi
+[[ "${toptout_env}" == 'True' ]] && set_env 'CLOUDSDK_CORE_DISABLE_USAGE_REPORTING' 'true'
 
 # Hoockdeck CLI
 # https://hookdeck.com/
@@ -333,6 +327,12 @@ then
     run_cmd 'psql' '-c "ALTER SYSTEM SET timescaledb.telemetry_level=off"'
   fi
 fi
+
+# aliBuild
+# https://github.com/alisw/alibuild
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'ALIBUILD_NO_ANALYTICS' '1'
 
 # Angular
 # https://angular.io
@@ -580,6 +580,18 @@ fi
 
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'RASA_TELEMETRY_ENABLED' 'false'
+
+# ReportPortal (JS client)
+# https://github.com/reportportal/client-javascript
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'REPORTPORTAL_CLIENT_JS_NO_ANALYTICS' 'true'
+
+# ReportPortal (Pytest plugin)
+# https://github.com/reportportal/agent-python-pytest
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'AGENT_NO_ANALYTICS' '1'
 
 # RESTler
 # https://github.com/microsoft/restler-fuzzer
@@ -880,6 +892,12 @@ fi
 
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'ANALYTICS' 'no'
+
+# Oh My Zsh
+# https://ohmyz.sh/
+
+# Update check
+[[ "${toptout_env}" == 'True' ]] && set_env 'DISABLE_AUTO_UPDATE' 'true'
 
 # PowerShell Core
 # https://github.com/powershell/powershell

@@ -120,6 +120,7 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Quilt](#quilt)
   - [TimescaleDB](#timescaledb)
 - [Development](#development)
+  - [aliBuild](#alibuild)
   - [Angular](#angular)
   - [Appc Daemon](#appc-daemon)
   - [App Center CLI](#app-center-cli)
@@ -159,6 +160,8 @@ Below is automatically generated list of known telemetry channels for various ap
   - [REST API Fuzz Testing (RAFT)](#rest-api-fuzz-testing-raft)
   - [Rasa](#rasa)
   - [React Native for Windows + macOS](#react-native-for-windows--macos)
+  - [ReportPortal (JS client)](#reportportal-js-client)
+  - [ReportPortal (Pytest plugin)](#reportportal-pytest-plugin)
   - [RESTler](#restler)
   - [Rockset CLI](#rockset-cli)
   - [Testim Root Cause](#testim-root-cause)
@@ -207,6 +210,7 @@ Below is automatically generated list of known telemetry channels for various ap
 - [Other](#other)
   - [AccessMap](#accessmap)
 - [Shells](#shells)
+  - [Oh My Zsh](#oh-my-zsh)
   - [PowerShell Core](#powershell-core)
 - [VSCode extension](#vscode-extension)
   - [Azure Application Insights (VSCode)](#azure-application-insights-vscode)
@@ -710,7 +714,15 @@ Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-##### 1. Run command
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+CLOUDSDK_CORE_DISABLE_USAGE_REPORTING=true
+```
+
+##### 2. Run command
 
 ###### Scope: 👤 User
 
@@ -1128,6 +1140,37 @@ timescaledb.telemetry_level=off
 ```
 
 ## Development
+
+### [aliBuild](https://github.com/alisw/alibuild)
+
+> aliBuild has begun gathering anonymous aggregate user behaviour analytics.
+
+- [Telemetry details](https://github.com/alisw/alibuild/blob/master/ANALYTICS.md)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+ALIBUILD_NO_ANALYTICS=1
+```
+
+##### 2. Run command
+
+###### Scope: 👤 User
+
+```shell
+aliBuild analytics off
+```
 
 ### [Angular](https://angular.io)
 
@@ -2398,6 +2441,52 @@ Use methods described below to opt-out of this telemetry channel.
 2. [react-native-windows-init | Using commandline flag](https://github.com/microsoft/react-native-windows/blob/master/packages/react-native-windows-init/README.md)
 
     > Provide `--no-telemetry` flag.
+
+### [ReportPortal (JS client)](https://github.com/reportportal/client-javascript)
+
+> ReportPortal collects only information about agent name and version. This information is sent to Google analytics on the launch start.
+
+- [Telemetry details](https://github.com/reportportal/client-javascript/blob/master/README.md)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+REPORTPORTAL_CLIENT_JS_NO_ANALYTICS=true
+```
+
+### [ReportPortal (Pytest plugin)](https://github.com/reportportal/agent-python-pytest)
+
+> ReportPortal collects information about agent name and its version only. This information is sent to Google analytics on the launch start.
+
+- [Telemetry details](https://github.com/reportportal/agent-python-pytest/blob/master/README.rst#integration-with-ga)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+AGENT_NO_ANALYTICS=1
+```
 
 ### [RESTler](https://github.com/microsoft/restler-fuzzer)
 
@@ -3727,6 +3816,29 @@ ANALYTICS=no
 ```
 
 ## Shells
+
+### [Oh My Zsh](https://ohmyz.sh/)
+
+> By default, you will be prompted to check for upgrades every few weeks.
+
+- [Telemetry details](https://github.com/ohmyzsh/ohmyzsh/tree/master#getting-updates)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Update check
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+DISABLE_AUTO_UPDATE=true
+```
 
 ### [PowerShell Core](https://github.com/powershell/powershell)
 

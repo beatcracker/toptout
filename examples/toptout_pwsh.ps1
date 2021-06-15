@@ -270,10 +270,8 @@ if ($Env) {
 # https://cloud.google.com/sdk
 
 # Usage data
-if ($Exec) {
-    if (Test-InPath 'gcloud' -ShowLog:$ShowLog) {
-        Invoke-ShellCommand -Command 'gcloud' -Arguments 'config set disable_usage_reporting true' -ShowLog:$ShowLog
-    }
+if ($Env) {
+    Set-EnvVar -Name 'CLOUDSDK_CORE_DISABLE_USAGE_REPORTING' -Value 'true' -ShowLog:$ShowLog
 }
 
 # Hoockdeck CLI
@@ -388,6 +386,14 @@ if ($Exec) {
     if (Test-InPath 'psql' -ShowLog:$ShowLog) {
         Invoke-ShellCommand -Command 'psql' -Arguments '-c "ALTER SYSTEM SET timescaledb.telemetry_level=off"' -ShowLog:$ShowLog
     }
+}
+
+# aliBuild
+# https://github.com/alisw/alibuild
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'ALIBUILD_NO_ANALYTICS' -Value '1' -ShowLog:$ShowLog
 }
 
 # Angular
@@ -689,6 +695,22 @@ if ($Env) {
 # Usage data
 if ($Env) {
     Set-EnvVar -Name 'RASA_TELEMETRY_ENABLED' -Value 'false' -ShowLog:$ShowLog
+}
+
+# ReportPortal (JS client)
+# https://github.com/reportportal/client-javascript
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'REPORTPORTAL_CLIENT_JS_NO_ANALYTICS' -Value 'true' -ShowLog:$ShowLog
+}
+
+# ReportPortal (Pytest plugin)
+# https://github.com/reportportal/agent-python-pytest
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'AGENT_NO_ANALYTICS' -Value '1' -ShowLog:$ShowLog
 }
 
 # RESTler
@@ -1052,6 +1074,14 @@ if ($Env) {
 # Usage data
 if ($Env) {
     Set-EnvVar -Name 'ANALYTICS' -Value 'no' -ShowLog:$ShowLog
+}
+
+# Oh My Zsh
+# https://ohmyz.sh/
+
+# Update check
+if ($Env) {
+    Set-EnvVar -Name 'DISABLE_AUTO_UPDATE' -Value 'true' -ShowLog:$ShowLog
 }
 
 # PowerShell Core
