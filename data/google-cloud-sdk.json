@@ -18,6 +18,19 @@
       "name": "Usage data",
       "is_official": true,
       "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "CLOUDSDK_CORE_DISABLE_USAGE_REPORTING"
+              },
+              "value": {
+                "opt_out": "true",
+                "opt_in": null
+              }
+            }
+          }
+        },
         "exec": {
           "scope": {
             "user": {
