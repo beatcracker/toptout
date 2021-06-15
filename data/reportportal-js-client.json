@@ -1,0 +1,33 @@
+{
+  "id": "reportportal-js-client",
+  "name": "ReportPortal (JS client)",
+  "category_id": "development",
+  "category_name": "Development",
+  "description": "ReportPortal collects only information about agent name and version. This information is sent to Google analytics on the launch start.",
+  "links": {
+    "main": "https://github.com/reportportal/client-javascript",
+    "telemetry": "https://github.com/reportportal/client-javascript/blob/master/README.md"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "is_official": true,
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "REPORTPORTAL_CLIENT_JS_NO_ANALYTICS"
+              },
+              "value": {
+                "opt_out": "true",
+                "opt_in": null
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
