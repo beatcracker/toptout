@@ -1,0 +1,33 @@
+{
+  "id": "ohmyzsh",
+  "name": "Oh My Zsh",
+  "category_id": "shells",
+  "category_name": "Shells",
+  "description": "By default, you will be prompted to check for upgrades every few weeks.",
+  "links": {
+    "main": "https://ohmyz.sh/",
+    "telemetry": "https://github.com/ohmyzsh/ohmyzsh/tree/master#getting-updates"
+  },
+  "telemetry": [
+    {
+      "id": "update-check",
+      "name": "Update check",
+      "is_official": true,
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "DISABLE_AUTO_UPDATE"
+              },
+              "value": {
+                "opt_out": "true",
+                "opt_in": null
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
