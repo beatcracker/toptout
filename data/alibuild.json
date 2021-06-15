@@ -1,0 +1,49 @@
+{
+  "id": "alibuild",
+  "name": "aliBuild",
+  "executable_name": [
+    "aliBuild"
+  ],
+  "category_id": "development",
+  "category_name": "Development",
+  "description": "aliBuild has begun gathering anonymous aggregate user behaviour analytics.",
+  "links": {
+    "main": "https://github.com/alisw/alibuild",
+    "telemetry": "https://github.com/alisw/alibuild/blob/master/ANALYTICS.md"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "is_official": true,
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "ALIBUILD_NO_ANALYTICS"
+              },
+              "value": {
+                "opt_out": "1",
+                "opt_in": null
+              }
+            }
+          }
+        },
+        "exec": {
+          "scope": {
+            "user": {
+              "path": {
+                "default": "aliBuild"
+              },
+              "value": {
+                "opt_out": "analytics off",
+                "opt_in": "analytics on"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
