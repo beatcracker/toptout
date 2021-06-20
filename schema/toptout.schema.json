@@ -244,7 +244,7 @@
                     "$ref": "#/definitions/Path"
                 },
                 "value": {
-                    "$ref": "#/definitions/Value"
+                    "$ref": "#/definitions/StringValue"
                 }
             },
             "required": [
@@ -309,7 +309,7 @@
                     "$ref": "#/definitions/Path"
                 },
                 "value": {
-                    "$ref": "#/definitions/Value"
+                    "$ref": "#/definitions/StringValue"
                 }
             },
             "required": [
@@ -377,7 +377,7 @@
                     "type": "string"
                 },
                 "value": {
-                    "$ref": "#/definitions/Value"
+                    "$ref": "#/definitions/RichValue"
                 },
                 "display_value": {
                     "type": "string"
@@ -450,7 +450,7 @@
                     "type": "string"
                 },
                 "value": {
-                    "$ref": "#/definitions/Value"
+                    "$ref": "#/definitions/StringValue"
                 },
                 "display_value": {
                     "type": "string"
@@ -558,7 +558,7 @@
                     ]
                 },
                 "value": {
-                    "$ref": "#/definitions/Value"
+                    "$ref": "#/definitions/StringValue"
                 }
             },
             "required": [
@@ -645,24 +645,30 @@
             ],
             "title": "Path"
         },
-        "Value": {
+        "StringValue": {
             "type": "object",
-            "description": "Opt-in/out values",
+            "description": "Opt-in/out values for env/exec/plain_file/registry targets",
             "additionalProperties": false,
             "properties": {
                 "opt_out": {
-                    "type": "string",
-                    "description": "This value will opt-OUT of the telemetry collection."
-                },
-                "opt_in": {
+                    "description": "This value will opt-OUT of the telemetry collection. Use null to indicate that entry should be removed.",
                     "oneOf": [
                         {
-                            "type": "string",
-                            "description": "This value will opt-IN of the telemetry collection. Use null to indicate that value should be removed."
+                            "type": "string"
                         },
                         {
-                            "type": "null",
-                            "description": "This value will opt--IN to the telemetry collection. Use null to indicate that value should be removed."
+                            "type": "null"
+                        }
+                    ]
+                },
+                "opt_in": {
+                    "description": "This value will opt-IN of the telemetry collection. Use null to indicate that value should be removed.",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ]
                 }
@@ -671,7 +677,53 @@
                 "opt_in",
                 "opt_out"
             ],
-            "title": "Value"
+            "title": "StringValue"
+        },
+        "RichValue": {
+            "type": "object",
+            "description": "Opt-in/out values for JSON and other targets that can use non-string values (e.g.: number/boolean)",
+            "additionalProperties": false,
+            "properties": {
+                "opt_out": {
+                    "description": "This value will opt-OUT of the telemetry collection. Use null to indicate that the entire key holding this value should be removed.",
+                    "oneOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "opt_in": {
+                    "description": "This value will opt-IN to the telemetry collection. Use null to indicate that value should be removed.",
+                    "oneOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "opt_in",
+                "opt_out"
+            ],
+            "title": "RichValue"
         }
     }
 }
