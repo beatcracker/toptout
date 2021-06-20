@@ -154,28 +154,29 @@ components:
         - required:
             - windows
       title: Path
-    Value:
+    StringValue:
       type: object
-      description: Opt-in/out values
+      description: Opt-in/out values for env/exec/plain_file/registry targets
       additionalProperties: false
       properties:
         opt_out:
-          type: string
-          description: This value will opt-OUT of the telemetry collection.
-        opt_in:
+          description: >-
+            This value will opt-OUT of the telemetry collection. Use null to
+            indicate that entry should be removed.
           oneOf:
             - type: string
-              description: >-
-                This value will opt-IN of the telemetry collection. Use null to
-                indicate that value should be removed.
             - type: 'null'
-              description: >-
-                This value will opt--IN to the telemetry collection. Use null to
-                indicate that value should be removed.
+        opt_in:
+          description: >-
+            This value will opt-IN of the telemetry collection. Use null to
+            indicate that value should be removed.
+          oneOf:
+            - type: string
+            - type: 'null'
       required:
         - opt_in
         - opt_out
-      title: Value
+      title: StringValue
     ExecProperties:
       type: object
       description: Describes command name and arguments.
@@ -184,7 +185,7 @@ components:
         path:
           $ref: '#/components/schemas/Path'
         value:
-          $ref: '#/components/schemas/Value'
+          $ref: '#/components/schemas/StringValue'
       required:
         - path
         - value
@@ -229,7 +230,7 @@ components:
         path:
           $ref: '#/components/schemas/Path'
         value:
-          $ref: '#/components/schemas/Value'
+          $ref: '#/components/schemas/StringValue'
       required:
         - path
         - value
@@ -280,7 +281,7 @@ components:
         selector:
           type: string
         value:
-          $ref: '#/components/schemas/Value'
+          $ref: '#/components/schemas/StringValue'
         display_value:
           type: string
       required:
@@ -321,6 +322,35 @@ components:
       required:
         - scope
       title: PlainFile
+    RichValue:
+      type: object
+      description: >-
+        Opt-in/out values for JSON and other targets that can use non-string
+        values (e.g.: number/boolean)
+      additionalProperties: false
+      properties:
+        opt_out:
+          description: >-
+            This value will opt-OUT of the telemetry collection. Use null to
+            indicate that the entire key holding this value should be removed.
+          oneOf:
+            - type: number
+            - type: string
+            - type: boolean
+            - type: 'null'
+        opt_in:
+          description: >-
+            This value will opt-IN to the telemetry collection. Use null to
+            indicate that value should be removed.
+          oneOf:
+            - type: number
+            - type: string
+            - type: boolean
+            - type: 'null'
+      required:
+        - opt_in
+        - opt_out
+      title: RichValue
     JSONFileProperties:
       type: object
       description: 'Describes file path, selector for target property and values.'
@@ -331,7 +361,7 @@ components:
         selector:
           type: string
         value:
-          $ref: '#/components/schemas/Value'
+          $ref: '#/components/schemas/RichValue'
         display_value:
           type: string
       required:
@@ -403,19 +433,15 @@ components:
           type: string
           description: Registry key type.
           enum:
-            - REG_BINARY
-            - REG_DWORD
-            - REG_DWORD_LITTLE_ENDIAN
-            - REG_DWORD_BIG_ENDIAN
-            - REG_EXPAND_SZ
-            - REG_LINK
-            - REG_MULTI_SZ
-            - REG_NONE
-            - REG_QWORD
-            - REG_QWORD_LITTLE_ENDIAN
             - REG_SZ
+            - REG_EXPAND_SZ
+            - REG_MULTI_SZ
+            - REG_DWORD_BIG_ENDIAN
+            - REG_DWORD
+            - REG_QWORD
+            - REG_BINARY
         value:
-          $ref: '#/components/schemas/Value'
+          $ref: '#/components/schemas/StringValue'
       required:
         - root
         - path

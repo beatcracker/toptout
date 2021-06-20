@@ -1248,7 +1248,7 @@ ng config --global --remove cli.analyticsSharing
 ```json
 {
   "cli": {
-    "analyticsSharing": ""
+    "analyticsSharing": "<- REMOVE THIS KEY"
   }
 }
 ```
