@@ -61,6 +61,43 @@ Describe 'JSON telemetry data' {
                 }
             }
 
+            It '"opt_in/out" in "registry" should match registry key type' {
+                foreach ($t in $object.telemetry) {
+                    if ($t.target.registry) {
+                        foreach ($scope in 'process', 'user', 'machine') {
+                            foreach ($opt in 'opt_in', 'opt_out') {
+                                $type = $t.target.registry.scope.$scope.type
+                                $value = $t.target.registry.scope.$scope.value.$opt
+                                if ($null -ne $value) {
+                                    switch ($type) {
+                                        { $_ -eq 'REG_BINARY' } {
+                                            $value.Length % 2 | Should -BeExactly 0
+                                            $value -match '[^0-9A-F]' | Should -BeExactly $false
+                                            break
+                                        }
+
+                                        {
+                                            $_ -in @(
+                                                'REG_DWORD'
+                                                'REG_DWORD_BIG_ENDIAN'
+                                            )
+                                        } {
+                                            [int32]::TryParse($value, [ref]$null) | Should -BeExactly $true
+                                            break
+                                        }
+
+                                        { $_ -eq 'REG_QWORD' } {
+                                            [int64]::TryParse($value, [ref]$null) | Should -BeExactly $true
+                                            break
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
             It 'Using LF, not CRLF' {
                 $content -match "`r`n" | Should -BeExactly $false
             }
