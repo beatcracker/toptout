@@ -43,8 +43,8 @@
               },
               "selector": "/disable_update_check",
               "value": {
-                "opt_out": "true",
-                "opt_in": "false"
+                "opt_out": true,
+                "opt_in": false
               },
               "display_value": "{\"disable_update_check\":true}"
             }
@@ -69,8 +69,8 @@
               },
               "selector": "/disable_anonymous_signature",
               "value": {
-                "opt_out": "true",
-                "opt_in": "false"
+                "opt_out": true,
+                "opt_in": false
               },
               "display_value": "{\"disable_anonymous_signature\":true}"
             }

@@ -27,8 +27,8 @@
               },
               "selector": "/disableAnalytics",
               "value": {
-                "opt_out": "true",
-                "opt_in": "false"
+                "opt_out": true,
+                "opt_in": false
               },
               "display_value": "{\"disableAnalytics\":true}"
             }

@@ -28,8 +28,8 @@
               },
               "selector": "/telemetryDisabled",
               "value": {
-                "opt_out": "true",
-                "opt_in": "false"
+                "opt_out": true,
+                "opt_in": false
               },
               "display_value": "{\"telemetryDisabled\":true}"
             }

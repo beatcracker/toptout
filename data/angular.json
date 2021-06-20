@@ -96,10 +96,10 @@
               },
               "selector": "/cli/analyticsSharing",
               "value": {
-                "opt_out": "",
+                "opt_out": null,
                 "opt_in": "<YOUR-GOOGLE-ANALYTICS-ID>"
               },
-              "display_value": "{\"cli\": {\"analyticsSharing\": \"\"}}"
+              "display_value": "{\"cli\": {\"analyticsSharing\": \"<- REMOVE THIS KEY\"}}"
             }
           }
         }

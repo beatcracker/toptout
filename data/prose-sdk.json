@@ -38,8 +38,8 @@
               },
               "selector": "/telemetry_opt_out",
               "value": {
-                "opt_out": "true",
-                "opt_in": "false"
+                "opt_out": true,
+                "opt_in": false
               },
               "display_value": "{\"telemetry_opt_out\":true}"
             }

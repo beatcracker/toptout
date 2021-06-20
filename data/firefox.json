@@ -56,8 +56,8 @@
               },
               "selector": "/policies/DisableTelemetry",
               "value": {
-                "opt_out": "true",
-                "opt_in": "false"
+                "opt_out": true,
+                "opt_in": false
               },
               "display_value": "{\"policies\":{\"DisableTelemetry\":true}}"
             }

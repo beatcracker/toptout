@@ -36,8 +36,8 @@
               },
               "selector": "/ANALYTICS/enabled",
               "value": {
-                "opt_out": "0",
-                "opt_in": "1"
+                "opt_out": 0,
+                "opt_in": 1
               },
               "display_value": "{\"ANALYTICS\":{\"enabled\":0}}"
             }
