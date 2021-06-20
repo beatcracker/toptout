@@ -200,11 +200,12 @@ Indicates that this specific telemetry channel is controlled by setting the valu
       // Selector of the telemetry channel control setting in the JSON object.
       // Specify as JSON Pointer (https://tools.ietf.org/html/rfc6901)
       "selector": "/telemetry",
+      // Use string/number/boolean types, i.e.: 0/"FooBar"/false
       "value": {
         // Use this value to opt-out of this telemetry channel.
-        "opt_out": "false",
+        "opt_out": false,
         // Use this value to opt-in into this telemetry channel.
-        "opt_in": "true"
+        "opt_in": true
       },
       // Friendly example. Must denote disabled telemetry.
       // Used by README generator.
@@ -300,6 +301,10 @@ Indicates that this specific telemetry channel is controlled by setting the Wind
       "key": "telemetry",
       // Registry key type. See a schema for the list of allowed values.
       "type": "REG_DWORD",
+      // Always use use strings for registry values.
+      // For REG_BINARY/DWORD_*/REG_QWORD_* use hex-string represenation of the data. E.g.:
+      // REG_BINARY: 01000110 01101111 01101111 01000010 01100001 01110010  -> "466f6f426172" (hex string)
+      // REG_DWORD: 777 (decimal) -> "309" (hex)
       "value": {
         // Use this value to opt-out of this telemetry channel.
         "opt_out": "0",
