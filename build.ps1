@@ -276,6 +276,16 @@ If the tool you're using is not here you can easily add it by creating a new JSO
 
 See [CONTRIBUTING](/.github/CONTRIBUTING.md) for details on adding new telemetry data and running tests.
 
+## Contributors
+
+- Emanuel Bronshtein ([emanuelb](https://github.com/emanuelb), [e3amn2l](https://twitter.com/e3amn2l))
+
+  [Telemetry definitions](https://github.com/beatcracker/toptout/issues/created_by/emanuelb)
+
+- Lars Wirzenius (https://liw.fi, [liw](https://toot.liw.fi/@liw))
+
+  [Readme review](https://liw.fi/readme-review/)
+
 ## Related projects
 
 - [Console Do Not Track (DNT)](https://consoledonottrack.com)
