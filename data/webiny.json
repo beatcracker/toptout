@@ -14,8 +14,34 @@
   },
   "telemetry": [
     {
-      "id": "usage-data",
-      "name": "Usage data",
+      "id": "usage-data-env",
+      "name": "Usage data (env. var)",
+      "links": {
+        "main": "https://github.com/webiny/webiny-js/blob/0240c2000d1743160c601ae4ce40dd2f949d4d07/packages/telemetry/react.js#L9"
+      },
+      "is_official": false,
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "REACT_APP_WEBINY_TELEMETRY"
+              },
+              "value": {
+                "opt_out": "false",
+                "opt_in": null
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "usage-data-exec",
+      "name": "Usage data (command)",
+      "links": {
+        "main": "https://www.webiny.com/docs/key-topics/webiny-cli/#yarn-webiny-disable-tracking"
+      },
       "is_official": true,
       "target": {
         "exec": {
