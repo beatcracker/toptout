@@ -1,0 +1,36 @@
+{
+  "id": "quickwit",
+  "name": "Quickwit",
+  "executable_name": [
+    "quickwit"
+  ],
+  "category_id": "applications",
+  "category_name": "Applications",
+  "description": "Quickwit Inc. collects anonymous data regarding general usage to help us drive our development.",
+  "links": {
+    "main": "https://quickwit.io/",
+    "telemetry": "https://quickwit.io/docs/reference/telemetry"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "is_official": true,
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "DISABLE_QUICKWIT_TELEMETRY"
+              },
+              "value": {
+                "opt_out": "1",
+                "opt_in": null
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
