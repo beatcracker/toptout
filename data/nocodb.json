@@ -1,0 +1,33 @@
+{
+  "id": "nocodb",
+  "name": "NocoDB",
+  "category_id": "development",
+  "category_name": "Development",
+  "description": "NocoDB collects telemetry.",
+  "links": {
+    "main": "https://www.nocodb.com/",
+    "telemetry": "https://github.com/nocodb/nocodb/blob/master/README.md#environment-variables"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "is_official": true,
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "NC_DISABLE_TELE"
+              },
+              "value": {
+                "opt_out": "1",
+                "opt_in": null
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
