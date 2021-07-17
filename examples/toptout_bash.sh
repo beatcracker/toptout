@@ -204,6 +204,12 @@ case "$OSTYPE" in
   ;;
 esac
 
+# Quickwit
+# https://quickwit.io/
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'DISABLE_QUICKWIT_TELEMETRY' '1'
+
 # Automagica
 # https://automagica.com/
 
@@ -484,6 +490,13 @@ fi
 # Usage data (CLI and Console)
 [[ "${toptout_env}" == 'True' ]] && set_env 'HASURA_GRAPHQL_ENABLE_TELEMETRY' 'false'
 
+# Humbug
+# https://github.com/bugout-dev/humbug
+
+# Usage data
+# https://github.com/bugout-dev/humbug/issues/13
+[[ "${toptout_env}" == 'True' ]] && set_env 'BUGGER_OFF' '1'
+
 # ImageGear
 # https://www.accusoft.com/products/imagegear-collection/imagegear/
 
@@ -537,11 +550,23 @@ fi
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'NEXT_TELEMETRY_DISABLED' '1'
 
+# NocoDB
+# https://www.nocodb.com/
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'NC_DISABLE_TELE' '1'
+
 # Nuxt.js
 # https://nuxtjs.org/
 
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'NUXT_TELEMETRY_DISABLED' '1'
+
+# One Codex API - Python Client Library and CLI
+# https://www.onecodex.com/
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'ONE_CODEX_NO_TELEMETRY' 'True'
 
 # Ory
 # https://www.ory.sh/
@@ -554,6 +579,12 @@ fi
 
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'ORYX_DISABLE_TELEMETRY' 'true'
+
+# otel-launcher-node
+# https://github.com/lightstep/otel-launcher-node/
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'LS_METRICS_HOST_ENABLED' '0'
 
 # Pants
 # https://www.pantsbuild.org/
@@ -568,6 +599,12 @@ fi
 # Usage data
 # https://www.prisma.io/docs/concepts/more/telemetry#usage-data
 [[ "${toptout_env}" == 'True' ]] && set_env 'CHECKPOINT_DISABLE' '1'
+
+# projector-cli
+# https://github.com/projector-cli/projector-cli
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'TELEMETRY_ENABLED' '0'
 
 # PROSE Code Accelerator SDK
 # https://www.microsoft.com/en-us/research/group/prose/
@@ -662,6 +699,13 @@ fi
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'TUIST_STATS_OPT_OUT' '1'
 
+# vstest
+# https://github.com/microsoft/vstest/
+
+# Usage data
+# https://github.com/microsoft/vstest/blob/main/src/vstest.console/TestPlatformHelpers/TestRequestManager.cs#L1047
+[[ "${toptout_env}" == 'True' ]] && set_env 'VSTEST_TELEMETRY_OPTEDIN' '1'
+
 # VueDX
 # https://github.com/znck/vue-developer-experience
 
@@ -689,7 +733,15 @@ fi
 # Webiny
 # https://www.webiny.com/
 
-# Usage data
+# Usage data (env. var)
+# https://github.com/webiny/webiny-js/blob/0240c2000d1743160c601ae4ce40dd2f949d4d07/packages/telemetry/react.js#L9
+[[ "${toptout_env}" == 'True' ]] && set_env 'REACT_APP_WEBINY_TELEMETRY' 'false'
+
+# Webiny
+# https://www.webiny.com/
+
+# Usage data (command)
+# https://www.webiny.com/docs/key-topics/webiny-cli/#yarn-webiny-disable-tracking
 if [[ "${toptout_exec}" == 'True' ]]
 then
   if in_path 'webiny'
@@ -772,11 +824,18 @@ fi
 # https://www.infracost.io/docs/integrations/environment_variables/#infracost_skip_update_check
 [[ "${toptout_env}" == 'True' ]] && set_env 'INFRACOST_SKIP_UPDATE_CHECK' 'true'
 
-# kics
+# Kics
 # https://kics.io/
 
-# Usage data
-# https://docs.kics.io/latest/usage/commands/#disable_telemetry
+# Usage data (current)
+# https://github.com/Checkmarx/kics/issues/3876
+[[ "${toptout_env}" == 'True' ]] && set_env 'DISABLE_CRASH_REPORT' '1'
+
+# Kics
+# https://kics.io/
+
+# Usage data (legacy)
+# https://github.com/Checkmarx/kics/issues/3876
 [[ "${toptout_env}" == 'True' ]] && set_env 'KICS_COLLECT_TELEMETRY' '0'
 
 # kPow
@@ -785,6 +844,12 @@ fi
 # Usage data
 # https://docs.kpow.io/about/data-collection#how-do-i-opt-out
 [[ "${toptout_env}" == 'True' ]] && set_env 'ALLOW_UI_ANALYTICS' 'false'
+
+# kubeapt
+# https://github.com/twosson/kubeapt
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'DASH_DISABLE_TELEMETRY' 'ANY_VALUE'
 
 # MSLab
 # https://github.com/microsoft/MSLab
@@ -918,3 +983,10 @@ fi
 
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'AITOOLSVSCODE_DISABLETELEMETRY' 'ANY_VALUE'
+
+# JavaScript debugger (VSCode)
+# https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug
+
+# Usage data
+# https://github.com/microsoft/vscode-js-debug/blob/12ec6df97f45b25b168e1eac8a17b802af73806f/src/ioc.ts#L168
+[[ "${toptout_env}" == 'True' ]] && set_env 'DA_TEST_DISABLE_TELEMETRY' '1'

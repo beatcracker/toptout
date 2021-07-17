@@ -106,6 +106,7 @@ Below is automatically generated list of known telemetry channels for various ap
   - [LYNX VFX](#lynx-vfx)
   - [Microsoft 365 | Enterprise](#microsoft-365--enterprise)
   - [Microsoft calculator](#microsoft-calculator)
+  - [Quickwit](#quickwit)
   - [VSCode](#vscode)
   - [Windows Terminal](#windows-terminal)
   - [winget](#winget)
@@ -154,6 +155,7 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Flutter](#flutter)
   - [Gatsby](#gatsby)
   - [Hasura GraphQL engine](#hasura-graphql-engine)
+  - [Humbug](#humbug)
   - [ImageGear](#imagegear)
   - [Ionic CLI](#ionic-cli)
   - [MeiliSearch](#meilisearch)
@@ -161,11 +163,15 @@ Below is automatically generated list of known telemetry channels for various ap
   - [mssql-cli](#mssql-cli)
   - [.NET Core SDK](#net-core-sdk)
   - [Next.js](#nextjs)
+  - [NocoDB](#nocodb)
   - [Nuxt.js](#nuxtjs)
+  - [One Codex API - Python Client Library and CLI](#one-codex-api---python-client-library-and-cli)
   - [Ory](#ory)
   - [Oryx](#oryx)
+  - [otel-launcher-node](#otel-launcher-node)
   - [Pants](#pants)
   - [Prisma](#prisma)
+  - [projector-cli](#projector-cli)
   - [PROSE Code Accelerator SDK](#prose-code-accelerator-sdk)
   - [REST API Fuzz Testing (RAFT)](#rest-api-fuzz-testing-raft)
   - [Rasa](#rasa)
@@ -182,6 +188,7 @@ Below is automatically generated list of known telemetry channels for various ap
   - [SKU](#sku)
   - [Strapi](#strapi)
   - [Tuist](#tuist)
+  - [vstest](#vstest)
   - [VueDX](#vuedx)
   - [WAPM CLI](#wapm-cli)
   - [webhint](#webhint)
@@ -198,8 +205,9 @@ Below is automatically generated list of known telemetry channels for various ap
   - [F5 CLI](#f5-cli)
   - [Infracost](#infracost)
   - [k0s](#k0s)
-  - [kics](#kics)
+  - [Kics](#kics)
   - [kPow](#kpow)
+  - [kubeapt](#kubeapt)
   - [MSLab](#mslab)
   - [Nuke](#nuke)
   - [OpenVZ](#openvz)
@@ -226,6 +234,7 @@ Below is automatically generated list of known telemetry channels for various ap
   - [Azure Application Insights (VSCode)](#azure-application-insights-vscode)
   - [docs-yaml (VSCode)](#docs-yaml-vscode)
   - [ESP-IDF (VSCode)](#esp-idf-vscode)
+  - [JavaScript debugger (VSCode)](#javascript-debugger-vscode)
   - [Julia (VSCode)](#julia-vscode)
   - [PrintCode (VSCode)](#printcode-vscode)
   - [REST Client (VSCode)](#rest-client-vscode)
@@ -506,6 +515,29 @@ List of known telemetry channels:
 Official: ✔
 
 > Diagnostic data is disabled in development builds by default, and can be enabled with the SEND_DIAGNOSTICS build flag.
+
+### [Quickwit](https://quickwit.io/)
+
+> Quickwit Inc. collects anonymous data regarding general usage to help us drive our development.
+
+- [Telemetry details](https://quickwit.io/docs/reference/telemetry)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+DISABLE_QUICKWIT_TELEMETRY=1
+```
 
 ### [VSCode](https://code.visualstudio.com/)
 
@@ -1997,6 +2029,30 @@ HASURA_GRAPHQL_ENABLE_TELEMETRY=false
 }
 ```
 
+### [Humbug](https://github.com/bugout-dev/humbug)
+
+> Humbug lets you collect basic system information and crash reports while respecting your users' privacy.
+
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### [Usage data](https://github.com/bugout-dev/humbug/issues/13)
+
+Official: ✔
+
+> For people who want to opt out of any Humbug reporting across any tool with a single setting.
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+BUGGER_OFF=1
+```
+
 ### [ImageGear](https://www.accusoft.com/products/imagegear-collection/imagegear/)
 
 > By using the TOOLKIT with an Evaluation License, you hereby agree to allow ACCUSOFT to collect and monitor data about which of the TOOLKIT API calls you use and which of our sample programs you use. We use this tracking information to determine which areas of the TOOLKIT are most (and least) popular to improve our SDK capabilities and our samples in the future. The tracking information is anonymized in such a way that neither ACCUSOFT nor anybody else can associate this information with you. Please note that no usage data is collected for a licensed TOOLKIT.
@@ -2169,6 +2225,29 @@ NEXT_TELEMETRY_DISABLED=1
 npx next telemetry disable
 ```
 
+### [NocoDB](https://www.nocodb.com/)
+
+> NocoDB collects telemetry.
+
+- [Telemetry details](https://github.com/nocodb/nocodb/blob/master/README.md#environment-variables)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+NC_DISABLE_TELE=1
+```
+
 ### [Nuxt.js](https://nuxtjs.org/)
 
 > Nuxt Telemetry collects anonymous telemetry data about general usage. This helps us to accurately gauge feature usage and customization across all our users.
@@ -2198,6 +2277,29 @@ NUXT_TELEMETRY_DISABLED=1
 
 ```shell
 npx nuxt telemetry disable --global
+```
+
+### [One Codex API - Python Client Library and CLI](https://www.onecodex.com/)
+
+> One Codex CLI logs errors to One Codex's Sentry server.
+
+- [Telemetry details](https://github.com/onecodex/onecodex/pull/62)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ❌
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+ONE_CODEX_NO_TELEMETRY=True
 ```
 
 ### [Ory](https://www.ory.sh/)
@@ -2257,6 +2359,29 @@ Use methods described below to opt-out of this telemetry channel.
 
 ```none
 ORYX_DISABLE_TELEMETRY=true
+```
+
+### [otel-launcher-node](https://github.com/lightstep/otel-launcher-node/)
+
+> Launcher automatically collects and sends host metrics to Lightstep.
+
+- [Telemetry details](https://github.com/lightstep/otel-launcher-node/blob/master/CHANGELOG.md#0130)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+LS_METRICS_HOST_ENABLED=0
 ```
 
 ### [Pants](https://www.pantsbuild.org/)
@@ -2334,6 +2459,29 @@ Use methods described below to opt-out of this telemetry channel.
 1. [Disable error reporting](https://www.prisma.io/docs/concepts/more/telemetry#error-reporting-1)
 
     > You can opt-out of data collection by responding to the interactive prompt with no.
+
+### [projector-cli](https://github.com/projector-cli/projector-cli)
+
+> Projector uses Application Insights to better understand and fix errors that come up in the CLI.
+
+- [Telemetry details](https://github.com/projector-cli/projector-cli/blob/main/README.md#application-telemetry)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+TELEMETRY_ENABLED=0
+```
 
 ### [PROSE Code Accelerator SDK](https://www.microsoft.com/en-us/research/group/prose/)
 
@@ -2791,6 +2939,29 @@ Use methods described below to opt-out of this telemetry channel.
 TUIST_STATS_OPT_OUT=1
 ```
 
+### [vstest](https://github.com/microsoft/vstest/)
+
+> Going forward vstest platform will enable collection of rich telemetry data points to helps us and any vstest consuming platform in making the right choices to improve end user experience.
+
+- [Telemetry details](https://github.com/Microsoft/vstest-docs/blob/main/RFCs/0015-Telemetry.md)
+- [Privacy policy](https://privacy.microsoft.com/en-us/privacystatement)
+
+List of known telemetry channels:
+
+#### [Usage data](https://github.com/microsoft/vstest/blob/main/src/vstest.console/TestPlatformHelpers/TestRequestManager.cs#L1047)
+
+Official: ❌
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+VSTEST_TELEMETRY_OPTEDIN=1
+```
+
 ### [VueDX](https://github.com/znck/vue-developer-experience)
 
 > This package contains telemetry and submits various actions to Sentry.io.
@@ -2877,7 +3048,21 @@ hint --telemetry=off
 
 List of known telemetry channels:
 
-#### Usage data
+#### [Usage data (env. var)](https://github.com/webiny/webiny-js/blob/0240c2000d1743160c601ae4ce40dd2f949d4d07/packages/telemetry/react.js#L9)
+
+Official: ❌
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+REACT_APP_WEBINY_TELEMETRY=false
+```
+
+#### [Usage data (command)](https://www.webiny.com/docs/key-topics/webiny-cli/#yarn-webiny-disable-tracking)
 
 Official: ✔
 
@@ -3273,15 +3458,30 @@ Use methods described below to opt-out of this telemetry channel.
 
     > It is enabled by default and can be disabled by settings corresponding option as 'false'.
 
-### [kics](https://kics.io/)
+### [Kics](https://kics.io/)
 
-> Kics is using Sentry's application monitoring platform: https://sentry.io/
+> Kics is using Sentry's application monitoring platform for crash reports collection: https://sentry.io/
 
+- [Telemetry details](https://github.com/Checkmarx/kics/blob/master/docs/commands.md#disable-telemetry)
 - Privacy policy: ❌
 
 List of known telemetry channels:
 
-#### [Usage data](https://docs.kics.io/latest/usage/commands/#disable_telemetry)
+#### [Usage data (current)](https://github.com/Checkmarx/kics/issues/3876)
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+DISABLE_CRASH_REPORT=1
+```
+
+#### [Usage data (legacy)](https://github.com/Checkmarx/kics/issues/3876)
 
 Official: ✔
 
@@ -3318,6 +3518,29 @@ Use methods described below to opt-out of this telemetry channel.
 
 ```none
 ALLOW_UI_ANALYTICS=false
+```
+
+### [kubeapt](https://github.com/twosson/kubeapt)
+
+> The software may collect information about you and your use of the software.
+
+- [Telemetry details](https://github.com/twosson/kubeapt#environment-variables)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+DASH_DISABLE_TELEMETRY=ANY_VALUE
 ```
 
 ### [MSLab](https://github.com/microsoft/MSLab)
@@ -3995,6 +4218,28 @@ Use methods described below to opt-out of this telemetry channel.
 {
   "idf.telemetry": false
 }
+```
+
+### [JavaScript debugger (VSCode)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug)
+
+> The software may collect information about you and your use of the software.
+
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### [Usage data](https://github.com/microsoft/vscode-js-debug/blob/12ec6df97f45b25b168e1eac8a17b802af73806f/src/ioc.ts#L168)
+
+Official: ❌
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+DA_TEST_DISABLE_TELEMETRY=1
 ```
 
 ### [Julia (VSCode)](https://www.julia-vscode.org/)

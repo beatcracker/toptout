@@ -242,6 +242,14 @@ switch (Get-OsMoniker) {
     }
 }
 
+# Quickwit
+# https://quickwit.io/
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'DISABLE_QUICKWIT_TELEMETRY' -Value '1' -ShowLog:$ShowLog
+}
+
 # Automagica
 # https://automagica.com/
 
@@ -576,6 +584,15 @@ if ($Env) {
     Set-EnvVar -Name 'HASURA_GRAPHQL_ENABLE_TELEMETRY' -Value 'false' -ShowLog:$ShowLog
 }
 
+# Humbug
+# https://github.com/bugout-dev/humbug
+
+# Usage data
+# https://github.com/bugout-dev/humbug/issues/13
+if ($Env) {
+    Set-EnvVar -Name 'BUGGER_OFF' -Value '1' -ShowLog:$ShowLog
+}
+
 # ImageGear
 # https://www.accusoft.com/products/imagegear-collection/imagegear/
 
@@ -639,12 +656,28 @@ if ($Env) {
     Set-EnvVar -Name 'NEXT_TELEMETRY_DISABLED' -Value '1' -ShowLog:$ShowLog
 }
 
+# NocoDB
+# https://www.nocodb.com/
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'NC_DISABLE_TELE' -Value '1' -ShowLog:$ShowLog
+}
+
 # Nuxt.js
 # https://nuxtjs.org/
 
 # Usage data
 if ($Env) {
     Set-EnvVar -Name 'NUXT_TELEMETRY_DISABLED' -Value '1' -ShowLog:$ShowLog
+}
+
+# One Codex API - Python Client Library and CLI
+# https://www.onecodex.com/
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'ONE_CODEX_NO_TELEMETRY' -Value 'True' -ShowLog:$ShowLog
 }
 
 # Ory
@@ -663,6 +696,14 @@ if ($Env) {
     Set-EnvVar -Name 'ORYX_DISABLE_TELEMETRY' -Value 'true' -ShowLog:$ShowLog
 }
 
+# otel-launcher-node
+# https://github.com/lightstep/otel-launcher-node/
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'LS_METRICS_HOST_ENABLED' -Value '0' -ShowLog:$ShowLog
+}
+
 # Pants
 # https://www.pantsbuild.org/
 
@@ -679,6 +720,14 @@ if ($Env) {
 # https://www.prisma.io/docs/concepts/more/telemetry#usage-data
 if ($Env) {
     Set-EnvVar -Name 'CHECKPOINT_DISABLE' -Value '1' -ShowLog:$ShowLog
+}
+
+# projector-cli
+# https://github.com/projector-cli/projector-cli
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'TELEMETRY_ENABLED' -Value '0' -ShowLog:$ShowLog
 }
 
 # PROSE Code Accelerator SDK
@@ -804,6 +853,15 @@ if ($Env) {
     Set-EnvVar -Name 'TUIST_STATS_OPT_OUT' -Value '1' -ShowLog:$ShowLog
 }
 
+# vstest
+# https://github.com/microsoft/vstest/
+
+# Usage data
+# https://github.com/microsoft/vstest/blob/main/src/vstest.console/TestPlatformHelpers/TestRequestManager.cs#L1047
+if ($Env) {
+    Set-EnvVar -Name 'VSTEST_TELEMETRY_OPTEDIN' -Value '1' -ShowLog:$ShowLog
+}
+
 # VueDX
 # https://github.com/znck/vue-developer-experience
 
@@ -833,7 +891,17 @@ if ($Env) {
 # Webiny
 # https://www.webiny.com/
 
-# Usage data
+# Usage data (env. var)
+# https://github.com/webiny/webiny-js/blob/0240c2000d1743160c601ae4ce40dd2f949d4d07/packages/telemetry/react.js#L9
+if ($Env) {
+    Set-EnvVar -Name 'REACT_APP_WEBINY_TELEMETRY' -Value 'false' -ShowLog:$ShowLog
+}
+
+# Webiny
+# https://www.webiny.com/
+
+# Usage data (command)
+# https://www.webiny.com/docs/key-topics/webiny-cli/#yarn-webiny-disable-tracking
 if ($Exec) {
     if (Test-InPath 'webiny' -ShowLog:$ShowLog) {
         if (Test-InPath 'yarn' -ShowLog:$ShowLog) {
@@ -929,11 +997,20 @@ if ($Env) {
     Set-EnvVar -Name 'INFRACOST_SKIP_UPDATE_CHECK' -Value 'true' -ShowLog:$ShowLog
 }
 
-# kics
+# Kics
 # https://kics.io/
 
-# Usage data
-# https://docs.kics.io/latest/usage/commands/#disable_telemetry
+# Usage data (current)
+# https://github.com/Checkmarx/kics/issues/3876
+if ($Env) {
+    Set-EnvVar -Name 'DISABLE_CRASH_REPORT' -Value '1' -ShowLog:$ShowLog
+}
+
+# Kics
+# https://kics.io/
+
+# Usage data (legacy)
+# https://github.com/Checkmarx/kics/issues/3876
 if ($Env) {
     Set-EnvVar -Name 'KICS_COLLECT_TELEMETRY' -Value '0' -ShowLog:$ShowLog
 }
@@ -945,6 +1022,14 @@ if ($Env) {
 # https://docs.kpow.io/about/data-collection#how-do-i-opt-out
 if ($Env) {
     Set-EnvVar -Name 'ALLOW_UI_ANALYTICS' -Value 'false' -ShowLog:$ShowLog
+}
+
+# kubeapt
+# https://github.com/twosson/kubeapt
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'DASH_DISABLE_TELEMETRY' -Value 'ANY_VALUE' -ShowLog:$ShowLog
 }
 
 # MSLab
@@ -1108,4 +1193,13 @@ if ($Env) {
 # Usage data
 if ($Env) {
     Set-EnvVar -Name 'AITOOLSVSCODE_DISABLETELEMETRY' -Value 'ANY_VALUE' -ShowLog:$ShowLog
+}
+
+# JavaScript debugger (VSCode)
+# https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug
+
+# Usage data
+# https://github.com/microsoft/vscode-js-debug/blob/12ec6df97f45b25b168e1eac8a17b802af73806f/src/ioc.ts#L168
+if ($Env) {
+    Set-EnvVar -Name 'DA_TEST_DISABLE_TELEMETRY' -Value '1' -ShowLog:$ShowLog
 }
