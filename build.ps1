@@ -317,8 +317,9 @@ See [CONTRIBUTING](/.github/CONTRIBUTING.md) for details on adding new telemetry
   CLI Privacy: Opt-out of third-party tracking in your terminal.
 
 '@
-        '## Telemetry channels ({0} total)' -f $DataFiles.Count  | Add-Newline
+        '## Telemetry channels' | Add-Newline
         'Below is automatically generated list of known telemetry channels for various applications.' | Add-Newline
+        'Total count: **{0}**' -f $DataFiles.Count | Add-Newline
 
         $Categories | ForEach-Object {
             # https://gist.github.com/asabaylus/3071099#gistcomment-1593627
