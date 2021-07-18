@@ -859,7 +859,7 @@ if ($Env) {
 # Usage data
 # https://github.com/microsoft/vstest/blob/main/src/vstest.console/TestPlatformHelpers/TestRequestManager.cs#L1047
 if ($Env) {
-    Set-EnvVar -Name 'VSTEST_TELEMETRY_OPTEDIN' -Value '1' -ShowLog:$ShowLog
+    Set-EnvVar -Name 'VSTEST_TELEMETRY_OPTEDIN' -Value '0' -ShowLog:$ShowLog
 }
 
 # VueDX

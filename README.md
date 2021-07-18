@@ -93,7 +93,7 @@ See [CONTRIBUTING](/.github/CONTRIBUTING.md) for details on adding new telemetry
 
   List of Linux distributions, ranked by included telemetry.
 
-## Telemetry channels
+## Telemetry channels (132 total)
 
 Below is automatically generated list of known telemetry channels for various applications.
 
@@ -2959,7 +2959,7 @@ Use methods described below to opt-out of this telemetry channel.
 ###### Scope: ⧉ Process
 
 ```none
-VSTEST_TELEMETRY_OPTEDIN=1
+VSTEST_TELEMETRY_OPTEDIN=0
 ```
 
 ### [VueDX](https://github.com/znck/vue-developer-experience)

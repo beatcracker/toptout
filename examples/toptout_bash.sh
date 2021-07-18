@@ -704,7 +704,7 @@ fi
 
 # Usage data
 # https://github.com/microsoft/vstest/blob/main/src/vstest.console/TestPlatformHelpers/TestRequestManager.cs#L1047
-[[ "${toptout_env}" == 'True' ]] && set_env 'VSTEST_TELEMETRY_OPTEDIN' '1'
+[[ "${toptout_env}" == 'True' ]] && set_env 'VSTEST_TELEMETRY_OPTEDIN' '0'
 
 # VueDX
 # https://github.com/znck/vue-developer-experience
