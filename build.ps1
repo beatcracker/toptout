@@ -300,6 +300,10 @@ See [CONTRIBUTING](/.github/CONTRIBUTING.md) for details on adding new telemetry
 
   GitHub: [undergroundwires/privacy.sexy](https://github.com/undergroundwires/privacy.sexy)
 
+- [Distro Telemetry Watch](https://www.summertime.tech/dtw.EN.html)
+
+  List of Linux distributions, ranked by included telemetry.
+
 - [rljacobson/OptOutEnv](https://github.com/rljacobson/OptOutEnv)
 
   A lot of software enables telemetry by default unless an environment variable is set. This repository collects telemetry opt-out environment variables from across the web.
@@ -308,9 +312,9 @@ See [CONTRIBUTING](/.github/CONTRIBUTING.md) for details on adding new telemetry
 
   How to disable most data collection happening in your software and on your devices.
 
-- [Distro Telemetry Watch](https://www.summertime.tech/dtw.EN.html)
+- [rfletcher/cli-privacy](https://github.com/rfletcher/cli-privacy)
 
-  List of Linux distributions, ranked by included telemetry.
+  CLI Privacy: Opt-out of third-party tracking in your terminal.
 
 '@
         '## Telemetry channels ({0} total)' -f $DataFiles.Count  | Add-Newline
