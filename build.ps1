@@ -313,8 +313,7 @@ See [CONTRIBUTING](/.github/CONTRIBUTING.md) for details on adding new telemetry
   List of Linux distributions, ranked by included telemetry.
 
 '@
-        '## Telemetry channels' | Add-Newline
-
+        '## Telemetry channels ({0} total)' -f $DataFiles.Count  | Add-Newline
         'Below is automatically generated list of known telemetry channels for various applications.' | Add-Newline
 
         $Categories | ForEach-Object {
