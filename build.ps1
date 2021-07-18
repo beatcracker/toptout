@@ -233,7 +233,7 @@ The goal of this project is to put you in control. See what data is collected by
 
 ## Usage
 
-The core of this project is a [set of JSON files](/data/) which describe what telemetry is collected and what can be done to enable or disable it.
+This project collects data about telemetry in applications in [machine-readable format](/data/) and makes it easy to create derivative works such as awesome-lists, configuration scripts, APIs, etc.
 What you can do with it is only limited by your imagination. Here are several examples to get you started:
 
 ### 📜 Awesome list
