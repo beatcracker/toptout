@@ -28,7 +28,7 @@
                 "default": "VSTEST_TELEMETRY_OPTEDIN"
               },
               "value": {
-                "opt_out": "1",
+                "opt_out": "0",
                 "opt_in": null
               }
             }
