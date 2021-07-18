@@ -770,6 +770,12 @@ fi
 # https://github.com/AutomatedLab/AutomatedLab
 
 # Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'AUTOMATEDLAB_TELEMETRY_OPTIN' '0'
+
+# AutomatedLab
+# https://github.com/AutomatedLab/AutomatedLab
+
+# Usage data (legacy env. var.)
 [[ "${toptout_env}" == 'True' ]] && set_env 'AUTOMATEDLAB_TELEMETRY_OPTOUT' '1'
 
 # Batect

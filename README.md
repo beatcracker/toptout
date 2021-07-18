@@ -3133,7 +3133,7 @@ Use methods described below to opt-out of this telemetry channel.
 ###### Scope: ⧉ Process
 
 ```none
-AUTOMATEDLAB_TELEMETRY_OPTOUT=1
+AUTOMATEDLAB_TELEMETRY_OPTIN=0
 ```
 
 ##### 2. Run command
@@ -3144,6 +3144,20 @@ AUTOMATEDLAB_TELEMETRY_OPTOUT=1
 |---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Other   | `pwsh -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Import-Module AutomatedLab -ErrorAction Stop ; Disable-LabTelemetry -ErrorAction Stop"`       |
 | Windows | `powershell -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Import-Module AutomatedLab -ErrorAction Stop ; Disable-LabTelemetry -ErrorAction Stop"` |
+
+#### Usage data (legacy env. var.)
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+AUTOMATEDLAB_TELEMETRY_OPTOUT=1
+```
 
 ### [Batect](https://batect.dev/)
 

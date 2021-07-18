@@ -926,6 +926,14 @@ if ($Exec) {
 
 # Usage data
 if ($Env) {
+    Set-EnvVar -Name 'AUTOMATEDLAB_TELEMETRY_OPTIN' -Value '0' -ShowLog:$ShowLog
+}
+
+# AutomatedLab
+# https://github.com/AutomatedLab/AutomatedLab
+
+# Usage data (legacy env. var.)
+if ($Env) {
     Set-EnvVar -Name 'AUTOMATEDLAB_TELEMETRY_OPTOUT' -Value '1' -ShowLog:$ShowLog
 }
 
