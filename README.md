@@ -4293,7 +4293,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ```json
 {
-  "julia.enableTelemetryjulia.enableTelemetry": false
+  "julia.enableTelemetry": false
 }
 ```
 
