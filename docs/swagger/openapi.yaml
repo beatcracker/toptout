@@ -561,7 +561,7 @@ components:
             allowed. Example: Usage data.
         is_official:
           type: boolean
-          description: 'Specify, if this channel oficially supports opt-in/opt-out.'
+          description: 'Specify, if this channel officially supports opt-in/opt-out.'
         description:
           type: string
           pattern: '^[\S]+(\s+[\S]+)*$'
@@ -624,9 +624,10 @@ components:
         telemetry:
           type: array
           description: >-
-            Telemetry channels list. Contains name and optionally desription and
-            opt-in/out methods. Optional, since you may wish to add a product
-            that contains telemetry but doesn't provide a way to control it.
+            Telemetry channels list. Contains name and optionally description
+            and opt-in/out methods. Optional, since you may wish to add a
+            product that contains telemetry but doesn't provide a way to control
+            it.
           items:
             $ref: '#/components/schemas/Telemetry'
       required:
