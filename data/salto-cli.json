@@ -22,7 +22,7 @@
           "scope": {
             "process": {
               "path": {
-                "default": "SALTO_TELEMETRY_DISABLE "
+                "default": "SALTO_TELEMETRY_DISABLE"
               },
               "value": {
                 "opt_out": "1",
