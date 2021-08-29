@@ -659,7 +659,7 @@ fi
 # https://www.salto.io/
 
 # Usage data
-[[ "${toptout_env}" == 'True' ]] && set_env 'SALTO_TELEMETRY_DISABLE ' '1'
+[[ "${toptout_env}" == 'True' ]] && set_env 'SALTO_TELEMETRY_DISABLE' '1'
 
 # Serverless Framework
 # https://www.serverless.com/

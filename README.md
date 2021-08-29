@@ -2764,7 +2764,7 @@ Use methods described below to opt-out of this telemetry channel.
 ###### Scope: ⧉ Process
 
 ```none
-SALTO_TELEMETRY_DISABLE =1
+SALTO_TELEMETRY_DISABLE=1
 ```
 
 ##### 2. Edit config file (plaintext)

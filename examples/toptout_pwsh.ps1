@@ -800,7 +800,7 @@ if ($Env) {
 
 # Usage data
 if ($Env) {
-    Set-EnvVar -Name 'SALTO_TELEMETRY_DISABLE ' -Value '1' -ShowLog:$ShowLog
+    Set-EnvVar -Name 'SALTO_TELEMETRY_DISABLE' -Value '1' -ShowLog:$ShowLog
 }
 
 # Serverless Framework
