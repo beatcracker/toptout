@@ -802,7 +802,7 @@ HOOKDECK_CLI_TELEMETRY_OPTOUT=ANY_VALUE
 
 ### [Netdata](https://www.netdata.cloud)
 
-> Starting with v1.12, Netdata collects anonymous usage information by default and sends it to Google Analytics.
+> By default, Netdata collects anonymous usage information from the open-source monitoring agent using the open-source product analytics platform [PostHog](https://github.com/PostHog/posthog). We self-host our PostHog instance, which means your data is never sent or processed by any third parties outside of the Netdata infrastructure.
 
 - [Telemetry details](https://learn.netdata.cloud/docs/agent/anonymous-statistics)
 - [Privacy policy](https://learn.netdata.cloud/docs/agent/privacy-policy/)
