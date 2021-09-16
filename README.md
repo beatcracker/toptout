@@ -823,6 +823,20 @@ Use methods described below to opt-out of this telemetry channel.
 DO_NOT_TRACK=1
 ```
 
+##### 2. Create empty file
+
+Create an empty file in your Netdata configuration directory to opt out.
+
+###### Scope: 👤 User
+
+| OS      | Path                                                      |
+|---------|-----------------------------------------------------------|
+| Linux   | `/etc/netdata/.opt-out-from-anonymous-statistics`         |
+
+##### 3. Add option during installer script
+
+Pass the option `--disable-telemetry` to the installer script when installing or upgrading.
+
 ### [Netlify CLI](https://netlify.com)
 
 > By default, Netlify collects data on usage of Netlify CLI commands. We do this to improve the reliability and performance of Netlify CLI, and to help drive new features and improvements.
