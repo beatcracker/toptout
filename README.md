@@ -802,7 +802,7 @@ HOOKDECK_CLI_TELEMETRY_OPTOUT=ANY_VALUE
 
 ### [Netdata](https://www.netdata.cloud)
 
-> Starting with v1.12, Netdata collects anonymous usage information by default and sends it to Google Analytics.
+> By default, Netdata collects anonymous usage information from the open-source monitoring agent using the open-source product analytics platform [PostHog](https://github.com/PostHog/posthog). We self-host our PostHog instance, which means your data is never sent or processed by any third parties outside of the Netdata infrastructure.
 
 - [Telemetry details](https://learn.netdata.cloud/docs/agent/anonymous-statistics)
 - [Privacy policy](https://learn.netdata.cloud/docs/agent/privacy-policy/)
@@ -822,6 +822,16 @@ Use methods described below to opt-out of this telemetry channel.
 ```none
 DO_NOT_TRACK=1
 ```
+
+##### 2. Visit link(s) for more details
+
+1. [Usage data | using empty file](https://learn.netdata.cloud/docs/agent/anonymous-statistics)
+
+    > Create an empty file called `.opt-out-from-anonymous-statistics` in your Netdata configuration directory (usually `/etc/netdata`).
+
+2. [Usage data | using installer option](https://learn.netdata.cloud/docs/agent/anonymous-statistics)
+
+    > Pass the option `--disable-telemetry` to any of the installer scripts in the [installation docs](https://learn.netdata.cloud/docs/agent/packaging/installer).
 
 ### [Netlify CLI](https://netlify.com)
 
