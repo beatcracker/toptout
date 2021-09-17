@@ -30,7 +30,19 @@
               }
             }
           }
-        }
+        },
+        "noop": [
+          {
+            "name": "Usage data | using empty file",
+            "description": "Create an empty file called `.opt-out-from-anonymous-statistics` in your Netdata configuration directory (usually `/etc/netdata`).",
+            "link": "https://learn.netdata.cloud/docs/agent/anonymous-statistics"
+          },
+          {
+            "name": "Usage data | using installer option",
+            "description": "Pass the option `--disable-telemetry` to any of the installer scripts in the [installation docs](https://learn.netdata.cloud/docs/agent/packaging/installer).",
+            "link": "https://learn.netdata.cloud/docs/agent/anonymous-statistics"
+          }
+        ]
       }
     }
   ]
