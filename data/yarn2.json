@@ -20,6 +20,19 @@
         "main": "https://yarnpkg.com/advanced/telemetry"
       },
       "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "YARN_ENABLE_TELEMETRY"
+              },
+              "value": {
+                "opt_out": "0",
+                "opt_in": "1"
+              }
+            }
+          }
+        },
         "exec": {
           "scope": {
             "user": {
