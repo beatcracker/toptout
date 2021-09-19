@@ -6,10 +6,10 @@
   ],
   "category_id": "devops",
   "category_name": "DevOps",
-  "description": "To build better end user experience we collect and send telemetry data from clusters.",
+  "description": "To improve the end-user experience k0s is configured by default to collect telemetry data from clusters and send it to the k0s development team.",
   "links": {
-    "main": "https://k8slens.dev/",
-    "telemetry": "https://docs.k0sproject.io/v0.10.0/configuration/#telemetry",
+    "main": "https://k0sproject.io/",
+    "telemetry": "https://docs.k0sproject.io/v1.22.2+k0s.0/configuration/#spectelemetry",
     "privacy": "https://www.mirantis.com/company/privacy-policy/"
   },
   "telemetry": [
@@ -21,8 +21,8 @@
         "noop": [
           {
             "name": "Disable usage data reporting",
-            "description": "It is enabled by default and can be disabled by settings corresponding option as 'false'.",
-            "link": "https://docs.k8slens.dev/v4.1.2/getting-started/preferences/#disable-telemetry-reporting"
+            "description": "To disable the telemetry function, change the enabled setting to `false`:\n ```yaml\nspec:\n    telemetry:\n      enabled: true\n```",
+            "link": "https://docs.k0sproject.io/v1.22.2+k0s.0/configuration/#spectelemetry"
           }
         ]
       }
