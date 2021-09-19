@@ -1,0 +1,28 @@
+{
+  "id": "react-admin",
+  "name": "react-admin",
+  "category_id": "development",
+  "category_name": "Development",
+  "description": "In production, react-admin applications send an anonymous request on mount to a telemetry server operated by marmelab.",
+  "links": {
+    "main": "https://marmelab.com/react-admin/",
+    "telemetry": "https://github.com/marmelab/react-admin/blob/master/CHANGELOG.md#v3110",
+    "privacy": "https://marmelab.com/en/legal"
+  },
+  "telemetry": [
+    {
+      "id": "domain-stats",
+      "name": "Domain stats",
+      "is_official": true,
+      "target": {
+        "noop": [
+          {
+            "name": "Domain stats | via code",
+            "description": "You can opt out of telemetry by simply adding `disableTelemetry` to the `<Admin>` component:\n ```js\n// in src/App.js\nimport * as React from \"react\";\nimport { Admin } from 'react-admin';\n\nconst App = () => (\n    <Admin disableTelemetry>\n        // ...\n    </Admin>\n);\n```",
+            "link": "https://marmelab.com/react-admin/Admin.html#disabletelemetry"
+          }
+        ]
+      }
+    }
+  ]
+}
