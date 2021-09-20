@@ -1,22 +1,29 @@
 # Paket
 
-.dependencies text lf
-.lock         text lf
+.dependencies text eol=lf
+.lock         text eol=lf
 
 .exe binary
 .png binary
 
 # Stuff that really matters
 
-.json text lf
-.md   text lf
-.ps1  text lf
+.json text eol=lf
+.md   text eol=lf
+.ps1  text eol=lf
+
+# Generated
+.html  text eol=lf
+.sh    text eol=lf
 
 # GitHub
 
-.yml text lf
+.nojekyll text eol=lf
+.yaml     text eol=lf
+.yml      text eol=lf
 
 # Git
 
-.gitattributes text lf
-.gitignore     text lf
+.gitattributes text eol=lf
+.gitignore     text eol=lf
+
