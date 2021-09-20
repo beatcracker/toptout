@@ -259,6 +259,18 @@ then
   fi
 fi
 
+# Scaleway CLI (v2)
+# https://www.scaleway.com/en/cli/
+
+# Usage data
+if [[ "${toptout_exec}" == 'True' ]]
+then
+  if in_path 'scw'
+  then
+    run_cmd 'scw' 'config set send-telemetry=false'
+  fi
+fi
+
 # Stripe CLI
 # https://stripe.com/docs/stripe-cli
 
@@ -593,6 +605,18 @@ fi
 # https://www.pantsbuild.org/docs/reference-anonymous-telemetry
 [[ "${toptout_env}" == 'True' ]] && set_env 'PANTS_ANONYMOUS_TELEMETRY_ENABLED' 'false'
 
+# Microsoft Power Platform CLI
+# https://docs.microsoft.com/en-us/powerapps/developer/data-platform/powerapps-cli
+
+# Usage data
+if [[ "${toptout_exec}" == 'True' ]]
+then
+  if in_path 'pac'
+  then
+    run_cmd 'pac' 'telemetry disable'
+  fi
+fi
+
 # Prisma
 # https://www.prisma.io/
 
@@ -758,13 +782,7 @@ fi
 
 # Usage data
 # https://yarnpkg.com/advanced/telemetry
-if [[ "${toptout_exec}" == 'True' ]]
-then
-  if in_path 'yarn'
-  then
-    run_cmd 'yarn' 'config set --home enableTelemetry 0'
-  fi
-fi
+[[ "${toptout_env}" == 'True' ]] && set_env 'YARN_ENABLE_TELEMETRY' '0'
 
 # AutomatedLab
 # https://github.com/AutomatedLab/AutomatedLab

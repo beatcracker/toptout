@@ -101,10 +101,11 @@ See [CONTRIBUTING](/.github/CONTRIBUTING.md) for details on adding new telemetry
 
 Below is automatically generated list of known telemetry channels for various applications.
 
-Total count: **132**
+Total count: **140**
 
 - [Applications](#applications)
   - [Atom](#atom)
+  - [Brave](#brave)
   - [Eternal Terminal](#eternal-terminal)
   - [Firefox](#firefox)
   - [Homebrew](#homebrew)
@@ -113,6 +114,7 @@ Total count: **132**
   - [Microsoft 365 | Enterprise](#microsoft-365--enterprise)
   - [Microsoft calculator](#microsoft-calculator)
   - [Quickwit](#quickwit)
+  - [Ubiquiti UISP Management System](#ubiquiti-uisp-management-system)
   - [VSCode](#vscode)
   - [Windows Terminal](#windows-terminal)
   - [winget](#winget)
@@ -124,6 +126,7 @@ Total count: **132**
   - [Hoockdeck CLI](#hoockdeck-cli)
   - [Netdata](#netdata)
   - [Netlify CLI](#netlify-cli)
+  - [Scaleway CLI (v2)](#scaleway-cli-v2)
   - [Stripe CLI](#stripe-cli)
   - [Tilt](#tilt)
 - [Communications](#communications)
@@ -164,6 +167,7 @@ Total count: **132**
   - [Humbug](#humbug)
   - [ImageGear](#imagegear)
   - [Ionic CLI](#ionic-cli)
+  - [Local WP](#local-wp)
   - [MeiliSearch](#meilisearch)
   - [ML.NET CLI](#mlnet-cli)
   - [mssql-cli](#mssql-cli)
@@ -176,11 +180,14 @@ Total count: **132**
   - [Oryx](#oryx)
   - [otel-launcher-node](#otel-launcher-node)
   - [Pants](#pants)
+  - [Microsoft Power Platform CLI](#microsoft-power-platform-cli)
   - [Prisma](#prisma)
   - [projector-cli](#projector-cli)
   - [PROSE Code Accelerator SDK](#prose-code-accelerator-sdk)
+  - [pytket](#pytket)
   - [REST API Fuzz Testing (RAFT)](#rest-api-fuzz-testing-raft)
   - [Rasa](#rasa)
+  - [react-admin](#react-admin)
   - [React Native for Windows + macOS](#react-native-for-windows--macos)
   - [ReportPortal (JS client)](#reportportal-js-client)
   - [ReportPortal (Pytest plugin)](#reportportal-pytest-plugin)
@@ -192,6 +199,7 @@ Total count: **132**
   - [Serverless Framework](#serverless-framework)
   - [Salesforce CLI](#salesforce-cli)
   - [SKU](#sku)
+  - [Stencil](#stencil)
   - [Strapi](#strapi)
   - [Tuist](#tuist)
   - [vstest](#vstest)
@@ -281,6 +289,38 @@ Use methods described below to opt-out of this telemetry channel.
 ```none
 atom.config.set('core.telemetryConsent', 'no')
 ```
+
+### [Brave](https://brave.com/)
+
+> Brave collects anonymized usage metrics and can send crash reports.
+
+- [Privacy policy](https://brave.com/privacy/browser/)
+
+List of known telemetry channels:
+
+#### [Usage data](https://support.brave.com/hc/en-us/articles/4403568397837-Brave-Search-FAQ)
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Visit link(s) for more details
+
+1. [Usage data](https://support.brave.com/hc/en-us/articles/4403624081805-How-do-I-use-customize-Brave-Search-)
+
+    > Sending anonymous usage metrics is optional and can be disabled in Search settings.
+
+#### Crash data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Visit link(s) for more details
+
+1. [Crash reports](https://support.brave.com/hc/en-us/articles/360017905872-How-do-I-enable-or-disable-automatic-crash-reporting-)
+
+    > Enable or disable automatic crash reporting
 
 ### [Eternal Terminal](https://github.com/MisterTea/EternalTerminal)
 
@@ -544,6 +584,27 @@ Use methods described below to opt-out of this telemetry channel.
 ```none
 DISABLE_QUICKWIT_TELEMETRY=1
 ```
+
+### [Ubiquiti UISP Management System](https://help.ui.com/hc/en-us/categories/360003421733-UISP-Management-System)
+
+> The UISP local controller collects certain telemetry and error information and reports it to Ubiquiti for the purpose of improving the product and the user experience.
+
+- [Telemetry details](https://help.ui.com/hc/en-us/articles/360038387413-UISP-Telemetry-and-Error-Reporting)
+- [Privacy policy](https://www.ui.com/legal/privacypolicy/)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Visit link(s) for more details
+
+1. [Usage data | via web-ui](https://help.ui.com/hc/en-us/articles/360038387413-UISP-Telemetry-and-Error-Reporting#2)
+
+    > Telemetry and error reporting for both Network and CRM modules can be disabled in `Settings → UISP`.
 
 ### [VSCode](https://code.visualstudio.com/)
 
@@ -872,6 +933,29 @@ netlify --telemetry-disable
 {
   "telemetryDisabled": true
 }
+```
+
+### [Scaleway CLI (v2)](https://www.scaleway.com/en/cli/)
+
+> Send usage statistics and diagnostics.
+
+- [Telemetry details](https://github.com/scaleway/scaleway-cli/blob/master/docs/commands/config.md)
+- [Privacy policy](https://www.scaleway.com/en/privacy-policy/)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Run command
+
+###### Scope: 👤 User
+
+```shell
+scw config set send-telemetry=false
 ```
 
 ### [Stripe CLI](https://stripe.com/docs/stripe-cli)
@@ -2118,6 +2202,30 @@ Use methods described below to opt-out of this telemetry channel.
 ionic config set --global telemetry false
 ```
 
+### [Local WP](https://localwp.com/)
+
+> App interactions are tracked via [segment.com](https://segment.com/)
+
+- [Telemetry details](https://localwp.com/legal/privacy-policy/)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### [Usage data](https://twitter.com/Bjorn_W/status/1417492807154085889)
+
+Official: ❌
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Visit link(s) for more details
+
+1. [Block tracking](https://linuxize.com/post/how-to-edit-your-hosts-file/)
+
+    > Add this record to your hosts file to block access to Segment
+    >  ```
+    > 0.0.0.0 api.segment.io
+    > ```
+
 ### [MeiliSearch](https://github.com/meilisearch/MeiliSearch)
 
 > MeiliSearch collects anonymous data regarding general usage. This helps us better understand developers' usage of MeiliSearch features. We also use Sentry to make us crash and error reports.
@@ -2437,6 +2545,29 @@ PANTS_ANONYMOUS_TELEMETRY_ENABLED=false
     > enabled = false
     > ```
 
+### [Microsoft Power Platform CLI](https://docs.microsoft.com/en-us/powerapps/developer/data-platform/powerapps-cli)
+
+> The software may collect information about you and your use of the software and send it to Microsoft. Microsoft may use this information to provide services and improve our products and services.
+
+- [Telemetry details](https://docs.microsoft.com/en-us/powerapps/developer/data-platform/powerapps-cli#telemetry)
+- [Privacy policy](https://privacy.microsoft.com/en-us/privacystatement)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Run command
+
+###### Scope: 👤 User
+
+```shell
+pac telemetry disable
+```
+
 ### [Prisma](https://www.prisma.io/)
 
 > Telemetry helps us better understand how many users are using our products and how often they are using our products.
@@ -2540,6 +2671,41 @@ PROSE_TELEMETRY_OPTOUT=ANY_VALUE
 }
 ```
 
+### [pytket](https://github.com/CQCL/pytket)
+
+> pytket features a telemetry module which can be used to keep track of pyktet usage and will provide usage analytics and error reporting at a later date. Telemetry is disabled by default.
+
+- [Telemetry details](https://github.com/CQCL/pytket#telemetry)
+- [Privacy policy](https://cqcl.github.io/pytket/build/html/telemetry_data_policy.html)
+
+List of known telemetry channels:
+
+#### Diagnostic data
+
+Official: ✔
+
+> Once a user has opted in to telemetry they will be assigned a telemetry ID by making an HTTP request to a CQC server with some information about their system. The telemetry feature will not collect any Personally Identifiable Information (PII).
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Edit config file (JSON)
+
+###### Scope: 👤 User
+
+| OS      | Path                                       |
+|---------|--------------------------------------------|
+| Linux   | `$HOME/.config/pytket/config.json`         |
+| macOS   | `$HOME/.config/pytket/config.json`         |
+| Windows | `%USERPROFILE%\.config\pytket\config.json` |
+
+###### Content
+
+```json
+{
+  "enable_telemetry": false
+}
+```
+
 ### [REST API Fuzz Testing (RAFT)](https://github.com/microsoft/rest-api-fuzz-testing)
 
 > By default, we collect anonymous usage data from your RAFT instance, which helps us understand how users use RAFT and the problems they experience, which in turn, helps us improve the quality of the offering over time.
@@ -2591,6 +2757,38 @@ RASA_TELEMETRY_ENABLED=false
 ```shell
 rasa telemetry disable
 ```
+
+### [react-admin](https://marmelab.com/react-admin/)
+
+> In production, react-admin applications send an anonymous request on mount to a telemetry server operated by marmelab.
+
+- [Telemetry details](https://github.com/marmelab/react-admin/blob/master/CHANGELOG.md#v3110)
+- [Privacy policy](https://marmelab.com/en/legal)
+
+List of known telemetry channels:
+
+#### Domain stats
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Visit link(s) for more details
+
+1. [Domain stats | via code](https://marmelab.com/react-admin/Admin.html#disabletelemetry)
+
+    > You can opt out of telemetry by simply adding `disableTelemetry` to the `<Admin>` component:
+    >  ```js
+    > // in src/App.js
+    > import * as React from "react";
+    > import { Admin } from 'react-admin';
+    > 
+    > const App = () => (
+    >     <Admin disableTelemetry>
+    >         // ...
+    >     </Admin>
+    > );
+    > ```
 
 ### [React Native for Windows + macOS](https://microsoft.github.io/react-native-windows/)
 
@@ -2879,6 +3077,29 @@ Use methods described below to opt-out of this telemetry channel.
 SKU_TELEMETRY=false
 ```
 
+### [Stencil](https://stenciljs.com/)
+
+> As of version 2.7.0, Stencil collects anonymous telemetry data about usage of our command line interface.
+
+- [Telemetry details](https://stenciljs.com/telemetry)
+- [Privacy policy](https://ionic.io/privacy)
+
+List of known telemetry channels:
+
+#### Usage data
+
+Official: ✔
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Run command
+
+###### Scope: 👤 User
+
+```shell
+npx stencil telemetry off
+```
+
 ### [Strapi](https://strapi.io/)
 
 > Strapi contains a feature in which anonymous and otherwise non-sensitive data is collected. This data is collectively aggregated for all our users, which when taken together give us a better global understanding of how users are interacting and using Strapi.
@@ -3107,7 +3328,15 @@ Official: ✔
 
 Use methods described below to opt-out of this telemetry channel.
 
-##### 1. Run command
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+YARN_ENABLE_TELEMETRY=0
+```
+
+##### 2. Run command
 
 ###### Scope: 👤 User
 
@@ -3467,11 +3696,11 @@ Use methods described below to opt-out of this telemetry channel.
 INFRACOST_SKIP_UPDATE_CHECK=true
 ```
 
-### [k0s](https://k8slens.dev/)
+### [k0s](https://k0sproject.io/)
 
-> To build better end user experience we collect and send telemetry data from clusters.
+> To improve the end-user experience k0s is configured by default to collect telemetry data from clusters and send it to the k0s development team.
 
-- [Telemetry details](https://docs.k0sproject.io/v0.10.0/configuration/#telemetry)
+- [Telemetry details](https://docs.k0sproject.io/v1.22.2+k0s.0/configuration/#spectelemetry)
 - [Privacy policy](https://www.mirantis.com/company/privacy-policy/)
 
 List of known telemetry channels:
@@ -3484,9 +3713,14 @@ Use methods described below to opt-out of this telemetry channel.
 
 ##### 1. Visit link(s) for more details
 
-1. [Disable usage data reporting](https://docs.k8slens.dev/v4.1.2/getting-started/preferences/#disable-telemetry-reporting)
+1. [Disable usage data reporting](https://docs.k0sproject.io/v1.22.2+k0s.0/configuration/#spectelemetry)
 
-    > It is enabled by default and can be disabled by settings corresponding option as 'false'.
+    > To disable the telemetry function, change the enabled setting to `false`:
+    >  ```yaml
+    > spec:
+    >     telemetry:
+    >       enabled: true
+    > ```
 
 ### [Kics](https://kics.io/)
 

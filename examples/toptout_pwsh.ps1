@@ -309,6 +309,16 @@ if ($Exec) {
     }
 }
 
+# Scaleway CLI (v2)
+# https://www.scaleway.com/en/cli/
+
+# Usage data
+if ($Exec) {
+    if (Test-InPath 'scw' -ShowLog:$ShowLog) {
+        Invoke-ShellCommand -Command 'scw' -Arguments 'config set send-telemetry=false' -ShowLog:$ShowLog
+    }
+}
+
 # Stripe CLI
 # https://stripe.com/docs/stripe-cli
 
@@ -713,6 +723,16 @@ if ($Env) {
     Set-EnvVar -Name 'PANTS_ANONYMOUS_TELEMETRY_ENABLED' -Value 'false' -ShowLog:$ShowLog
 }
 
+# Microsoft Power Platform CLI
+# https://docs.microsoft.com/en-us/powerapps/developer/data-platform/powerapps-cli
+
+# Usage data
+if ($Exec) {
+    if (Test-InPath 'pac' -ShowLog:$ShowLog) {
+        Invoke-ShellCommand -Command 'pac' -Arguments 'telemetry disable' -ShowLog:$ShowLog
+    }
+}
+
 # Prisma
 # https://www.prisma.io/
 
@@ -915,10 +935,8 @@ if ($Exec) {
 
 # Usage data
 # https://yarnpkg.com/advanced/telemetry
-if ($Exec) {
-    if (Test-InPath 'yarn' -ShowLog:$ShowLog) {
-        Invoke-ShellCommand -Command 'yarn' -Arguments 'config set --home enableTelemetry 0' -ShowLog:$ShowLog
-    }
+if ($Env) {
+    Set-EnvVar -Name 'YARN_ENABLE_TELEMETRY' -Value '0' -ShowLog:$ShowLog
 }
 
 # AutomatedLab
