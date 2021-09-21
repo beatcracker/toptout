@@ -158,7 +158,7 @@ Indicates that this specific telemetry channel is controlled by executing shell 
   "scope": {
     // In this example, executing shell command will configure per-user preference
     "user": {
-      // Path object. Contains environment variable name for various OSes.
+      // Path object. Contains executable name for various OSes.
       // Allowed keys: default, linux, macos, windows
       // If there is no OS-specific key and no default - this OS is not supported.
       "path": {
@@ -189,7 +189,7 @@ Indicates that this specific telemetry channel is controlled by setting the valu
   "scope": {
     // In this example, paths point to the per-user configuration file
     "user": {
-      // Path object. Contains environment variable name for various OSes.
+      // Path object. Contains file path for various OSes.
       // Allowed keys: default, linux, macos, windows
       // If there is no OS-specific key and no default - this OS is not supported.
       "path": {
@@ -228,7 +228,7 @@ Indicates that this specific telemetry channel is controlled by setting the valu
   "scope": {
     // Scope with paths to the machine-wide configuration file
     "machine": {
-      // Path object. Contains environment variable name for various OSes.
+      // Path object. Contains file path for various OSes.
       // Allowed keys: default, linux, macos, windows
       // If there is no OS-specific key and no default - this OS is not supported.
       "path": {
@@ -253,7 +253,7 @@ Indicates that this specific telemetry channel is controlled by setting the valu
     },
     // Scope with paths to the per-user configuration file
     "user": {
-      // Path object. Contains environment variable name for various OSes.
+      // Path object. Contains file path for various OSes.
       // Allowed keys: default, linux, macos, windows
       // If there is no OS-specific key and no default - this OS is not supported.
       "path": {
