@@ -1,0 +1,36 @@
+{
+  "id": "autospinstaller-online",
+  "name": "AutoSPInstaller Online",
+  "category_id": "devops",
+  "category_name": "DevOps",
+  "description": "Telemetry is disabled by default",
+  "links": {
+    "main": "https://github.com/IvanJosipovic/AutoSPInstallerOnline",
+    "privacy": "https://autospinstaller.com/Privacy"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "links": {
+        "main": "https://github.com/IvanJosipovic/AutoSPInstallerOnline/blob/3b4d0e3a7220632a00e36194ce540b8b34e9ed18/AutoSPInstaller.Core/Startup.cs#L36"
+      },
+      "is_official": false,
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "DisableTelemetry"
+              },
+              "value": {
+                "opt_out": "True",
+                "opt_in": "False"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
