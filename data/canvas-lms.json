@@ -1,0 +1,61 @@
+{
+  "id": "canvas-lms",
+  "name": "Canvas LMS",
+  "category_id": "applications",
+  "category_name": "Applications",
+  "description": "The software may collect information about you and your use of the software.",
+  "links": {
+    "main": "https://github.com/instructure/canvas-lms",
+    "privacy": "https://www.instructure.com/canvas/privacy"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data-1",
+      "name": "Usage data | Option #1",
+      "description": "To help our developers better serve you, Instructure would like to collect some usage data about your Canvas installation.",
+      "links": {
+        "main": "https://github.com/instructure/canvas-lms/blob/dc0e7b50e838fcca6f111082293b8faf415aff28/lib/tasks/db_load_data.rake#L154"
+      },
+      "is_official": false,
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "CANVAS_LMS_STATS_COLLECTION"
+              },
+              "value": {
+                "opt_out": "opt_out",
+                "opt_in": "opt_in"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "usage-data-2",
+      "name": "Usage data | Option #2",
+      "description": "Entered data will not be sent to the telemetry service.",
+      "links": {
+        "main": "https://github.com/instructure/canvas-lms/blob/dc0e7b50e838fcca6f111082293b8faf415aff28/lib/tasks/db_load_data.rake#L16"
+      },
+      "is_official": false,
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "TELEMETRY_OPT_IN"
+              },
+              "value": {
+                "opt_out": null,
+                "opt_in": "ANY_VALUE"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
