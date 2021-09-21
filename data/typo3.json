@@ -1,0 +1,61 @@
+{
+  "id": "typo3",
+  "name": "TYPO3",
+  "category_id": "development",
+  "category_name": "Development",
+  "description": "Since TYPO3 CMS 6.2, the Install Tool allows integrators to update the TYPO3 Core with a click of a button.",
+  "links": {
+    "main": "https://github.com/instructure/canvas-lms",
+    "privacy": "https://www.instructure.com/canvas/privacy"
+  },
+  "telemetry": [
+    {
+      "id": "update-check",
+      "name": "Update check",
+      "description": "The Core Updater functionality can be turned off, in order to avoid users using it, i.e. if you use your own update mechanism. This feature is already disabled when TYPO3 is installed via Composer.",
+      "links": {
+        "main": "https://docs.typo3.org/m/typo3/guide-installation/master/en-us/Legacy/Index.html#disabling-the-core-updater"
+      },
+      "is_official": true,
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "TYPO3_DISABLE_CORE_UPDATER"
+              },
+              "value": {
+                "opt_out": "1",
+                "opt_in": null
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "update-check-compat",
+      "name": "Update check (Apache compatibility)",
+      "description": "Using Apache `mod_rewrite` in certain setups makes environment variables from original requests available in the target request as `REDIRECT_<envvar>`.",
+      "links": {
+        "main": "https://forge.typo3.org/issues/53188"
+      },
+      "is_official": true,
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "REDIRECT_TYPO3_DISABLE_CORE_UPDATER"
+              },
+              "value": {
+                "opt_out": "1",
+                "opt_in": null
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
