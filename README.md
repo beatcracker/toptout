@@ -101,11 +101,12 @@ See [CONTRIBUTING](/.github/CONTRIBUTING.md) for details on adding new telemetry
 
 Below is automatically generated list of known telemetry channels for various applications.
 
-Total count: **140**
+Total count: **143**
 
 - [Applications](#applications)
   - [Atom](#atom)
   - [Brave](#brave)
+  - [Canvas LMS](#canvas-lms)
   - [Eternal Terminal](#eternal-terminal)
   - [Firefox](#firefox)
   - [Homebrew](#homebrew)
@@ -202,6 +203,7 @@ Total count: **140**
   - [Stencil](#stencil)
   - [Strapi](#strapi)
   - [Tuist](#tuist)
+  - [TYPO3](#typo3)
   - [vstest](#vstest)
   - [VueDX](#vuedx)
   - [WAPM CLI](#wapm-cli)
@@ -210,6 +212,7 @@ Total count: **140**
   - [Yarn 2](#yarn-2)
 - [DevOps](#devops)
   - [AutomatedLab](#automatedlab)
+  - [AutoSPInstaller Online](#autospinstaller-online)
   - [Batect](#batect)
   - [Chef Automate](#chef-automate)
   - [Chef Workstation](#chef-workstation)
@@ -321,6 +324,46 @@ Use methods described below to opt-out of this telemetry channel.
 1. [Crash reports](https://support.brave.com/hc/en-us/articles/360017905872-How-do-I-enable-or-disable-automatic-crash-reporting-)
 
     > Enable or disable automatic crash reporting
+
+### [Canvas LMS](https://github.com/instructure/canvas-lms)
+
+> The software may collect information about you and your use of the software.
+
+- [Privacy policy](https://www.instructure.com/canvas/privacy)
+
+List of known telemetry channels:
+
+#### [Usage data | Option #1](https://github.com/instructure/canvas-lms/blob/dc0e7b50e838fcca6f111082293b8faf415aff28/lib/tasks/db_load_data.rake#L154)
+
+Official: ❌
+
+> To help our developers better serve you, Instructure would like to collect some usage data about your Canvas installation.
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+CANVAS_LMS_STATS_COLLECTION=opt_out
+```
+
+#### [Usage data | Option #2](https://github.com/instructure/canvas-lms/blob/dc0e7b50e838fcca6f111082293b8faf415aff28/lib/tasks/db_load_data.rake#L16)
+
+Official: ❌
+
+> Entered data will not be sent to the telemetry service.
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+TELEMETRY_OPT_IN=
+```
 
 ### [Eternal Terminal](https://github.com/MisterTea/EternalTerminal)
 
@@ -3176,6 +3219,46 @@ Use methods described below to opt-out of this telemetry channel.
 TUIST_STATS_OPT_OUT=1
 ```
 
+### [TYPO3](https://github.com/instructure/canvas-lms)
+
+> Since TYPO3 CMS 6.2, the Install Tool allows integrators to update the TYPO3 Core with a click of a button.
+
+- [Privacy policy](https://www.instructure.com/canvas/privacy)
+
+List of known telemetry channels:
+
+#### [Update check](https://docs.typo3.org/m/typo3/guide-installation/master/en-us/Legacy/Index.html#disabling-the-core-updater)
+
+Official: ✔
+
+> The Core Updater functionality can be turned off, in order to avoid users using it, i.e. if you use your own update mechanism. This feature is already disabled when TYPO3 is installed via Composer.
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+TYPO3_DISABLE_CORE_UPDATER=1
+```
+
+#### [Update check (Apache compatibility)](https://forge.typo3.org/issues/53188)
+
+Official: ✔
+
+> Using Apache `mod_rewrite` in certain setups makes environment variables from original requests available in the target request as `REDIRECT_<envvar>`.
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+REDIRECT_TYPO3_DISABLE_CORE_UPDATER=1
+```
+
 ### [vstest](https://github.com/microsoft/vstest/)
 
 > Going forward vstest platform will enable collection of rich telemetry data points to helps us and any vstest consuming platform in making the right choices to improve end user experience.
@@ -3402,6 +3485,28 @@ Use methods described below to opt-out of this telemetry channel.
 
 ```none
 AUTOMATEDLAB_TELEMETRY_OPTOUT=1
+```
+
+### [AutoSPInstaller Online](https://github.com/IvanJosipovic/AutoSPInstallerOnline)
+
+> Telemetry is disabled by default
+
+- [Privacy policy](https://autospinstaller.com/Privacy)
+
+List of known telemetry channels:
+
+#### [Usage data](https://github.com/IvanJosipovic/AutoSPInstallerOnline/blob/3b4d0e3a7220632a00e36194ce540b8b34e9ed18/AutoSPInstaller.Core/Startup.cs#L36)
+
+Official: ❌
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+DisableTelemetry=True
 ```
 
 ### [Batect](https://batect.dev/)

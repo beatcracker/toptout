@@ -167,6 +167,24 @@ ________________________________________
 "@ | Write-Host
 }
 
+# Canvas LMS
+# https://github.com/instructure/canvas-lms
+
+# Usage data | Option #1
+# https://github.com/instructure/canvas-lms/blob/dc0e7b50e838fcca6f111082293b8faf415aff28/lib/tasks/db_load_data.rake#L154
+if ($Env) {
+    Set-EnvVar -Name 'CANVAS_LMS_STATS_COLLECTION' -Value 'opt_out' -ShowLog:$ShowLog
+}
+
+# Canvas LMS
+# https://github.com/instructure/canvas-lms
+
+# Usage data | Option #2
+# https://github.com/instructure/canvas-lms/blob/dc0e7b50e838fcca6f111082293b8faf415aff28/lib/tasks/db_load_data.rake#L16
+if ($Env) {
+    Set-EnvVar -Name 'TELEMETRY_OPT_IN' -Value '' -ShowLog:$ShowLog
+}
+
 # Eternal Terminal
 # https://github.com/MisterTea/EternalTerminal
 
@@ -873,6 +891,24 @@ if ($Env) {
     Set-EnvVar -Name 'TUIST_STATS_OPT_OUT' -Value '1' -ShowLog:$ShowLog
 }
 
+# TYPO3
+# https://github.com/instructure/canvas-lms
+
+# Update check
+# https://docs.typo3.org/m/typo3/guide-installation/master/en-us/Legacy/Index.html#disabling-the-core-updater
+if ($Env) {
+    Set-EnvVar -Name 'TYPO3_DISABLE_CORE_UPDATER' -Value '1' -ShowLog:$ShowLog
+}
+
+# TYPO3
+# https://github.com/instructure/canvas-lms
+
+# Update check (Apache compatibility)
+# https://forge.typo3.org/issues/53188
+if ($Env) {
+    Set-EnvVar -Name 'REDIRECT_TYPO3_DISABLE_CORE_UPDATER' -Value '1' -ShowLog:$ShowLog
+}
+
 # vstest
 # https://github.com/microsoft/vstest/
 
@@ -953,6 +989,15 @@ if ($Env) {
 # Usage data (legacy env. var.)
 if ($Env) {
     Set-EnvVar -Name 'AUTOMATEDLAB_TELEMETRY_OPTOUT' -Value '1' -ShowLog:$ShowLog
+}
+
+# AutoSPInstaller Online
+# https://github.com/IvanJosipovic/AutoSPInstallerOnline
+
+# Usage data
+# https://github.com/IvanJosipovic/AutoSPInstallerOnline/blob/3b4d0e3a7220632a00e36194ce540b8b34e9ed18/AutoSPInstaller.Core/Startup.cs#L36
+if ($Env) {
+    Set-EnvVar -Name 'DisableTelemetry' -Value 'True' -ShowLog:$ShowLog
 }
 
 # Batect

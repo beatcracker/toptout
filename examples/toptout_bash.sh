@@ -126,6 +126,20 @@ Current settings:
 ________________________________________
 "
 
+# Canvas LMS
+# https://github.com/instructure/canvas-lms
+
+# Usage data | Option #1
+# https://github.com/instructure/canvas-lms/blob/dc0e7b50e838fcca6f111082293b8faf415aff28/lib/tasks/db_load_data.rake#L154
+[[ "${toptout_env}" == 'True' ]] && set_env 'CANVAS_LMS_STATS_COLLECTION' 'opt_out'
+
+# Canvas LMS
+# https://github.com/instructure/canvas-lms
+
+# Usage data | Option #2
+# https://github.com/instructure/canvas-lms/blob/dc0e7b50e838fcca6f111082293b8faf415aff28/lib/tasks/db_load_data.rake#L16
+[[ "${toptout_env}" == 'True' ]] && set_env 'TELEMETRY_OPT_IN' ''
+
 # Eternal Terminal
 # https://github.com/MisterTea/EternalTerminal
 
@@ -723,6 +737,20 @@ fi
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'TUIST_STATS_OPT_OUT' '1'
 
+# TYPO3
+# https://github.com/instructure/canvas-lms
+
+# Update check
+# https://docs.typo3.org/m/typo3/guide-installation/master/en-us/Legacy/Index.html#disabling-the-core-updater
+[[ "${toptout_env}" == 'True' ]] && set_env 'TYPO3_DISABLE_CORE_UPDATER' '1'
+
+# TYPO3
+# https://github.com/instructure/canvas-lms
+
+# Update check (Apache compatibility)
+# https://forge.typo3.org/issues/53188
+[[ "${toptout_env}" == 'True' ]] && set_env 'REDIRECT_TYPO3_DISABLE_CORE_UPDATER' '1'
+
 # vstest
 # https://github.com/microsoft/vstest/
 
@@ -795,6 +823,13 @@ fi
 
 # Usage data (legacy env. var.)
 [[ "${toptout_env}" == 'True' ]] && set_env 'AUTOMATEDLAB_TELEMETRY_OPTOUT' '1'
+
+# AutoSPInstaller Online
+# https://github.com/IvanJosipovic/AutoSPInstallerOnline
+
+# Usage data
+# https://github.com/IvanJosipovic/AutoSPInstallerOnline/blob/3b4d0e3a7220632a00e36194ce540b8b34e9ed18/AutoSPInstaller.Core/Startup.cs#L36
+[[ "${toptout_env}" == 'True' ]] && set_env 'DisableTelemetry' 'True'
 
 # Batect
 # https://batect.dev/
