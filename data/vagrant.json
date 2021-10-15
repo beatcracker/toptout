@@ -20,7 +20,12 @@
       "links": {
         "main": "https://www.vagrantup.com/docs/other/environmental-variables#vagrant_checkpoint_disable"
       },
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": false,
+        "update_check": true,
+        "error_report": false
+      },
       "target": {
         "env": {
           "scope": {
@@ -44,7 +49,12 @@
       "links": {
         "main": "https://www.vagrantup.com/docs/other/environmental-variables#vagrant_box_update_check_disable"
       },
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": false,
+        "update_check": true,
+        "error_report": false
+      },
       "target": {
         "env": {
           "scope": {

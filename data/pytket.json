@@ -14,7 +14,12 @@
       "id": "diagnostic-data",
       "name": "Diagnostic data",
       "description": "Once a user has opted in to telemetry they will be assigned a telemetry ID by making an HTTP request to a CQC server with some information about their system. The telemetry feature will not collect any Personally Identifiable Information (PII).",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "target": {
         "json_file": {
           "scope": {

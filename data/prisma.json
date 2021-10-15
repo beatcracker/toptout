@@ -20,7 +20,12 @@
       "links": {
         "main": "https://www.prisma.io/docs/concepts/more/telemetry#usage-data"
       },
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "target": {
         "env": {
           "scope": {
@@ -44,7 +49,12 @@
       "links": {
         "main": "https://www.prisma.io/docs/concepts/more/telemetry#error-reporting"
       },
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": false,
+        "update_check": false,
+        "error_report": true
+      },
       "target": {
         "noop": [
           {

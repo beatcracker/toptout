@@ -17,7 +17,12 @@
       "id": "diagnostic-data",
       "name": "Diagnostic data",
       "description": "Configure the level of client software diagnostic data sent by Office to Microsoft.",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "links": {
         "main": "https://docs.microsoft.com/en-us/deployoffice/privacy/overview-privacy-controls#diagnostic-data-sent-from-microsoft-365-apps-for-enterprise-to-microsoftd"
       },

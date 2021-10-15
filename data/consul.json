@@ -20,7 +20,12 @@
       "links": {
         "main": "https://www.consul.io/docs/agent/options#disable_update_check"
       },
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": false,
+        "update_check": true,
+        "error_report": false
+      },
       "target": {
         "env": {
           "scope": {
@@ -59,7 +64,12 @@
       "links": {
         "main": "https://www.consul.io/docs/agent/options#disable_anonymous_signature"
       },
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": false,
+        "update_check": true,
+        "error_report": false
+      },
       "target": {
         "json_file": {
           "scope": {

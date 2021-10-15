@@ -16,7 +16,12 @@
     {
       "id": "usage-data",
       "name": "Usage data",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "description": "The user's decision is stored at core.telemetryConsent. The three possible values are undecided, no and limited. The intent is that consent is given if and only if limited is chosen.",
       "target": {
         "plain_file": {

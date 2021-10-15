@@ -19,7 +19,12 @@
       "links": {
         "main": "https://docs.influxdata.com/influxdb/v2.0/reference/config-options/"
       },
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "target": {
         "env": {
           "scope": {

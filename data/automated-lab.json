@@ -12,7 +12,12 @@
     {
       "id": "usage-data",
       "name": "Usage data",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "target": {
         "env": {
           "scope": {
@@ -46,7 +51,12 @@
     {
       "id": "usage-data-legacy-env",
       "name": "Usage data (legacy env. var.)",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "target": {
         "env": {
           "scope": {

@@ -20,7 +20,12 @@
       "links": {
         "main": "https://strapi.io/documentation/developer-docs/latest/setup-deployment-guides/configurations.html#environment"
       },
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "target": {
         "env": {
           "scope": {
@@ -40,7 +45,12 @@
     {
       "id": "usage-data-project",
       "name": "Usage data (per-project)",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "target": {
         "noop": [
           {
@@ -58,7 +68,12 @@
       "links": {
         "main": "https://strapi.io/documentation/developer-docs/latest/setup-deployment-guides/configurations.html#environment"
       },
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": false,
+        "update_check": true,
+        "error_report": false
+      },
       "target": {
         "env": {
           "scope": {

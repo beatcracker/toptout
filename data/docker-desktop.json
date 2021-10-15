@@ -16,7 +16,12 @@
       "id": "usage-data",
       "name": "Usage data",
       "description": "All app interactions are tracked via [segment.com](https://segment.com/)",
-      "is_official": false,
+      "traits": {
+        "official": false,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "links": {
         "main": "https://github.com/docker/for-mac/issues/2122"
       },
@@ -34,7 +39,12 @@
       "id": "customer-experience-data",
       "name": "Customer experience data",
       "description": "Customer experience is tracked via [www.wootric.com](https://www.wootric.com/)",
-      "is_official": false,
+      "traits": {
+        "official": false,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "links": {
         "main": "https://github.com/docker/for-mac/issues/2122"
       },
@@ -52,7 +62,12 @@
       "id": "crash-data",
       "name": "Crash data",
       "description": "Crash reports are uploaded to the [www.bugsnag.com](https://www.bugsnag.com/)",
-      "is_official": false,
+      "traits": {
+        "official": false,
+        "usage_data": false,
+        "update_check": false,
+        "error_report": true
+      },
       "links": {
         "main": "https://github.com/docker/for-mac/issues/2122"
       },
@@ -70,7 +85,12 @@
       "id": "update-check",
       "name": "Update check",
       "description": "Updates are forced, unless you upgrade to a paid plan",
-      "is_official": false,
+      "traits": {
+        "official": false,
+        "usage_data": false,
+        "update_check": true,
+        "error_report": false
+      },
       "links": {
         "main": "https://docs.docker.com/docker-for-windows/install/#automatic-updates"
       },

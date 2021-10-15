@@ -15,7 +15,12 @@
     {
       "id": "usage-data",
       "name": "Usage data",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "description": "Opt-out of telemetry when using a self-hosted Cloud Pricing API.",
       "links": {
         "main": "https://www.infracost.io/docs/integrations/environment_variables/#infracost_self_hosted_telemetry"
@@ -39,7 +44,12 @@
     {
       "id": "update-check",
       "name": "Update check",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": false,
+        "update_check": true,
+        "error_report": false
+      },
       "description": "Skip the Infracost update check.",
       "links": {
         "main": "https://www.infracost.io/docs/integrations/environment_variables/#infracost_skip_update_check"

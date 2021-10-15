@@ -16,7 +16,12 @@
       "id": "usage-and-crash-data",
       "name": "Usage data and crash reports",
       "description": "We also respect the global telemetry setting [telemetry.enableTelemetry](https://toptout.me/#/?id=vscode); if that is set to false, ServerlessIDE telemetry is disabled.",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": true
+      },
       "target": {
         "json_file": {
           "scope": {

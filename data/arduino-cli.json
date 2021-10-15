@@ -15,7 +15,12 @@
     {
       "id": "internal-metrics",
       "name": "Internal metrics",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": false,
+        "update_check": false,
+        "error_report": false
+      },
       "target": {
         "env": {
           "scope": {

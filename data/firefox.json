@@ -17,7 +17,12 @@
       "id": "enable-policy-macos",
       "name": "Enable policies (macOS)",
       "description": "Enable Firefox policies so the telemetry can be configured.",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": false,
+        "update_check": false,
+        "error_report": false
+      },
       "links": {
         "main": "https://github.com/mozilla/policy-templates/tree/master/mac"
       },
@@ -41,7 +46,12 @@
       "id": "usage-data",
       "name": "Usage data",
       "description": "Examples of the kind of data Telemetry sends to Mozilla includes start-up time, time between cycle collector runs, memory heap used, whether hardware graphics acceleration or Java is enabled, and more.\nTelemetry does not collect any bookmarks or passwords. It may collect anonymized site visit information in some circumstances, such as when a secure browsing connection fails to connect, or for some experiments.",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "links": {
         "main": "https://github.com/mozilla/policy-templates/blob/master/README.md"
       },

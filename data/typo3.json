@@ -16,7 +16,12 @@
       "links": {
         "main": "https://docs.typo3.org/m/typo3/guide-installation/master/en-us/Legacy/Index.html#disabling-the-core-updater"
       },
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": false,
+        "update_check": true,
+        "error_report": false
+      },
       "target": {
         "env": {
           "scope": {
@@ -40,7 +45,12 @@
       "links": {
         "main": "https://forge.typo3.org/issues/53188"
       },
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": false,
+        "update_check": true,
+        "error_report": false
+      },
       "target": {
         "env": {
           "scope": {

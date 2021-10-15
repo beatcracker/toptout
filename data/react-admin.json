@@ -13,7 +13,12 @@
     {
       "id": "domain-stats",
       "name": "Domain stats",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "target": {
         "noop": [
           {

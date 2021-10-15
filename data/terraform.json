@@ -20,7 +20,12 @@
       "links": {
         "main": "https://www.terraform.io/docs/commands/index.html#disable_checkpoint"
       },
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": false,
+        "update_check": true,
+        "error_report": false
+      },
       "target": {
         "env": {
           "scope": {
@@ -61,7 +66,12 @@
       "links": {
         "main": "https://www.terraform.io/docs/commands/index.html#disable_checkpoint_signature"
       },
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": false,
+        "update_check": true,
+        "error_report": false
+      },
       "target": {
         "plain_file": {
           "scope": {

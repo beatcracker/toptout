@@ -16,7 +16,12 @@
       "links": {
         "main": "https://pnp.github.io/powershell/articles/configuration.html#disable-or-enable-telemetry"
       },
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "target": {
         "env": {
           "scope": {
@@ -40,7 +45,12 @@
       "links": {
         "main": "https://pnp.github.io/powershell/cmdlets/Enable-PnPPowerShellTelemetry.html?q=telemetry"
       },
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "target": {
         "exec": {
           "scope": {
@@ -65,7 +75,12 @@
       "links": {
         "main": "https://pnp.github.io/powershell/articles/updatenotifications.html"
       },
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": false,
+        "update_check": true,
+        "error_report": false
+      },
       "target": {
         "env": {
           "scope": {

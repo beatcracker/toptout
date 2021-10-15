@@ -16,7 +16,12 @@
       "id": "diagnostic-data",
       "name": "Diagnostic data",
       "description": "Analyzing GeForce Experience Data Transfers with Packet Monitoring",
-      "is_official": false,
+      "traits": {
+        "official": false,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "links": {
         "main": "https://www.gamersnexus.net/industry/2672-geforce-experience-data-transfer-analysis"
       },

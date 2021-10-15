@@ -19,7 +19,12 @@
       "links": {
         "main": "https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_telemetry"
       },
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "target": {
         "env": {
           "scope": {
@@ -47,7 +52,12 @@
       "id": "update-check",
       "name": "Update check",
       "description": "PowerShell uses update notifications to alert users to the existence of updates to PowerShell. Once per day, PowerShell queries an online service to determine if a newer version is available.",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": false,
+        "update_check": true,
+        "error_report": false
+      },
       "links": {
         "main": "https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_update_notification"
       },

@@ -14,7 +14,12 @@
       "id": "usage-data",
       "name": "Usage data",
       "description": "The telemetry data we collect is reported once per day and contains only aggregate stats like invocation counts and feature usage information. Our telemetry infrastructure is also used to report when important security updates are available.",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "target": {
         "noop": [
           {
@@ -26,10 +31,15 @@
       }
     },
     {
-      "id": "ga",
-      "name": "Google Analytics",
+      "id": "usage-data-google-analytics",
+      "name": "Usage data (Google Analytics(",
       "description": "We also use Google Analytics to collect pseudonymized usage data about how users are using the BuildBuddy product and how well it is performing.",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "target": {
         "noop": [
           {

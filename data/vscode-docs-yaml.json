@@ -16,7 +16,12 @@
     {
       "id": "usage-data",
       "name": "Usage data",
-      "is_official": false,
+      "traits": {
+        "official": false,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "target": {
         "json_file": {
           "scope": {

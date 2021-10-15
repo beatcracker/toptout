@@ -17,7 +17,12 @@
       "id": "usage-data",
       "name": "Usage data",
       "description": "Anonymous, non-identifying usage and error data is sent to the development team.",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "target": {
         "json_file": {
           "scope": {
@@ -42,7 +47,12 @@
       "id": "crash-data",
       "name": "Crash data",
       "description": "Stack traces from errors in the extension are sent to the development team. Those stack traces can contain identifying information, for example filenames.",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": false,
+        "update_check": false,
+        "error_report": true
+      },
       "target": {
         "json_file": {
           "scope": {

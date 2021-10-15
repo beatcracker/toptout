@@ -16,7 +16,12 @@
       "id": "usage-diagnostic-data",
       "name": "Usage and Diagnostic data",
       "description": "The Windows Terminal client respects machine wide privacy settings and users can opt-out on their device, as documented in the Microsoft Windows privacy statement.",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": true
+      },
       "links": {
         "main": "https://support.microsoft.com/en-us/help/4468236/diagnostics-feedback-and-privacy-in-windows-10-microsoft-privacy"
       },

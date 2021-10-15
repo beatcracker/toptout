@@ -14,7 +14,12 @@
       "id": "usage-data",
       "name": "Usage data",
       "description": "Trial users cannot opt out of product telemetry. Licensed users can configure the following environment variable to opt out of product telemetry.",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "links": {
         "main": "https://docs.kpow.io/about/data-collection#how-do-i-opt-out"
       },

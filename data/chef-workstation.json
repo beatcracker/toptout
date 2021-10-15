@@ -16,7 +16,12 @@
     {
       "id": "usage-data",
       "name": "Usage data",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "links": {
         "main": "https://docs.chef.io/workstation/privacy/#opting-out"
       },

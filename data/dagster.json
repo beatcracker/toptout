@@ -15,7 +15,12 @@
     {
       "id": "usage-data-config",
       "name": "Usage data (config file)",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "target": {
         "plain_file": {
           "scope": {
@@ -39,7 +44,12 @@
     {
       "id": "usage-data-env",
       "name": "Usage data (environment variable)",
-      "is_official": false,
+      "traits": {
+        "official": false,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "links": {
         "main": "https://github.com/dagster-io/dagster/blob/master/python_modules/dagit/dagit/telemetry.py"
       },

@@ -16,7 +16,12 @@
     {
       "id": "usage-data",
       "name": "Usage data",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "links": {
         "main": "https://cube.dev/docs/reference/environment-variables#general"
       },
@@ -39,7 +44,12 @@
     {
       "id": "usage-data-project",
       "name": "Usage data (per-project)",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "target": {
         "noop": [
           {

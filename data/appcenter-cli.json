@@ -14,7 +14,12 @@
     {
       "id": "usage-data-exec",
       "name": "Usage data (command)",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "target": {
         "exec": {
           "scope": {
@@ -34,7 +39,12 @@
     {
       "id": "usage-data-env",
       "name": "Usage data (env. var)",
-      "is_official": false,
+      "traits": {
+        "official": false,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "links": {
         "main": "https://github.com/microsoft/appcenter-cli/blob/master/src/util/profile/telemetry.ts"
       },
@@ -57,7 +67,12 @@
     {
       "id": "usage-data-file",
       "name": "Usage data (JSON file)",
-      "is_official": false,
+      "traits": {
+        "official": false,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "description": "Empty JSON file will disable telemetry.",
       "links": {
         "main": "https://github.com/microsoft/appcenter-cli/blob/master/src/util/profile/telemetry.ts"

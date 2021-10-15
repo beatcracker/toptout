@@ -16,7 +16,12 @@
       "id": "usage-data",
       "name": "Usage data",
       "description": "Share usage data with Angular team.",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "links": {
         "main": "https://angular.io/analytics",
         "telemetry": "https://github.com/angular/angular-cli/blob/master/docs/design/analytics.md#disabling-usage-analytics"
@@ -54,7 +59,12 @@
       "id": "usage-data-custom",
       "name": "Usage data (custom)",
       "description": "Gather usage data in your own Google Analytics. This configuration option is separate from and in addition to other usage analytics that your users may be sharing with Google.",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "links": {
         "main": "https://angular.io/cli/usage-analytics-gathering",
         "telemetry": "https://angular.io/cli/usage-analytics-gathering"

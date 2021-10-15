@@ -18,7 +18,12 @@
       "links": {
         "main": "https://support.brave.com/hc/en-us/articles/4403568397837-Brave-Search-FAQ"
       },
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
       "target": {
         "noop": [
           {
@@ -32,7 +37,12 @@
     {
       "id": "crash-data",
       "name": "Crash data",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": false,
+        "update_check": false,
+        "error_report": true
+      },
       "target": {
         "noop": [
           {

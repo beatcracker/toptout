@@ -6,7 +6,7 @@
   ],
   "category_id": "development",
   "category_name": "Development",
-  "description": "If you have not opted-out of Flutter’s analytics and crash reporting, when a flutter command crashes it attempts to send a crash report to Google in order to help Google contribute improvements to Flutter over time.",
+  "description": "If you have not opted-out of Flutter's analytics and crash reporting, when a flutter command crashes it attempts to send a crash report to Google in order to help Google contribute improvements to Flutter over time.",
   "links": {
     "main": "https://flutter.dev/",
     "telemetry": "https://flutter.dev/docs/reference/crash-reporting",
@@ -16,7 +16,12 @@
     {
       "id": "crash-reporting",
       "name": "Crash reporting",
-      "is_official": true,
+      "traits": {
+        "official": true,
+        "usage_data": false,
+        "update_check": false,
+        "error_report": true
+      },
       "target": {
         "exec": {
           "scope": {
