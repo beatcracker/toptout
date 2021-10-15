@@ -51,8 +51,17 @@ Describes a product that has one telemetry channel which is controlled by the en
       "name": "Usage data",
       // Optional description
       "description": "Disable usage data reporting",
-      // Specify, if this channel officially supports opt-in/opt-out
-      "is_official": true,
+      // Describes telemetry channel traits
+      "traits": {
+        // Specify, if this channel officially supports opt-in/opt-out
+        "official": true,
+        // Specify, if this channel provides usage data
+        "usage_data": true,
+        // Specify, if this channel provides update checks
+        "update_check": false,
+        // Specify, if this channel provides error reports
+        "error_report": false
+      },
       // Optional links
       "links": {
         // Link to the specific telemetry channel description. Optional.
