@@ -3,24 +3,24 @@
 .dependencies text eol=lf
 .lock         text eol=lf
 
-.exe binary
-.png binary
+*.exe binary
+*.png binary
 
 # Stuff that really matters
 
-.json text eol=lf
-.md   text eol=lf
-.ps1  text eol=lf
+*.json text eol=lf
+*.md   text eol=lf
+*.ps1  text eol=lf
 
 # Generated
-.html  text eol=lf
-.sh    text eol=lf
+*.html  text eol=lf
+*.sh    text eol=lf
 
 # GitHub
 
-.nojekyll text eol=lf
-.yaml     text eol=lf
-.yml      text eol=lf
+*.nojekyll text eol=lf
+*.yaml     text eol=lf
+*.yml      text eol=lf
 
 # Git
 
