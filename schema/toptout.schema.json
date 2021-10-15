@@ -104,9 +104,8 @@
                     "pattern": "^[\\S]+(\\s+[\\S]+)*$",
                     "description": "Friendly name of the channel. No leading/trailing whitespace allowed. Example: Usage data."
                 },
-                "is_official": {
-                    "type": "boolean",
-                    "description": "Specify, if this channel officially supports opt-in/opt-out."
+                "traits": {
+                    "$ref": "#/definitions/Traits"
                 },
                 "description": {
                     "type": "string",
@@ -123,7 +122,7 @@
             "required": [
                 "id",
                 "name",
-                "is_official"
+                "traits"
             ],
             "title": "Telemetry"
         },
@@ -720,6 +719,36 @@
                 "opt_out"
             ],
             "title": "RichValue"
+        },
+        "Traits": {
+            "type": "object",
+            "description": "Describes telemetry channel traits",
+            "additionalProperties": false,
+            "properties": {
+                "official": {
+                    "type": "boolean",
+                    "description": "Telemetry channel officially supports opt-in/opt-out."
+                },
+                "usage_data": {
+                    "type": "boolean",
+                    "description": "Telemetry channel provides usage data."
+                },
+                "update_check": {
+                    "type": "boolean",
+                    "description": "Telemetry channel provides update checks."
+                },
+                "error_report": {
+                    "type": "boolean",
+                    "description": "Telemetry channel provides error reports."
+                }
+            },
+            "required": [
+                "official",
+                "usage_data",
+                "update_check",
+                "error_report"
+            ],
+            "title": "Traits"
         }
     }
 }
