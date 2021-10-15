@@ -58,7 +58,11 @@ function New-MdTable {
     Param(
         [Parameter(Mandatory = $true, ValueFromPipeline = $true, Position = 0)]
         [ValidateNotNullOrEmpty()]
-        [System.Collections.IDictionary[]]$InputObject
+        [System.Collections.IDictionary[]]$InputObject,
+
+        [switch]$AlignLeft,
+        [switch]$AlignRight,
+        [switch]$AlignCenter
     )
 
     $Items = @($input)
@@ -88,8 +92,24 @@ function New-MdTable {
     }
 
     $tpl -f ($Headers -join '|')
-    $row = ($Headers | ForEach-Object {
-            '---'.PadRight($_.Length, '-')
+    $row = (
+        $Headers | ForEach-Object {
+            $align = '---'.PadRight($_.Length - 2, '-')
+
+            $align = if ($AlignLeft) {
+                ':{0}-' -f $align
+            }
+            elseif ($AlignRight) {
+                '-{0}:' -f $align
+            }
+            elseif ($AlignCenter) {
+                ':{0}:' -f $align
+            }
+            else {
+                '-{0}-' -f $align
+            }
+
+            $align
         }
     ) -join '|'
 
@@ -97,23 +117,21 @@ function New-MdTable {
 
 
     # Generate the rest of the table
-
     foreach ($item in $Items) {
 
         # ItemLenghtMap keeps all keys. Should work for objects with different properties
         $row = foreach ($key in $ItemLenghtMap.get_Keys()) {
 
-            # avoid null
-            $value = if ($null -ne $item.$key) {
-                $item.$key
-            }
-            else {
+            # Avoid null
+            $value = if ($null -eq $item.$key) {
                 [string]::Empty
             }
+            else {
+                $item.$key
+            }
 
-            # wrap in spaces + pad
-            ' ' + $value.PadRight($ItemLenghtMap.$key + 1)
-
+            # Wrap in spaces + pad
+            (' ' + $value).PadRight($ItemLenghtMap.$key + 1)
         }
 
         $tpl -f ($row -join '|')
@@ -160,10 +178,27 @@ filter ConvertTo-Readme {
             '{0} {1}' -f ($hdr * $Indent), $tm.name | Add-Newline
         }
 
-        'Official: {0}' -f ('❌', '✔')[$tm.is_official] | Add-Newline
+        $traits = [ordered]@{
+            official     = 'Official'
+            usage_data   = 'Usage data'
+            update_check = 'Update check'
+            error_report = 'Error report'
+        }
+
+        $traits.Keys | ForEach-Object -Begin {
+            $ret = [ordered]@{}
+            # Keeps PSScriptAnalyzer happy
+            $ret > $null
+        } -Process {
+            $ret.($traits.$_) = ('❌', '✔')[$tm.traits.$_]
+        } -End {
+            $ret
+        } | New-MdTable -AlignCenter
+
+        Add-NewLine
 
         if ($tm.links.telemetry) {
-            '- [Telemetry details]({0})' -f $tm.links.telemetry         | Add-Newline
+            '- [Telemetry details]({0})' -f $tm.links.telemetry | Add-Newline
         }
 
         if ($tm.links.privacy) {
