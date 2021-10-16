@@ -4,10 +4,10 @@ info:
   description: Get data about telemetry channels in various applications
   license:
     name: MIT
-    url: 'https://opensource.org/licenses/MIT'
+    url: https://opensource.org/licenses/MIT
   version: 0.0.1
 servers:
-  - url: 'https://toptout.me/api'
+  - url: https://toptout.me/api
     description: Implements static API using GitHub pages
 tags:
   - name: apps
@@ -60,7 +60,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Toptout'
-  '/telemetry/id/{id}/':
+  /telemetry/id/{id}/:
     get:
       summary: Returns telemetry details for specific application id
       operationId: getTelemetryById
@@ -79,7 +79,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Toptout'
-  '/telemetry/category/{category}/':
+  /telemetry/category/{category}/:
     get:
       summary: Returns telemetry details for applications in specific category
       operationId: getTelemetryByCategory
@@ -104,27 +104,50 @@ components:
   schemas:
     Links:
       type: object
-      description: 'Contains links to the main product page, telemetry and privacy policy.'
+      description: Contains links to the main product page, telemetry and privacy policy.
       additionalProperties: false
       properties:
         main:
           type: string
           format: uri
-          pattern: '^http[s]?:\/\/.+$'
+          pattern: ^http[s]?:\/\/.+$
           description: Link to the product's website. Mandatory.
         telemetry:
           type: string
           format: uri
-          pattern: '^http[s]?:\/\/.+$'
+          pattern: ^http[s]?:\/\/.+$
           description: Link to the product's general telemetry description. Optional.
         privacy:
           type: string
           format: uri
-          pattern: '^http[s]?:\/\/.+$'
+          pattern: ^http[s]?:\/\/.+$
           description: Link to the product's privacy policy. Optional.
       required:
         - main
       title: Links
+    Traits:
+      type: object
+      description: Describes telemetry channel traits
+      additionalProperties: false
+      properties:
+        official:
+          type: boolean
+          description: Telemetry channel officially supports opt-in/opt-out.
+        usage_data:
+          type: boolean
+          description: Telemetry channel provides usage data.
+        update_check:
+          type: boolean
+          description: Telemetry channel provides update checks.
+        error_report:
+          type: boolean
+          description: Telemetry channel provides error reports.
+      required:
+        - official
+        - usage_data
+        - update_check
+        - error_report
+      title: Traits
     Path:
       type: object
       description: >-
@@ -143,7 +166,7 @@ components:
           description: This path should be used on Windows.
         default:
           type: string
-          description: 'if no OS-specific path is specified, this one should be used.'
+          description: if no OS-specific path is specified, this one should be used.
       anyOf:
         - required:
             - default
@@ -273,7 +296,7 @@ components:
       title: Env
     PlainFileProperties:
       type: object
-      description: 'Describes file path, selector for target property and values.'
+      description: Describes file path, selector for target property and values.
       additionalProperties: false
       properties:
         path:
@@ -353,7 +376,7 @@ components:
       title: RichValue
     JSONFileProperties:
       type: object
-      description: 'Describes file path, selector for target property and values.'
+      description: Describes file path, selector for target property and values.
       additionalProperties: false
       properties:
         path:
@@ -490,16 +513,16 @@ components:
       properties:
         name:
           type: string
-          pattern: '^[\S]+(\s+[\S]+)*$'
+          pattern: ^[\S]+(\s+[\S]+)*$
           description: Friendly name. No leading/trailing whitespace allowed.
         link:
           type: string
           format: uri
-          pattern: '^http[s]?:\/\/.+$'
+          pattern: ^http[s]?:\/\/.+$
           description: 'Link to website. Example: https://example.com.'
         description:
           type: string
-          pattern: '^[\S]+(\s+[\S]+)*$'
+          pattern: ^[\S]+(\s+[\S]+)*$
           description: Friendly description. No leading/trailing whitespace allowed.
       required:
         - description
@@ -544,27 +567,26 @@ components:
       title: Target
     Telemetry:
       type: object
-      description: 'Describes single telemetry channel (version check, analytics, etc..).'
+      description: Describes single telemetry channel (version check, analytics, etc..).
       additionalProperties: false
       properties:
         id:
           type: string
-          pattern: '^[a-z0-9-]+$'
+          pattern: ^[a-z0-9-]+$
           description: >-
             Telemetry channel unique ID. Use [a-z0-9-] character set. Must be
             unique in this array. Example: usage-data.
         name:
           type: string
-          pattern: '^[\S]+(\s+[\S]+)*$'
+          pattern: ^[\S]+(\s+[\S]+)*$
           description: >-
             Friendly name of the channel. No leading/trailing whitespace
             allowed. Example: Usage data.
-        is_official:
-          type: boolean
-          description: 'Specify, if this channel officially supports opt-in/opt-out.'
+        traits:
+          $ref: '#/components/schemas/Traits'
         description:
           type: string
-          pattern: '^[\S]+(\s+[\S]+)*$'
+          pattern: ^[\S]+(\s+[\S]+)*$
           description: 'Optional description. Example: Disable usage data reporting.'
         links:
           $ref: '#/components/schemas/Links'
@@ -573,7 +595,7 @@ components:
       required:
         - id
         - name
-        - is_official
+        - traits
       title: Telemetry
     Toptout:
       type: object
@@ -581,13 +603,13 @@ components:
       properties:
         id:
           type: string
-          pattern: '^[a-z0-9-]+$'
+          pattern: ^[a-z0-9-]+$
           description: >-
             Product unique ID. Use [a-z0-9-] character set. Must be unique
             across all files. Example: foo-bar.
         name:
           type: string
-          pattern: '^[\S]+(\s+[\S]+)*$'
+          pattern: ^[\S]+(\s+[\S]+)*$
           description: >-
             Friendly name of the product. No leading/trailing whitespace
             allowed. Example: Foo Bar.
@@ -599,22 +621,22 @@ components:
             whitespace allowed.
           items:
             type: string
-            pattern: '^[\S]+(\s+[\S]+)*$'
+            pattern: ^[\S]+(\s+[\S]+)*$
         description:
           type: string
-          pattern: '^[\S]+(\s+[\S]+)*$'
+          pattern: ^[\S]+(\s+[\S]+)*$
           description: >-
             Short description of the collected telemetry. Usually copied from
             the product's documentation. No leading/trailing whitespace allowed.
         category_id:
           type: string
-          pattern: '^[a-z0-9-]+$'
+          pattern: ^[a-z0-9-]+$
           description: >-
             Unique category id. Use [a-z0-9-] character set. The API generator
             uses it to group products. Example: development.
         category_name:
           type: string
-          pattern: '^[\S]+(\s+[\S]+)*$'
+          pattern: ^[\S]+(\s+[\S]+)*$
           description: >-
             Friendly category name. The README generator uses it to group
             products. No leading/trailing whitespace allowed. Example:

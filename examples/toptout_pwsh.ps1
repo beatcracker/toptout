@@ -170,7 +170,7 @@ ________________________________________
 # Canvas LMS
 # https://github.com/instructure/canvas-lms
 
-# Usage data | Option #1
+# Usage data | Official
 # https://github.com/instructure/canvas-lms/blob/dc0e7b50e838fcca6f111082293b8faf415aff28/lib/tasks/db_load_data.rake#L154
 if ($Env) {
     Set-EnvVar -Name 'CANVAS_LMS_STATS_COLLECTION' -Value 'opt_out' -ShowLog:$ShowLog
@@ -179,7 +179,7 @@ if ($Env) {
 # Canvas LMS
 # https://github.com/instructure/canvas-lms
 
-# Usage data | Option #2
+# Usage data | Unofficial
 # https://github.com/instructure/canvas-lms/blob/dc0e7b50e838fcca6f111082293b8faf415aff28/lib/tasks/db_load_data.rake#L16
 if ($Env) {
     Set-EnvVar -Name 'TELEMETRY_OPT_IN' -Value '' -ShowLog:$ShowLog
@@ -357,7 +357,7 @@ if ($Env) {
 # https://mattermost.com/
 
 # Diagnostic data
-# https://docs.mattermost.com/administration/telemetry.html#error-and-diagnostics-reporting-feature
+# https://docs.mattermost.com/manage/telemetry.html#error-and-diagnostics-reporting-feature
 if ($Env) {
     Set-EnvVar -Name 'MM_LOGSETTINGS_ENABLEDIAGNOSTICS' -Value 'false' -ShowLog:$ShowLog
 }
@@ -366,7 +366,7 @@ if ($Env) {
 # https://mattermost.com/
 
 # Security Update Check
-# https://docs.mattermost.com/administration/telemetry.html#security-update-check-feature
+# https://docs.mattermost.com/manage/telemetry.html#security-update-check-feature
 if ($Env) {
     Set-EnvVar -Name 'MM_SERVICESETTINGS_ENABLESECURITYFIXALERT' -Value 'false' -ShowLog:$ShowLog
 }

@@ -271,7 +271,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 > The user's decision is stored at core.telemetryConsent. The three possible values are undecided, no and limited. The intent is that consent is given if and only if limited is chosen.
 
@@ -282,7 +284,7 @@ Use methods described below to opt-out of this telemetry channel.
 ###### Scope: 👤 User
 
 | OS      | Path                              |
-|---------|-----------------------------------|
+| ------- | --------------------------------- |
 | Linux   | `$HOME/.atom/init.coffee`         |
 | macOS   | `$HOME/.atom/init.coffee`         |
 | Windows | `%USERPROFILE%\.atom\init.coffee` |
@@ -303,7 +305,9 @@ List of known telemetry channels:
 
 #### [Usage data](https://support.brave.com/hc/en-us/articles/4403568397837-Brave-Search-FAQ)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -315,7 +319,9 @@ Use methods described below to opt-out of this telemetry channel.
 
 #### Crash data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ❌            | ✔            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -333,9 +339,11 @@ Use methods described below to opt-out of this telemetry channel.
 
 List of known telemetry channels:
 
-#### [Usage data | Option #1](https://github.com/instructure/canvas-lms/blob/dc0e7b50e838fcca6f111082293b8faf415aff28/lib/tasks/db_load_data.rake#L154)
+#### [Usage data | Official](https://github.com/instructure/canvas-lms/blob/dc0e7b50e838fcca6f111082293b8faf415aff28/lib/tasks/db_load_data.rake#L154)
 
-Official: ❌
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ✔          | ❌            | ❌            |
 
 > To help our developers better serve you, Instructure would like to collect some usage data about your Canvas installation.
 
@@ -349,9 +357,11 @@ Use methods described below to opt-out of this telemetry channel.
 CANVAS_LMS_STATS_COLLECTION=opt_out
 ```
 
-#### [Usage data | Option #2](https://github.com/instructure/canvas-lms/blob/dc0e7b50e838fcca6f111082293b8faf415aff28/lib/tasks/db_load_data.rake#L16)
+#### [Usage data | Unofficial](https://github.com/instructure/canvas-lms/blob/dc0e7b50e838fcca6f111082293b8faf415aff28/lib/tasks/db_load_data.rake#L16)
 
-Official: ❌
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ✔          | ❌            | ❌            |
 
 > Entered data will not be sent to the telemetry service.
 
@@ -376,7 +386,9 @@ List of known telemetry channels:
 
 #### Crash data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ❌            | ✔            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -399,7 +411,9 @@ List of known telemetry channels:
 
 #### [Enable policies (macOS)](https://github.com/mozilla/policy-templates/tree/master/mac)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ❌            | ❌            |
 
 > Enable Firefox policies so the telemetry can be configured.
 
@@ -410,12 +424,14 @@ Use methods described below to opt-out of this telemetry channel.
 ###### Scope: 💻 Machine
 
 | OS    | Command                                                                                        |
-|-------|------------------------------------------------------------------------------------------------|
+| ----- | ---------------------------------------------------------------------------------------------- |
 | macOS | `defaults write /Library/Preferences/org.mozilla.firefox EnterprisePoliciesEnabled -bool TRUE` |
 
 #### [Usage data](https://github.com/mozilla/policy-templates/blob/master/README.md)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 > Examples of the kind of data Telemetry sends to Mozilla includes start-up time, time between cycle collector runs, memory heap used, whether hardware graphics acceleration or Java is enabled, and more.
 Telemetry does not collect any bookmarks or passwords. It may collect anonymized site visit information in some circumstances, such as when a secure browsing connection fails to connect, or for some experiments.
@@ -427,7 +443,7 @@ Use methods described below to opt-out of this telemetry channel.
 ###### Scope: 💻 Machine
 
 | OS    | Command                                                                               |
-|-------|---------------------------------------------------------------------------------------|
+| ----- | ------------------------------------------------------------------------------------- |
 | macOS | `defaults write /Library/Preferences/org.mozilla.firefox DisableTelemetry -bool TRUE` |
 
 ##### 2. Edit config file (JSON)
@@ -435,7 +451,7 @@ Use methods described below to opt-out of this telemetry channel.
 ###### Scope: 💻 Machine
 
 | OS      | Path                                                                      |
-|---------|---------------------------------------------------------------------------|
+| ------- | ------------------------------------------------------------------------- |
 | Linux   | `distribution/policies.json`                                              |
 | macOS   | `/Applications/Firefox.app/Contents/Resources/distribution/policies.json` |
 | Windows | `distribution\policies.json`                                              |
@@ -475,7 +491,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -506,7 +524,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -527,7 +547,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -544,7 +566,7 @@ LYNX_ANALYTICS=0
 ###### Scope: 👤 User
 
 | OS    | Path               |
-|-------|--------------------|
+| ----- | ------------------ |
 | Linux | `/etc/LYNX.config` |
 
 ###### Content
@@ -568,7 +590,9 @@ List of known telemetry channels:
 
 #### [Diagnostic data](https://docs.microsoft.com/en-us/deployoffice/privacy/overview-privacy-controls#diagnostic-data-sent-from-microsoft-365-apps-for-enterprise-to-microsoftd)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 > Configure the level of client software diagnostic data sent by Office to Microsoft.
 
@@ -579,7 +603,7 @@ Use methods described below to opt-out of this telemetry channel.
 ###### Scope: 💻 Machine
 
 | OS    | Command                                                                                       |
-|-------|-----------------------------------------------------------------------------------------------|
+| ----- | --------------------------------------------------------------------------------------------- |
 | macOS | `defaults write com.microsoft.office DiagnosticDataTypePreference -string ZeroDiagnosticData` |
 
 ##### 2. Set registry key
@@ -601,7 +625,9 @@ List of known telemetry channels:
 
 #### Diagnostic data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 > Diagnostic data is disabled in development builds by default, and can be enabled with the SEND_DIAGNOSTICS build flag.
 
@@ -616,7 +642,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -639,7 +667,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -660,7 +690,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 > VS Code collects usage data that helps to debug issues, such as slow start-up times, and to prioritize new features.
 
@@ -671,7 +703,7 @@ Use methods described below to opt-out of this telemetry channel.
 ###### Scope: 👤 User
 
 | OS      | Path                                                        |
-|---------|-------------------------------------------------------------|
+| ------- | ----------------------------------------------------------- |
 | Linux   | `$HOME/.config/Code/User/settings.json`                     |
 | macOS   | `$HOME/Library/Application Support/Code/User/settings.json` |
 | Windows | `%APPDATA%\Code\User\settings.json`                         |
@@ -686,7 +718,9 @@ Use methods described below to opt-out of this telemetry channel.
 
 #### Crash data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ❌            | ✔            |
 
 > VS Code collects data about any crashes that occur and sends it to Microsoft to help improve our products and services.
 
@@ -697,7 +731,7 @@ Use methods described below to opt-out of this telemetry channel.
 ###### Scope: 👤 User
 
 | OS      | Path                                                        |
-|---------|-------------------------------------------------------------|
+| ------- | ----------------------------------------------------------- |
 | Linux   | `$HOME/.config/Code/User/settings.json`                     |
 | macOS   | `$HOME/Library/Application Support/Code/User/settings.json` |
 | Windows | `%APPDATA%\Code\User\settings.json`                         |
@@ -721,7 +755,9 @@ List of known telemetry channels:
 
 #### [Usage and Diagnostic data](https://support.microsoft.com/en-us/help/4468236/diagnostics-feedback-and-privacy-in-windows-10-microsoft-privacy)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ✔            |
 
 > The Windows Terminal client respects machine wide privacy settings and users can opt-out on their device, as documented in the Microsoft Windows privacy statement.
 
@@ -752,7 +788,9 @@ List of known telemetry channels:
 
 #### [Usage and Diagnostic data](https://support.microsoft.com/en-us/help/4468236/diagnostics-feedback-and-privacy-in-windows-10-microsoft-privacy)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ✔            |
 
 > The winget.exe client respects machine wide privacy settings and users can opt-out on their device, as documented in the Microsoft Windows privacy statement.
 
@@ -785,7 +823,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -808,7 +848,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -831,7 +873,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -862,7 +906,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -892,7 +938,9 @@ List of known telemetry channels:
 
 #### [Usage data](https://github.com/hookdeck/hookdeck-cli/blob/8c2e18bfd5d413e1d2418c5a73d56791b3bfb513/pkg/hookdeck/client.go#L56-L61)
 
-Official: ❌
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -915,7 +963,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -948,7 +998,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -965,7 +1017,7 @@ netlify --telemetry-disable
 ###### Scope: 👤 User
 
 | OS      | Path                                 |
-|---------|--------------------------------------|
+| ------- | ------------------------------------ |
 | Linux   | `$HOME/.netlify/config.json`         |
 | macOS   | `$HOME/.netlify/config.json`         |
 | Windows | `%USERPROFILE%\.netlify\config.json` |
@@ -989,7 +1041,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1012,7 +1066,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1035,7 +1091,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1053,14 +1111,16 @@ DO_NOT_TRACK=1
 
 > As described in the privacy policy in each Mattermost server, telemetry data optionally shared from your Mattermost servers is used to identify security and reliability issues, to analyze and fix software problems, to help improve the quality of Mattermost software and related services, and to make design decisions for future releases.
 
-- [Telemetry details](https://docs.mattermost.com/administration/telemetry.html)
+- [Telemetry details](https://docs.mattermost.com/manage/telemetry.html)
 - [Privacy policy](https://about.mattermost.com/default-privacy-policy/)
 
 List of known telemetry channels:
 
-#### [Diagnostic data](https://docs.mattermost.com/administration/telemetry.html#error-and-diagnostics-reporting-feature)
+#### [Diagnostic data](https://docs.mattermost.com/manage/telemetry.html#error-and-diagnostics-reporting-feature)
 
-Official: ❌
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ❌          | ❌            | ✔            |
 
 - [Telemetry details](https://github.com/mattermost/mattermost-server/issues/9466)
 
@@ -1074,9 +1134,11 @@ Use methods described below to opt-out of this telemetry channel.
 MM_LOGSETTINGS_ENABLEDIAGNOSTICS=false
 ```
 
-#### [Security Update Check](https://docs.mattermost.com/administration/telemetry.html#security-update-check-feature)
+#### [Security Update Check](https://docs.mattermost.com/manage/telemetry.html#security-update-check-feature)
 
-Official: ❌
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ❌          | ✔            | ❌            |
 
 - [Telemetry details](https://github.com/mattermost/mattermost-server/issues/9466)
 
@@ -1103,7 +1165,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1139,7 +1203,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1162,7 +1228,9 @@ List of known telemetry channels:
 
 #### [Usage data](https://docs.influxdata.com/influxdb/v2.0/reference/config-options/)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1185,7 +1253,7 @@ INFLUXD_REPORTING_DISABLED=true
 ###### Scope: 👤 User
 
 | OS      | Path                                |
-|---------|-------------------------------------|
+| ------- | ----------------------------------- |
 | Linux   | `$INFLUXD_CONFIG_PATH/config.yaml`  |
 | macOS   | `$INFLUXD_CONFIG_PATH/config.yaml`  |
 | Windows | `%INFLUXD_CONFIG_PATH%\config.yaml` |
@@ -1208,7 +1276,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1232,7 +1302,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1265,7 +1337,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1296,7 +1370,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1313,7 +1389,7 @@ psql -c "ALTER SYSTEM SET timescaledb.telemetry_level=off"
 ###### Scope: 👤 User
 
 | OS      | Path                                                                       |
-|---------|----------------------------------------------------------------------------|
+| ------- | -------------------------------------------------------------------------- |
 | Linux   | `/usr/local/var/postgres/postgresql.conf`                                  |
 | macOS   | `./Library/PostgreSQL/{postgres_version}/share/postgresql/postgresql.conf` |
 | Windows | `%ProgramFiles%\PostgreSQL\{postgres_version}\postgresql.conf`             |
@@ -1337,7 +1413,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1368,7 +1446,9 @@ List of known telemetry channels:
 
 #### [Usage data](https://angular.io/analytics)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 - [Telemetry details](https://github.com/angular/angular-cli/blob/master/docs/design/analytics.md#disabling-usage-analytics)
 
@@ -1394,7 +1474,9 @@ ng analytics off
 
 #### [Usage data (custom)](https://angular.io/cli/usage-analytics-gathering)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 - [Telemetry details](https://angular.io/cli/usage-analytics-gathering)
 
@@ -1423,7 +1505,7 @@ ng config --global --remove cli.analyticsSharing
 ###### Scope: 👤 User
 
 | OS      | Path                                 |
-|---------|--------------------------------------|
+| ------- | ------------------------------------ |
 | Linux   | `$HOME/.angular-config.json`         |
 | macOS   | `$HOME/.angular-config.json`         |
 | Windows | `%USERPROFILE%\.angular-config.json` |
@@ -1449,7 +1531,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1479,7 +1563,9 @@ List of known telemetry channels:
 
 #### Usage data (command)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1493,7 +1579,9 @@ appcenter telemetry off
 
 #### [Usage data (env. var)](https://github.com/microsoft/appcenter-cli/blob/master/src/util/profile/telemetry.ts)
 
-Official: ❌
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1507,7 +1595,9 @@ MOBILE_CENTER_TELEMETRY=off
 
 #### [Usage data (JSON file)](https://github.com/microsoft/appcenter-cli/blob/master/src/util/profile/telemetry.ts)
 
-Official: ❌
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ✔          | ❌            | ❌            |
 
 > Empty JSON file will disable telemetry.
 
@@ -1518,7 +1608,7 @@ Use methods described below to opt-out of this telemetry channel.
 ###### Scope: 👤 User
 
 | OS      | Path                                                 |
-|---------|------------------------------------------------------|
+| ------- | ---------------------------------------------------- |
 | Linux   | `$HOME/.appcenter-cli/telemetryEnabled.json`         |
 | macOS   | `$HOME/.appcenter-cli/telemetryEnabled.json`         |
 | Windows | `%USERPROFILE%\.appcenter-cli\telemetryEnabled.json` |
@@ -1540,7 +1630,9 @@ List of known telemetry channels:
 
 #### Internal metrics
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1569,7 +1661,9 @@ List of known telemetry channels:
 
 #### [Usage data](https://github.com/microsoft/botframework-cli/tree/main/packages/cli#bf-configsettelemetry)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1600,7 +1694,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 > The telemetry data we collect is reported once per day and contains only aggregate stats like invocation counts and feature usage information. Our telemetry infrastructure is also used to report when important security updates are available.
 
@@ -1612,9 +1708,11 @@ Use methods described below to opt-out of this telemetry channel.
 
     > Provide `---disable_telemetry=true` flag.
 
-#### Google Analytics
+#### Usage data (Google Analytics(
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 > We also use Google Analytics to collect pseudonymized usage data about how users are using the BuildBuddy product and how well it is performing.
 
@@ -1637,7 +1735,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1660,7 +1760,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1683,7 +1785,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1706,7 +1810,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ❌
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1727,7 +1833,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1758,7 +1866,9 @@ List of known telemetry channels:
 
 #### [Usage data](https://cube.dev/docs/reference/environment-variables#general)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1772,7 +1882,9 @@ CUBEJS_TELEMETRY=false
 
 #### Usage data (per-project)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1793,7 +1905,9 @@ List of known telemetry channels:
 
 #### Usage data (config file)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1802,7 +1916,7 @@ Use methods described below to opt-out of this telemetry channel.
 ###### Scope: 👤 User
 
 | OS      | Path                          |
-|---------|-------------------------------|
+| ------- | ----------------------------- |
 | Linux   | `$DAGSTER_HOME/dagster.yaml`  |
 | macOS   | `$DAGSTER_HOME/dagster.yaml`  |
 | Windows | `%DAGSTER_HOME%\dagster.yaml` |
@@ -1816,7 +1930,9 @@ telemetry:
 
 #### [Usage data (environment variable)](https://github.com/dagster-io/dagster/blob/master/python_modules/dagit/dagit/telemetry.py)
 
-Official: ❌
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1838,7 +1954,9 @@ List of known telemetry channels:
 
 #### [Usage data](https://github.com/docker/for-mac/issues/2122)
 
-Official: ❌
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ✔          | ❌            | ❌            |
 
 > All app interactions are tracked via [segment.com](https://segment.com/)
 
@@ -1855,7 +1973,9 @@ Use methods described below to opt-out of this telemetry channel.
 
 #### [Customer experience data](https://github.com/docker/for-mac/issues/2122)
 
-Official: ❌
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ✔          | ❌            | ❌            |
 
 > Customer experience is tracked via [www.wootric.com](https://www.wootric.com/)
 
@@ -1872,7 +1992,9 @@ Use methods described below to opt-out of this telemetry channel.
 
 #### [Crash data](https://github.com/docker/for-mac/issues/2122)
 
-Official: ❌
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ❌          | ❌            | ✔            |
 
 > Crash reports are uploaded to the [www.bugsnag.com](https://www.bugsnag.com/)
 
@@ -1890,7 +2012,9 @@ Use methods described below to opt-out of this telemetry channel.
 
 #### [Update check](https://docs.docker.com/docker-for-windows/install/#automatic-updates)
 
-Official: ❌
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ❌          | ✔            | ❌            |
 
 > Updates are forced, unless you upgrade to a paid plan
 
@@ -1920,7 +2044,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1943,7 +2069,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1966,7 +2094,9 @@ List of known telemetry channels:
 
 #### Usage Analytics
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -1995,7 +2125,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2004,7 +2136,7 @@ Use methods described below to opt-out of this telemetry channel.
 ###### Scope: 👤 User
 
 | OS      | Path                       |
-|---------|----------------------------|
+| ------- | -------------------------- |
 | Linux   | `$HOME/.ember-cli`         |
 | macOS   | `$HOME/.ember-cli`         |
 | Windows | `%USERPROFILE%\.ember-cli` |
@@ -2034,7 +2166,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2063,7 +2197,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2077,7 +2213,7 @@ TELEMETRY_DISABLED=ANY_VALUE
 
 ### [Flutter](https://flutter.dev/)
 
-> If you have not opted-out of Flutter’s analytics and crash reporting, when a flutter command crashes it attempts to send a crash report to Google in order to help Google contribute improvements to Flutter over time.
+> If you have not opted-out of Flutter's analytics and crash reporting, when a flutter command crashes it attempts to send a crash report to Google in order to help Google contribute improvements to Flutter over time.
 
 - [Telemetry details](https://flutter.dev/docs/reference/crash-reporting)
 - [Privacy policy](https://policies.google.com/privacy)
@@ -2086,7 +2222,9 @@ List of known telemetry channels:
 
 #### Crash reporting
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ❌            | ✔            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2109,7 +2247,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2140,7 +2280,9 @@ List of known telemetry channels:
 
 #### Usage data (CLI and Console)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 > The CLI collects each execution event, along with a randomly generated UUID. The execution event contains the command name, timestamp and whether the execution resulted in an error or not. Error messages, arguments and flags are not recorded. The CLI also collects the server version and UUID that it is talking to. The operating system platform and architecture is also noted along with the CLI version.
 
@@ -2159,7 +2301,7 @@ HASURA_GRAPHQL_ENABLE_TELEMETRY=false
 ###### Scope: 👤 User
 
 | OS      | Path                                |
-|---------|-------------------------------------|
+| ------- | ----------------------------------- |
 | Linux   | `$HOME/.hasura/config.json`         |
 | macOS   | `$HOME/.hasura/config.json`         |
 | Windows | `%USERPROFILE%\.hasura\config.json` |
@@ -2182,7 +2324,9 @@ List of known telemetry channels:
 
 #### [Usage data](https://github.com/bugout-dev/humbug/issues/13)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 > For people who want to opt out of any Humbug reporting across any tool with a single setting.
 
@@ -2207,7 +2351,9 @@ List of known telemetry channels:
 
 #### [Usage data](https://help.accusoft.com/ImageGear/v18.8/Linux/Installation.html)
 
-Official: ❌
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ✔          | ❌            | ❌            |
 
 > ImageGear for C and C++
 
@@ -2218,7 +2364,7 @@ Use methods described below to opt-out of this telemetry channel.
 ###### Scope: ⧉ Process
 
 | OS    | Variable Name    |
-|-------|------------------|
+| ----- | ---------------- |
 | Linux | `IG_PRO_OPT_OUT` |
 Value: `YES`
 
@@ -2233,7 +2379,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2256,7 +2404,9 @@ List of known telemetry channels:
 
 #### [Usage data](https://twitter.com/Bjorn_W/status/1417492807154085889)
 
-Official: ❌
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2280,7 +2430,9 @@ List of known telemetry channels:
 
 #### Usage data and crash reports
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2303,7 +2455,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2326,7 +2480,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2349,7 +2505,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2372,7 +2530,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2403,7 +2563,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2426,7 +2588,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2457,7 +2621,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ❌
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2480,7 +2646,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ❌
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2516,7 +2684,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2539,7 +2709,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2562,7 +2734,9 @@ List of known telemetry channels:
 
 #### [Usage data](https://www.pantsbuild.org/docs/reference-anonymous-telemetry)
 
-Official: ❌
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2599,7 +2773,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2622,7 +2798,9 @@ List of known telemetry channels:
 
 #### [Usage data](https://www.prisma.io/docs/concepts/more/telemetry#usage-data)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 > Invocations of the prisma CLI and general usage of Studio results in data being sent to the telemetry server at https://checkpoint.prisma.io.
 
@@ -2638,7 +2816,9 @@ CHECKPOINT_DISABLE=1
 
 #### [Error reporting](https://www.prisma.io/docs/concepts/more/telemetry#error-reporting)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ❌            | ✔            |
 
 > Before an error report is submitted, there will always be a prompt asking you to confirm or deny the submission of the error report!
 
@@ -2661,7 +2841,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2684,7 +2866,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2701,7 +2885,7 @@ PROSE_TELEMETRY_OPTOUT=ANY_VALUE
 ###### Scope: 👤 User
 
 | OS      | Path                                      |
-|---------|-------------------------------------------|
+| ------- | ----------------------------------------- |
 | Linux   | `$HOME/.config/prose/config.json`         |
 | macOS   | `$HOME/.config/prose/config.json`         |
 | Windows | `%USERPROFILE%\.config\prose\config.json` |
@@ -2725,7 +2909,9 @@ List of known telemetry channels:
 
 #### Diagnostic data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 > Once a user has opted in to telemetry they will be assigned a telemetry ID by making an HTTP request to a CQC server with some information about their system. The telemetry feature will not collect any Personally Identifiable Information (PII).
 
@@ -2736,7 +2922,7 @@ Use methods described below to opt-out of this telemetry channel.
 ###### Scope: 👤 User
 
 | OS      | Path                                       |
-|---------|--------------------------------------------|
+| ------- | ------------------------------------------ |
 | Linux   | `$HOME/.config/pytket/config.json`         |
 | macOS   | `$HOME/.config/pytket/config.json`         |
 | Windows | `%USERPROFILE%\.config\pytket\config.json` |
@@ -2760,7 +2946,9 @@ List of known telemetry channels:
 
 #### [Usage data](https://github.com/microsoft/rest-api-fuzz-testing/blob/main/docs/how-to-deploy.md#telemetry)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2781,7 +2969,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2812,7 +3002,9 @@ List of known telemetry channels:
 
 #### Domain stats
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2843,7 +3035,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2868,7 +3062,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2891,7 +3087,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2914,7 +3112,9 @@ List of known telemetry channels:
 
 #### [Usage data](https://github.com/microsoft/restler-fuzzer/blob/main/docs/user-guide/Telemetry.md)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2937,7 +3137,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2960,7 +3162,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -2983,7 +3187,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3006,7 +3212,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3023,7 +3231,7 @@ SALTO_TELEMETRY_DISABLE=1
 ###### Scope: 👤 User
 
 | OS      | Path                                            |
-|---------|-------------------------------------------------|
+| ------- | ----------------------------------------------- |
 | Linux   | `$HOME/.salto/salto.config/config.nacl`         |
 | macOS   | `$HOME/.salto/salto.config/config.nacl`         |
 | Windows | `%USERPROFILE%\.salto\salto.config\config.nacl` |
@@ -3046,7 +3254,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3077,7 +3287,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3108,7 +3320,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3131,7 +3345,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3154,7 +3370,9 @@ List of known telemetry channels:
 
 #### [Usage data](https://strapi.io/documentation/developer-docs/latest/setup-deployment-guides/configurations.html#environment)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 > Don't send telemetry usage data to Strapi.
 
@@ -3170,7 +3388,9 @@ STRAPI_TELEMETRY_DISABLED=true
 
 #### Usage data (per-project)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3182,7 +3402,9 @@ Use methods described below to opt-out of this telemetry channel.
 
 #### [Update check](https://strapi.io/documentation/developer-docs/latest/setup-deployment-guides/configurations.html#environment)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ✔            | ❌            |
 
 > Don't show the notification message about updating strapi in the terminal.
 
@@ -3207,7 +3429,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3229,7 +3453,9 @@ List of known telemetry channels:
 
 #### [Update check](https://docs.typo3.org/m/typo3/guide-installation/master/en-us/Legacy/Index.html#disabling-the-core-updater)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ✔            | ❌            |
 
 > The Core Updater functionality can be turned off, in order to avoid users using it, i.e. if you use your own update mechanism. This feature is already disabled when TYPO3 is installed via Composer.
 
@@ -3245,7 +3471,9 @@ TYPO3_DISABLE_CORE_UPDATER=1
 
 #### [Update check (Apache compatibility)](https://forge.typo3.org/issues/53188)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ✔            | ❌            |
 
 > Using Apache `mod_rewrite` in certain setups makes environment variables from original requests available in the target request as `REDIRECT_<envvar>`.
 
@@ -3270,7 +3498,9 @@ List of known telemetry channels:
 
 #### [Usage data](https://github.com/microsoft/vstest/blob/main/src/vstest.console/TestPlatformHelpers/TestRequestManager.cs#L1047)
 
-Official: ❌
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3293,7 +3523,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3316,7 +3548,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3339,7 +3573,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3370,7 +3606,9 @@ List of known telemetry channels:
 
 #### [Usage data (env. var)](https://github.com/webiny/webiny-js/blob/0240c2000d1743160c601ae4ce40dd2f949d4d07/packages/telemetry/react.js#L9)
 
-Official: ❌
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3384,7 +3622,9 @@ REACT_APP_WEBINY_TELEMETRY=false
 
 #### [Usage data (command)](https://www.webiny.com/docs/key-topics/webiny-cli/#yarn-webiny-disable-tracking)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3407,7 +3647,9 @@ List of known telemetry channels:
 
 #### [Usage data](https://yarnpkg.com/advanced/telemetry)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3429,7 +3671,9 @@ yarn config set --home enableTelemetry 0
 
 #### [Usage data (per-project)](https://yarnpkg.com/advanced/telemetry)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3452,7 +3696,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3469,13 +3715,15 @@ AUTOMATEDLAB_TELEMETRY_OPTIN=0
 ###### Scope: 👤 User
 
 | OS      | Command                                                                                                                                                                  |
-|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Other   | `pwsh -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Import-Module AutomatedLab -ErrorAction Stop ; Disable-LabTelemetry -ErrorAction Stop"`       |
 | Windows | `powershell -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Import-Module AutomatedLab -ErrorAction Stop ; Disable-LabTelemetry -ErrorAction Stop"` |
 
 #### Usage data (legacy env. var.)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3497,7 +3745,9 @@ List of known telemetry channels:
 
 #### [Usage data](https://github.com/IvanJosipovic/AutoSPInstallerOnline/blob/3b4d0e3a7220632a00e36194ce540b8b34e9ed18/AutoSPInstaller.Core/Startup.cs#L36)
 
-Official: ❌
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3520,7 +3770,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3542,7 +3794,9 @@ batect --permanently-enable-telemetry
 
 #### Usage data (per-invocation)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3554,7 +3808,9 @@ Use methods described below to opt-out of this telemetry channel.
 
 #### [Update check](https://strapi.io/documentation/developer-docs/latest/setup-deployment-guides/configurations.html#environment)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ✔            | ❌            |
 
 > Don't show the notification message about updating strapi in the terminal.
 
@@ -3577,7 +3833,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3602,7 +3860,9 @@ List of known telemetry channels:
 
 #### [Usage data](https://docs.chef.io/workstation/privacy/#opting-out)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3619,7 +3879,7 @@ CHEF_TELEMETRY_OPT_OUT=1
 ###### Scope: 👤 User
 
 | OS      | Path                                          |
-|---------|-----------------------------------------------|
+| ------- | --------------------------------------------- |
 | Linux   | `$HOME/.chef-workstation/config.toml`         |
 | macOS   | `$HOME/.chef-workstation/config.toml`         |
 | Windows | `%USERPROFILE%\.chef-workstation\config.toml` |
@@ -3642,7 +3902,9 @@ List of known telemetry channels:
 
 #### [Update check](https://www.consul.io/docs/agent/options#disable_update_check)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ✔            | ❌            |
 
 > Disables automatic checking for security bulletins and new version releases. This is disabled in Consul Enterprise.
 
@@ -3672,7 +3934,9 @@ Path: `some-dir/example.json`
 
 #### [Update check signature](https://www.consul.io/docs/agent/options#disable_anonymous_signature)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ✔            | ❌            |
 
 > Disables providing an anonymous signature for de-duplication with the update check
 
@@ -3703,7 +3967,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3726,7 +3992,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3749,7 +4017,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3771,7 +4041,9 @@ List of known telemetry channels:
 
 #### [Usage data](https://www.infracost.io/docs/integrations/environment_variables/#infracost_self_hosted_telemetry)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 > Opt-out of telemetry when using a self-hosted Cloud Pricing API.
 
@@ -3787,7 +4059,9 @@ INFRACOST_SELF_HOSTED_TELEMETRY=false
 
 #### [Update check](https://www.infracost.io/docs/integrations/environment_variables/#infracost_skip_update_check)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ✔            | ❌            |
 
 > Skip the Infracost update check.
 
@@ -3812,7 +4086,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3838,7 +4114,9 @@ List of known telemetry channels:
 
 #### [Usage data (current)](https://github.com/Checkmarx/kics/issues/3876)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3852,7 +4130,9 @@ DISABLE_CRASH_REPORT=1
 
 #### [Usage data (legacy)](https://github.com/Checkmarx/kics/issues/3876)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3875,7 +4155,9 @@ List of known telemetry channels:
 
 #### [Usage data](https://docs.kpow.io/about/data-collection#how-do-i-opt-out)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 > Trial users cannot opt out of product telemetry. Licensed users can configure the following environment variable to opt out of product telemetry.
 
@@ -3900,7 +4182,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3923,7 +4207,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3946,7 +4232,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3969,7 +4257,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3993,7 +4283,9 @@ List of known telemetry channels:
 
 #### Update check
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ✔            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -4016,7 +4308,9 @@ List of known telemetry channels:
 
 #### [Usage data (env. var)](https://pnp.github.io/powershell/articles/configuration.html#disable-or-enable-telemetry)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 > By default PnP PowerShell will report its usage to the PnP Team. We collection information about the version of PnP PowerShell and the cmdlet executed. Notice that we will not include parameters used and we will not include any values of parameters.
 
@@ -4032,7 +4326,9 @@ PNPPOWERSHELL_DISABLETELEMETRY=true
 
 #### [Usage data (cmdlet)](https://pnp.github.io/powershell/cmdlets/Enable-PnPPowerShellTelemetry.html?q=telemetry)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 > In order to help to make PnP PowerShell better, we can track anonymous telemetry. We track the version of the cmdlets you are using, which cmdlet you are executing and which version of SharePoint you are connecting to.
 
@@ -4043,13 +4339,15 @@ Use methods described below to opt-out of this telemetry channel.
 ###### Scope: 👤 User
 
 | OS      | Command                                                                                                                                                                                     |
-|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Other   | `pwsh -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Import-Module PnP.PowerShell -ErrorAction Stop ; Disable-PnPPowerShellTelemetry -Force -ErrorAction Stop"`       |
 | Windows | `powershell -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Import-Module PnP.PowerShell -ErrorAction Stop ; Disable-PnPPowerShellTelemetry -Force -ErrorAction Stop"` |
 
 #### [Update check](https://pnp.github.io/powershell/articles/updatenotifications.html)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ✔            | ❌            |
 
 > One time per PowerShell session PnP PowerShell will check for new versions when you execute `Connect-PnPOnline`.
 
@@ -4074,7 +4372,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -4097,7 +4397,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -4120,7 +4422,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -4143,7 +4447,9 @@ List of known telemetry channels:
 
 #### [Update check](https://www.terraform.io/docs/commands/index.html#disable_checkpoint)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ✔            | ❌            |
 
 > Disable checkpoint calls entirely.
 
@@ -4162,7 +4468,7 @@ CHECKPOINT_DISABLE=ANY_VALUE
 ###### Scope: 👤 User
 
 | OS      | Path                     |
-|---------|--------------------------|
+| ------- | ------------------------ |
 | Linux   | `$HOME/.terraformrc`     |
 | macOS   | `$HOME/.terraformrc`     |
 | Windows | `%APPDATA%\terraform.rc` |
@@ -4175,7 +4481,9 @@ disable_checkpoint = true
 
 #### [Update check signature](https://www.terraform.io/docs/commands/index.html#disable_checkpoint_signature)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ✔            | ❌            |
 
 > Disable the use of an anonymous signature in checkpoint requests. This allows Terraform to check for security bulletins but does not send the anonymous signature in these requests.
 
@@ -4186,7 +4494,7 @@ Use methods described below to opt-out of this telemetry channel.
 ###### Scope: 👤 User
 
 | OS      | Path                     |
-|---------|--------------------------|
+| ------- | ------------------------ |
 | Linux   | `$HOME/.terraformrc`     |
 | macOS   | `$HOME/.terraformrc`     |
 | Windows | `%APPDATA%\terraform.rc` |
@@ -4208,7 +4516,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -4231,7 +4541,9 @@ List of known telemetry channels:
 
 #### [Vagrant update check](https://www.vagrantup.com/docs/other/environmental-variables#vagrant_checkpoint_disable)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ✔            | ❌            |
 
 > Vagrant does occasional network calls to check whether the version of Vagrant that is running locally is up to date.
 
@@ -4247,7 +4559,9 @@ VAGRANT_CHECKPOINT_DISABLE=ANY_VALUE
 
 #### [Vagrant box update check](https://www.vagrantup.com/docs/other/environmental-variables#vagrant_box_update_check_disable)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ✔            | ❌            |
 
 > By default, Vagrant will query the metadata API server to see if a newer box version is available for download.
 
@@ -4272,7 +4586,9 @@ List of known telemetry channels:
 
 #### Update check
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ✔            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -4295,7 +4611,9 @@ List of known telemetry channels:
 
 #### Update check
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ✔            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -4319,7 +4637,9 @@ List of known telemetry channels:
 
 #### [Diagnostic data](https://www.gamersnexus.net/industry/2672-geforce-experience-data-transfer-analysis)
 
-Official: ❌
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ✔          | ❌            | ❌            |
 
 > Analyzing GeForce Experience Data Transfers with Packet Monitoring
 
@@ -4348,7 +4668,9 @@ List of known telemetry channels:
 
 #### [Usage data | Enterprise](https://docs.microsoft.com/en-us/windows/privacy/configure-windows-diagnostic-data-in-your-organization)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 > Applies to: Windows 10 Enterprise/Education, Windows Server 2016 and newer
 
@@ -4364,7 +4686,9 @@ Use methods described below to opt-out of this telemetry channel.
 
 #### Usage data
 
-Official: ❌
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ✔          | ❌            | ❌            |
 
 > There is no official way to disable telemetry in all other Windows editions (Home/Pro/etc...)
 
@@ -4405,7 +4729,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -4430,7 +4756,9 @@ List of known telemetry channels:
 
 #### Update check
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ✔            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -4452,7 +4780,9 @@ List of known telemetry channels:
 
 #### [Usage data](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_telemetry)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 > PowerShell sends basic telemetry data to Microsoft. This data allows us to better understand the environments where PowerShell is used and enables us to prioritize new features and fixes.
 
@@ -4474,7 +4804,9 @@ POWERSHELL_TELEMETRY_OPTOUT=1
 
 #### [Update check](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_update_notification)
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ✔            | ❌            |
 
 > PowerShell uses update notifications to alert users to the existence of updates to PowerShell. Once per day, PowerShell queries an online service to determine if a newer version is available.
 
@@ -4501,7 +4833,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ❌
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -4524,7 +4858,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ❌
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -4533,7 +4869,7 @@ Use methods described below to opt-out of this telemetry channel.
 ###### Scope: 👤 User
 
 | OS      | Path                                                        |
-|---------|-------------------------------------------------------------|
+| ------- | ----------------------------------------------------------- |
 | Linux   | `$HOME/.config/Code/User/settings.json`                     |
 | macOS   | `$HOME/Library/Application Support/Code/User/settings.json` |
 | Windows | `%APPDATA%\Code\User\settings.json`                         |
@@ -4567,7 +4903,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -4576,7 +4914,7 @@ Use methods described below to opt-out of this telemetry channel.
 ###### Scope: 👤 User
 
 | OS      | Path                                                        |
-|---------|-------------------------------------------------------------|
+| ------- | ----------------------------------------------------------- |
 | Linux   | `$HOME/.config/Code/User/settings.json`                     |
 | macOS   | `$HOME/Library/Application Support/Code/User/settings.json` |
 | Windows | `%APPDATA%\Code\User\settings.json`                         |
@@ -4599,7 +4937,9 @@ List of known telemetry channels:
 
 #### [Usage data](https://github.com/microsoft/vscode-js-debug/blob/12ec6df97f45b25b168e1eac8a17b802af73806f/src/ioc.ts#L168)
 
-Official: ❌
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -4622,7 +4962,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 > Anonymous, non-identifying usage and error data is sent to the development team.
 
@@ -4633,7 +4975,7 @@ Use methods described below to opt-out of this telemetry channel.
 ###### Scope: 👤 User
 
 | OS      | Path                                                        |
-|---------|-------------------------------------------------------------|
+| ------- | ----------------------------------------------------------- |
 | Linux   | `$HOME/.config/Code/User/settings.json`                     |
 | macOS   | `$HOME/Library/Application Support/Code/User/settings.json` |
 | Windows | `%APPDATA%\Code\User\settings.json`                         |
@@ -4648,7 +4990,9 @@ Use methods described below to opt-out of this telemetry channel.
 
 #### Crash data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ❌            | ✔            |
 
 > Stack traces from errors in the extension are sent to the development team. Those stack traces can contain identifying information, for example filenames.
 
@@ -4659,7 +5003,7 @@ Use methods described below to opt-out of this telemetry channel.
 ###### Scope: 👤 User
 
 | OS      | Path                                                        |
-|---------|-------------------------------------------------------------|
+| ------- | ----------------------------------------------------------- |
 | Linux   | `$HOME/.config/Code/User/settings.json`                     |
 | macOS   | `$HOME/Library/Application Support/Code/User/settings.json` |
 | Windows | `%APPDATA%\Code\User\settings.json`                         |
@@ -4683,7 +5027,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -4692,7 +5038,7 @@ Use methods described below to opt-out of this telemetry channel.
 ###### Scope: 👤 User
 
 | OS      | Path                                                        |
-|---------|-------------------------------------------------------------|
+| ------- | ----------------------------------------------------------- |
 | Linux   | `$HOME/.config/Code/User/settings.json`                     |
 | macOS   | `$HOME/Library/Application Support/Code/User/settings.json` |
 | Windows | `%APPDATA%\Code\User\settings.json`                         |
@@ -4716,7 +5062,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -4725,7 +5073,7 @@ Use methods described below to opt-out of this telemetry channel.
 ###### Scope: 👤 User
 
 | OS      | Path                                                        |
-|---------|-------------------------------------------------------------|
+| ------- | ----------------------------------------------------------- |
 | Linux   | `$HOME/.config/Code/User/settings.json`                     |
 | macOS   | `$HOME/Library/Application Support/Code/User/settings.json` |
 | Windows | `%APPDATA%\Code\User\settings.json`                         |
@@ -4749,7 +5097,9 @@ List of known telemetry channels:
 
 #### Usage data and crash reports
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ✔            |
 
 > We also respect the global telemetry setting [telemetry.enableTelemetry](https://toptout.me/#/?id=vscode); if that is set to false, ServerlessIDE telemetry is disabled.
 
@@ -4760,7 +5110,7 @@ Use methods described below to opt-out of this telemetry channel.
 ###### Scope: 👤 User
 
 | OS      | Path                                                        |
-|---------|-------------------------------------------------------------|
+| ------- | ----------------------------------------------------------- |
 | Linux   | `$HOME/.config/Code/User/settings.json`                     |
 | macOS   | `$HOME/Library/Application Support/Code/User/settings.json` |
 | Windows | `%APPDATA%\Code\User\settings.json`                         |
@@ -4784,7 +5134,9 @@ List of known telemetry channels:
 
 #### Usage data
 
-Official: ✔
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -4793,7 +5145,7 @@ Use methods described below to opt-out of this telemetry channel.
 ###### Scope: 👤 User
 
 | OS      | Path                                                        |
-|---------|-------------------------------------------------------------|
+| ------- | ----------------------------------------------------------- |
 | Linux   | `$HOME/.config/Code/User/settings.json`                     |
 | macOS   | `$HOME/Library/Application Support/Code/User/settings.json` |
 | Windows | `%APPDATA%\Code\User\settings.json`                         |
