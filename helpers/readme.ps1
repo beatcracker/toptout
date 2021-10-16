@@ -68,16 +68,17 @@ function New-MdTable {
     $Items = @($input)
     $MinLength = 3
     $ItemLenghtMap = [ordered]@{ }
-    $tpl = '|{0}|'
+    $tpl = '| {0} |'
+    $joiner = ' | '
 
-    # Get max row Lenght
+    # Get max row length
     foreach ($item in $Items) {
         foreach ($key in $item.get_Keys()) {
             $maxLength = @(
                 @(
                     $key
                     @($Items.$Key)
-                ).foreach( { $_.Length }) | Sort-Object
+                ).foreach( { $_.Length } ) | Sort-Object
             )[-1]
 
             $ItemLenghtMap.$key = ($maxLength, $MinLength)[$maxLength -lt $MinLength]
@@ -85,13 +86,11 @@ function New-MdTable {
     }
 
     # Generate table headers
-
     $Headers = foreach ($item in $ItemLenghtMap.GetEnumerator()) {
-        # wrap in spaces + pad
-        ' ' + $item.Key.PadRight($item.Value + 1)
+        $item.Key.PadRight($item.Value)
     }
 
-    $tpl -f ($Headers -join '|')
+    $tpl -f ($Headers -join $joiner)
     $row = (
         $Headers | ForEach-Object {
             $align = '---'.PadRight($_.Length - 2, '-')
@@ -111,10 +110,9 @@ function New-MdTable {
 
             $align
         }
-    ) -join '|'
+    ) -join $joiner
 
-    $tpl -f ($row -join '|')
-
+    $tpl -f $row
 
     # Generate the rest of the table
     foreach ($item in $Items) {
@@ -130,11 +128,10 @@ function New-MdTable {
                 $item.$key
             }
 
-            # Wrap in spaces + pad
-            (' ' + $value).PadRight($ItemLenghtMap.$key + 1)
+            $value.PadRight($ItemLenghtMap.$key)
         }
 
-        $tpl -f ($row -join '|')
+        $tpl -f ($row -join $joiner)
     }
 }
 
@@ -188,7 +185,7 @@ filter ConvertTo-Readme {
         $traits.Keys | ForEach-Object -Begin {
             $ret = [ordered]@{}
             # Keeps PSScriptAnalyzer happy
-            $ret > $null
+            [void]$ret
         } -Process {
             $ret.($traits.$_) = ('❌', '✔')[$tm.traits.$_]
         } -End {
