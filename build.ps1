@@ -226,6 +226,10 @@ task readme {
   <a href="https://twitter.com/toptout_me"><img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/toptout_me?style=social"></a>
 </p>
 
+<p align="center">
+  <a href="#usage">Usage</a> • <a href="#json-data-format">JSON data format</a> • <a href="#telemetry-channels">Telemetry channels</a>
+</p>
+
 # Easily opt-out from telemetry collection
 
 Telemetry in software projects is a polarized issue: on the one hand it allows developers to improve their work by collecting various metrics, on the other hand - nobody likes to be spied on.
