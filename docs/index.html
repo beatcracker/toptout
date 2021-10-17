@@ -61,6 +61,7 @@
     window.$docsify = {
       name: '📡 Toptout',
       repo: 'beatcracker/toptout',
+      basePath: 'https://raw.githubusercontent.com/beatcracker/toptout/master/',
       defaultTheme: 'dark',
       maxLevel: 4,
       noCompileLinks: [
@@ -69,8 +70,22 @@
         '.*/docs/.*',
         '.*\.(sh|ps1)$'
       ],
-      basePath:
-        'https://raw.githubusercontent.com/beatcracker/toptout/master/',
+      plugins: [
+        /*
+          Fix links inside HTML tags in markdown, so they work on GitHub and in docsify.
+          E.g.:  #usage -> #/?id=usage
+        */
+        function (hook, vm) {
+          hook.beforeEach(
+            (markdown) => {
+              return markdown.replaceAll(
+                /(<[ ]*?a[ ]+?href[ ]*?=[ ]*?"#)(.+?)("[ ]+?class[ ]*?=[ ]*?"fix-link"[ ]*?>)/ig,
+                '$1/?id=$2">'
+              )
+            }
+          )
+        }
+      ]
     }
   </script>
 

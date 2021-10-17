@@ -227,7 +227,7 @@ task readme {
 </p>
 
 <p align="center">
-  <a href="#usage">Usage</a> • <a href="#json-data-format">JSON data format</a> • <a href="#telemetry-channels">Telemetry channels</a>
+  <a href="#usage" class="fix-link">Usage</a> • <a href="#json-data-format" class="fix-link">JSON data format</a> • <a href="#telemetry-channels" class="fix-link">Telemetry channels</a>
 </p>
 
 # Easily opt-out from telemetry collection
