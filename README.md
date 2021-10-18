@@ -53,7 +53,7 @@ curl -X GET 'https://toptout.me/api/telemetry/id/powershell-core/' -H 'accept: a
 
 ### JSON data format
 
-JSON telemetry data format description: [data/README](/data/)
+JSON telemetry data format description: [data/README](/data/README.md)
 
 ### Contributing
 
