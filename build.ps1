@@ -1,4 +1,4 @@
-#Requires -Version 6
+#Requires -Version 7
 
 # PSScriptAnalyzer doesn't handle scriptblocks well
 [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseUsingScopeModifierInNewRunspaces', '')]
@@ -8,13 +8,18 @@
 Param(
     [Parameter(Position = 0, ValueFromRemainingArguments)]
     [ValidateSet(
-        'test',
-        'readme',
-        'shell',
         'api',
-        'static-files',
-        'openapi-bundle',
-        'openapi-lint',
+        'api-json',
+        'api-schema-lint',
+        'api-schema-bundle',
+
+        'content',
+        'content-readme',
+        'content-shell',
+
+        'test',
+        'test-data',
+
         'clean'
     )]
     [string[]]$Tasks
@@ -141,15 +146,24 @@ Set-BuildHeader {
 
 task . -Jobs @(
     'test'
-    'readme'
-    'shell'
+    'content'
     'api'
 )
 
+task content -Jobs  @(
+    'content-readme'
+    'content-shell'
+)
+
 task api -Jobs @(
-    'static-files'
-    'openapi-lint'
-    'openapi-bundle'
+    'api-json'
+    'api-schema-lint'
+    'api-schema-bundle'
+)
+
+task test -Jobs @(
+    'test-schema'
+    'test-data'
 )
 
 task clean {
@@ -161,7 +175,7 @@ task clean {
     )
 }
 
-task test {
+task test-data {
     $Results = Start-Job -Name Invoke-Pester -ScriptBlock {
         Param (
             [Parameter(Position = 0)]
@@ -195,7 +209,7 @@ task test {
     assert($Results.FailedCount -eq 0) ('Failed "{0}" tests.' -f $Results.FailedCount)
 }
 
-task readme {
+task content-readme {
     . "$BuildRoot/helpers/common.ps1"
     . "$BuildRoot/helpers/readme.ps1"
 
@@ -351,7 +365,7 @@ See [CONTRIBUTING](/.github/CONTRIBUTING.md) for details on adding new telemetry
     ($document -join $LF).Trim() + $LF | Out-File -LiteralPath $ReadmePath -Encoding utf8NoBOM -NoNewline -Force
 }
 
-task shell {
+task content-shell {
     . "$BuildRoot/helpers/common.ps1"
     . "$BuildRoot/helpers/shell.ps1"
 
@@ -392,7 +406,7 @@ task shell {
     }
 }
 
-task static-files {
+task api-json {
     . "$BuildRoot/helpers/common.ps1"
 
     $DataDir = "$BuildRoot/data"
@@ -452,7 +466,7 @@ task static-files {
     }
 }
 
-task openapi-lint {
+task api-schema-lint {
     Write-Build White 'Linting OpenAPI schema'
 
     exec {
@@ -466,7 +480,7 @@ task openapi-lint {
     }
 }
 
-task openapi-bundle {
+task api-schema-bundle {
     Write-Build White 'Bundling OpenAPI schema'
 
     exec {
