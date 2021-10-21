@@ -269,7 +269,7 @@ task content-readme {
 </p>
 
 <p align="center">
-  <a href="#usage" class="fix-link">Usage</a> • <a href="#json-data-format" class="fix-link">JSON data format</a> • <a href="#telemetry-channels" class="fix-link">Telemetry channels</a>
+  <a href="#telemetry-channels" data-href="#/?id=telemetry-channels">Awesome list</a> • <a href="https://github.com/beatcracker/toptout/blob/master/examples/">Scripts</a> • <a href="https://toptout.me/swagger">API</a> • <a href="/data/README.md" data-href="#/data/README">JSON data format</a> • <a href="#/.github/CONTRIBUTING.md">Contributing</a>
 </p>
 
 # Easily opt-out from telemetry collection
@@ -288,7 +288,7 @@ The page you see has an [awesome-list of telemetry channels](#telemetry-channels
 
 ### 🧯 Scripts
 
-[Scripts](/examples/) to disable all known telemetry channels in your shell session.
+[Scripts](https://github.com/beatcracker/toptout/blob/master/examples/) to disable all known telemetry channels in your shell session.
 
 <p align="center">
   <img id="script" src="https://raw.githubusercontent.com/beatcracker/toptout/master/media/script.png">

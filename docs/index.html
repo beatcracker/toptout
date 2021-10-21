@@ -73,14 +73,14 @@
       plugins: [
         /*
           Fix links inside HTML tags in markdown, so they work on GitHub and in docsify.
-          E.g.:  #usage -> #/?id=usage
+          E.g.:  href -> data-href
         */
         function (hook, vm) {
           hook.beforeEach(
             (markdown) => {
               return markdown.replaceAll(
-                /(<[ ]*?a[ ]+?href[ ]*?=[ ]*?"#)(.+?)("[ ]+?class[ ]*?=[ ]*?"fix-link"[ ]*?>)/ig,
-                '$1/?id=$2">'
+                /(<[ ]*?a[ ]+?href[ ]*?=[ ]*?)"[^"]+?"[ ]+?data-href[ ]*?=[ ]*?("[^"]*")[ ]*?>/ig,
+                '$1$2>'
               )
             }
           )
