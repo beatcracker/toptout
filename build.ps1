@@ -269,7 +269,7 @@ task content-readme {
 </p>
 
 <p align="center">
-  <a href="#telemetry-channels" data-href="#/?id=telemetry-channels">Awesome list</a> • <a href="https://github.com/beatcracker/toptout/blob/master/examples/">Scripts</a> • <a href="https://toptout.me/swagger">API</a> • <a href="/data/README.md" data-href="#/data/README">JSON data format</a> • <a href="#/.github/CONTRIBUTING.md">Contributing</a>
+  <a href="#telemetry-channels" data-href="#/?id=telemetry-channels">Awesome list</a> • <a href="https://github.com/beatcracker/toptout/blob/master/examples/">Scripts</a> • <a href="https://toptout.me/swagger">API</a> • <a href="/data/README.md" data-href="#/data/README">JSON data format</a> • <a href="/.github/CONTRIBUTING.md" data-href="#/.github/CONTRIBUTING.md">Contributing</a>
 </p>
 
 # Easily opt-out from telemetry collection
