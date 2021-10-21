@@ -216,23 +216,9 @@ task test-schema {
     exec {
         & 'npx' @(
             '--yes'
-            '--package'
-            'ajv-formats@2.1.1'
-            '--package'
-            'ajv-cli@5.0.0'
-            '--call='
-            'ajv'
-            'compile'
-            '--spec=draft2020'
-            '--validate-formats=true'
-            '--verbose'
-            '--all-errors'
-            '--strict=true'
-            '--strict-required=log'
-            '-c'
-            'ajv-formats'
-            '-s'
-            "$BuildRoot/schema/toptout.schema.json"
+            '--package=ajv-formats@2.1.1'
+            '--package=ajv-cli@5.0.0'
+            "--call=ajv compile --spec=draft2020 --validate-formats=true --verbose --all-errors --strict=true --strict-required=log -c ajv-formats -s '$BuildRoot/schema/toptout.schema.json'"
         )
     }
 }
