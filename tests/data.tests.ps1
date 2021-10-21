@@ -1,4 +1,4 @@
-#Requires -Version 6
+#Requires -Version 7
 
 Describe 'JSON telemetry data' {
     $schema = Get-Content -Path "$PSScriptRoot/../schema/toptout.schema.json" -Raw

@@ -1,4 +1,4 @@
-#Requires -Version 6
+#Requires -Version 7
 
 $LF = "`n"
 $CRLF = "`r`n"
