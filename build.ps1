@@ -18,6 +18,7 @@ Param(
         'content-shell',
 
         'test',
+        'test-schema',
         'test-data',
 
         'clean'
@@ -207,6 +208,33 @@ task test-data {
     ) | Receive-Job -Wait -AutoRemoveJob
 
     assert($Results.FailedCount -eq 0) ('Failed "{0}" tests.' -f $Results.FailedCount)
+}
+
+task test-schema {
+    Write-Build White 'Testing JSON Schema'
+
+    exec {
+        & 'npx' @(
+            '--yes'
+            '--package'
+            'ajv-formats@2.1.1'
+            '--package'
+            'ajv-cli@5.0.0'
+            '--call='
+            'ajv'
+            'compile'
+            '--spec=draft2020'
+            '--validate-formats=true'
+            '--verbose'
+            '--all-errors'
+            '--strict=true'
+            '--strict-required=log'
+            '-c'
+            'ajv-formats'
+            '-s'
+            "$BuildRoot/schema/toptout.schema.json"
+        )
+    }
 }
 
 task content-readme {
