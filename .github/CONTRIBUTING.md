@@ -6,7 +6,7 @@ The core of this project is a set of JSON files which describe what telemetry is
 
 While you can hack around without using provided build script, it is not recommended.
 
-- To run the build and tests, you'll need [PowerShell](https://github.com/powershell/powershell) `7+` and [Node.js](https://nodejs.org/en/download/) `12+`.
+- To run the build and tests, you'll need [PowerShell](https://github.com/powershell/powershell) `7+` and [Node.js](https://nodejs.org/en/download/) `15+`.
 - On non-Windows systems [Mono](https://www.mono-project.com/) is required for build script to be able to run [Paket](https://fsprojects.github.io/Paket/) to restore dependencies.
 
 ## Adding new telemetry data file
