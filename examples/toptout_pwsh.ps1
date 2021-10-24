@@ -1182,6 +1182,15 @@ if ($Env) {
     Set-EnvVar -Name 'CHECKPOINT_DISABLE' -Value 'ANY_VALUE' -ShowLog:$ShowLog
 }
 
+# Terraform Provider for Azure
+# https://registry.terraform.io/providers/hashicorp/azurerm/latest
+
+# Usage data
+# https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs#disable_terraform_partner_id
+if ($Env) {
+    Set-EnvVar -Name 'ARM_DISABLE_TERRAFORM_PARTNER_ID' -Value 'true' -ShowLog:$ShowLog
+}
+
 # Cloud Development Kit for Terraform
 # https://github.com/hashicorp/terraform-cdk
 

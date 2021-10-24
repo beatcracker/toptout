@@ -979,6 +979,13 @@ fi
 # https://www.terraform.io/docs/commands/index.html#disable_checkpoint
 [[ "${toptout_env}" == 'True' ]] && set_env 'CHECKPOINT_DISABLE' 'ANY_VALUE'
 
+# Terraform Provider for Azure
+# https://registry.terraform.io/providers/hashicorp/azurerm/latest
+
+# Usage data
+# https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs#disable_terraform_partner_id
+[[ "${toptout_env}" == 'True' ]] && set_env 'ARM_DISABLE_TERRAFORM_PARTNER_ID' 'true'
+
 # Cloud Development Kit for Terraform
 # https://github.com/hashicorp/terraform-cdk
 

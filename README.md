@@ -105,7 +105,7 @@ See [CONTRIBUTING](/.github/CONTRIBUTING.md) for details on adding new telemetry
 
 Below is automatically generated list of known telemetry channels for various applications.
 
-Total count: **143**
+Total count: **144**
 
 - [Applications](#applications)
   - [Atom](#atom)
@@ -238,6 +238,7 @@ Total count: **143**
   - [Skaffold](#skaffold)
   - [Telepresence](#telepresence)
   - [Terraform](#terraform)
+  - [Terraform Provider for Azure](#terraform-provider-for-azure)
   - [Cloud Development Kit for Terraform](#cloud-development-kit-for-terraform)
   - [Vagrant](#vagrant)
   - [Weave Net](#weave-net)
@@ -4507,6 +4508,32 @@ Use methods described below to opt-out of this telemetry channel.
 
 ```none
 disable_checkpoint_signature = true
+```
+
+### [Terraform Provider for Azure](https://registry.terraform.io/providers/hashicorp/azurerm/latest)
+
+> If a custom `partner_id` is not specified, Azure provider will send the Terraform Partner ID to Microsoft to facilitate partner resource usage attribution.
+
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### [Usage data](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs#disable_terraform_partner_id)
+
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
+
+> if a custom `partner_id` is not specified, Azure provider will send the Terraform Partner ID to Microsoft to facilitate partner resource usage attribution.
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+ARM_DISABLE_TERRAFORM_PARTNER_ID=true
 ```
 
 ### [Cloud Development Kit for Terraform](https://github.com/hashicorp/terraform-cdk)
