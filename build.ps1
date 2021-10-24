@@ -230,7 +230,11 @@ task content-readme {
     $ReadmePath = "$BuildRoot/README.md"
     $DataDir = "$BuildRoot/data"
 
-    $DataFiles = Get-ChildItem $DataDir -Filter '*.json' -File
+    $DataFiles = Get-ChildItem $DataDir -Filter '*.json' -File |
+    # HACK: Quick fix for x-plat locale-based sorting issues - avoid '.' in compared strings
+    # https://github.com/PowerShell/PowerShell/issues/8824
+    # https://aakinshin.net/posts/how-sorting-order-depends-on-runtime-and-operating-system/
+    Sort-Object -Property BaseName
 
     Write-Build White ('Processing data files: {0}' -f $DataFiles.Count)
     $DataFiles | ForEach-Object {
@@ -386,7 +390,11 @@ task content-shell {
     $DataDir = "$BuildRoot/data"
     $ShellScriptDir = "$BuildRoot/examples"
 
-    $DataFiles = Get-ChildItem $DataDir -Filter '*.json' -File
+    $DataFiles = Get-ChildItem $DataDir -Filter '*.json' -File |
+    # HACK: Quick fix for x-plat locale-based sorting issues - avoid '.' in compared strings
+    # https://github.com/PowerShell/PowerShell/issues/8824
+    # https://aakinshin.net/posts/how-sorting-order-depends-on-runtime-and-operating-system/
+    Sort-Object -Property BaseName
 
     Write-Build White ('Processing data files: {0}' -f $DataFiles.Count)
     $DataFiles | ForEach-Object {
@@ -428,7 +436,11 @@ task api-json {
 
     Remove-BuildItem $ApiDir
 
-    $DataFiles = Get-ChildItem $DataDir -Filter '*.json' -File
+    $DataFiles = Get-ChildItem $DataDir -Filter '*.json' -File |
+    # HACK: Quick fix for x-plat locale-based sorting issues - avoid '.' in compared strings
+    # https://github.com/PowerShell/PowerShell/issues/8824
+    # https://aakinshin.net/posts/how-sorting-order-depends-on-runtime-and-operating-system/
+    Sort-Object -Property BaseName
 
     Write-Build White ('Processing data files: {0}' -f $DataFiles.Count)
     $DataFiles | ForEach-Object {
