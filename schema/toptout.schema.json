@@ -3,6 +3,8 @@
     "$ref": "#/definitions/Toptout",
     "definitions": {
         "Toptout": {
+            "title": "Toptout",
+            "description": "Toptout data file schema. Describes application telemetry channels.",
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -57,12 +59,12 @@
                 "id",
                 "links",
                 "name"
-            ],
-            "title": "Toptout"
+            ]
         },
         "Links": {
-            "type": "object",
+            "title": "Links",
             "description": "Contains links to the main product page, telemetry and privacy policy.",
+            "type": "object",
             "additionalProperties": false,
             "properties": {
                 "main": {
@@ -86,12 +88,12 @@
             },
             "required": [
                 "main"
-            ],
-            "title": "Links"
+            ]
         },
         "Telemetry": {
-            "type": "object",
+            "title": "Telemetry",
             "description": "Describes single telemetry channel (version check, analytics, etc..).",
+            "type": "object",
             "additionalProperties": false,
             "properties": {
                 "id": {
@@ -123,12 +125,12 @@
                 "id",
                 "name",
                 "traits"
-            ],
-            "title": "Telemetry"
+            ]
         },
         "Target": {
-            "type": "object",
+            "title": "Target",
             "description": "Describes telemetry channel configuration options. Optional, since you may wish to describe telemetry channels that don't provide a ways to control them.",
+            "type": "object",
             "additionalProperties": false,
             "properties": {
                 "exec": {
@@ -184,12 +186,12 @@
                         "noop"
                     ]
                 }
-            ],
-            "title": "Target"
+            ]
         },
         "Env": {
-            "type": "object",
+            "title": "Env",
             "description": "\"Environment variable\" target. Set or remove environment variable. Environment variables are by design configured in process scope. There are mechanisms to configure them for every new process, but it's up to OS/shell.",
+            "type": "object",
             "additionalProperties": false,
             "properties": {
                 "scope": {
@@ -231,12 +233,12 @@
             },
             "required": [
                 "scope"
-            ],
-            "title": "Env"
+            ]
         },
         "EnvProperties": {
-            "type": "object",
+            "title": "EnvProperties",
             "description": "Describe variable name and applicable values",
+            "type": "object",
             "additionalProperties": false,
             "properties": {
                 "path": {
@@ -249,12 +251,12 @@
             "required": [
                 "path",
                 "value"
-            ],
-            "title": "EnvProperties"
+            ]
         },
         "Exec": {
-            "type": "object",
+            "title": "Exec",
             "description": "\"Execute command\". Run command with arguments.",
+            "type": "object",
             "additionalProperties": false,
             "properties": {
                 "scope": {
@@ -296,12 +298,12 @@
             },
             "required": [
                 "scope"
-            ],
-            "title": "Exec"
+            ]
         },
         "ExecProperties": {
-            "type": "object",
+            "title": "ExecProperties",
             "description": "Describes command name and arguments.",
+            "type": "object",
             "additionalProperties": false,
             "properties": {
                 "path": {
@@ -314,12 +316,12 @@
             "required": [
                 "path",
                 "value"
-            ],
-            "title": "ExecProperties"
+            ]
         },
         "JSONFile": {
-            "type": "object",
+            "title": "JSONFile",
             "description": "\"JSON file\". Modify JSON file.",
+            "type": "object",
             "additionalProperties": false,
             "properties": {
                 "scope": {
@@ -361,12 +363,12 @@
             },
             "required": [
                 "scope"
-            ],
-            "title": "JSONFile"
+            ]
         },
         "JSONFileProperties": {
-            "type": "object",
+            "title": "JSONFileProperties",
             "description": "Describes file path, selector for target property and values.",
+            "type": "object",
             "additionalProperties": false,
             "properties": {
                 "path": {
@@ -387,12 +389,12 @@
                 "path",
                 "selector",
                 "value"
-            ],
-            "title": "JSONFileProperties"
+            ]
         },
         "PlainFile": {
-            "type": "object",
+            "title": "PlainFile",
             "description": "\"Plaintext file\". Modify plaintext file.",
+            "type": "object",
             "additionalProperties": false,
             "properties": {
                 "scope": {
@@ -434,12 +436,12 @@
             },
             "required": [
                 "scope"
-            ],
-            "title": "PlainFile"
+            ]
         },
         "PlainFileProperties": {
-            "type": "object",
+            "title": "PlainFileProperties",
             "description": "Describes file path, selector for target property and values.",
+            "type": "object",
             "additionalProperties": false,
             "properties": {
                 "path": {
@@ -460,13 +462,13 @@
                 "path",
                 "selector",
                 "value"
-            ],
-            "title": "PlainFileProperties"
+            ]
         },
         "Registry": {
+            "title": "Registry",
+            "description": "\"Windows registry\". Modify keys/values in Windows registry.",
             "type": "object",
             "additionalProperties": false,
-            "description": "\"Windows registry\". Modify keys/values in Windows registry.",
             "properties": {
                 "scope": {
                     "type": "object",
@@ -507,12 +509,12 @@
             },
             "required": [
                 "scope"
-            ],
-            "title": "Registry"
+            ]
         },
         "RegistryProperties": {
-            "type": "object",
+            "title": "RegistryProperties",
             "description": "Describes registry path and keys/values.",
+            "type": "object",
             "additionalProperties": false,
             "properties": {
                 "root": {
@@ -562,12 +564,12 @@
                 "key",
                 "type",
                 "value"
-            ],
-            "title": "RegistryProperties"
+            ]
         },
         "Noop": {
-            "type": "object",
+            "title": "Noop",
             "description": "\"No operation\". Use this for links to third-party telemetry configuration tools, that are not supported by this schema.",
+            "type": "object",
             "additionalProperties": false,
             "properties": {
                 "name": {
@@ -591,12 +593,12 @@
                 "description",
                 "link",
                 "name"
-            ],
-            "title": "Noop"
+            ]
         },
         "Path": {
-            "type": "object",
+            "title": "Path",
             "description": "Item path. For environment variables this would be name, for files - full path.",
+            "type": "object",
             "additionalProperties": false,
             "properties": {
                 "linux": {
@@ -637,12 +639,12 @@
                         "windows"
                     ]
                 }
-            ],
-            "title": "Path"
+            ]
         },
         "StringValue": {
-            "type": "object",
+            "title": "StringValue",
             "description": "Opt-in/out values for env/exec/plain_file/registry targets",
+            "type": "object",
             "additionalProperties": false,
             "properties": {
                 "opt_out": {
@@ -671,12 +673,12 @@
             "required": [
                 "opt_in",
                 "opt_out"
-            ],
-            "title": "StringValue"
+            ]
         },
         "RichValue": {
-            "type": "object",
+            "title": "RichValue",
             "description": "Opt-in/out values for JSON and other targets that can use non-string values (e.g.: number/boolean)",
+            "type": "object",
             "additionalProperties": false,
             "properties": {
                 "opt_out": {
@@ -717,12 +719,12 @@
             "required": [
                 "opt_in",
                 "opt_out"
-            ],
-            "title": "RichValue"
+            ]
         },
         "Traits": {
-            "type": "object",
+            "title": "Traits",
             "description": "Describes telemetry channel traits",
+            "type": "object",
             "additionalProperties": false,
             "properties": {
                 "official": {
@@ -747,8 +749,7 @@
                 "usage_data",
                 "update_check",
                 "error_report"
-            ],
-            "title": "Traits"
+            ]
         }
     }
 }
