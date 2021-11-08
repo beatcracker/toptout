@@ -133,32 +133,44 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "exec": {
-                    "$ref": "#/definitions/Exec"
-                },
-                "env": {
-                    "$ref": "#/definitions/Env"
-                },
-                "plain_file": {
-                    "$ref": "#/definitions/PlainFile"
-                },
-                "json_file": {
-                    "$ref": "#/definitions/JSONFile"
-                },
-                "registry": {
-                    "$ref": "#/definitions/Registry"
-                },
                 "noop": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/Noop"
                     }
+                },
+                "env": {
+                    "$ref": "#/definitions/Env"
+                },
+                "exec": {
+                    "$ref": "#/definitions/Exec"
+                },
+                "registry": {
+                    "$ref": "#/definitions/Registry"
+                },
+                "ini_file": {
+                    "$ref": "#/definitions/INIFile"
+                },
+                "json_file": {
+                    "$ref": "#/definitions/JSONFile"
+                },
+                "plain_file": {
+                    "$ref": "#/definitions/PlainFile"
+                },
+                "toml_file": {
+                    "$ref": "#/definitions/TOMLFile"
+                },
+                "xml_file": {
+                    "$ref": "#/definitions/XMLFile"
+                },
+                "yaml_file": {
+                    "$ref": "#/definitions/YAMLFile"
                 }
             },
             "anyOf": [
                 {
                     "required": [
-                        "exec"
+                        "noop"
                     ]
                 },
                 {
@@ -168,12 +180,7 @@
                 },
                 {
                     "required": [
-                        "plain_file"
-                    ]
-                },
-                {
-                    "required": [
-                        "json_file"
+                        "exec"
                     ]
                 },
                 {
@@ -183,7 +190,32 @@
                 },
                 {
                     "required": [
-                        "noop"
+                        "ini_file"
+                    ]
+                },
+                {
+                    "required": [
+                        "json_file"
+                    ]
+                },
+                {
+                    "required": [
+                        "plain_file"
+                    ]
+                },
+                {
+                    "required": [
+                        "toml_file"
+                    ]
+                },
+                {
+                    "required": [
+                        "xml_file"
+                    ]
+                },
+                {
+                    "required": [
+                        "yaml_file"
                     ]
                 }
             ]
@@ -318,9 +350,82 @@
                 "value"
             ]
         },
+        "INIFile": {
+            "title": "INIFile",
+            "description": "\"INI file\". Modify INI file: https://en.wikipedia.org/wiki/INI_file",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "scope": {
+                    "type": "object",
+                    "description": "Target scope. You can use multiple scopes: machine (applies to all users of the computer), user (applies to current user of the computer), process (applies to current process only).",
+                    "additionalProperties": false,
+                    "properties": {
+                        "machine": {
+                            "$ref": "#/definitions/INIFileProperties",
+                            "description": "Configures telemetry channel for all users of the computer."
+                        },
+                        "user": {
+                            "$ref": "#/definitions/INIFileProperties",
+                            "description": "Configures telemetry channel for current user of the computer."
+                        },
+                        "process": {
+                            "$ref": "#/definitions/INIFileProperties",
+                            "description": "Configures telemetry channel for process only."
+                        }
+                    },
+                    "anyOf": [
+                        {
+                            "required": [
+                                "machine"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "process"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "user"
+                            ]
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "scope"
+            ]
+        },
+        "INIFileProperties": {
+            "title": "INIFileProperties",
+            "description": "Describes file path, selector for target property and values.",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "path": {
+                    "$ref": "#/definitions/Path"
+                },
+                "selector": {
+                    "$ref": "#/definitions/INIFileSelector"
+                },
+                "value": {
+                    "$ref": "#/definitions/StringValue"
+                },
+                "display_value": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "display_value",
+                "path",
+                "selector",
+                "value"
+            ]
+        },
         "JSONFile": {
             "title": "JSONFile",
-            "description": "\"JSON file\". Modify JSON file.",
+            "description": "\"JSON file\". Modify JSON file: https://www.json.org/",
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -375,7 +480,7 @@
                     "$ref": "#/definitions/Path"
                 },
                 "selector": {
-                    "type": "string"
+                    "$ref": "#/definitions/JSONFileSelector"
                 },
                 "value": {
                     "$ref": "#/definitions/RichValue"
@@ -448,10 +553,229 @@
                     "$ref": "#/definitions/Path"
                 },
                 "selector": {
-                    "type": "string"
+                    "$ref": "#/definitions/PlainFileSelector"
                 },
                 "value": {
                     "$ref": "#/definitions/StringValue"
+                },
+                "display_value": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "display_value",
+                "path",
+                "selector",
+                "value"
+            ]
+        },
+        "TOMLFile": {
+            "title": "TOMLFile",
+            "description": "\"TOML file\". Modify TOML file.",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "scope": {
+                    "type": "object",
+                    "description": "Target scope. You can use multiple scopes: machine (applies to all users of the computer), user (applies to current user of the computer), process (applies to current process only).",
+                    "additionalProperties": false,
+                    "properties": {
+                        "machine": {
+                            "$ref": "#/definitions/TOMLFileProperties",
+                            "description": "Configures telemetry channel for all users of the computer."
+                        },
+                        "user": {
+                            "$ref": "#/definitions/TOMLFileProperties",
+                            "description": "Configures telemetry channel for current user of the computer."
+                        },
+                        "process": {
+                            "$ref": "#/definitions/TOMLFileProperties",
+                            "description": "Configures telemetry channel for process only."
+                        }
+                    },
+                    "anyOf": [
+                        {
+                            "required": [
+                                "machine"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "process"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "user"
+                            ]
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "scope"
+            ]
+        },
+        "TOMLFileProperties": {
+            "title": "TOMLFileProperties",
+            "description": "Describes file path, selector for target property and values.",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "path": {
+                    "$ref": "#/definitions/Path"
+                },
+                "selector": {
+                    "$ref": "#/definitions/TOMLFileSelector"
+                },
+                "value": {
+                    "$ref": "#/definitions/RichValue"
+                },
+                "display_value": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "display_value",
+                "path",
+                "selector",
+                "value"
+            ]
+        },
+        "XMLFile": {
+            "title": "XMLFile",
+            "description": "\"XML file\". Modify XML file: https://developer.mozilla.org/docs/Web/XML/XML_introduction",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "scope": {
+                    "type": "object",
+                    "description": "Target scope. You can use multiple scopes: machine (applies to all users of the computer), user (applies to current user of the computer), process (applies to current process only).",
+                    "additionalProperties": false,
+                    "properties": {
+                        "machine": {
+                            "$ref": "#/definitions/XMLFileProperties",
+                            "description": "Configures telemetry channel for all users of the computer."
+                        },
+                        "user": {
+                            "$ref": "#/definitions/XMLFileProperties",
+                            "description": "Configures telemetry channel for current user of the computer."
+                        },
+                        "process": {
+                            "$ref": "#/definitions/XMLFileProperties",
+                            "description": "Configures telemetry channel for process only."
+                        }
+                    },
+                    "anyOf": [
+                        {
+                            "required": [
+                                "machine"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "process"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "user"
+                            ]
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "scope"
+            ]
+        },
+        "XMLFileProperties": {
+            "title": "XMLFileProperties",
+            "description": "Describes file path, selector for target property and values.",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "path": {
+                    "$ref": "#/definitions/Path"
+                },
+                "selector": {
+                    "$ref": "#/definitions/XMLFileSelector"
+                },
+                "value": {
+                    "$ref": "#/definitions/RichValue"
+                },
+                "display_value": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "display_value",
+                "path",
+                "selector",
+                "value"
+            ]
+        },
+        "YAMLFile": {
+            "title": "YAMLFile",
+            "description": "\"YAML file\". Modify YAML file.",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "scope": {
+                    "type": "object",
+                    "description": "Target scope. You can use multiple scopes: machine (applies to all users of the computer), user (applies to current user of the computer), process (applies to current process only).",
+                    "additionalProperties": false,
+                    "properties": {
+                        "machine": {
+                            "$ref": "#/definitions/YAMLFileProperties",
+                            "description": "Configures telemetry channel for all users of the computer."
+                        },
+                        "user": {
+                            "$ref": "#/definitions/YAMLFileProperties",
+                            "description": "Configures telemetry channel for current user of the computer."
+                        },
+                        "process": {
+                            "$ref": "#/definitions/YAMLFileProperties",
+                            "description": "Configures telemetry channel for process only."
+                        }
+                    },
+                    "anyOf": [
+                        {
+                            "required": [
+                                "machine"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "process"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "user"
+                            ]
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "scope"
+            ]
+        },
+        "YAMLFileProperties": {
+            "title": "YAMLFileProperties",
+            "description": "Describes file path, selector for target property and values.",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "path": {
+                    "$ref": "#/definitions/Path"
+                },
+                "selector": {
+                    "$ref": "#/definitions/YAMLFileSelector"
+                },
+                "value": {
+                    "$ref": "#/definitions/RichValue"
                 },
                 "display_value": {
                     "type": "string"
@@ -749,6 +1073,118 @@
                 "usage_data",
                 "update_check",
                 "error_report"
+            ]
+        },
+        "Dasel": {
+            "title": "Dasel",
+            "description": "Standard selector syntax no matter the data format: https://github.com/TomWright/dasel",
+            "type": "string"
+        },
+        "JSONPointer": {
+            "title": "JSONPointer",
+            "description": "JSON Pointer: https://datatracker.ietf.org/doc/html/rfc6901",
+            "type": "string"
+        },
+        "Regex": {
+            "title": "Regex",
+            "description": "Regular expression. RE2 flavor: https://github.com/google/re2/wiki/Syntax",
+            "type": "string"
+        },
+        "XPath": {
+            "title": "XPath",
+            "description": "XML Path Language: https://developer.mozilla.org/docs/Web/XPath",
+            "type": "string"
+        },
+        "INIFileSelector": {
+            "title": "INIFileSelector",
+            "description": "Describes selector used to configure telemetry channel in application INI configuration file.",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "dasel": {
+                    "$ref": "#/definitions/Dasel"
+                }
+            },
+            "required": [
+                "dasel"
+            ]
+        },
+        "JSONFileSelector": {
+            "title": "JSONFileSelector",
+            "description": "Describes selector used to configure telemetry channel in application JSON configuration file.",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "dasel": {
+                    "$ref": "#/definitions/Dasel"
+                },
+                "json_pointer": {
+                    "$ref": "#/definitions/JSONPointer"
+                }
+            },
+            "required": [
+                "dasel",
+                "json_pointer"
+            ]
+        },
+        "PlainFileSelector": {
+            "title": "PlainFileSelector",
+            "description": "Describes selector used to configure telemetry channel in application plaintext configuration file.",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "regex": {
+                    "$ref": "#/definitions/Regex"
+                }
+            },
+            "required": [
+                "regex"
+            ]
+        },
+        "TOMLFileSelector": {
+            "title": "TOMLFileSelector",
+            "description": "Describes selector used to configure telemetry channel in application TOML configuration file.",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "dasel": {
+                    "$ref": "#/definitions/Dasel"
+                }
+            },
+            "required": [
+                "dasel"
+            ]
+        },
+        "XMLFileSelector": {
+            "title": "XMLFileSelector",
+            "description": "Describes selector used to configure telemetry channel in application XML configuration file.",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "dasel": {
+                    "$ref": "#/definitions/Dasel"
+                },
+                "xpath": {
+                    "$ref": "#/definitions/XPath"
+                }
+            },
+            "required": [
+                "dasel",
+                "xpath"
+            ]
+        },
+        "YAMLFileSelector": {
+            "title": "YAMLFileSelector",
+            "description": "Describes selector used to configure telemetry channel in application YAML configuration file.",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "dasel": {
+                    "$ref": "#/definitions/Dasel"
+                }
+            },
+            "required": [
+                "dasel"
             ]
         }
     }
