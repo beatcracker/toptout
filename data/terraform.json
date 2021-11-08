@@ -48,7 +48,9 @@
                 "macos": "$HOME/.terraformrc",
                 "windows": "%APPDATA%\\terraform.rc"
               },
-              "selector": "^\\s*disable_checkpoint\\s*=.+$",
+              "selector": {
+                "regex": "^[ \\t]*disable_checkpoint[ \\t]=.+$"
+              },
               "value": {
                 "opt_out": "disable_checkpoint = true",
                 "opt_in": "disable_checkpoint = false"
@@ -81,7 +83,9 @@
                 "macos": "$HOME/.terraformrc",
                 "windows": "%APPDATA%\\terraform.rc"
               },
-              "selector": "^\\s*disable_checkpoint_signature\\s*=.+$",
+              "selector": {
+                "regex": "^[ \\t]*disable_checkpoint_signature[ \\t]*=.+$"
+              },
               "value": {
                 "opt_out": "disable_checkpoint_signature = true",
                 "opt_in": "disable_checkpoint_signature = false"

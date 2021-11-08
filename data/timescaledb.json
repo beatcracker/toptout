@@ -44,7 +44,9 @@
                 "macos": "./Library/PostgreSQL/{postgres_version}/share/postgresql/postgresql.conf",
                 "windows": "%ProgramFiles%\\PostgreSQL\\{postgres_version}\\postgresql.conf"
               },
-              "selector": "^[ \\t]*timescaledb\\.telemetry_level=[ \\t]*(.+)[ \\t]*$",
+              "selector": {
+                "regex": "^[ \\t]*timescaledb\\.telemetry_level=.+$"
+              },
               "value": {
                 "opt_out": "timescaledb.telemetry_level=off",
                 "opt_in": "timescaledb.telemetry_level=basic"

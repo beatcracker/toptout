@@ -22,7 +22,7 @@
         "update_check": false,
         "error_report": false
       },
-      "description": "The user's decision is stored at core.telemetryConsent. The three possible values are undecided, no and limited. The intent is that consent is given if and only if limited is chosen.",
+      "description": "The user's decision is stored at core.telemetryConsent. The three possible values are `undecided`, `no` and `limited`. The intent is that consent is given if and only if limited is chosen.",
       "target": {
         "plain_file": {
           "scope": {
@@ -32,7 +32,9 @@
                 "macos": "$HOME/.atom/init.coffee",
                 "windows": "%USERPROFILE%\\.atom\\init.coffee"
               },
-              "selector": "^[ \\t]*atom.config.set\\([ \\t]*'core.telemetryConsent'[ \\t]*,[ \\t]*'no'[ \\t]*\\)\\s*$",
+              "selector": {
+                "regex": "^[ \\t]*atom.config.set\\([ \\t]*'core.telemetryConsent'[ \\t]*,[ \\t]*'\\w+'[ \\t]*\\)[ \\t]*$"
+              },
               "value": {
                 "opt_out": "atom.config.set('core.telemetryConsent', 'no')",
                 "opt_in": "atom.config.set('core.telemetryConsent', 'limited')"

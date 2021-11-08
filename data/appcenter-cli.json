@@ -86,7 +86,9 @@
                 "macos": "$HOME/.appcenter-cli/telemetryEnabled.json",
                 "windows": "%USERPROFILE%\\.appcenter-cli\\telemetryEnabled.json"
               },
-              "selector": "^(.+)$",
+              "selector": {
+                "regex": "^(.+)$"
+              },
               "value": {
                 "opt_out": "",
                 "opt_in": "enabled"

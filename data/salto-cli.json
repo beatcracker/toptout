@@ -44,7 +44,9 @@
                 "macos": "$HOME/.salto/salto.config/config.nacl",
                 "windows": "%USERPROFILE%\\.salto\\salto.config\\config.nacl"
               },
-              "selector": "(?is)^[ \t]*AppConfig:.+?[ \t]*telemetry:[ \t]*([a-z]+)[ \t]*$",
+              "selector": {
+                "regex": "(?is)^[ \t]*AppConfig:.+?[ \t]*telemetry:[ \t]*([a-z]+)[ \t]*$"
+              },
               "value": {
                 "opt_out": "AppConfig:\n    telemetry: false",
                 "opt_in": "AppConfig:\n    telemetry: TelemetryConfig"
