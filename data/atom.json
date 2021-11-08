@@ -44,6 +44,38 @@
           }
         }
       }
+    },
+    {
+      "id": "update-check",
+      "name": "Update check",
+      "traits": {
+        "official": true,
+        "usage_data": false,
+        "update_check": true,
+        "error_report": false
+      },
+      "description": "\"Automatically Update\" is enabled by default in Core Settings of the Settings View, which will allow Atom to check for updates automatically.",
+      "target": {
+        "plain_file": {
+          "scope": {
+            "user": {
+              "path": {
+                "linux": "$HOME/.atom/init.coffee",
+                "macos": "$HOME/.atom/init.coffee",
+                "windows": "%USERPROFILE%\\.atom\\init.coffee"
+              },
+              "selector": {
+                "regex": "^[ \\t]*atom.config.set\\([ \\t]*'core.automaticallyUpdate'[ \\t]*,[ \\t]*'\\w+'[ \\t]*\\)[ \\t]*$"
+              },
+              "value": {
+                "opt_out": "atom.config.set('core.automaticallyUpdate', 'false')",
+                "opt_in": "atom.config.set('core.automaticallyUpdate', 'true')"
+              },
+              "display_value": "atom.config.set('core.automaticallyUpdate', 'false')"
+            }
+          }
+        }
+      }
     }
   ]
 }
