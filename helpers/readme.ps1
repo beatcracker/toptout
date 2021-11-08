@@ -183,9 +183,8 @@ filter ConvertTo-Readme {
         }
 
         $traits.Keys | ForEach-Object -Begin {
+            [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVarsMoreThanAssignment', '', Justification = 'Dynamic scope')]
             $ret = [ordered]@{}
-            # Keeps PSScriptAnalyzer happy
-            [void]$ret
         } -Process {
             $ret.($traits.$_) = ('❌', '✔')[$tm.traits.$_]
         } -End {

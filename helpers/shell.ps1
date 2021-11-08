@@ -501,7 +501,7 @@ filter Get-ShellScriptExtension {
     }.$_
 }
 
-function Get-ShellScriptHelpers {
+function Get-ShellScriptHelper {
     Param (
         [ValidateSet('bash', 'pwsh')]
         [string]$Shell

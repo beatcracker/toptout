@@ -19,6 +19,7 @@ Param(
 
         'test',
         'test-schema',
+        'test-code',
         'test-data',
 
         'clean'
@@ -164,6 +165,7 @@ task api -Jobs @(
 
 task test -Jobs @(
     'test-schema'
+    'test-code'
     'test-data'
 )
 
@@ -174,40 +176,6 @@ task clean {
         "$BuildRoot/packages"
         "$BuildRoot/paket-files"
     )
-}
-
-task test-data {
-    $Results = Start-Job -Name Invoke-Pester -ScriptBlock {
-        Param (
-            [Parameter(Position = 0)]
-            [ValidateNotNullOrEmpty()]
-            [string]$PackageDirPath,
-
-
-            [Parameter(Position = 1)]
-            [ValidateNotNullOrEmpty()]
-            [string]$TestDirPath
-        )
-
-        $ErrorActionPreference = 'Stop'
-
-        $splat = @{
-            Path     = $TestDirPath
-            Strict   = $true
-            PassThru = $true
-        }
-
-        'Pester', 'PSScriptAnalyzer' | ForEach-Object {
-            Import-Module -Name "$PackageDirPath/$_" -Force
-        }
-
-        Invoke-Pester @splat
-    } -ArgumentList @(
-        $PackageDirPath
-        "$BuildRoot/tests"
-    ) | Receive-Job -Wait -AutoRemoveJob
-
-    assert($Results.FailedCount -eq 0) ('Failed "{0}" tests.' -f $Results.FailedCount)
 }
 
 task test-schema {
@@ -221,6 +189,33 @@ task test-schema {
             "--call=ajv compile --spec=draft2020 --validate-formats=true --verbose --all-errors --strict=true --strict-required=log -c ajv-formats -s '$BuildRoot/schema/toptout.schema.json'"
         )
     }
+}
+
+task test-code {
+    $TestPath = "$BuildRoot/tests/code.tests.ps1"
+    $Result = ForEach-Object -UseNewRunspace -Parallel {
+        $Global:ErrorActionPreference = 'Stop'
+
+        Import-Module -Name "${using:PackageDirPath}/Pester"
+        Import-Module -Name "${using:PackageDirPath}/PSScriptAnalyzer"
+
+        Invoke-Pester -Path $using:TestPath -Output Detailed -PassThru
+    }
+
+    assert($Result.FailedCount -eq 0) ('Failed tests: {0}' -f $Result.FailedCount)
+}
+
+task test-data {
+    $TestPath = "$BuildRoot/tests/data.tests.ps1"
+    $Result = ForEach-Object -UseNewRunspace -Parallel {
+        $Global:ErrorActionPreference = 'Stop'
+
+        Import-Module -Name "${using:PackageDirPath}/Pester"
+
+        Invoke-Pester -Path $using:TestPath -Output Detailed -PassThru
+    }
+
+    assert($Result.FailedCount -eq 0) ('Failed tests: {0}' -f $Result.FailedCount)
 }
 
 task content-readme {
@@ -416,7 +411,7 @@ task content-shell {
 
     foreach ($Shell in $ShellList) {
         $ShellScript = $Categories | Sort-Object | ForEach-Object -Begin {
-            Get-ShellScriptHelpers -Shell $Shell
+            Get-ShellScriptHelper -Shell $Shell
         } -Process {
             $data.$_ | Sort-Object -Property id | ConvertTo-ShellScript -Shell $Shell
         }
