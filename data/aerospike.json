@@ -36,16 +36,18 @@
             }
           }
         },
-        "plain_file": {
+        "ini_file": {
           "scope": {
             "machine": {
               "path": {
                 "default": "/etc/aerospike/telemetry.conf"
               },
-              "selector": "^(?s)[ \\t]*\\[main\\][ \\t]*(.*)\\n[ \\t]*(disable[ \\t]*=.+?)$",
+              "selector": {
+                "dasel": ".main.disable"
+              },
               "value": {
-                "opt_out": "[main]\ndisable = true",
-                "opt_in": "[main]\ndisable = false"
+                "opt_out": "true",
+                "opt_in": "false"
               },
               "display_value": "[main]\ndisable = true"
             }
