@@ -64,7 +64,10 @@
                 "macos": "/Applications/Firefox.app/Contents/Resources/distribution/policies.json",
                 "windows": "distribution\\policies.json"
               },
-              "selector": "/policies/DisableTelemetry",
+              "selector": {
+                "dasel": ".policies.DisableTelemetry",
+                "json_pointer": "/policies/DisableTelemetry"
+              },
               "value": {
                 "opt_out": true,
                 "opt_in": false

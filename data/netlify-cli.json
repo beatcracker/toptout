@@ -31,7 +31,10 @@
                 "macos": "$HOME/.netlify/config.json",
                 "windows": "%USERPROFILE%\\.netlify\\config.json"
               },
-              "selector": "/telemetryDisabled",
+              "selector": {
+                "dasel": ".telemetryDisabled",
+                "json_pointer": "/telemetryDisabled"
+              },
               "value": {
                 "opt_out": true,
                 "opt_in": false

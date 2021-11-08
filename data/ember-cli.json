@@ -30,7 +30,10 @@
                 "macos": "$HOME/.ember-cli",
                 "windows": "%USERPROFILE%\\.ember-cli"
               },
-              "selector": "/disableAnalytics",
+              "selector": {
+                "dasel": ".disableAnalytics",
+                "json_pointer": "/disableAnalytics"
+              },
               "value": {
                 "opt_out": true,
                 "opt_in": false

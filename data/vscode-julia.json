@@ -32,7 +32,10 @@
                 "macos": "$HOME/Library/Application Support/Code/User/settings.json",
                 "windows": "%APPDATA%\\Code\\User\\settings.json"
               },
-              "selector": "/julia.enableTelemetry",
+              "selector": {
+                "dasel": ".julia\\.enableTelemetry",
+                "json_pointer": "/julia.enableTelemetry"
+              },
               "value": {
                 "opt_out": false,
                 "opt_in": true
@@ -62,7 +65,10 @@
                 "macos": "$HOME/Library/Application Support/Code/User/settings.json",
                 "windows": "%APPDATA%\\Code\\User\\settings.json"
               },
-              "selector": "/julia.enableCrashReporter",
+              "selector": {
+                "dasel": ".julia\\.enableCrashReporter",
+                "json_pointer": "/julia.enableCrashReporter"
+              },
               "value": {
                 "opt_out": false,
                 "opt_in": true

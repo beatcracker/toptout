@@ -104,7 +104,10 @@
                 "macos": "$HOME/.angular-config.json",
                 "windows": "%USERPROFILE%\\.angular-config.json"
               },
-              "selector": "/cli/analyticsSharing",
+              "selector": {
+                "dasel": ".cli.analyticsSharing",
+                "json_pointer": "/cli/analyticsSharing"
+              },
               "value": {
                 "opt_out": null,
                 "opt_in": "<YOUR-GOOGLE-ANALYTICS-ID>"

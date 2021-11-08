@@ -32,7 +32,10 @@
                 "macos": "$HOME/Library/Application Support/Code/User/settings.json",
                 "windows": "%APPDATA%\\Code\\User\\settings.json"
               },
-              "selector": "/telemetry.enableTelemetry",
+              "selector": {
+                "dasel": ".telemetry\\.enableTelemetry",
+                "json_pointer": "/telemetry.enableTelemetry"
+              },
               "value": {
                 "opt_out": false,
                 "opt_in": true
@@ -62,7 +65,10 @@
                 "macos": "$HOME/Library/Application Support/Code/User/settings.json",
                 "windows": "%APPDATA%\\Code\\User\\settings.json"
               },
-              "selector": "/telemetry.enableCrashReporter",
+              "selector": {
+                "dasel": ".telemetry\\.enableCrashReporter",
+                "json_pointer": "/telemetry.enableCrashReporter"
+              },
               "value": {
                 "opt_out": false,
                 "opt_in": true

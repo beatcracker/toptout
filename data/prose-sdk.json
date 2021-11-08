@@ -41,7 +41,10 @@
                 "macos": "$HOME/.config/prose/config.json",
                 "windows": "%USERPROFILE%\\.config\\prose\\config.json"
               },
-              "selector": "/telemetry_opt_out",
+              "selector": {
+                "dasel": ".telemetry_opt_out",
+                "json_pointer": "/telemetry_opt_out"
+              },
               "value": {
                 "opt_out": true,
                 "opt_in": false

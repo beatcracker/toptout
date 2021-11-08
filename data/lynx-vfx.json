@@ -39,7 +39,10 @@
               "path": {
                 "linux": "/etc/LYNX.config"
               },
-              "selector": "/ANALYTICS/enabled",
+              "selector": {
+                "dasel": ".ANALYTICS.enabled",
+                "json_pointer": "/ANALYTICS/enabled"
+              },
               "value": {
                 "opt_out": 0,
                 "opt_in": 1

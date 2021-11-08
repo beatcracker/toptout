@@ -30,7 +30,10 @@
                 "macos": "$HOME/Library/Application Support/Code/User/settings.json",
                 "windows": "%APPDATA%\\Code\\User\\settings.json"
               },
-              "selector": "/terminal.enableAppInsights",
+              "selector": {
+                "dasel": ".terminal\\.enableAppInsights",
+                "json_pointer": "/terminal.enableAppInsights"
+              },
               "value": {
                 "opt_out": false,
                 "opt_in": true

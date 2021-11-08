@@ -46,7 +46,10 @@
               "path": {
                 "default": "some-dir/example.json"
               },
-              "selector": "/disable_update_check",
+              "selector": {
+                "dasel": ".disable_update_check",
+                "json_pointer": "/disable_update_check"
+              },
               "value": {
                 "opt_out": true,
                 "opt_in": false
@@ -77,7 +80,10 @@
               "path": {
                 "default": "some-dir/example.json"
               },
-              "selector": "/disable_anonymous_signature",
+              "selector": {
+                "dasel": ".disable_anonymous_signature",
+                "json_pointer": "/disable_anonymous_signature"
+              },
               "value": {
                 "opt_out": true,
                 "opt_in": false
