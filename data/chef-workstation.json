@@ -39,7 +39,7 @@
             }
           }
         },
-        "plain_file": {
+        "toml_file": {
           "scope": {
             "user": {
               "path": {
@@ -47,10 +47,12 @@
                 "macos": "$HOME/.chef-workstation/config.toml",
                 "windows": "%USERPROFILE%\\.chef-workstation\\config.toml"
               },
-              "selector": "^[ \\t]*\\[telemetry\\][ \\t]*\\n[ \\t]*enabled[ \\t]*=[ \\t]*(.+)[ \\t]*$",
+              "selector": {
+                "dasel": ".telemetry.enabled"
+              },
               "value": {
-                "opt_out": "[telemetry]\nenabled=false",
-                "opt_in": "[telemetry]\nenabled=true"
+                "opt_out": false,
+                "opt_in": true
               },
               "display_value": "[telemetry]\nenabled=false"
             }
