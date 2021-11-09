@@ -30,6 +30,18 @@ paths:
                 type: array
                 items:
                   type: string
+        '404':
+          description: Resource not found
+          content:
+            text/html:
+              schema:
+                type: string
+        5XX:
+          description: Unexpected error
+          content:
+            text/html:
+              schema:
+                type: string
   /category/:
     get:
       summary: Returns a list of all supported application categories
@@ -45,6 +57,18 @@ paths:
                 type: array
                 items:
                   type: string
+        '404':
+          description: Resource not found
+          content:
+            text/html:
+              schema:
+                type: string
+        5XX:
+          description: Unexpected error
+          content:
+            text/html:
+              schema:
+                type: string
   /telemetry/:
     get:
       summary: Returns telemetry details for all known application ids
@@ -60,6 +84,18 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Toptout'
+        '404':
+          description: Resource not found
+          content:
+            text/html:
+              schema:
+                type: string
+        5XX:
+          description: Unexpected error
+          content:
+            text/html:
+              schema:
+                type: string
   /telemetry/id/{id}/:
     get:
       summary: Returns telemetry details for specific application id
@@ -79,6 +115,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Toptout'
+        '404':
+          description: Resource not found
+          content:
+            text/html:
+              schema:
+                type: string
+        5XX:
+          description: Unexpected error
+          content:
+            text/html:
+              schema:
+                type: string
   /telemetry/category/{category}/:
     get:
       summary: Returns telemetry details for applications in specific category
@@ -100,11 +148,24 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Toptout'
+        '404':
+          description: Resource not found
+          content:
+            text/html:
+              schema:
+                type: string
+        5XX:
+          description: Unexpected error
+          content:
+            text/html:
+              schema:
+                type: string
 components:
   schemas:
     Links:
-      type: object
+      title: Links
       description: Contains links to the main product page, telemetry and privacy policy.
+      type: object
       additionalProperties: false
       properties:
         main:
@@ -124,10 +185,10 @@ components:
           description: Link to the product's privacy policy. Optional.
       required:
         - main
-      title: Links
     Traits:
-      type: object
+      title: Traits
       description: Describes telemetry channel traits
+      type: object
       additionalProperties: false
       properties:
         official:
@@ -147,12 +208,37 @@ components:
         - usage_data
         - update_check
         - error_report
-      title: Traits
-    Path:
+    Noop:
+      title: Noop
+      description: >-
+        "No operation". Use this for links to third-party telemetry
+        configuration tools, that are not supported by this schema.
       type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+          pattern: ^[\S]+(\s+[\S]+)*$
+          description: Friendly name. No leading/trailing whitespace allowed.
+        link:
+          type: string
+          format: uri
+          pattern: ^http[s]?:\/\/.+$
+          description: 'Link to website. Example: https://example.com.'
+        description:
+          type: string
+          pattern: ^[\S]+(\s+[\S]+)*$
+          description: Friendly description. No leading/trailing whitespace allowed.
+      required:
+        - description
+        - link
+        - name
+    Path:
+      title: Path
       description: >-
         Item path. For environment variables this would be name, for files -
         full path.
+      type: object
       additionalProperties: false
       properties:
         linux:
@@ -176,10 +262,10 @@ components:
             - macos
         - required:
             - windows
-      title: Path
     StringValue:
-      type: object
+      title: StringValue
       description: Opt-in/out values for env/exec/plain_file/registry targets
+      type: object
       additionalProperties: false
       properties:
         opt_out:
@@ -199,55 +285,10 @@ components:
       required:
         - opt_in
         - opt_out
-      title: StringValue
-    ExecProperties:
-      type: object
-      description: Describes command name and arguments.
-      additionalProperties: false
-      properties:
-        path:
-          $ref: '#/components/schemas/Path'
-        value:
-          $ref: '#/components/schemas/StringValue'
-      required:
-        - path
-        - value
-      title: ExecProperties
-    Exec:
-      type: object
-      description: '"Execute command". Run command with arguments.'
-      additionalProperties: false
-      properties:
-        scope:
-          type: object
-          description: >-
-            Target scope. You can use multiple scopes: machine (applies to all
-            users of the computer), user (applies to current user of the
-            computer), process (applies to current process only).
-          additionalProperties: false
-          properties:
-            machine:
-              $ref: '#/components/schemas/ExecProperties'
-              description: Configures telemetry channel for all users of the computer.
-            user:
-              $ref: '#/components/schemas/ExecProperties'
-              description: Configures telemetry channel for current user of the computer.
-            process:
-              $ref: '#/components/schemas/ExecProperties'
-              description: Configures telemetry channel for process only.
-          anyOf:
-            - required:
-                - machine
-            - required:
-                - process
-            - required:
-                - user
-      required:
-        - scope
-      title: Exec
     EnvProperties:
-      type: object
+      title: EnvProperties
       description: Describe variable name and applicable values
+      type: object
       additionalProperties: false
       properties:
         path:
@@ -257,14 +298,14 @@ components:
       required:
         - path
         - value
-      title: EnvProperties
     Env:
-      type: object
+      title: Env
       description: >-
         "Environment variable" target. Set or remove environment variable.
         Environment variables are by design configured in process scope. There
         are mechanisms to configure them for every new process, but it's up to
         OS/shell.
+      type: object
       additionalProperties: false
       properties:
         scope:
@@ -293,29 +334,23 @@ components:
                 - user
       required:
         - scope
-      title: Env
-    PlainFileProperties:
+    ExecProperties:
+      title: ExecProperties
+      description: Describes command name and arguments.
       type: object
-      description: Describes file path, selector for target property and values.
       additionalProperties: false
       properties:
         path:
           $ref: '#/components/schemas/Path'
-        selector:
-          type: string
         value:
           $ref: '#/components/schemas/StringValue'
-        display_value:
-          type: string
       required:
-        - display_value
         - path
-        - selector
         - value
-      title: PlainFileProperties
-    PlainFile:
+    Exec:
+      title: Exec
+      description: '"Execute command". Run command with arguments.'
       type: object
-      description: '"Plaintext file". Modify plaintext file.'
       additionalProperties: false
       properties:
         scope:
@@ -327,13 +362,13 @@ components:
           additionalProperties: false
           properties:
             machine:
-              $ref: '#/components/schemas/PlainFileProperties'
+              $ref: '#/components/schemas/ExecProperties'
               description: Configures telemetry channel for all users of the computer.
             user:
-              $ref: '#/components/schemas/PlainFileProperties'
+              $ref: '#/components/schemas/ExecProperties'
               description: Configures telemetry channel for current user of the computer.
             process:
-              $ref: '#/components/schemas/PlainFileProperties'
+              $ref: '#/components/schemas/ExecProperties'
               description: Configures telemetry channel for process only.
           anyOf:
             - required:
@@ -344,90 +379,10 @@ components:
                 - user
       required:
         - scope
-      title: PlainFile
-    RichValue:
-      type: object
-      description: >-
-        Opt-in/out values for JSON and other targets that can use non-string
-        values (e.g.: number/boolean)
-      additionalProperties: false
-      properties:
-        opt_out:
-          description: >-
-            This value will opt-OUT of the telemetry collection. Use null to
-            indicate that the entire key holding this value should be removed.
-          oneOf:
-            - type: number
-            - type: string
-            - type: boolean
-            - type: 'null'
-        opt_in:
-          description: >-
-            This value will opt-IN to the telemetry collection. Use null to
-            indicate that value should be removed.
-          oneOf:
-            - type: number
-            - type: string
-            - type: boolean
-            - type: 'null'
-      required:
-        - opt_in
-        - opt_out
-      title: RichValue
-    JSONFileProperties:
-      type: object
-      description: Describes file path, selector for target property and values.
-      additionalProperties: false
-      properties:
-        path:
-          $ref: '#/components/schemas/Path'
-        selector:
-          type: string
-        value:
-          $ref: '#/components/schemas/RichValue'
-        display_value:
-          type: string
-      required:
-        - display_value
-        - path
-        - selector
-        - value
-      title: JSONFileProperties
-    JSONFile:
-      type: object
-      description: '"JSON file". Modify JSON file.'
-      additionalProperties: false
-      properties:
-        scope:
-          type: object
-          description: >-
-            Target scope. You can use multiple scopes: machine (applies to all
-            users of the computer), user (applies to current user of the
-            computer), process (applies to current process only).
-          additionalProperties: false
-          properties:
-            machine:
-              $ref: '#/components/schemas/JSONFileProperties'
-              description: Configures telemetry channel for all users of the computer.
-            user:
-              $ref: '#/components/schemas/JSONFileProperties'
-              description: Configures telemetry channel for current user of the computer.
-            process:
-              $ref: '#/components/schemas/JSONFileProperties'
-              description: Configures telemetry channel for process only.
-          anyOf:
-            - required:
-                - machine
-            - required:
-                - process
-            - required:
-                - user
-      required:
-        - scope
-      title: JSONFile
     RegistryProperties:
-      type: object
+      title: RegistryProperties
       description: Describes registry path and keys/values.
+      type: object
       additionalProperties: false
       properties:
         root:
@@ -471,11 +426,11 @@ components:
         - key
         - type
         - value
-      title: RegistryProperties
     Registry:
+      title: Registry
+      description: '"Windows registry". Modify keys/values in Windows registry.'
       type: object
       additionalProperties: false
-      description: '"Windows registry". Modify keys/values in Windows registry.'
       properties:
         scope:
           type: object
@@ -503,71 +458,497 @@ components:
                 - user
       required:
         - scope
-      title: Registry
-    Noop:
-      type: object
+    Dasel:
+      title: Dasel
       description: >-
-        "No operation". Use this for links to third-party telemetry
-        configuration tools, that are not supported by this schema.
+        Standard selector syntax no matter the data format:
+        https://github.com/TomWright/dasel
+      type: string
+    INIFileSelector:
+      title: INIFileSelector
+      description: >-
+        Describes selector used to configure telemetry channel in application
+        INI configuration file.
+      type: object
       additionalProperties: false
       properties:
-        name:
-          type: string
-          pattern: ^[\S]+(\s+[\S]+)*$
-          description: Friendly name. No leading/trailing whitespace allowed.
-        link:
-          type: string
-          format: uri
-          pattern: ^http[s]?:\/\/.+$
-          description: 'Link to website. Example: https://example.com.'
-        description:
-          type: string
-          pattern: ^[\S]+(\s+[\S]+)*$
-          description: Friendly description. No leading/trailing whitespace allowed.
+        dasel:
+          $ref: '#/components/schemas/Dasel'
       required:
-        - description
-        - link
-        - name
-      title: Noop
-    Target:
+        - dasel
+    INIFileProperties:
+      title: INIFileProperties
+      description: Describes file path, selector for target property and values.
       type: object
+      additionalProperties: false
+      properties:
+        path:
+          $ref: '#/components/schemas/Path'
+        selector:
+          $ref: '#/components/schemas/INIFileSelector'
+        value:
+          $ref: '#/components/schemas/StringValue'
+        display_value:
+          type: string
+      required:
+        - display_value
+        - path
+        - selector
+        - value
+    INIFile:
+      title: INIFile
+      description: '"INI file". Modify INI file: https://en.wikipedia.org/wiki/INI_file'
+      type: object
+      additionalProperties: false
+      properties:
+        scope:
+          type: object
+          description: >-
+            Target scope. You can use multiple scopes: machine (applies to all
+            users of the computer), user (applies to current user of the
+            computer), process (applies to current process only).
+          additionalProperties: false
+          properties:
+            machine:
+              $ref: '#/components/schemas/INIFileProperties'
+              description: Configures telemetry channel for all users of the computer.
+            user:
+              $ref: '#/components/schemas/INIFileProperties'
+              description: Configures telemetry channel for current user of the computer.
+            process:
+              $ref: '#/components/schemas/INIFileProperties'
+              description: Configures telemetry channel for process only.
+          anyOf:
+            - required:
+                - machine
+            - required:
+                - process
+            - required:
+                - user
+      required:
+        - scope
+    JSONPointer:
+      title: JSONPointer
+      description: 'JSON Pointer: https://datatracker.ietf.org/doc/html/rfc6901'
+      type: string
+    JSONFileSelector:
+      title: JSONFileSelector
+      description: >-
+        Describes selector used to configure telemetry channel in application
+        JSON configuration file.
+      type: object
+      additionalProperties: false
+      properties:
+        dasel:
+          $ref: '#/components/schemas/Dasel'
+        json_pointer:
+          $ref: '#/components/schemas/JSONPointer'
+      required:
+        - dasel
+        - json_pointer
+    RichValue:
+      title: RichValue
+      description: >-
+        Opt-in/out values for JSON and other targets that can use non-string
+        values (e.g.: number/boolean)
+      type: object
+      additionalProperties: false
+      properties:
+        opt_out:
+          description: >-
+            This value will opt-OUT of the telemetry collection. Use null to
+            indicate that the entire key holding this value should be removed.
+          oneOf:
+            - type: number
+            - type: string
+            - type: boolean
+            - type: 'null'
+        opt_in:
+          description: >-
+            This value will opt-IN to the telemetry collection. Use null to
+            indicate that value should be removed.
+          oneOf:
+            - type: number
+            - type: string
+            - type: boolean
+            - type: 'null'
+      required:
+        - opt_in
+        - opt_out
+    JSONFileProperties:
+      title: JSONFileProperties
+      description: Describes file path, selector for target property and values.
+      type: object
+      additionalProperties: false
+      properties:
+        path:
+          $ref: '#/components/schemas/Path'
+        selector:
+          $ref: '#/components/schemas/JSONFileSelector'
+        value:
+          $ref: '#/components/schemas/RichValue'
+        display_value:
+          type: string
+      required:
+        - display_value
+        - path
+        - selector
+        - value
+    JSONFile:
+      title: JSONFile
+      description: '"JSON file". Modify JSON file: https://www.json.org/'
+      type: object
+      additionalProperties: false
+      properties:
+        scope:
+          type: object
+          description: >-
+            Target scope. You can use multiple scopes: machine (applies to all
+            users of the computer), user (applies to current user of the
+            computer), process (applies to current process only).
+          additionalProperties: false
+          properties:
+            machine:
+              $ref: '#/components/schemas/JSONFileProperties'
+              description: Configures telemetry channel for all users of the computer.
+            user:
+              $ref: '#/components/schemas/JSONFileProperties'
+              description: Configures telemetry channel for current user of the computer.
+            process:
+              $ref: '#/components/schemas/JSONFileProperties'
+              description: Configures telemetry channel for process only.
+          anyOf:
+            - required:
+                - machine
+            - required:
+                - process
+            - required:
+                - user
+      required:
+        - scope
+    Regex:
+      title: Regex
+      description: >-
+        Regular expression. RE2 flavor:
+        https://github.com/google/re2/wiki/Syntax
+      type: string
+    PlainFileSelector:
+      title: PlainFileSelector
+      description: >-
+        Describes selector used to configure telemetry channel in application
+        plaintext configuration file.
+      type: object
+      additionalProperties: false
+      properties:
+        regex:
+          $ref: '#/components/schemas/Regex'
+      required:
+        - regex
+    PlainFileProperties:
+      title: PlainFileProperties
+      description: Describes file path, selector for target property and values.
+      type: object
+      additionalProperties: false
+      properties:
+        path:
+          $ref: '#/components/schemas/Path'
+        selector:
+          $ref: '#/components/schemas/PlainFileSelector'
+        value:
+          $ref: '#/components/schemas/StringValue'
+        display_value:
+          type: string
+      required:
+        - display_value
+        - path
+        - selector
+        - value
+    PlainFile:
+      title: PlainFile
+      description: '"Plaintext file". Modify plaintext file.'
+      type: object
+      additionalProperties: false
+      properties:
+        scope:
+          type: object
+          description: >-
+            Target scope. You can use multiple scopes: machine (applies to all
+            users of the computer), user (applies to current user of the
+            computer), process (applies to current process only).
+          additionalProperties: false
+          properties:
+            machine:
+              $ref: '#/components/schemas/PlainFileProperties'
+              description: Configures telemetry channel for all users of the computer.
+            user:
+              $ref: '#/components/schemas/PlainFileProperties'
+              description: Configures telemetry channel for current user of the computer.
+            process:
+              $ref: '#/components/schemas/PlainFileProperties'
+              description: Configures telemetry channel for process only.
+          anyOf:
+            - required:
+                - machine
+            - required:
+                - process
+            - required:
+                - user
+      required:
+        - scope
+    TOMLFileSelector:
+      title: TOMLFileSelector
+      description: >-
+        Describes selector used to configure telemetry channel in application
+        TOML configuration file.
+      type: object
+      additionalProperties: false
+      properties:
+        dasel:
+          $ref: '#/components/schemas/Dasel'
+      required:
+        - dasel
+    TOMLFileProperties:
+      title: TOMLFileProperties
+      description: Describes file path, selector for target property and values.
+      type: object
+      additionalProperties: false
+      properties:
+        path:
+          $ref: '#/components/schemas/Path'
+        selector:
+          $ref: '#/components/schemas/TOMLFileSelector'
+        value:
+          $ref: '#/components/schemas/RichValue'
+        display_value:
+          type: string
+      required:
+        - display_value
+        - path
+        - selector
+        - value
+    TOMLFile:
+      title: TOMLFile
+      description: '"TOML file". Modify TOML file.'
+      type: object
+      additionalProperties: false
+      properties:
+        scope:
+          type: object
+          description: >-
+            Target scope. You can use multiple scopes: machine (applies to all
+            users of the computer), user (applies to current user of the
+            computer), process (applies to current process only).
+          additionalProperties: false
+          properties:
+            machine:
+              $ref: '#/components/schemas/TOMLFileProperties'
+              description: Configures telemetry channel for all users of the computer.
+            user:
+              $ref: '#/components/schemas/TOMLFileProperties'
+              description: Configures telemetry channel for current user of the computer.
+            process:
+              $ref: '#/components/schemas/TOMLFileProperties'
+              description: Configures telemetry channel for process only.
+          anyOf:
+            - required:
+                - machine
+            - required:
+                - process
+            - required:
+                - user
+      required:
+        - scope
+    XPath:
+      title: XPath
+      description: 'XML Path Language: https://developer.mozilla.org/docs/Web/XPath'
+      type: string
+    XMLFileSelector:
+      title: XMLFileSelector
+      description: >-
+        Describes selector used to configure telemetry channel in application
+        XML configuration file.
+      type: object
+      additionalProperties: false
+      properties:
+        dasel:
+          $ref: '#/components/schemas/Dasel'
+        xpath:
+          $ref: '#/components/schemas/XPath'
+      required:
+        - dasel
+        - xpath
+    XMLFileProperties:
+      title: XMLFileProperties
+      description: Describes file path, selector for target property and values.
+      type: object
+      additionalProperties: false
+      properties:
+        path:
+          $ref: '#/components/schemas/Path'
+        selector:
+          $ref: '#/components/schemas/XMLFileSelector'
+        value:
+          $ref: '#/components/schemas/RichValue'
+        display_value:
+          type: string
+      required:
+        - display_value
+        - path
+        - selector
+        - value
+    XMLFile:
+      title: XMLFile
+      description: >-
+        "XML file". Modify XML file:
+        https://developer.mozilla.org/docs/Web/XML/XML_introduction
+      type: object
+      additionalProperties: false
+      properties:
+        scope:
+          type: object
+          description: >-
+            Target scope. You can use multiple scopes: machine (applies to all
+            users of the computer), user (applies to current user of the
+            computer), process (applies to current process only).
+          additionalProperties: false
+          properties:
+            machine:
+              $ref: '#/components/schemas/XMLFileProperties'
+              description: Configures telemetry channel for all users of the computer.
+            user:
+              $ref: '#/components/schemas/XMLFileProperties'
+              description: Configures telemetry channel for current user of the computer.
+            process:
+              $ref: '#/components/schemas/XMLFileProperties'
+              description: Configures telemetry channel for process only.
+          anyOf:
+            - required:
+                - machine
+            - required:
+                - process
+            - required:
+                - user
+      required:
+        - scope
+    YAMLFileSelector:
+      title: YAMLFileSelector
+      description: >-
+        Describes selector used to configure telemetry channel in application
+        YAML configuration file.
+      type: object
+      additionalProperties: false
+      properties:
+        dasel:
+          $ref: '#/components/schemas/Dasel'
+      required:
+        - dasel
+    YAMLFileProperties:
+      title: YAMLFileProperties
+      description: Describes file path, selector for target property and values.
+      type: object
+      additionalProperties: false
+      properties:
+        path:
+          $ref: '#/components/schemas/Path'
+        selector:
+          $ref: '#/components/schemas/YAMLFileSelector'
+        value:
+          $ref: '#/components/schemas/RichValue'
+        display_value:
+          type: string
+      required:
+        - display_value
+        - path
+        - selector
+        - value
+    YAMLFile:
+      title: YAMLFile
+      description: '"YAML file". Modify YAML file.'
+      type: object
+      additionalProperties: false
+      properties:
+        scope:
+          type: object
+          description: >-
+            Target scope. You can use multiple scopes: machine (applies to all
+            users of the computer), user (applies to current user of the
+            computer), process (applies to current process only).
+          additionalProperties: false
+          properties:
+            machine:
+              $ref: '#/components/schemas/YAMLFileProperties'
+              description: Configures telemetry channel for all users of the computer.
+            user:
+              $ref: '#/components/schemas/YAMLFileProperties'
+              description: Configures telemetry channel for current user of the computer.
+            process:
+              $ref: '#/components/schemas/YAMLFileProperties'
+              description: Configures telemetry channel for process only.
+          anyOf:
+            - required:
+                - machine
+            - required:
+                - process
+            - required:
+                - user
+      required:
+        - scope
+    Target:
+      title: Target
       description: >-
         Describes telemetry channel configuration options. Optional, since you
         may wish to describe telemetry channels that don't provide a ways to
         control them.
+      type: object
       additionalProperties: false
       properties:
-        exec:
-          $ref: '#/components/schemas/Exec'
-        env:
-          $ref: '#/components/schemas/Env'
-        plain_file:
-          $ref: '#/components/schemas/PlainFile'
-        json_file:
-          $ref: '#/components/schemas/JSONFile'
-        registry:
-          $ref: '#/components/schemas/Registry'
         noop:
           type: array
           items:
             $ref: '#/components/schemas/Noop'
+        env:
+          $ref: '#/components/schemas/Env'
+        exec:
+          $ref: '#/components/schemas/Exec'
+        registry:
+          $ref: '#/components/schemas/Registry'
+        ini_file:
+          $ref: '#/components/schemas/INIFile'
+        json_file:
+          $ref: '#/components/schemas/JSONFile'
+        plain_file:
+          $ref: '#/components/schemas/PlainFile'
+        toml_file:
+          $ref: '#/components/schemas/TOMLFile'
+        xml_file:
+          $ref: '#/components/schemas/XMLFile'
+        yaml_file:
+          $ref: '#/components/schemas/YAMLFile'
       anyOf:
         - required:
-            - exec
+            - noop
         - required:
             - env
         - required:
-            - plain_file
-        - required:
-            - json_file
+            - exec
         - required:
             - registry
         - required:
-            - noop
-      title: Target
+            - ini_file
+        - required:
+            - json_file
+        - required:
+            - plain_file
+        - required:
+            - toml_file
+        - required:
+            - xml_file
+        - required:
+            - yaml_file
     Telemetry:
-      type: object
+      title: Telemetry
       description: Describes single telemetry channel (version check, analytics, etc..).
+      type: object
       additionalProperties: false
       properties:
         id:
@@ -596,8 +977,9 @@ components:
         - id
         - name
         - traits
-      title: Telemetry
     Toptout:
+      title: Toptout
+      description: Toptout data file schema. Describes application telemetry channels.
       type: object
       additionalProperties: false
       properties:
@@ -659,4 +1041,3 @@ components:
         - id
         - links
         - name
-      title: Toptout

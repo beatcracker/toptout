@@ -280,7 +280,7 @@ List of known telemetry channels:
 | :------: | :--------: | :----------: | :----------: |
 | ✔        | ✔          | ❌            | ❌            |
 
-> The user's decision is stored at core.telemetryConsent. The three possible values are undecided, no and limited. The intent is that consent is given if and only if limited is chosen.
+> The user's decision is stored at core.telemetryConsent. The three possible values are `undecided`, `no` and `limited`. The intent is that consent is given if and only if limited is chosen.
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -298,6 +298,32 @@ Use methods described below to opt-out of this telemetry channel.
 
 ```none
 atom.config.set('core.telemetryConsent', 'no')
+```
+
+#### Update check
+
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ✔            | ❌            |
+
+> "Automatically Update" is enabled by default in Core Settings of the Settings View, which will allow Atom to check for updates automatically.
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Edit config file (plaintext)
+
+###### Scope: 👤 User
+
+| OS      | Path                              |
+| ------- | --------------------------------- |
+| Linux   | `$HOME/.atom/init.coffee`         |
+| macOS   | `$HOME/.atom/init.coffee`         |
+| Windows | `%USERPROFILE%\.atom\init.coffee` |
+
+###### Content
+
+```none
+atom.config.set('core.automaticallyUpdate', 'false')
 ```
 
 ### [Brave](https://brave.com/)
@@ -1184,7 +1210,7 @@ Use methods described below to opt-out of this telemetry channel.
 /opt/aerospike/telemetry/telemetry.py /etc/aerospike/telemetry.conf --disable
 ```
 
-##### 2. Edit config file (plaintext)
+##### 2. Edit config file (INI)
 
 ###### Scope: 💻 Machine
 
@@ -1192,7 +1218,7 @@ Path: `/etc/aerospike/telemetry.conf`
 
 ###### Content
 
-```none
+```ini
 [main]
 disable = true
 ```
@@ -1253,7 +1279,7 @@ INFLUXD_REPORTING_DISABLED=true
 
     > Telemetry reporting is enabled by default. However, we’ve made it as easy as possible to ‘opt-out’ of the reporting. Simply start the InfluxDB process with the --reporting-disabled flag
 
-##### 3. Edit config file (plaintext)
+##### 3. Edit config file (YAML)
 
 ###### Scope: 👤 User
 
@@ -1265,7 +1291,7 @@ INFLUXD_REPORTING_DISABLED=true
 
 ###### Content
 
-```none
+```yaml
 telemetry:
   enabled: false
 ```
@@ -1612,16 +1638,16 @@ Use methods described below to opt-out of this telemetry channel.
 
 ###### Scope: 👤 User
 
-| OS      | Path                                                 |
-| ------- | ---------------------------------------------------- |
-| Linux   | `$HOME/.appcenter-cli/telemetryEnabled.json`         |
-| macOS   | `$HOME/.appcenter-cli/telemetryEnabled.json`         |
-| Windows | `%USERPROFILE%\.appcenter-cli\telemetryEnabled.json` |
+| OS      | Path                                             |
+| ------- | ------------------------------------------------ |
+| Linux   | `$HOME/.appcenter-cli/telemetryEnabled.json`     |
+| macOS   | `$HOME/.appcenter-cli/telemetryEnabled.json`     |
+| Windows | `%APPDATA%\.appcenter-cli\telemetryEnabled.json` |
 
 ###### Content
 
 ```none
-
+false
 ```
 
 ### [Arduino CLI](https://arduino.github.io/arduino-cli/latest/)
@@ -1916,7 +1942,7 @@ List of known telemetry channels:
 
 Use methods described below to opt-out of this telemetry channel.
 
-##### 1. Edit config file (plaintext)
+##### 1. Edit config file (YAML)
 
 ###### Scope: 👤 User
 
@@ -1928,7 +1954,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ###### Content
 
-```none
+```yaml
 telemetry:
   enabled: false
 ```
@@ -3879,7 +3905,7 @@ Use methods described below to opt-out of this telemetry channel.
 CHEF_TELEMETRY_OPT_OUT=1
 ```
 
-##### 2. Edit config file (plaintext)
+##### 2. Edit config file (TOML)
 
 ###### Scope: 👤 User
 
@@ -3891,7 +3917,7 @@ CHEF_TELEMETRY_OPT_OUT=1
 
 ###### Content
 
-```none
+```toml
 [telemetry]
 enabled=false
 ```
