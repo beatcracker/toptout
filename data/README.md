@@ -5,12 +5,16 @@ The telemetry data file is a JSON document conforming to the JSON Schema: [topto
 - [IDE support](#ide-support)
 - [Basic example](#basic-example)
 - [Telemetry channel targets](#telemetry-channel-targets)
+  - [No operation](#no-operation)
   - [Environment variable](#environment-variable)
   - [Execute command](#execute-command)
+  - [Windows registry](#windows-registry)
+  - [INI file](#ini-file)
   - [JSON file](#json-file)
   - [Plaintext file](#plaintext-file)
-  - [Windows registry](#windows-registry)
-  - [No operation](#no-operation)
+  - [TOML file](#toml-file)
+  - [XML file](#xml-file)
+  - [YAML file](#yaml-file)
 
 ## IDE support
 
@@ -123,12 +127,35 @@ Describes a product that has one telemetry channel which is controlled by the en
 
 Product can have multiple telemetry channels. Some of them could be controlled by multiple methods. Currently supported methods are:
 
-- [Environment variable](#environment-variable) (`env`)
-- [Execute command](#execute-command) (`exec`)
-- [JSON file](#json-file) (`json_file`)
-- [Plaintext file](#plaintext-file) (`plain_file`)
-- [Windows registry](#windows-registry) (`registry`)
-- [No operation](#no-operation) (`noop`)
+- [No operation](#no-operation)
+- [Environment variable](#environment-variable)
+- [Execute command](#execute-command)
+- [Windows registry](#windows-registry)
+- [INI file](#ini-file)
+- [JSON file](#json-file)
+- [Plaintext file](#plaintext-file)
+- [TOML file](#toml-file)
+- [XML file](#xml-file)
+- [YAML file](#yaml-file)
+
+### No operation
+
+Indicates that user should visit an external link to get details about configuring this telemetry channel. Use this for links to third-party telemetry configuration tools, that are not supported by this schema. You can use `markdown` in the description field.
+
+```json5
+"noop": [
+  {
+    "name": "Disable FooBar telemetry",
+    "description": "This unofficial patch disables telemetry in [FooBar](https://example.com/foobar) app.",
+    "link": "https://example.com/foobar-telemetry-patch"
+  },
+  {
+    "name": "Block FooBar telemetry hosts",
+    "description": "This hosts file will block [FooBar](https://example.com/foobar) app telemetry endpoints.",
+    "link": "https://example.com/foobar-telemetry-hosts"
+  }
+]
+```
 
 ### Environment variable
 
@@ -195,6 +222,85 @@ Indicates that this specific telemetry channel is controlled by executing shell 
 }
 ```
 
+
+### Windows registry
+
+Indicates that this specific telemetry channel is controlled by setting the Windows registry keys and values.
+
+```json5
+"registry": {
+  // Target scope. You can use multiple scopes.
+  // machine - configures telemetry channel for all users of the computer
+  // user    - configures telemetry channel for current user of the computer
+  // process - configures telemetry channel for process only
+  "scope": {
+    // Scope with paths to the machine-wide configuration
+    "machine": {
+      // Root key. See a schema for the list of allowed values.
+      "root": "HKEY_LOCAL_MACHINE",
+      // Registry key path
+      "path": "Software\\FooBar",
+      // Registry key name
+      "key": "telemetry",
+      // Registry key type. See a schema for the list of allowed values.
+      "type": "REG_DWORD",
+      // Always use use strings for registry values.
+      // For REG_BINARY/DWORD_*/REG_QWORD_* use hex-string representation of the data. E.g.:
+      // REG_BINARY: 01000110 01101111 01101111 01000010 01100001 01110010  -> "466f6f426172" (hex string)
+      // REG_DWORD: 777 (decimal) -> "309" (hex)
+      "value": {
+        // Use this value to opt-out of this telemetry channel.
+        "opt_out": "0",
+        // Use this value to opt-in into this telemetry channel.
+        "opt_in": "1"
+      },
+    }
+  }
+}
+```
+
+### INI file
+
+Indicates that this specific telemetry channel is controlled by setting the value in the INI file.
+
+```json5
+"json_file": {
+  // Target scope. You can use multiple scopes.
+  // machine - configures telemetry channel for all users of the computer
+  // user    - configures telemetry channel for current user of the computer
+  // process - configures telemetry channel for process only
+  "scope": {
+    // In this example, paths point to the per-user configuration file
+    "user": {
+      // Path object. Contains file path for various OSes.
+      // Allowed keys: default, linux, macos, windows
+      // If there is no OS-specific key and no default - this OS is not supported.
+      "path": {
+        "linux": "$HOME/.foobar/config.ini",
+        "macos": "$HOME/.foobar/config.ini",
+        "windows": "%USERPROFILE%\\.foobar\\config.ini"
+      },
+      // Selector of the telemetry channel control setting in the INI object.
+      "selector": {
+        // INI files can be with some massaging treated as TOML,
+        // so specify Dasel selector (https://github.com/TomWright/dasel)
+        "dasel": ".telemetry.enable"
+      },
+      // Use strings for values
+      "value": {
+        // Use this value to opt-out of this telemetry channel.
+        "opt_out": "false",
+        // Use this value to opt-in into this telemetry channel.
+        "opt_in": "true"
+      },
+      // Friendly example. Must denote disabled telemetry.
+      // Used by README generator.
+      "display_value": "[telemetry]\nenable = false"
+    }
+  }
+}
+```
+
 ### JSON file
 
 Indicates that this specific telemetry channel is controlled by setting the value in the JSON file.
@@ -217,8 +323,12 @@ Indicates that this specific telemetry channel is controlled by setting the valu
         "windows": "%USERPROFILE%\\.foobar\\config.json"
       },
       // Selector of the telemetry channel control setting in the JSON object.
-      // Specify as JSON Pointer (https://tools.ietf.org/html/rfc6901)
-      "selector": "/telemetry",
+      "selector": {
+        // Specify as Dasel selector (https://github.com/TomWright/dasel)
+        "dasel": ".telemetry",
+        // Specify as JSON Pointer (https://tools.ietf.org/html/rfc6901)
+        "json_pointer": "/telemetry"
+      },
       // Use string/number/boolean types, i.e.: 0/"FooBar"/false
       "value": {
         // Use this value to opt-out of this telemetry channel.
@@ -256,8 +366,10 @@ Indicates that this specific telemetry channel is controlled by setting the valu
         "windows": "%ProgramFiles%\\foobar\\config.cfg"
       },
       // Selector of the telemetry channel control setting in the plaintext file.
-      // Specify as GO regex (https://github.com/google/re2/wiki/Syntax)
-      "selector": "^[ \\t]*telemetry[ \\t](on|off)[ \\t]*$",
+      "selector": {
+        // Specify as RE2 regex (https://github.com/google/re2/wiki/Syntax)
+        "regex": "^[ \\t]*telemetry[ \\t].+$"
+      },
       "value": {
         // Use this value to opt-out of this telemetry channel.
         // Specify full string.
@@ -299,57 +411,127 @@ Indicates that this specific telemetry channel is controlled by setting the valu
 }
 ```
 
-### Windows registry
+### TOML file
 
-Indicates that this specific telemetry channel is controlled by setting the Windows registry keys and values.
+Indicates that this specific telemetry channel is controlled by setting the value in the TOML file.
 
 ```json5
-"registry": {
+"toml_file": {
   // Target scope. You can use multiple scopes.
   // machine - configures telemetry channel for all users of the computer
   // user    - configures telemetry channel for current user of the computer
   // process - configures telemetry channel for process only
   "scope": {
-    // Scope with paths to the machine-wide configuration
-    "machine": {
-      // Root key. See a schema for the list of allowed values.
-      "root": "HKEY_LOCAL_MACHINE",
-      // Registry key path
-      "path": "Software\\FooBar",
-      // Registry key name
-      "key": "telemetry",
-      // Registry key type. See a schema for the list of allowed values.
-      "type": "REG_DWORD",
-      // Always use use strings for registry values.
-      // For REG_BINARY/DWORD_*/REG_QWORD_* use hex-string representation of the data. E.g.:
-      // REG_BINARY: 01000110 01101111 01101111 01000010 01100001 01110010  -> "466f6f426172" (hex string)
-      // REG_DWORD: 777 (decimal) -> "309" (hex)
+    // In this example, paths point to the per-user configuration file
+    "user": {
+      // Path object. Contains file path for various OSes.
+      // Allowed keys: default, linux, macos, windows
+      // If there is no OS-specific key and no default - this OS is not supported.
+      "path": {
+        "linux": "$HOME/.foobar/config.toml",
+        "macos": "$HOME/.foobar/config.toml",
+        "windows": "%USERPROFILE%\\.foobar\\config.toml"
+      },
+      // Selector of the telemetry channel control setting in the TOML object.
+      "selector": {
+        // Specify as Dasel selector (https://github.com/TomWright/dasel)
+        "dasel": ".telemetry.enable",
+      },
+      // Use string/number/boolean types, i.e.: 0/"FooBar"/false
       "value": {
         // Use this value to opt-out of this telemetry channel.
-        "opt_out": "0",
+        "opt_out": false,
         // Use this value to opt-in into this telemetry channel.
-        "opt_in": "1"
+        "opt_in": true
       },
+      // Friendly example. Must denote disabled telemetry.
+      // Used by README generator.
+      "display_value": "[telemetry]\nenable=false"
     }
   }
 }
 ```
 
-### No operation
+### XML file
 
-Indicates that user should visit an external link to get details about configuring this telemetry channel. Use this for links to third-party telemetry configuration tools, that are not supported by this schema. You can use `markdown` in the description field.
+Indicates that this specific telemetry channel is controlled by setting the value in the XML file.
 
 ```json5
-"noop": [
-  {
-    "name": "Disable FooBar telemetry",
-    "description": "This unofficial patch disables telemetry in [FooBar](https://example.com/foobar) app.",
-    "link": "https://example.com/foobar-telemetry-patch"
-  },
-  {
-    "name": "Block FooBar telemetry hosts",
-    "description": "This hosts file will block [FooBar](https://example.com/foobar) app telemetry endpoints.",
-    "link": "https://example.com/foobar-telemetry-hosts"
+"xml_file": {
+  // Target scope. You can use multiple scopes.
+  // machine - configures telemetry channel for all users of the computer
+  // user    - configures telemetry channel for current user of the computer
+  // process - configures telemetry channel for process only
+  "scope": {
+    // In this example, paths point to the per-user configuration file
+    "user": {
+      // Path object. Contains file path for various OSes.
+      // Allowed keys: default, linux, macos, windows
+      // If there is no OS-specific key and no default - this OS is not supported.
+      "path": {
+        "linux": "$HOME/.foobar/config.xml",
+        "macos": "$HOME/.foobar/config.xml",
+        "windows": "%USERPROFILE%\\.foobar\\config.xml"
+      },
+      // Selector of the telemetry channel control setting in the XML object.
+      "selector": {
+        // Specify as Dasel selector (https://github.com/TomWright/dasel)
+        "dasel": ".telemetry.enable",
+        // Specify as XML Path Language (https://developer.mozilla.org/docs/Web/XPath)
+        "xpath": "/telemetry/enable"
+      },
+      // Use string/number/boolean types, i.e.: 0/"FooBar"/false
+      "value": {
+        // Use this value to opt-out of this telemetry channel.
+        "opt_out": false,
+        // Use this value to opt-in into this telemetry channel.
+        "opt_in": true
+      },
+      // Friendly example. Must denote disabled telemetry.
+      // Used by README generator.
+      "display_value": "<telemetry>\n  <enabled>false</enable>\n</telemetry>"
+    }
   }
-]
+}
+```
+
+### YAML file
+
+Indicates that this specific telemetry channel is controlled by setting the value in the XML file.
+
+```json5
+"yaml_file": {
+  // Target scope. You can use multiple scopes.
+  // machine - configures telemetry channel for all users of the computer
+  // user    - configures telemetry channel for current user of the computer
+  // process - configures telemetry channel for process only
+  "scope": {
+    // In this example, paths point to the per-user configuration file
+    "user": {
+      // Path object. Contains file path for various OSes.
+      // Allowed keys: default, linux, macos, windows
+      // If there is no OS-specific key and no default - this OS is not supported.
+      "path": {
+        "linux": "$HOME/.foobar/config.yaml",
+        "macos": "$HOME/.foobar/config.yaml",
+        "windows": "%USERPROFILE%\\.foobar\\config.yaml"
+      },
+      // Selector of the telemetry channel control setting in the YAML object.
+      "selector": {
+        // Specify as Dasel selector (https://github.com/TomWright/dasel)
+        "dasel": ".telemetry.enable",
+      },
+      // Use string/number/boolean types, i.e.: 0/"FooBar"/false
+      "value": {
+        // Use this value to opt-out of this telemetry channel.
+        "opt_out": false,
+        // Use this value to opt-in into this telemetry channel.
+        "opt_in": true
+      },
+      // Friendly example. Must denote disabled telemetry.
+      // Used by README generator.
+      "display_value": "telemetry:\n  enable: false"
+    }
+  }
+}
 ```
