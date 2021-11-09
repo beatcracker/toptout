@@ -219,12 +219,16 @@ filter ConvertTo-Readme {
                 $hdr * $Indent
                 $Counter
                 @{
+                    noop       = 'Visit link(s) for more details'
                     env        = 'Set environment variable'
                     exec       = 'Run command'
+                    registry   = 'Set registry key'
+                    ini_file   = 'Edit config file (INI)'
                     json_file  = 'Edit config file (JSON)'
                     plain_file = 'Edit config file (plaintext)'
-                    registry   = 'Set registry key'
-                    noop       = 'Visit link(s) for more details'
+                    toml_file  = 'Edit config file (TOML)'
+                    xml_file   = 'Edit config file (XML)'
+                    yaml_file  = 'Edit config file (YAML)'
                 }[$tg]
             ) | Add-Newline
 
@@ -255,86 +259,85 @@ filter ConvertTo-Readme {
                         process = '⧉ Process'
                     }[$scope] | Add-Newline
 
-                    if ($tg -eq 'env') {
+                    switch -Regex ($tg) {
+                        '^env$' {
+                            if ($tgs.path | Test-IsDefaultOnly) {
 
-                        if ($tgs.path | Test-IsDefaultOnly) {
+                                '```none'
+                                '{0}={1}' -f $tgs.path.default, $tgs.value.opt_out
+                                '```'
 
-                            '```none'
-                            '{0}={1}' -f $tgs.path.default, $tgs.value.opt_out
+                                Add-Newline
+                            }
+                            else {
+                                $tgs.path | ConvertTo-OsTableObject -ValueName 'Variable Name' | New-MdTable
+
+                                'Value: `{0}`' -f $tgs.value.opt_out | Add-NewLine
+                            }
+
+                            break
+                        }
+
+                        '^exec$' {
+                            if ($tgs.path | Test-IsDefaultOnly) {
+
+                                '```shell'
+                                @($tgs.path.default, $tgs.value.opt_out) -join ' '
+                                '```'
+                            }
+                            else {
+                                $tgs.path |
+                                ConvertTo-OsTableObject -ValueName 'Command' -ValuePostfix $tgs.value.opt_out |
+                                New-MdTable
+                            }
+
+                            Add-Newline
+
+                            break
+                        }
+
+                        '^registry$' {
+                            '- Path: `{0}`' -f (
+                                $tgs.root, $tgs.path, $tgs.key -join '\'
+                            )
+
+                            '- Type: `{0}`' -f $tgs.type
+
+                            '- Value: `{0}`' -f $tgs.value.opt_out | Add-Newline
+
+                            break
+                        }
+
+                        '^(ini|json|plain|toml|xml|yaml)_file$' {
+                            if ($tgs.path | Test-IsDefaultOnly) {
+
+                                'Path: `{0}`' -f $tgs.path.default
+                            }
+                            else {
+                                $tgs.path | ConvertTo-OsTableObject -ValueName 'Path' | New-MdTable
+                            }
+
+                            Add-Newline
+
+                            '{0} Content' -f ($hdr * $Indent) | Add-Newline
+
+                            '```{0}' -f $Matches[1].Replace('plain', 'none')
+                            if ($Matches.1 -eq 'json') {
+                                ($tgs.display_value | ConvertFrom-Json -Depth 100 | ConvertTo-Json) -replace $CRLF, $LF
+                            }
+                            else {
+                                $tgs.display_value
+                            }
                             '```'
 
                             Add-Newline
-                        }
-                        else {
-                            $tgs.path | ConvertTo-OsTableObject -ValueName 'Variable Name' | New-MdTable
 
-                            'Value: `{0}`' -f $tgs.value.opt_out | Add-NewLine
-                        }
-                    }
-                    elseif ($tg -eq 'exec') {
-
-                        if ($tgs.path | Test-IsDefaultOnly) {
-
-                            '```shell'
-                            @($tgs.path.default, $tgs.value.opt_out) -join ' '
-                            '```'
-                        }
-                        else {
-                            $tgs.path |
-                            ConvertTo-OsTableObject -ValueName 'Command' -ValuePostfix $tgs.value.opt_out |
-                            New-MdTable
+                            break
                         }
 
-                        Add-Newline
-                    }
-                    elseif ($tg -eq 'json_file') {
-
-                        if ($tgs.path | Test-IsDefaultOnly) {
-
-                            'Path: `{0}`' -f $tgs.path.default
+                        default {
+                            throw "Unknown target: $_"
                         }
-                        else {
-                            $tgs.path | ConvertTo-OsTableObject -ValueName 'Path' | New-MdTable
-                        }
-
-                        Add-Newline
-
-                        '{0} Content' -f ($hdr * $Indent) | Add-Newline
-
-                        '```json'
-                        ($tgs.display_value | ConvertFrom-Json -Depth 100 | ConvertTo-Json) -replace $CRLF, $LF
-                        '```'
-
-                        Add-Newline
-                    }
-                    elseif ($tg -eq 'plain_file') {
-
-                        if ($tgs.path | Test-IsDefaultOnly) {
-
-                            'Path: `{0}`' -f $tgs.path.default
-                        }
-                        else {
-                            $tgs.path | ConvertTo-OsTableObject -ValueName 'Path' | New-MdTable
-                        }
-
-                        Add-Newline
-
-                        '{0} Content' -f ($hdr * $Indent) | Add-Newline
-
-                        '```none'
-                        $tgs.display_value
-                        '```'
-
-                        Add-Newline
-                    }
-                    elseif ($tg -eq 'registry') {
-                        '- Path: `{0}`' -f (
-                            $tgs.root, $tgs.path, $tgs.key -join '\'
-                        )
-
-                        '- Type: `{0}`' -f $tgs.type
-
-                        '- Value: `{0}`' -f $tgs.value.opt_out | Add-Newline
                     }
                 }
             }
