@@ -497,7 +497,7 @@ Indicates that this specific telemetry channel is controlled by setting the valu
 
 ### YAML file
 
-Indicates that this specific telemetry channel is controlled by setting the value in the XML file.
+Indicates that this specific telemetry channel is controlled by setting the value in the YAML file.
 
 ```json5
 "yaml_file": {
