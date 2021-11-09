@@ -23,7 +23,8 @@ The provided [build.ps1](https://github.com/beatcracker/toptout/blob/master/buil
 
 - `test`: run all subtasks below
   - `test-schema`: validate JSON Schema
-  - `test-data`: run code and data files tests
+  - `test-code`: run code tests
+  - `test-data`: run data files tests
 - `content`: run all subtasks below
   - `content-readme`: generate `README.md`
   - `content-shell`: generate example shell scripts in [/examples](https://github.com/beatcracker/toptout/blob/master/examples)
