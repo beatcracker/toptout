@@ -393,8 +393,10 @@ Indicates that this specific telemetry channel is controlled by setting the valu
         "windows": "%USERPROFILE%\\.foobar\\config.cfg"
       },
       // Selector of the telemetry channel control setting in the plaintext file.
-      // Specify as GO regex (https://github.com/google/re2/wiki/Syntax)
-      "selector": "^[ \\t]*telemetry[ \\t](on|off)[ \\t]*$",
+      "selector": {
+        // Specify as RE2 regex (https://github.com/google/re2/wiki/Syntax)
+        "regex": "^[ \\t]*telemetry[ \\t].+$"
+      },
       "value": {
         // Use this value to opt-out of this telemetry channel.
         // Specify full string.
@@ -489,7 +491,7 @@ Indicates that this specific telemetry channel is controlled by setting the valu
       },
       // Friendly example. Must denote disabled telemetry.
       // Used by README generator.
-      "display_value": "<telemetry>\n  <enabled>false</enable>\n</telemetry>"
+      "display_value": "<telemetry>\n  <enable>false</enable>\n</telemetry>"
     }
   }
 }
