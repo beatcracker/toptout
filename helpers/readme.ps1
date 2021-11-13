@@ -2,6 +2,29 @@
 
 $LF = "`n"
 $CRLF = "`r`n"
+
+filter ConvertTo-RegCommand {
+    $p = '{0}\{1}' -f $_.root, $_.path | Add-Quote
+    $k = $_.key | Add-Quote
+
+    if ($null -eq $_.value.opt_out) {
+        'reg delete {0} /v {1} /f' -f $p, $k
+    }
+    else {
+        $v = $_.value.opt_out | Add-Quote
+        'reg add {0} /v {1} /d {2} /t {3} /f' -f $p, $k, $v, $_.type
+    }
+}
+
+filter Add-Quote {
+    if ($_ -match '\s+') {
+        '"{0}"' -f $_
+    }
+    else {
+        $_
+    }
+}
+
 filter ConvertTo-Anchor {
     ($_ -replace '[^\w- ]').ToLowerInvariant() -replace '\s', '-'
 }
@@ -282,13 +305,17 @@ filter ConvertTo-Readme {
                             if ($tgs.path | Test-IsDefaultOnly) {
 
                                 '```shell'
-                                @($tgs.path.default, $tgs.value.opt_out) -join ' '
+                                @(
+                                    $tgs.path.default
+                                    $tgs.value.opt_out | Add-Quote
+                                ) -join ' '
                                 '```'
                             }
                             else {
                                 $tgs.path |
-                                ConvertTo-OsTableObject -ValueName 'Command' -ValuePostfix $tgs.value.opt_out |
-                                New-MdTable
+                                ConvertTo-OsTableObject -ValueName 'Command' -ValuePostfix (
+                                    $tgs.value.opt_out | Add-Quote
+                                ) | New-MdTable
                             }
 
                             Add-Newline
@@ -304,6 +331,11 @@ filter ConvertTo-Readme {
                             '- Type: `{0}`' -f $tgs.type
 
                             '- Value: `{0}`' -f $tgs.value.opt_out | Add-Newline
+
+                            'Example:' | Add-Newline
+                            '```shell'
+                            $tgs | ConvertTo-RegCommand
+                            '```'
 
                             break
                         }
