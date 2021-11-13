@@ -159,7 +159,7 @@ case "$OSTYPE" in
       then
         if in_path 'defaults'
         then
-          run_cmd 'defaults' 'write /Library/Preferences/org.mozilla.firefox EnterprisePoliciesEnabled -bool TRUE'
+          run_cmd 'defaults' 'System.Object[]'
         fi
       fi
     fi
@@ -179,7 +179,7 @@ case "$OSTYPE" in
       then
         if in_path 'defaults'
         then
-          run_cmd 'defaults' 'write /Library/Preferences/org.mozilla.firefox DisableTelemetry -bool TRUE'
+          run_cmd 'defaults' 'System.Object[]'
         fi
       fi
     fi
@@ -211,7 +211,7 @@ case "$OSTYPE" in
       then
         if in_path 'defaults'
         then
-          run_cmd 'defaults' 'write com.microsoft.office DiagnosticDataTypePreference -string ZeroDiagnosticData'
+          run_cmd 'defaults' 'System.Object[]'
         fi
       fi
     fi
@@ -269,7 +269,7 @@ if [[ "${toptout_exec}" == 'True' ]]
 then
   if in_path 'netlify'
   then
-    run_cmd 'netlify' '--telemetry-disable'
+    run_cmd 'netlify' 'System.Object[]'
   fi
 fi
 
@@ -281,7 +281,7 @@ if [[ "${toptout_exec}" == 'True' ]]
 then
   if in_path 'scw'
   then
-    run_cmd 'scw' 'config set send-telemetry=false'
+    run_cmd 'scw' 'System.Object[]'
   fi
 fi
 
@@ -319,7 +319,7 @@ if [[ "${toptout_exec}" == 'True' ]]
 then
   if in_path '/opt/aerospike/telemetry/telemetry.py'
   then
-    run_cmd '/opt/aerospike/telemetry/telemetry.py' '/etc/aerospike/telemetry.conf --disable'
+    run_cmd '/opt/aerospike/telemetry/telemetry.py' 'System.Object[]'
   fi
 fi
 
@@ -356,7 +356,7 @@ if [[ "${toptout_exec}" == 'True' ]]
 then
   if in_path 'psql'
   then
-    run_cmd 'psql' '-c "ALTER SYSTEM SET timescaledb.telemetry_level=off"'
+    run_cmd 'psql' 'System.Object[]'
   fi
 fi
 
@@ -394,7 +394,7 @@ if [[ "${toptout_exec}" == 'True' ]]
 then
   if in_path 'appcenter'
   then
-    run_cmd 'appcenter' 'telemetry off'
+    run_cmd 'appcenter' 'System.Object[]'
   fi
 fi
 
@@ -476,7 +476,7 @@ if [[ "${toptout_exec}" == 'True' ]]
 then
   if in_path 'dvc'
   then
-    run_cmd 'dvc' 'config core.analytics false --global'
+    run_cmd 'dvc' 'System.Object[]'
   fi
 fi
 
@@ -500,7 +500,7 @@ if [[ "${toptout_exec}" == 'True' ]]
 then
   if in_path 'flutter'
   then
-    run_cmd 'flutter' 'config --no-analytics'
+    run_cmd 'flutter' 'System.Object[]'
   fi
 fi
 
@@ -542,7 +542,7 @@ if [[ "${toptout_exec}" == 'True' ]]
 then
   if in_path 'ionic'
   then
-    run_cmd 'ionic' 'config set --global telemetry false'
+    run_cmd 'ionic' 'System.Object[]'
   fi
 fi
 
@@ -627,7 +627,7 @@ if [[ "${toptout_exec}" == 'True' ]]
 then
   if in_path 'pac'
   then
-    run_cmd 'pac' 'telemetry disable'
+    run_cmd 'pac' 'System.Object[]'
   fi
 fi
 
@@ -772,7 +772,7 @@ if [[ "${toptout_exec}" == 'True' ]]
 then
   if in_path 'wapm'
   then
-    run_cmd 'wapm' 'config set telemetry.enabled false'
+    run_cmd 'wapm' 'System.Object[]'
   fi
 fi
 
@@ -800,7 +800,7 @@ then
   then
     if in_path 'yarn'
     then
-      run_cmd 'yarn' 'webiny disable-tracking'
+      run_cmd 'yarn' 'System.Object[]'
     fi
   fi
 fi
@@ -950,7 +950,7 @@ if [[ "${toptout_exec}" == 'True' ]]
 then
   if in_path 'sfctl'
   then
-    run_cmd 'sfctl' 'settings telemetry set_telemetry --off'
+    run_cmd 'sfctl' 'System.Object[]'
   fi
 fi
 
@@ -962,7 +962,7 @@ if [[ "${toptout_exec}" == 'True' ]]
 then
   if in_path 'skaffold'
   then
-    run_cmd 'skaffold' 'config set --global collect-metrics false'
+    run_cmd 'skaffold' 'System.Object[]'
   fi
 fi
 

@@ -1,4 +1,4 @@
-openapi: 3.0.2
+openapi: 3.0.3
 info:
   title: Toptout
   description: Get data about telemetry channels in various applications
@@ -8,7 +8,7 @@ info:
   version: 0.0.1
 servers:
   - url: https://toptout.me/api
-    description: Implements static API using GitHub pages
+    description: Static API hosted on GitHub pages
 tags:
   - name: apps
     description: Get application ids or categories
@@ -264,7 +264,7 @@ components:
             - windows
     StringValue:
       title: StringValue
-      description: Opt-in/out values for env/exec/plain_file/registry targets
+      description: Opt-in/out values for env/plain_file/registry targets
       type: object
       additionalProperties: false
       properties:
@@ -334,6 +334,39 @@ components:
                 - user
       required:
         - scope
+    StringArrayValue:
+      title: StringArrayValue
+      description: Opt-in/out values (commandline arguments) for exec target.
+      type: object
+      additionalProperties: false
+      properties:
+        opt_out:
+          description: >-
+            These arguments will opt-OUT of the telemetry collection. Use empty
+            array to indicate that no arguments to command are needed. Use null
+            to indicate that opt-out is not applicable.
+          oneOf:
+            - type: array
+              items:
+                type: string
+            - type: 'null'
+              items:
+                type: 'null'
+        opt_in:
+          description: >-
+            These arguments will opt-IN of the telemetry collection. Use empty
+            array to indicate that no arguments to command are needed. Use null
+            to indicate that opt-in is not applicable.
+          oneOf:
+            - type: array
+              items:
+                type: string
+            - type: 'null'
+              items:
+                type: 'null'
+      required:
+        - opt_in
+        - opt_out
     ExecProperties:
       title: ExecProperties
       description: Describes command name and arguments.
@@ -343,7 +376,7 @@ components:
         path:
           $ref: '#/components/schemas/Path'
         value:
-          $ref: '#/components/schemas/StringValue'
+          $ref: '#/components/schemas/StringArrayValue'
       required:
         - path
         - value
@@ -550,7 +583,7 @@ components:
       title: RichValue
       description: >-
         Opt-in/out values for JSON and other targets that can use non-string
-        values (e.g.: number/boolean)
+        values (e.g.: object/number/boolean/null)
       type: object
       additionalProperties: false
       properties:
@@ -559,6 +592,7 @@ components:
             This value will opt-OUT of the telemetry collection. Use null to
             indicate that the entire key holding this value should be removed.
           oneOf:
+            - type: object
             - type: number
             - type: string
             - type: boolean
@@ -568,6 +602,7 @@ components:
             This value will opt-IN to the telemetry collection. Use null to
             indicate that value should be removed.
           oneOf:
+            - type: object
             - type: number
             - type: string
             - type: boolean

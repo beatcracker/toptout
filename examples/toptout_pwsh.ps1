@@ -203,7 +203,7 @@ switch (Get-OsMoniker) {
         if ($Exec) {
             if (Test-InPath 'firefox' -ShowLog:$ShowLog) {
                 if (Test-InPath 'defaults' -ShowLog:$ShowLog) {
-                    Invoke-ShellCommand -Command 'defaults' -Arguments 'write /Library/Preferences/org.mozilla.firefox EnterprisePoliciesEnabled -bool TRUE' -ShowLog:$ShowLog
+                    Invoke-ShellCommand -Command 'defaults' -Arguments 'System.Object[]' -ShowLog:$ShowLog
                 }
             }
         }
@@ -220,7 +220,7 @@ switch (Get-OsMoniker) {
         if ($Exec) {
             if (Test-InPath 'firefox' -ShowLog:$ShowLog) {
                 if (Test-InPath 'defaults' -ShowLog:$ShowLog) {
-                    Invoke-ShellCommand -Command 'defaults' -Arguments 'write /Library/Preferences/org.mozilla.firefox DisableTelemetry -bool TRUE' -ShowLog:$ShowLog
+                    Invoke-ShellCommand -Command 'defaults' -Arguments 'System.Object[]' -ShowLog:$ShowLog
                 }
             }
         }
@@ -253,7 +253,7 @@ switch (Get-OsMoniker) {
         if ($Exec) {
             if (Test-InPath 'winword' -ShowLog:$ShowLog) {
                 if (Test-InPath 'defaults' -ShowLog:$ShowLog) {
-                    Invoke-ShellCommand -Command 'defaults' -Arguments 'write com.microsoft.office DiagnosticDataTypePreference -string ZeroDiagnosticData' -ShowLog:$ShowLog
+                    Invoke-ShellCommand -Command 'defaults' -Arguments 'System.Object[]' -ShowLog:$ShowLog
                 }
             }
         }
@@ -323,7 +323,7 @@ if ($Env) {
 # Usage data
 if ($Exec) {
     if (Test-InPath 'netlify' -ShowLog:$ShowLog) {
-        Invoke-ShellCommand -Command 'netlify' -Arguments '--telemetry-disable' -ShowLog:$ShowLog
+        Invoke-ShellCommand -Command 'netlify' -Arguments 'System.Object[]' -ShowLog:$ShowLog
     }
 }
 
@@ -333,7 +333,7 @@ if ($Exec) {
 # Usage data
 if ($Exec) {
     if (Test-InPath 'scw' -ShowLog:$ShowLog) {
-        Invoke-ShellCommand -Command 'scw' -Arguments 'config set send-telemetry=false' -ShowLog:$ShowLog
+        Invoke-ShellCommand -Command 'scw' -Arguments 'System.Object[]' -ShowLog:$ShowLog
     }
 }
 
@@ -377,7 +377,7 @@ if ($Env) {
 # Usage data
 if ($Exec) {
     if (Test-InPath '/opt/aerospike/telemetry/telemetry.py' -ShowLog:$ShowLog) {
-        Invoke-ShellCommand -Command '/opt/aerospike/telemetry/telemetry.py' -Arguments '/etc/aerospike/telemetry.conf --disable' -ShowLog:$ShowLog
+        Invoke-ShellCommand -Command '/opt/aerospike/telemetry/telemetry.py' -Arguments 'System.Object[]' -ShowLog:$ShowLog
     }
 }
 
@@ -420,7 +420,7 @@ if ($Env) {
 # Usage data
 if ($Exec) {
     if (Test-InPath 'psql' -ShowLog:$ShowLog) {
-        Invoke-ShellCommand -Command 'psql' -Arguments '-c "ALTER SYSTEM SET timescaledb.telemetry_level=off"' -ShowLog:$ShowLog
+        Invoke-ShellCommand -Command 'psql' -Arguments 'System.Object[]' -ShowLog:$ShowLog
     }
 }
 
@@ -464,7 +464,7 @@ if ($Env) {
 # Usage data (command)
 if ($Exec) {
     if (Test-InPath 'appcenter' -ShowLog:$ShowLog) {
-        Invoke-ShellCommand -Command 'appcenter' -Arguments 'telemetry off' -ShowLog:$ShowLog
+        Invoke-ShellCommand -Command 'appcenter' -Arguments 'System.Object[]' -ShowLog:$ShowLog
     }
 }
 
@@ -566,7 +566,7 @@ if ($Env) {
 # Usage Analytics
 if ($Exec) {
     if (Test-InPath 'dvc' -ShowLog:$ShowLog) {
-        Invoke-ShellCommand -Command 'dvc' -Arguments 'config core.analytics false --global' -ShowLog:$ShowLog
+        Invoke-ShellCommand -Command 'dvc' -Arguments 'System.Object[]' -ShowLog:$ShowLog
     }
 }
 
@@ -592,7 +592,7 @@ if ($Env) {
 # Crash reporting
 if ($Exec) {
     if (Test-InPath 'flutter' -ShowLog:$ShowLog) {
-        Invoke-ShellCommand -Command 'flutter' -Arguments 'config --no-analytics' -ShowLog:$ShowLog
+        Invoke-ShellCommand -Command 'flutter' -Arguments 'System.Object[]' -ShowLog:$ShowLog
     }
 }
 
@@ -640,7 +640,7 @@ switch (Get-OsMoniker) {
 # Usage data
 if ($Exec) {
     if (Test-InPath 'ionic' -ShowLog:$ShowLog) {
-        Invoke-ShellCommand -Command 'ionic' -Arguments 'config set --global telemetry false' -ShowLog:$ShowLog
+        Invoke-ShellCommand -Command 'ionic' -Arguments 'System.Object[]' -ShowLog:$ShowLog
     }
 }
 
@@ -747,7 +747,7 @@ if ($Env) {
 # Usage data
 if ($Exec) {
     if (Test-InPath 'pac' -ShowLog:$ShowLog) {
-        Invoke-ShellCommand -Command 'pac' -Arguments 'telemetry disable' -ShowLog:$ShowLog
+        Invoke-ShellCommand -Command 'pac' -Arguments 'System.Object[]' -ShowLog:$ShowLog
     }
 }
 
@@ -932,7 +932,7 @@ if ($Env) {
 # Usage data
 if ($Exec) {
     if (Test-InPath 'wapm' -ShowLog:$ShowLog) {
-        Invoke-ShellCommand -Command 'wapm' -Arguments 'config set telemetry.enabled false' -ShowLog:$ShowLog
+        Invoke-ShellCommand -Command 'wapm' -Arguments 'System.Object[]' -ShowLog:$ShowLog
     }
 }
 
@@ -961,7 +961,7 @@ if ($Env) {
 if ($Exec) {
     if (Test-InPath 'webiny' -ShowLog:$ShowLog) {
         if (Test-InPath 'yarn' -ShowLog:$ShowLog) {
-            Invoke-ShellCommand -Command 'yarn' -Arguments 'webiny disable-tracking' -ShowLog:$ShowLog
+            Invoke-ShellCommand -Command 'yarn' -Arguments 'System.Object[]' -ShowLog:$ShowLog
         }
     }
 }
@@ -1151,7 +1151,7 @@ if ($Env) {
 # Usage data
 if ($Exec) {
     if (Test-InPath 'sfctl' -ShowLog:$ShowLog) {
-        Invoke-ShellCommand -Command 'sfctl' -Arguments 'settings telemetry set_telemetry --off' -ShowLog:$ShowLog
+        Invoke-ShellCommand -Command 'sfctl' -Arguments 'System.Object[]' -ShowLog:$ShowLog
     }
 }
 
@@ -1161,7 +1161,7 @@ if ($Exec) {
 # Usage data
 if ($Exec) {
     if (Test-InPath 'skaffold' -ShowLog:$ShowLog) {
-        Invoke-ShellCommand -Command 'skaffold' -Arguments 'config set --global collect-metrics false' -ShowLog:$ShowLog
+        Invoke-ShellCommand -Command 'skaffold' -Arguments 'System.Object[]' -ShowLog:$ShowLog
     }
 }
 

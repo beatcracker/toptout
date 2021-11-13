@@ -505,12 +505,22 @@ Use methods described below to opt-out of this telemetry channel.
 - Type: `REG_DWORD`
 - Value: `1`
 
+Example:
+
+```shell
+reg add HKEY_LOCAL_MACHINE\Software\Policies\Mozilla\Firefox /v DisableTelemetry /d 1 /t REG_DWORD /f
+```
 ###### Scope: 👤 User
 
 - Path: `HKEY_CURRENT_USER\Software\Policies\Mozilla\Firefox\DisableTelemetry`
 - Type: `REG_DWORD`
 - Value: `1`
 
+Example:
+
+```shell
+reg add HKEY_CURRENT_USER\Software\Policies\Mozilla\Firefox /v DisableTelemetry /d 1 /t REG_DWORD /f
+```
 ### [Homebrew](https://brew.sh)
 
 > Homebrew has begun gathering anonymous aggregate user behaviour analytics and reporting these to Google Analytics.
@@ -645,6 +655,11 @@ Use methods described below to opt-out of this telemetry channel.
 - Type: `REG_DWORD`
 - Value: `3`
 
+Example:
+
+```shell
+reg add HKEY_CURRENT_USER\Software\Policies\Microsoft\office\16.0\common\privacy /v SendTelemetry /d 3 /t REG_DWORD /f
+```
 ### [Microsoft calculator](https://github.com/Microsoft/calculator)
 
 > This project collects usage data and sends it to Microsoft to help improve our products and services.
@@ -808,6 +823,11 @@ Use methods described below to opt-out of this telemetry channel.
 - Type: `REG_DWORD`
 - Value: `1`
 
+Example:
+
+```shell
+reg add HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DataCollection /v AllowTelemetry /d 1 /t REG_DWORD /f
+```
 ### [winget](https://github.com/microsoft/winget-cli)
 
 > The winget.exe client is instrumented to collect usage and diagnostic (error) data and sends it to Microsoft to help improve the product.
@@ -841,6 +861,11 @@ Use methods described below to opt-out of this telemetry channel.
 - Type: `REG_DWORD`
 - Value: `1`
 
+Example:
+
+```shell
+reg add HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DataCollection /v AllowTelemetry /d 1 /t REG_DWORD /f
+```
 ## Cloud
 
 ### [Automagica](https://automagica.com/)
@@ -3820,8 +3845,15 @@ BATECT_ENABLE_TELEMETRY=false
 ###### Scope: 👤 User
 
 ```shell
-batect --permanently-enable-telemetry
+batect --permanently-disable-telemetry
 ```
+
+##### 3. Visit link(s) for more details
+
+1. [Disable telemetry collection by blocking network access to telemetry host.](https://batect.dev/privacy/#how-to-opt-out-4)
+
+    > If you wish to block telemetry data uploads at the network level, block access to `api.abacus.batect.dev`.
+    > Note that the IP address of this host name can change at any time, so it is best to block the host name, not the IP address.
 
 #### Usage data (per-invocation)
 
@@ -3837,13 +3869,13 @@ Use methods described below to opt-out of this telemetry channel.
 
     > If you would like to disable telemetry collection or uploading for a single invocation, pass the --no-telemetry flag, for example: ./batect --no-telemetry the-task
 
-#### [Update check](https://strapi.io/documentation/developer-docs/latest/setup-deployment-guides/configurations.html#environment)
+#### [Update check](https://batect.dev/privacy/#how-to-opt-out-2)
 
 | Official | Usage data | Update check | Error report |
 | :------: | :--------: | :----------: | :----------: |
 | ✔        | ❌          | ✔            | ❌            |
 
-> Don't show the notification message about updating strapi in the terminal.
+> Batect checks for updated versions and displays a reminder to the user if a newer version is available. It automatically checks for updates at most once every 36 hours.
 
 Use methods described below to opt-out of this telemetry channel.
 
@@ -3851,7 +3883,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 1. [Disable update check](https://batect.dev/docs/reference/cli/#--no-update-notification)
 
-    > Batect automatically checks for updates at most once every 24 hours and displays a notification if a newer version is available. Passing this flag will disable both the update check and notification: --no-update-notification.
+    > Passing this flag will disable both the update check and notification: `--no-update-notification`.
 
 ### [Chef Automate](https://docs.chef.io/workstation/)
 
@@ -4301,7 +4333,8 @@ Use methods described below to opt-out of this telemetry channel.
     > You can completely disable vzstats client on a machine by executing the following command:
     > ```shell
     > mkdir -p /etc/vz
-    > touch /etc/vz/vzstats-disable```
+    > touch /etc/vz/vzstats-disable
+    > ```
 
 ### [Packer](https://www.packer.io/)
 
@@ -4741,6 +4774,11 @@ Use methods described below to opt-out of this telemetry channel.
 - Type: `REG_DWORD`
 - Value: `0`
 
+Example:
+
+```shell
+reg add HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DataCollection /v AllowTelemetry /d 0 /t REG_DWORD /f
+```
 #### Usage data
 
 | Official | Usage data | Update check | Error report |
