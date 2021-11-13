@@ -34,8 +34,18 @@
                 "macos": "defaults"
               },
               "value": {
-                "opt_out": "write com.microsoft.office DiagnosticDataTypePreference -string ZeroDiagnosticData",
-                "opt_in": "delete com.microsoft.office DiagnosticDataTypePreference"
+                "opt_out": [
+                  "write",
+                  "com.microsoft.office",
+                  "DiagnosticDataTypePreference",
+                  "-string",
+                  "ZeroDiagnosticData"
+                ],
+                "opt_in": [
+                  "delete",
+                  "com.microsoft.office",
+                  "DiagnosticDataTypePreference"
+                ]
               }
             }
           }

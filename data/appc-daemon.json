@@ -43,8 +43,20 @@
                 "default": "appcd"
               },
               "value": {
-                "opt_out": "config set telemetry.enabled false --force",
-                "opt_in": "config set telemetry.enabled true --force"
+                "opt_out": [
+                  "config",
+                  "set",
+                  "telemetry.enabled",
+                  "false",
+                  "--force"
+                ],
+                "opt_in": [
+                  "config",
+                  "set",
+                  "telemetry.enabled",
+                  "true",
+                  "--force"
+                ]
               }
             }
           }

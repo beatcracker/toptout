@@ -30,8 +30,19 @@
                 "default": "dvc"
               },
               "value": {
-                "opt_out": "config core.analytics false --global",
-                "opt_in": "config core.analytics false true --global"
+                "opt_out": [
+                  "config",
+                  "core.analytics",
+                  "false",
+                  "--global"
+                ],
+                "opt_in": [
+                  "config",
+                  "core.analytics",
+                  "false",
+                  "true",
+                  "--global"
+                ]
               }
             },
             "machine": {
@@ -39,8 +50,19 @@
                 "default": "dvc"
               },
               "value": {
-                "opt_out": "config core.analytics false --system",
-                "opt_in": "config core.analytics false true --system"
+                "opt_out": [
+                  "config",
+                  "core.analytics",
+                  "false",
+                  "--system"
+                ],
+                "opt_in": [
+                  "config",
+                  "core.analytics",
+                  "false",
+                  "true",
+                  "--system"
+                ]
               }
             }
           }

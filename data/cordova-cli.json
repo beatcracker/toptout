@@ -43,8 +43,14 @@
                 "default": "cordova"
               },
               "value": {
-                "opt_out": "telemetry off",
-                "opt_in": "telemetry off"
+                "opt_out": [
+                  "telemetry",
+                  "off"
+                ],
+                "opt_in": [
+                  "telemetry",
+                  "off"
+                ]
               }
             }
           }

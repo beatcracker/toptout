@@ -30,8 +30,20 @@
                 "default": "ionic"
               },
               "value": {
-                "opt_out": "config set --global telemetry false",
-                "opt_in": "config set --global telemetry true"
+                "opt_out": [
+                  "config",
+                  "set",
+                  "--global",
+                  "telemetry",
+                  "false"
+                ],
+                "opt_in": [
+                  "config",
+                  "set",
+                  "--global",
+                  "telemetry",
+                  "true"
+                ]
               }
             }
           }

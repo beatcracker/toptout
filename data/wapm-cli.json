@@ -29,8 +29,18 @@
                 "default": "wapm"
               },
               "value": {
-                "opt_out": "config set telemetry.enabled false",
-                "opt_in": "config set telemetry.enabled true"
+                "opt_out": [
+                  "config",
+                  "set",
+                  "telemetry.enabled",
+                  "false"
+                ],
+                "opt_in": [
+                  "config",
+                  "set",
+                  "telemetry.enabled",
+                  "true"
+                ]
               }
             }
           }

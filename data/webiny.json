@@ -61,8 +61,14 @@
                 "default": "yarn"
               },
               "value": {
-                "opt_out": "webiny disable-tracking",
-                "opt_in": "webiny enable-tracking"
+                "opt_out": [
+                  "webiny",
+                  "disable-tracking"
+                ],
+                "opt_in": [
+                  "webiny",
+                  "enable-tracking"
+                ]
               }
             }
           }

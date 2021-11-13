@@ -42,8 +42,12 @@
                 "default": "hint"
               },
               "value": {
-                "opt_out": "--telemetry=off",
-                "opt_in": "--telemetry=on"
+                "opt_out": [
+                  "--telemetry=off"
+                ],
+                "opt_in": [
+                  "--telemetry=on"
+                ]
               }
             }
           }

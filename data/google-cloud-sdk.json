@@ -43,8 +43,18 @@
                 "default": "gcloud"
               },
               "value": {
-                "opt_out": "config set disable_usage_reporting true",
-                "opt_in": "config set disable_usage_reporting false"
+                "opt_out": [
+                  "config",
+                  "set",
+                  "disable_usage_reporting",
+                  "true"
+                ],
+                "opt_in": [
+                  "config",
+                  "set",
+                  "disable_usage_reporting",
+                  "false"
+                ]
               }
             }
           }

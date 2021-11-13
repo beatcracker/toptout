@@ -42,8 +42,18 @@
                 "default": "npx"
               },
               "value": {
-                "opt_out": "nuxt telemetry disable --global",
-                "opt_in": "nuxt telemetry enable --global"
+                "opt_out": [
+                  "nuxt",
+                  "telemetry",
+                  "disable",
+                  "--global"
+                ],
+                "opt_in": [
+                  "nuxt",
+                  "telemetry",
+                  "enable",
+                  "--global"
+                ]
               }
             }
           }

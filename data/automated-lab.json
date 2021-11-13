@@ -40,8 +40,24 @@
                 "windows": "powershell"
               },
               "value": {
-                "opt_out": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command \"Import-Module AutomatedLab -ErrorAction Stop ; Disable-LabTelemetry -ErrorAction Stop\"",
-                "opt_in": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command \"Import-Module AutomatedLab -ErrorAction Stop ; Enable-LabTelemetry -ErrorAction Stop\""
+                "opt_out": [
+                  "-NoLogo",
+                  "-NoProfile",
+                  "-NonInteractive",
+                  "-ExecutionPolicy",
+                  "Bypass",
+                  "-Command",
+                  "Import-Module AutomatedLab -ErrorAction Stop ; Disable-LabTelemetry -ErrorAction Stop"
+                ],
+                "opt_in": [
+                  "-NoLogo",
+                  "-NoProfile",
+                  "-NonInteractive",
+                  "-ExecutionPolicy",
+                  "Bypass",
+                  "-Command",
+                  "Import-Module AutomatedLab -ErrorAction Stop ; Enable-LabTelemetry -ErrorAction Stop"
+                ]
               }
             }
           }

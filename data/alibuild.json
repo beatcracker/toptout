@@ -42,8 +42,14 @@
                 "default": "aliBuild"
               },
               "value": {
-                "opt_out": "analytics off",
-                "opt_in": "analytics on"
+                "opt_out": [
+                  "analytics",
+                  "off"
+                ],
+                "opt_in": [
+                  "analytics",
+                  "on"
+                ]
               }
             }
           }

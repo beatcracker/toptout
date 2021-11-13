@@ -30,8 +30,18 @@
                 "default": "sfctl"
               },
               "value": {
-                "opt_out": "settings telemetry set_telemetry --off",
-                "opt_in": "settings telemetry set_telemetry --on"
+                "opt_out": [
+                  "settings",
+                  "telemetry",
+                  "set_telemetry",
+                  "--off"
+                ],
+                "opt_in": [
+                  "settings",
+                  "telemetry",
+                  "set_telemetry",
+                  "--on"
+                ]
               }
             }
           }

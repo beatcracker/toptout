@@ -30,8 +30,16 @@
                 "default": "scw"
               },
               "value": {
-                "opt_out": "config set send-telemetry=false",
-                "opt_in": "config set send-telemetry=true"
+                "opt_out": [
+                  "config",
+                  "set",
+                  "send-telemetry=false"
+                ],
+                "opt_in": [
+                  "config",
+                  "set",
+                  "send-telemetry=true"
+                ]
               }
             }
           }

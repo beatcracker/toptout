@@ -26,7 +26,7 @@
         "noop": [
           {
             "name": "Disable usage data reporting",
-            "description": "You can completely disable vzstats client on a machine by executing the following command:\n```shell\nmkdir -p /etc/vz\ntouch /etc/vz/vzstats-disable```",
+            "description": "You can completely disable vzstats client on a machine by executing the following command:\n```shell\nmkdir -p /etc/vz\ntouch /etc/vz/vzstats-disable\n```",
             "link": "https://wiki.openvz.org/Vzstats#How_to_opt-out"
           }
         ]

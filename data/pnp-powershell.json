@@ -60,8 +60,24 @@
                 "windows": "powershell"
               },
               "value": {
-                "opt_out": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command \"Import-Module PnP.PowerShell -ErrorAction Stop ; Disable-PnPPowerShellTelemetry -Force -ErrorAction Stop\"",
-                "opt_in": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command \"Import-Module PnP.PowerShell -ErrorAction Stop ; Enable-PnPPowerShellTelemetry -Force -ErrorAction Stop\""
+                "opt_out": [
+                  "-NoLogo",
+                  "-NoProfile",
+                  "-NonInteractive",
+                  "-ExecutionPolicy",
+                  "Bypass",
+                  "-Command",
+                  "Import-Module PnP.PowerShell -ErrorAction Stop ; Disable-PnPPowerShellTelemetry -Force -ErrorAction Stop"
+                ],
+                "opt_in": [
+                  "-NoLogo",
+                  "-NoProfile",
+                  "-NonInteractive",
+                  "-ExecutionPolicy",
+                  "Bypass",
+                  "-Command",
+                  "Import-Module PnP.PowerShell -ErrorAction Stop ; Enable-PnPPowerShellTelemetry -Force -ErrorAction Stop"
+                ]
               }
             }
           }

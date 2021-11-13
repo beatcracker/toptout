@@ -45,8 +45,20 @@
                 "default": "yarn"
               },
               "value": {
-                "opt_out": "config set --home enableTelemetry 0",
-                "opt_in": "config set --home enableTelemetry 1"
+                "opt_out": [
+                  "config",
+                  "set",
+                  "--home",
+                  "enableTelemetry",
+                  "0"
+                ],
+                "opt_in": [
+                  "config",
+                  "set",
+                  "--home",
+                  "enableTelemetry",
+                  "1"
+                ]
               }
             }
           }

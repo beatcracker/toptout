@@ -30,8 +30,14 @@
                 "default": "flutter"
               },
               "value": {
-                "opt_out": "config --no-analytics",
-                "opt_in": "config --analytics"
+                "opt_out": [
+                  "config",
+                  "--no-analytics"
+                ],
+                "opt_in": [
+                  "config",
+                  "--analytics"
+                ]
               }
             }
           }

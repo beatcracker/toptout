@@ -27,8 +27,16 @@
                 "default": "npx"
               },
               "value": {
-                "opt_out": "stencil telemetry off",
-                "opt_in": "stencil telemetry on"
+                "opt_out": [
+                  "stencil",
+                  "telemetry",
+                  "off"
+                ],
+                "opt_in": [
+                  "stencil",
+                  "telemetry",
+                  "on"
+                ]
               }
             }
           }

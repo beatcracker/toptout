@@ -42,7 +42,9 @@
                 "default": "quilt3"
               },
               "value": {
-                "opt_out": "disable-telemetry",
+                "opt_out": [
+                  "disable-telemetry"
+                ],
                 "opt_in": null
               }
             }

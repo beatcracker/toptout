@@ -43,8 +43,14 @@
                 "default": "rasa"
               },
               "value": {
-                "opt_out": "telemetry disable",
-                "opt_in": "telemetry enable"
+                "opt_out": [
+                  "telemetry",
+                  "disable"
+                ],
+                "opt_in": [
+                  "telemetry",
+                  "enable"
+                ]
               }
             }
           }

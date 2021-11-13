@@ -34,8 +34,18 @@
                 "macos": "defaults"
               },
               "value": {
-                "opt_out": "write /Library/Preferences/org.mozilla.firefox EnterprisePoliciesEnabled -bool TRUE",
-                "opt_in": "delete /Library/Preferences/org.mozilla.firefox EnterprisePoliciesEnabled"
+                "opt_out": [
+                  "write",
+                  "/Library/Preferences/org.mozilla.firefox",
+                  "EnterprisePoliciesEnabled",
+                  "-bool",
+                  "TRUE"
+                ],
+                "opt_in": [
+                  "delete",
+                  "/Library/Preferences/org.mozilla.firefox",
+                  "EnterprisePoliciesEnabled"
+                ]
               }
             }
           }
@@ -83,8 +93,18 @@
                 "macos": "defaults"
               },
               "value": {
-                "opt_out": "write /Library/Preferences/org.mozilla.firefox DisableTelemetry -bool TRUE",
-                "opt_in": "delete /Library/Preferences/org.mozilla.firefox DisableTelemetry"
+                "opt_out": [
+                  "write",
+                  "/Library/Preferences/org.mozilla.firefox",
+                  "DisableTelemetry",
+                  "-bool",
+                  "TRUE"
+                ],
+                "opt_in": [
+                  "delete",
+                  "/Library/Preferences/org.mozilla.firefox",
+                  "DisableTelemetry"
+                ]
               }
             }
           }

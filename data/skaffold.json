@@ -30,8 +30,20 @@
                 "default": "skaffold"
               },
               "value": {
-                "opt_out": "config set --global collect-metrics false",
-                "opt_in": "config set --global collect-metrics true"
+                "opt_out": [
+                  "config",
+                  "set",
+                  "--global",
+                  "collect-metrics",
+                  "false"
+                ],
+                "opt_in": [
+                  "config",
+                  "set",
+                  "--global",
+                  "collect-metrics",
+                  "true"
+                ]
               }
             }
           }

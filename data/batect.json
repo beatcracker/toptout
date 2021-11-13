@@ -43,8 +43,12 @@
                 "default": "batect"
               },
               "value": {
-                "opt_out": "--permanently-enable-telemetry",
-                "opt_in": "--permanently-enable-telemetry"
+                "opt_out": [
+                  "--permanently-disable-telemetry"
+                ],
+                "opt_in": [
+                  "--permanently-enable-telemetry"
+                ]
               }
             }
           }

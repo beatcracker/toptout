@@ -43,8 +43,16 @@
                 "default": "npx"
               },
               "value": {
-                "opt_out": "next telemetry disable",
-                "opt_in": "next telemetry enable"
+                "opt_out": [
+                  "next",
+                  "telemetry",
+                  "disable"
+                ],
+                "opt_in": [
+                  "next",
+                  "telemetry",
+                  "enable"
+                ]
               }
             }
           }

@@ -43,8 +43,14 @@
                 "default": "serverless"
               },
               "value": {
-                "opt_out": "slstats --disable",
-                "opt_in": "slstats --enable"
+                "opt_out": [
+                  "slstats",
+                  "--disable"
+                ],
+                "opt_in": [
+                  "slstats",
+                  "--enable"
+                ]
               }
             }
           }

@@ -43,8 +43,16 @@
                 "default": "sfdx"
               },
               "value": {
-                "opt_out": "config:set disableTelemetry=true --global",
-                "opt_in": "config:set disableTelemetry=false --global"
+                "opt_out": [
+                  "config:set",
+                  "disableTelemetry=true",
+                  "--global"
+                ],
+                "opt_in": [
+                  "config:set",
+                  "disableTelemetry=false",
+                  "--global"
+                ]
               }
             }
           }

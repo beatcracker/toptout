@@ -47,8 +47,14 @@
                 "default": "ng"
               },
               "value": {
-                "opt_out": "analytics off",
-                "opt_in": "analytics on"
+                "opt_out": [
+                  "analytics",
+                  "off"
+                ],
+                "opt_in": [
+                  "analytics",
+                  "on"
+                ]
               }
             }
           }
@@ -90,8 +96,18 @@
                 "default": "ng"
               },
               "value": {
-                "opt_out": "config --global --remove cli.analyticsSharing",
-                "opt_in": "config --global cli.analyticsSharing.tracking <YOUR-GOOGLE-ANALYTICS-ID>"
+                "opt_out": [
+                  "config",
+                  "--global",
+                  "--remove",
+                  "cli.analyticsSharing"
+                ],
+                "opt_in": [
+                  "config",
+                  "--global",
+                  "cli.analyticsSharing.tracking",
+                  "<YOUR-GOOGLE-ANALYTICS-ID>"
+                ]
               }
             }
           }

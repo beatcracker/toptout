@@ -30,8 +30,14 @@
                 "default": "/opt/aerospike/telemetry/telemetry.py"
               },
               "value": {
-                "opt_out": "/etc/aerospike/telemetry.conf --disable",
-                "opt_in": "/etc/aerospike/telemetry.conf --enable"
+                "opt_out": [
+                  "/etc/aerospike/telemetry.conf",
+                  "--disable"
+                ],
+                "opt_in": [
+                  "/etc/aerospike/telemetry.conf",
+                  "--enable"
+                ]
               }
             }
           }

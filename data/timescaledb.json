@@ -30,8 +30,14 @@
                 "default": "psql"
               },
               "value": {
-                "opt_out": "-c \"ALTER SYSTEM SET timescaledb.telemetry_level=off\"",
-                "opt_in": "-c \"ALTER SYSTEM SET timescaledb.telemetry_level=basic\""
+                "opt_out": [
+                  "-c",
+                  "ALTER SYSTEM SET timescaledb.telemetry_level=off"
+                ],
+                "opt_in": [
+                  "-c",
+                  "ALTER SYSTEM SET timescaledb.telemetry_level=basic"
+                ]
               }
             }
           }

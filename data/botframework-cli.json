@@ -46,8 +46,14 @@
                 "default": "bf"
               },
               "value": {
-                "opt_out": "config:set:telemetry --disable",
-                "opt_in": "config:set:telemetry --enable"
+                "opt_out": [
+                  "config:set:telemetry",
+                  "--disable"
+                ],
+                "opt_in": [
+                  "config:set:telemetry",
+                  "--enable"
+                ]
               }
             }
           }
