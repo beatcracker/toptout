@@ -342,7 +342,7 @@
                     "$ref": "#/definitions/Path"
                 },
                 "value": {
-                    "$ref": "#/definitions/StringValue"
+                    "$ref": "#/definitions/StringArrayValue"
                 }
             },
             "required": [
@@ -967,7 +967,7 @@
         },
         "StringValue": {
             "title": "StringValue",
-            "description": "Opt-in/out values for env/exec/plain_file/registry targets",
+            "description": "Opt-in/out values for env/plain_file/registry targets",
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -999,15 +999,64 @@
                 "opt_out"
             ]
         },
+        "StringArrayValue": {
+            "title": "StringArrayValue",
+            "description": "Opt-in/out values (commandline arguments) for exec target.",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "opt_out": {
+                    "description": "These arguments will opt-OUT of the telemetry collection. Use empty array to indicate that no arguments to command are needed. Use null to indicate that opt-out is not applicable.",
+                    "oneOf": [
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        {
+                            "type": "null",
+                            "items": {
+                                "type": "null"
+                            }
+                        }
+                    ]
+                },
+                "opt_in": {
+                    "description": "These arguments will opt-IN of the telemetry collection. Use empty array to indicate that no arguments to command are needed. Use null to indicate that opt-in is not applicable.",
+                    "oneOf": [
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        {
+                            "type": "null",
+                            "items": {
+                                "type": "null"
+                            }
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "opt_in",
+                "opt_out"
+            ]
+        },
         "RichValue": {
             "title": "RichValue",
-            "description": "Opt-in/out values for JSON and other targets that can use non-string values (e.g.: number/boolean)",
+            "description": "Opt-in/out values for JSON and other targets that can use non-string values (e.g.: object/number/boolean/null)",
             "type": "object",
             "additionalProperties": false,
             "properties": {
                 "opt_out": {
                     "description": "This value will opt-OUT of the telemetry collection. Use null to indicate that the entire key holding this value should be removed.",
                     "oneOf": [
+                        {
+                            "type": "object"
+                        },
                         {
                             "type": "number"
                         },
@@ -1025,6 +1074,9 @@
                 "opt_in": {
                     "description": "This value will opt-IN to the telemetry collection. Use null to indicate that value should be removed.",
                     "oneOf": [
+                        {
+                            "type": "object"
+                        },
                         {
                             "type": "number"
                         },
