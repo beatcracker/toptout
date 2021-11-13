@@ -592,7 +592,6 @@ components:
             This value will opt-OUT of the telemetry collection. Use null to
             indicate that the entire key holding this value should be removed.
           oneOf:
-            - type: object
             - type: number
             - type: string
             - type: boolean
@@ -602,7 +601,6 @@ components:
             This value will opt-IN to the telemetry collection. Use null to
             indicate that value should be removed.
           oneOf:
-            - type: object
             - type: number
             - type: string
             - type: boolean
