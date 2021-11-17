@@ -1,8 +1,4 @@
-# TODO: switch to 3.1.0 when swagger-ui adds support
-# https://github.com/swagger-api/swagger-ui/issues/5879
-# https://github.com/swagger-api/swagger-ui/issues/5891
-
-openapi: 3.0.3
+openapi: 3.1.0
 info:
   title: Toptout
   description: Get data about telemetry channels in various applications
@@ -107,11 +103,14 @@ paths:
       tags:
         - telemetry
       parameters:
-        - in: path
-          name: id
+        - name: id
+          in: path          
           required: true
           schema:
             type: string
+          examples:
+            vscode:
+              value: vscode
       responses:
         '200':
           description: A JSON object with telemetry channels data
@@ -138,11 +137,14 @@ paths:
       tags:
         - telemetry
       parameters:
-        - in: path
-          name: category
+        - name: category
+          in: path
           required: true
           schema:
             type: string
+          examples:
+            vscode:
+              value: vscode-extension
       responses:
         '200':
           description: An array of JSON objects with telemetry channels data
