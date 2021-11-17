@@ -973,24 +973,16 @@
             "properties": {
                 "opt_out": {
                     "description": "This value will opt-OUT of the telemetry collection. Use null to indicate that entry should be removed.",
-                    "oneOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
+                    "type": [
+                        "string",
+                        "null"
                     ]
                 },
                 "opt_in": {
                     "description": "This value will opt-IN of the telemetry collection. Use null to indicate that value should be removed.",
-                    "oneOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
+                    "type": [
+                        "string",
+                        "null"
                     ]
                 }
             },
@@ -1007,37 +999,23 @@
             "properties": {
                 "opt_out": {
                     "description": "These arguments will opt-OUT of the telemetry collection. Use empty array to indicate that no arguments to command are needed. Use null to indicate that opt-out is not applicable.",
-                    "oneOf": [
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        },
-                        {
-                            "type": "null",
-                            "items": {
-                                "type": "null"
-                            }
-                        }
-                    ]
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type": "string"
+                    }
                 },
                 "opt_in": {
                     "description": "These arguments will opt-IN of the telemetry collection. Use empty array to indicate that no arguments to command are needed. Use null to indicate that opt-in is not applicable.",
-                    "oneOf": [
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        },
-                        {
-                            "type": "null",
-                            "items": {
-                                "type": "null"
-                            }
-                        }
-                    ]
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type": "string"
+                    }
                 }
             },
             "required": [
@@ -1053,36 +1031,20 @@
             "properties": {
                 "opt_out": {
                     "description": "This value will opt-OUT of the telemetry collection. Use null to indicate that the entire key holding this value should be removed.",
-                    "oneOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "boolean"
-                        },
-                        {
-                            "type": "null"
-                        }
+                    "type": [
+                        "number",
+                        "string",
+                        "boolean",
+                        "null"
                     ]
                 },
                 "opt_in": {
                     "description": "This value will opt-IN to the telemetry collection. Use null to indicate that value should be removed.",
-                    "oneOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "boolean"
-                        },
-                        {
-                            "type": "null"
-                        }
+                    "type": [
+                        "number",
+                        "string",
+                        "boolean",
+                        "null"
                     ]
                 }
             },
