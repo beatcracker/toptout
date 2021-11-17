@@ -254,7 +254,7 @@ task content-readme {
 </p>
 
 <p align="center">
-  <a href="#telemetry-channels" data-href="#/?id=telemetry-channels">Awesome list</a> • <a href="https://github.com/beatcracker/toptout/blob/master/examples/">Scripts</a> • <a href="https://toptout.me/swagger">API</a> • <a href="/data/README.md" data-href="#/data/README">JSON data format</a> • <a href="/.github/CONTRIBUTING.md" data-href="#/.github/CONTRIBUTING.md">Contributing</a>
+  <a href="#telemetry-channels" data-href="#/?id=telemetry-channels">Awesome list</a> • <a href="https://github.com/beatcracker/toptout/blob/master/examples/">Scripts</a> • <a href="https://toptout.me/api-docs">API</a> • <a href="/data/README.md" data-href="#/data/README">JSON data format</a> • <a href="/.github/CONTRIBUTING.md" data-href="#/.github/CONTRIBUTING.md">Contributing</a>
 </p>
 
 # Easily opt-out from telemetry collection
@@ -281,7 +281,7 @@ The page you see has an [awesome-list of telemetry channels](#telemetry-channels
 
 ### 🚧 API
 
-Get telemetry configuration data via API! See [openapi.yaml](https://github.com/beatcracker/toptout/blob/master/docs/swagger/openapi.yaml) definition and try it online using [Swagger-UI](https://toptout.me/swagger).
+Get telemetry configuration data via API! See [openapi.yaml](https://github.com/beatcracker/toptout/blob/master/docs/api-docs/openapi.yaml) definition and try it online using [RapiDoc](https://toptout.me/api-docs).
 
 Or try it in your shell! ⬇️
 
@@ -511,7 +511,7 @@ task api-schema-bundle {
             'bundle'
             "$BuildRoot/schema/openapi.yaml"
             '--output'
-            "$BuildRoot/docs/swagger/openapi.yaml"
+            "$BuildRoot/docs/api-docs/openapi.yaml"
             "--config=$BuildRoot/schema/.redocly.lint-ignore.yaml"
         )
     }
