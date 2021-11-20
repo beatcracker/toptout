@@ -15,7 +15,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "pattern": "^[\\S]+(\\s+[\\S]+)*$",
+                    "pattern": "^\\S+(\\s+\\S+)*$",
                     "description": "Friendly name of the product. No leading/trailing whitespace allowed. Example: Foo Bar."
                 },
                 "executable_name": {
@@ -23,12 +23,12 @@
                     "description": "Optional. Provide executable name(s) if presence of this product can be detected by PATH environment variable lookup. No leading/trailing whitespace allowed.",
                     "items": {
                         "type": "string",
-                        "pattern": "^[\\S]+(\\s+[\\S]+)*$"
+                        "pattern": "^\\S+(\\s+\\S+)*$"
                     }
                 },
                 "description": {
                     "type": "string",
-                    "pattern": "^[\\S]+(\\s+[\\S]+)*$",
+                    "pattern": "^\\S+(\\s+\\S+)*$",
                     "description": "Short description of the collected telemetry. Usually copied from the product's documentation. No leading/trailing whitespace allowed."
                 },
                 "category_id": {
@@ -38,7 +38,7 @@
                 },
                 "category_name": {
                     "type": "string",
-                    "pattern": "^[\\S]+(\\s+[\\S]+)*$",
+                    "pattern": "^\\S+(\\s+\\S+)*$",
                     "description": "Friendly category name. The README generator uses it to group products. No leading/trailing whitespace allowed. Example: Development."
                 },
                 "links": {
@@ -103,7 +103,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "pattern": "^[\\S]+(\\s+[\\S]+)*$",
+                    "pattern": "^\\S+(\\s+\\S+)*$",
                     "description": "Friendly name of the channel. No leading/trailing whitespace allowed. Example: Usage data."
                 },
                 "traits": {
@@ -111,7 +111,7 @@
                 },
                 "description": {
                     "type": "string",
-                    "pattern": "^[\\S]+(\\s+[\\S]+)*$",
+                    "pattern": "^\\S+(\\s+\\S+)*$",
                     "description": "Optional description. Example: Disable usage data reporting."
                 },
                 "links": {
@@ -898,18 +898,18 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "pattern": "^[\\S]+(\\s+[\\S]+)*$",
+                    "pattern": "^\\S+(\\s+\\S+)*$",
                     "description": "Friendly name. No leading/trailing whitespace allowed."
                 },
                 "link": {
                     "type": "string",
                     "format": "uri",
-                    "pattern": "^http[s]?:\\/\\/.+$",
+                    "pattern": "^https?:\\/\\/\\S+$",
                     "description": "Link to website. Example: https://example.com."
                 },
                 "description": {
                     "type": "string",
-                    "pattern": "^[\\S]+(\\s+[\\S]+)*$",
+                    "pattern": "^\\S+(\\s+\\S+)*$",
                     "description": "Friendly description. No leading/trailing whitespace allowed."
                 }
             },
