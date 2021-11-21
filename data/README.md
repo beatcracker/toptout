@@ -83,7 +83,7 @@ Describes a product that has one telemetry channel which is controlled by the en
         // Link to the specific telemetry channel details. Optional.
         "telemetry": "https://example.com/foobar/telemetry#usage-data-opt-out",
         // Link to the telemetry channel privacy policy. Optional.
-        "privacy": "https://example.com/foobar/privacy##usage-data"
+        "privacy": "https://example.com/foobar/privacy#usage-data"
       },
       // Target object.
       // Optional, since you may wish to describe telemetry channels that don't provide a ways to control them.
