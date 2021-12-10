@@ -73,12 +73,12 @@ function Test-InPath {
     )
 
     foreach ($item in $args) {
-        if ($ShowLog) { Write-Host "  Cheking if '$item' is in PATH: " -ForegroundColor Gray -NoNewLine}
+        if ($ShowLog) { Write-Host "  Cheking if '$item' is in PATH: " -ForegroundColor Gray -NoNewLine }
         if (Get-Command -Name $item -CommandType Application -ErrorAction SilentlyContinue) {
-            if ($ShowLog) { Write-Host $true -ForegroundColor DarkGreen}
+            if ($ShowLog) { Write-Host $true -ForegroundColor DarkGreen }
             return $true
         }
-        if ($ShowLog) { Write-Host $false -ForegroundColor DarkYellow}
+        if ($ShowLog) { Write-Host $false -ForegroundColor DarkYellow }
     }
     return $false
 }
@@ -92,7 +92,7 @@ function Invoke-ShellCommand {
 
         [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
-        [string]$Arguments,
+        [string[]]$Arguments,
 
         [switch]$ShowLog
     )
@@ -121,18 +121,25 @@ function Set-EnvVar {
         [string]$Name,
 
         [Parameter(Mandatory = $true)]
-        [ValidateNotNullOrEmpty()]
+        [AllowEmptyString()]
         [string]$Value,
 
         [switch]$ShowLog
     )
 
+    $IsEmpty = [string]::IsNullOrEmpty($Value)
     $EnvVar = "$Name=$Value"
 
-    if ($PSCmdlet.ShouldProcess($EnvVar, 'Set environment variable')) {
+    if ($PSCmdlet.ShouldProcess($EnvVar, 'Modify environment variable')) {
         if ($ShowLog) {
-            Write-Host 'Setting environment variable: ' -ForegroundColor DarkGreen -NoNewline
-            Write-Host "$EnvVar" -ForegroundColor DarkYellow
+            if ($IsEmpty) {
+                Write-Host 'Removing environment variable : ' -ForegroundColor DarkGreen -NoNewline
+                Write-Host $Name -ForegroundColor DarkYellow
+            }
+            else {
+                Write-Host 'Setting environment variable  : ' -ForegroundColor DarkGreen -NoNewline
+                Write-Host $EnvVar -ForegroundColor DarkYellow
+            }
         }
 
         [System.Environment]::SetEnvironmentVariable($Name, $Value)
@@ -275,8 +282,14 @@ run_cmd () {
 }
 
 set_env () {
-  [[ "${toptout_verbose}" == 'True' ]] && echo -e "\033[32mSetting environment variable:\033[0m \033[33m${1}=${2}\033[0m"
-  [[ "${toptout_dry}" == 'False' ]] && export "${1}"="${2}"
+  if [[ ${2} ]]
+  then
+    [[ "${toptout_verbose}" == 'True' ]] && echo -e "\033[32mSetting environment variable  :\033[0m \033[33m${1}=${2}\033[0m"
+    [[ "${toptout_dry}" == 'False' ]] && export "${1}"="${2}"
+  else
+    [[ "${toptout_verbose}" == 'True' ]] && echo -e "\033[32mRemoving environment variable :\033[0m \033[33m${1}\033[0m"
+    [[ "${toptout_dry}" == 'False' ]] && unset "${1}"
+  fi
 }
 
 [[ "${toptout_verbose}" == 'True' ]] && echo -e "\033[95m
@@ -366,22 +379,68 @@ default {{
 
 $ShellCmdMap = @{
     bash = @{
-        env  = @'
+        env  = {
+            Param(
+                [Parameter(Position = 0)]
+                [ValidateNotNullOrEmpty()]
+                [string]$name,
+
+                [Parameter(Position = 1)]
+                [string]$value
+            )
+
+            @'
 [[ "${{toptout_env}}" == 'True' ]] && set_env '{0}' '{1}'
-'@
-        exec = @'
+'@ -f $name, $value
+        }
+        exec = {
+            Param(
+                [Parameter(Position = 0)]
+                [ValidateNotNullOrEmpty()]
+                [string]$name,
+
+                [Parameter(Position = 1)]
+                [string[]]$value
+            )
+            @'
 run_cmd '{0}' '{1}'
-'@
+'@ -f $name, (
+                # https://stackoverflow.com/a/1315213
+                $value.ForEach({ $_.Replace("'", "'\''") }) -join ' '
+            )
+        }
     }
     pwsh = @{
-        env  = @'
+        env  = {
+            Param(
+                [Parameter(Position = 0)]
+                [ValidateNotNullOrEmpty()]
+                [string]$name,
+
+                [Parameter(Position = 1)]
+                [string]$value
+            )
+            @'
 if ($Env) {{
     Set-EnvVar -Name '{0}' -Value '{1}' -ShowLog:$ShowLog
 }}
-'@
-        exec = @'
-Invoke-ShellCommand -Command '{0}' -Arguments '{1}' -ShowLog:$ShowLog
-'@
+'@ -f $name, $value
+        }
+        exec = {
+            Param(
+                [Parameter(Position = 0)]
+                [ValidateNotNullOrEmpty()]
+                [string]$name,
+
+                [Parameter(Position = 1)]
+                [string[]]$value
+            )
+            @'
+Invoke-ShellCommand -Command '{0}' -Arguments @('{1}') -ShowLog:$ShowLog
+'@ -f $name, (
+                $value.ForEach({ $_.Replace("'", "''") }) -join "', '"
+            )
+        }
     }
 }
 
@@ -495,10 +554,11 @@ filter Select-LowestImpact {
 }
 
 filter Get-ShellScriptExtension {
-    @{
-        bash = 'sh'
-        pwsh = 'ps1'
-    }.$_
+    switch ($_) {
+        'bash' { 'sh' }
+        'pwsh' { 'ps1' }
+        default { throw "Unsupported shell: $_" }
+    }
 }
 
 function Get-ShellScriptHelper {
@@ -557,7 +617,7 @@ filter ConvertTo-ShellScript {
                     if ($scope.path | Test-IsDefaultOnly) {
 
                         # Render code block
-                        $ret = $ShellCmdMap.$Shell.($_.Key) -f $scope.path.default, $scope.value.opt_out
+                        $ret = $ShellCmdMap.$Shell.($_.Key).InvokeReturnAsIs($scope.path.default, $scope.value.opt_out)
 
                         # If we can detect app by PATH lookup, insert additional code block to handle that
                         if ($data.executable_name.Count -and $ShellLookupMap.$Shell.ContainsKey($_.Key)) {
@@ -572,14 +632,15 @@ filter ConvertTo-ShellScript {
                         $cases = foreach ($kv in $scope.path.GetEnumerator() | Sort-Object { $_.Key }) {
 
                             # Render code block
-                            $ret = $ShellCmdMap.$Shell.($_.Key) -f $kv.Value, $scope.value.opt_out
+                            $ret = $ShellCmdMap.$Shell.($_.Key).InvokeReturnAsIs($kv.Value, $scope.value.opt_out)
 
                             # Render internal case blocks for case/switch code block
                             $ShellCaseMap.$Shell.($kv.Key) -f $(
 
                                 # If we can detect app by PATH lookup, insert additional code block to handle that
                                 if ($data.executable_name.Count -and $ShellLookupMap.$Shell.ContainsKey($_.Key)) {
-                                    $ShellLookupMap.$Shell.($_.Key).InvokeReturnAsIs($data.executable_name, $kv.Value) -f $ret | Indent -Count $ShellIndenthMap.$Shell
+                                    $ShellLookupMap.$Shell.($_.Key).InvokeReturnAsIs($data.executable_name, $kv.Value) -f $ret |
+                                    Indent -Count $ShellIndenthMap.$Shell
                                 }
                                 else {
                                     $ret | Indent -Count $ShellIndenthMap.$Shell
