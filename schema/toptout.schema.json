@@ -252,12 +252,12 @@
                         },
                         {
                             "required": [
-                                "process"
+                                "user"
                             ]
                         },
                         {
                             "required": [
-                                "user"
+                                "process"
                             ]
                         }
                     ]
@@ -317,12 +317,12 @@
                         },
                         {
                             "required": [
-                                "process"
+                                "user"
                             ]
                         },
                         {
                             "required": [
-                                "user"
+                                "process"
                             ]
                         }
                     ]
@@ -382,12 +382,12 @@
                         },
                         {
                             "required": [
-                                "process"
+                                "user"
                             ]
                         },
                         {
                             "required": [
-                                "user"
+                                "process"
                             ]
                         }
                     ]
@@ -455,12 +455,12 @@
                         },
                         {
                             "required": [
-                                "process"
+                                "user"
                             ]
                         },
                         {
                             "required": [
-                                "user"
+                                "process"
                             ]
                         }
                     ]
@@ -528,12 +528,12 @@
                         },
                         {
                             "required": [
-                                "process"
+                                "user"
                             ]
                         },
                         {
                             "required": [
-                                "user"
+                                "process"
                             ]
                         }
                     ]
@@ -601,12 +601,12 @@
                         },
                         {
                             "required": [
-                                "process"
+                                "user"
                             ]
                         },
                         {
                             "required": [
-                                "user"
+                                "process"
                             ]
                         }
                     ]
@@ -674,12 +674,12 @@
                         },
                         {
                             "required": [
-                                "process"
+                                "user"
                             ]
                         },
                         {
                             "required": [
-                                "user"
+                                "process"
                             ]
                         }
                     ]
@@ -747,12 +747,12 @@
                         },
                         {
                             "required": [
-                                "process"
+                                "user"
                             ]
                         },
                         {
                             "required": [
-                                "user"
+                                "process"
                             ]
                         }
                     ]
@@ -820,12 +820,12 @@
                         },
                         {
                             "required": [
-                                "process"
+                                "user"
                             ]
                         },
                         {
                             "required": [
-                                "user"
+                                "process"
                             ]
                         }
                     ]
