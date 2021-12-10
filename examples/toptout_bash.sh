@@ -99,8 +99,14 @@ run_cmd () {
 }
 
 set_env () {
-  [[ "${toptout_verbose}" == 'True' ]] && echo -e "\033[32mSetting environment variable:\033[0m \033[33m${1}=${2}\033[0m"
-  [[ "${toptout_dry}" == 'False' ]] && export "${1}"="${2}"
+  if [[ ${2} ]]
+  then
+    [[ "${toptout_verbose}" == 'True' ]] && echo -e "\033[32mSetting environment variable  :\033[0m \033[33m${1}=${2}\033[0m"
+    [[ "${toptout_dry}" == 'False' ]] && export "${1}"="${2}"
+  else
+    [[ "${toptout_verbose}" == 'True' ]] && echo -e "\033[32mRemoving environment variable :\033[0m \033[33m${1}\033[0m"
+    [[ "${toptout_dry}" == 'False' ]] && unset "${1}"
+  fi
 }
 
 [[ "${toptout_verbose}" == 'True' ]] && echo -e "\033[95m
@@ -159,7 +165,7 @@ case "$OSTYPE" in
       then
         if in_path 'defaults'
         then
-          run_cmd 'defaults' 'System.Object[]'
+          run_cmd 'defaults' 'write /Library/Preferences/org.mozilla.firefox EnterprisePoliciesEnabled -bool TRUE'
         fi
       fi
     fi
@@ -179,7 +185,7 @@ case "$OSTYPE" in
       then
         if in_path 'defaults'
         then
-          run_cmd 'defaults' 'System.Object[]'
+          run_cmd 'defaults' 'write /Library/Preferences/org.mozilla.firefox DisableTelemetry -bool TRUE'
         fi
       fi
     fi
@@ -211,7 +217,7 @@ case "$OSTYPE" in
       then
         if in_path 'defaults'
         then
-          run_cmd 'defaults' 'System.Object[]'
+          run_cmd 'defaults' 'write com.microsoft.office DiagnosticDataTypePreference -string ZeroDiagnosticData'
         fi
       fi
     fi
@@ -269,7 +275,7 @@ if [[ "${toptout_exec}" == 'True' ]]
 then
   if in_path 'netlify'
   then
-    run_cmd 'netlify' 'System.Object[]'
+    run_cmd 'netlify' '--telemetry-disable'
   fi
 fi
 
@@ -281,7 +287,7 @@ if [[ "${toptout_exec}" == 'True' ]]
 then
   if in_path 'scw'
   then
-    run_cmd 'scw' 'System.Object[]'
+    run_cmd 'scw' 'config set send-telemetry=false'
   fi
 fi
 
@@ -319,7 +325,7 @@ if [[ "${toptout_exec}" == 'True' ]]
 then
   if in_path '/opt/aerospike/telemetry/telemetry.py'
   then
-    run_cmd '/opt/aerospike/telemetry/telemetry.py' 'System.Object[]'
+    run_cmd '/opt/aerospike/telemetry/telemetry.py' '/etc/aerospike/telemetry.conf --disable'
   fi
 fi
 
@@ -356,7 +362,7 @@ if [[ "${toptout_exec}" == 'True' ]]
 then
   if in_path 'psql'
   then
-    run_cmd 'psql' 'System.Object[]'
+    run_cmd 'psql' '-c ALTER SYSTEM SET timescaledb.telemetry_level=off'
   fi
 fi
 
@@ -394,7 +400,7 @@ if [[ "${toptout_exec}" == 'True' ]]
 then
   if in_path 'appcenter'
   then
-    run_cmd 'appcenter' 'System.Object[]'
+    run_cmd 'appcenter' 'telemetry off'
   fi
 fi
 
@@ -476,7 +482,7 @@ if [[ "${toptout_exec}" == 'True' ]]
 then
   if in_path 'dvc'
   then
-    run_cmd 'dvc' 'System.Object[]'
+    run_cmd 'dvc' 'config core.analytics false --global'
   fi
 fi
 
@@ -500,7 +506,7 @@ if [[ "${toptout_exec}" == 'True' ]]
 then
   if in_path 'flutter'
   then
-    run_cmd 'flutter' 'System.Object[]'
+    run_cmd 'flutter' 'config --no-analytics'
   fi
 fi
 
@@ -542,7 +548,7 @@ if [[ "${toptout_exec}" == 'True' ]]
 then
   if in_path 'ionic'
   then
-    run_cmd 'ionic' 'System.Object[]'
+    run_cmd 'ionic' 'config set --global telemetry false'
   fi
 fi
 
@@ -627,7 +633,7 @@ if [[ "${toptout_exec}" == 'True' ]]
 then
   if in_path 'pac'
   then
-    run_cmd 'pac' 'System.Object[]'
+    run_cmd 'pac' 'telemetry disable'
   fi
 fi
 
@@ -772,7 +778,7 @@ if [[ "${toptout_exec}" == 'True' ]]
 then
   if in_path 'wapm'
   then
-    run_cmd 'wapm' 'System.Object[]'
+    run_cmd 'wapm' 'config set telemetry.enabled false'
   fi
 fi
 
@@ -800,7 +806,7 @@ then
   then
     if in_path 'yarn'
     then
-      run_cmd 'yarn' 'System.Object[]'
+      run_cmd 'yarn' 'webiny disable-tracking'
     fi
   fi
 fi
@@ -950,7 +956,7 @@ if [[ "${toptout_exec}" == 'True' ]]
 then
   if in_path 'sfctl'
   then
-    run_cmd 'sfctl' 'System.Object[]'
+    run_cmd 'sfctl' 'settings telemetry set_telemetry --off'
   fi
 fi
 
@@ -962,7 +968,7 @@ if [[ "${toptout_exec}" == 'True' ]]
 then
   if in_path 'skaffold'
   then
-    run_cmd 'skaffold' 'System.Object[]'
+    run_cmd 'skaffold' 'config set --global collect-metrics false'
   fi
 fi
 

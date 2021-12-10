@@ -224,16 +224,16 @@ components:
       properties:
         name:
           type: string
-          pattern: ^[\S]+(\s+[\S]+)*$
+          pattern: ^\S+(\s+\S+)*$
           description: Friendly name. No leading/trailing whitespace allowed.
         link:
           type: string
           format: uri
-          pattern: ^http[s]?:\/\/.+$
+          pattern: ^https?:\/\/\S+$
           description: 'Link to website. Example: https://example.com.'
         description:
           type: string
-          pattern: ^[\S]+(\s+[\S]+)*$
+          pattern: ^\S+(\s+\S+)*$
           description: Friendly description. No leading/trailing whitespace allowed.
       required:
         - description
@@ -335,9 +335,9 @@ components:
             - required:
                 - machine
             - required:
-                - process
-            - required:
                 - user
+            - required:
+                - process
       required:
         - scope
     StringArrayValue:
@@ -409,9 +409,9 @@ components:
             - required:
                 - machine
             - required:
-                - process
-            - required:
                 - user
+            - required:
+                - process
       required:
         - scope
     RegistryProperties:
@@ -488,9 +488,9 @@ components:
             - required:
                 - machine
             - required:
-                - process
-            - required:
                 - user
+            - required:
+                - process
       required:
         - scope
     Dasel:
@@ -557,9 +557,9 @@ components:
             - required:
                 - machine
             - required:
-                - process
-            - required:
                 - user
+            - required:
+                - process
       required:
         - scope
     JSONPointer:
@@ -656,9 +656,9 @@ components:
             - required:
                 - machine
             - required:
-                - process
-            - required:
                 - user
+            - required:
+                - process
       required:
         - scope
     Regex:
@@ -725,9 +725,9 @@ components:
             - required:
                 - machine
             - required:
-                - process
-            - required:
                 - user
+            - required:
+                - process
       required:
         - scope
     TOMLFileSelector:
@@ -788,9 +788,9 @@ components:
             - required:
                 - machine
             - required:
-                - process
-            - required:
                 - user
+            - required:
+                - process
       required:
         - scope
     XPath:
@@ -860,9 +860,9 @@ components:
             - required:
                 - machine
             - required:
-                - process
-            - required:
                 - user
+            - required:
+                - process
       required:
         - scope
     YAMLFileSelector:
@@ -923,9 +923,9 @@ components:
             - required:
                 - machine
             - required:
-                - process
-            - required:
                 - user
+            - required:
+                - process
       required:
         - scope
     Target:
@@ -994,7 +994,7 @@ components:
             unique in this array. Example: usage-data.
         name:
           type: string
-          pattern: ^[\S]+(\s+[\S]+)*$
+          pattern: ^\S+(\s+\S+)*$
           description: >-
             Friendly name of the channel. No leading/trailing whitespace
             allowed. Example: Usage data.
@@ -1002,7 +1002,7 @@ components:
           $ref: '#/components/schemas/Traits'
         description:
           type: string
-          pattern: ^[\S]+(\s+[\S]+)*$
+          pattern: ^\S+(\s+\S+)*$
           description: 'Optional description. Example: Disable usage data reporting.'
         links:
           $ref: '#/components/schemas/Links'
@@ -1026,7 +1026,7 @@ components:
             across all files. Example: foo-bar.
         name:
           type: string
-          pattern: ^[\S]+(\s+[\S]+)*$
+          pattern: ^\S+(\s+\S+)*$
           description: >-
             Friendly name of the product. No leading/trailing whitespace
             allowed. Example: Foo Bar.
@@ -1038,10 +1038,10 @@ components:
             whitespace allowed.
           items:
             type: string
-            pattern: ^[\S]+(\s+[\S]+)*$
+            pattern: ^\S+(\s+\S+)*$
         description:
           type: string
-          pattern: ^[\S]+(\s+[\S]+)*$
+          pattern: ^\S+(\s+\S+)*$
           description: >-
             Short description of the collected telemetry. Usually copied from
             the product's documentation. No leading/trailing whitespace allowed.
@@ -1053,7 +1053,7 @@ components:
             uses it to group products. Example: development.
         category_name:
           type: string
-          pattern: ^[\S]+(\s+[\S]+)*$
+          pattern: ^\S+(\s+\S+)*$
           description: >-
             Friendly category name. The README generator uses it to group
             products. No leading/trailing whitespace allowed. Example:
