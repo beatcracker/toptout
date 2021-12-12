@@ -32,7 +32,6 @@ The provided [build.ps1](https://github.com/beatcracker/toptout/blob/master/buil
   - `api-json`: generate JSON files for static API ([toptout.me/swagger](https://toptout.me/swagger/))
   - `api-schema-lint`: lint OpenAPI schema source ([/schema/openapi.yaml](https://github.com/beatcracker/toptout/blob/master/schema/openapi.yaml))
   - `api-schema-bundle`: generate bundled (dereferenced) OpenAPI definition for Swagger ([/docs/swagger/openapi.yaml](https://github.com/beatcracker/toptout/blob/master/docs/swagger/openapi.yaml)). Some tools can't handle uris in `$ref`.
-
 - `clean`: clean local [Paket](https://fsprojects.github.io/Paket/) files. This will force re-download of PowerShell dependencies.
 
 If the build script is run without arguments the `test`, `content`, and `api` tasks are executed. To execute specific task or subtask provide its name as an argument (you can use tab completion): `./build.ps1 test`. For more details about build system, see [Invoke-Build](https://github.com/nightroman/Invoke-Build) docs.
