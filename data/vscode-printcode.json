@@ -35,10 +35,10 @@
                 "json_pointer": "/printcode.disableTelemetry"
               },
               "value": {
-                "opt_out": false,
-                "opt_in": true
+                "opt_out": true,
+                "opt_in": false
               },
-              "display_value": "{\"printcode.disableTelemetry\":false}"
+              "display_value": "{\"printcode.disableTelemetry\":true}"
             }
           }
         }
