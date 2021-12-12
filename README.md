@@ -5142,7 +5142,7 @@ Use methods described below to opt-out of this telemetry channel.
 
 ```json
 {
-  "printcode.disableTelemetry": false
+  "printcode.disableTelemetry": true
 }
 ```
 
