@@ -2,12 +2,7 @@
 
 The core of this project is a set of JSON files which describe what telemetry is collected and what can be done to enable or disable it. Tests and README generator are using PowerShell Core.
 
-## Prerequisites
-
-While you can hack around without using provided build script, it is not recommended. To run the build and tests, you'll need
-
-- [PowerShell](https://github.com/powershell/powershell) `7+`
-- [Node.js](https://nodejs.org/en/download/) `15+`
+Contributions need to pass the tests and include generated content if applicable ([/README.md](https://github.com/beatcracker/toptout/blob/master/README.md), [/examples](https://github.com/beatcracker/toptout/blob/master/examples), [/docs/api](https://github.com/beatcracker/toptout/blob/master/docs/api)). Build script takes care of that.
 
 ## Adding new telemetry data file
 
@@ -15,7 +10,20 @@ See [/data/README](/data/README.md)
 
 ## Using build script
 
-Contributions need to pass the tests and include generated content if applicable ([/README.md](https://github.com/beatcracker/toptout/blob/master/README.md), [/examples](https://github.com/beatcracker/toptout/blob/master/examples), [/docs/api](https://github.com/beatcracker/toptout/blob/master/docs/api)). Build script takes care of that.
+You'll need to run [build.ps1](https://github.com/beatcracker/toptout/blob/master/build.ps1) to make sure that contributions pass tests and to update generated content.
+
+### Dependencies
+
+Build script itself and its tasks require several dependencies from the [PowerShell Gallery](https://www.powershellgallery.com/) and [npm](https://www.npmjs.com/). To avoid polluting your environment, PowerShell dependencies are downloaded on the first run into the `.packages` directory. [Node.js](https://nodejs.org/) based tasks use [npx](https://docs.npmjs.com/cli/v7/commands/npx) to run tools without installing packages globally.
+
+### Prerequisites
+
+To run build and tests, you'll need
+
+- [PowerShell](https://github.com/powershell/powershell) `7+`
+- [Node.js](https://nodejs.org/en/download/) `15+`
+
+You can also use VSCode + [development container](https://code.visualstudio.com/docs/remote/containers).
 
 ### Tasks
 
@@ -43,7 +51,3 @@ Hint: you can run multiple tasks.
 # Or
 ./build.ps1 test content api-json
 ```
-
-### Dependencies
-
-Build script itself and its tasks requires several dependencies from the [PowerShell Gallery](https://www.powershellgallery.com/) and [npm](https://www.npmjs.com/). To avoid polluting your environment PowerShell dependencies are downloaded on the first run into the `.packages`. [Node.js](https://nodejs.org/) based tasks use [npx](https://docs.npmjs.com/cli/v7/commands/npx) to run tools without installing packages globally.
