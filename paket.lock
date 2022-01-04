@@ -1,5 +1,0 @@
-NUGET
-  remote: https://www.powershellgallery.com/api/v2
-    InvokeBuild (5.8.4) - clitool: true
-    Pester (5.3.1) - clitool: true
-    PSScriptAnalyzer (1.20.0) - clitool: true

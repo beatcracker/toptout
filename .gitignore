@@ -1,3 +1,2 @@
-# Paket
-packages
-paket-files
+# PowerShell dependencies
+.packages

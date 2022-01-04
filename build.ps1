@@ -29,35 +29,114 @@ Param(
 
 #region Common variables
 
-$PackageDirPath = Join-Path $PSScriptRoot 'packages'
 $LF = "`n"
+$PackageDirPath = "$PSScriptRoot/.packages"
+$Dependencies = @{
+    InvokeBuild      = '5.8.8'
+    Pester           = '5.3.1'
+    PSScriptAnalyzer = '1.20.0'
+}
 
 #endregion
 
 #region Common functions
 
 <#
-.Synopsis Run paket with args, handle exit codes
+.Synopsis Restore dependencies
 #>
-function Invoke-Paket {
+function Restore-Dependency {
     [CmdletBinding()]
     Param(
-        [Parameter(Mandatory = $true, Position = 0)]
+        [Parameter(Mandatory = $true , ValueFromPipeline, Position = 0)]
         [ValidateNotNullOrEmpty()]
-        [string[]]$Arguments
+        [hashtable]$InputObject,
+
+        [ValidateNotNullOrEmpty()]
+        [string]$OutDir
     )
 
-    End {
-        if ($paket = Join-Path $PSScriptRoot '.paket/paket.exe' -Resolve) {
-            try {
-                & $paket $Arguments
+    Begin {
+        filter Get-RelativePath {
+            param (
+                [string]
+                $BasePath = $PSScriptRoot
+            )
 
-                if ($LASTEXITCODE) {
-                    Write-Error "paket exit code: $LASTEXITCODE"
+            "$_".Replace($BasePath, '.')
+        }
+
+        function Clear-Directory {
+            [CmdletBinding()]
+            param (
+                [Parameter(Mandatory)]
+                [ValidateNotNullOrEmpty()]
+                [string]$Path,
+
+                [ValidateNotNullOrEmpty()]
+                [string[]]$Exclude
+            )
+
+            if ([System.IO.Directory]::Exists($Path)) {
+                foreach (
+                    $item in [System.IO.Directory]::EnumerateDirectories($Path)
+                ) {
+                    $name = [System.IO.Path]::GetFileName($item)
+                    if ( $name -notin $Exclude) {
+                        Write-Information "Removing   : $($item | Get-RelativePath)" -InformationAction Continue
+                        [System.IO.Directory]::Delete($item, $true)
+                    }
                 }
             }
-            catch {
-                throw $_
+        }
+
+        function Use-Directory {
+            [CmdletBinding()]
+            param (
+                [Parameter(Mandatory)]
+                [ValidateNotNullOrEmpty()]
+                [string]$Path
+            )
+
+            if (-not [System.IO.Directory]::Exists($Path) ) {
+                Write-Information "Creating   : $($Path | Get-RelativePath)" -InformationAction Continue
+                [void][System.IO.Directory]::CreateDirectory($Path)
+            }
+        }
+    }
+
+    Process {
+        # Clear all stale packages
+        Clear-Directory -Path $OutDir -Exclude $InputObject.Keys
+
+        # Ensure dir exists
+        Use-Directory -Path $OutDir
+
+        foreach ($kv in $InputObject.GetEnumerator()) {
+            $name = $kv.Name
+            $version = $kv.Value
+
+            Write-Information "Dependency : $name v$version" -InformationAction Continue
+
+            # Clear stale package versions
+            Clear-Directory -Path "$OutDir/$name" -Exclude $version
+
+            # Ensure package dir exists
+            Use-Directory -Path "$OutDir/$name/$version"
+
+            # Download package
+            $nupkg = "$OutDir/$name/$version/$name.$version.nupkg"
+            if (-not [System.IO.File]::Exists($nupkg )) {
+                Write-Information "Downloading: $name.$version.nupkg" -InformationAction Continue
+                Invoke-RestMethod -Uri "https://www.powershellgallery.com/api/v2/package/$name/$version" -OutFile $nupkg
+            }
+
+            # Extract package
+            $nuspec = "$OutDir/$name/$version/$name.nuspec"
+            if (
+                -not [System.IO.File]::Exists($nuspec)
+            ) {
+                Write-Information "Extracting : $name.$version.nupkg -> $("$OutDir/$name/$version" | Get-RelativePath)" -InformationAction Continue
+                [System.IO.Compression.ZipFile]::ExtractToDirectory($nupkg, "$OutDir/$name/$version", $true)
             }
         }
     }
@@ -108,23 +187,21 @@ function Get-PaddedString {
 # If direct call: ensure packages and call the local Invoke-Build
 if ([System.IO.Path]::GetFileName($MyInvocation.ScriptName) -ne 'Invoke-Build.ps1') {
     $ErrorActionPreference = 'Stop'
-    $ib = Join-Path $PackageDirPath 'InvokeBuild/Invoke-Build.ps1'
 
-    # install packages
-    if (-not (Test-Path -LiteralPath $ib)) {
-        '{1}{0}{1}' -f ('=::[ Bootstrap ]::=' | Get-PaddedString -Width 100), [System.Environment]::NewLine
+    # Install packages
+    '{1}{0}{1}' -f ('=::[ Bootstrap ]::=' | Get-PaddedString -Width 100), [System.Environment]::NewLine |
+    Write-Information -InformationAction Continue
 
-        Invoke-Paket -Arguments @(
-            '--silent'
-            'install'
-        )
+    $Dependencies | Restore-Dependency -OutDir $PackageDirPath
 
+    @(
         ''
         '-' | Get-PaddedString -Width 100
         ''
-    }
+    ) | Write-Information -InformationAction Continue
 
-    # call Invoke-Build
+    $ib = Join-Path -Path $PackageDirPath -ChildPath 'InvokeBuild' -AdditionalChildPath ($Dependencies.InvokeBuild, 'Invoke-Build.ps1')
+    # Call Invoke-Build
     & $ib -Task $Tasks -File $MyInvocation.MyCommand.Path @PSBoundParameters
     return
 }
@@ -170,11 +247,10 @@ task test -Jobs @(
 )
 
 task clean {
-    Write-Build Yellow 'Clearing local package directories'
+    Write-Build Yellow 'Clearing local package directory'
 
     Remove-BuildItem @(
-        "$BuildRoot/packages"
-        "$BuildRoot/paket-files"
+        $PackageDirPath
     )
 }
 
