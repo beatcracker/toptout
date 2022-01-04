@@ -24,9 +24,9 @@ RUN \
       # grep in node image is a BusyBox built-in and can't do Perl regex
       grep && \
     mkdir -pv "${pwsh_dir}" && \
-    wget -O - 'https://api.github.com/repos/powershell/powershell/releases/latest' | \
+    wget -qO - 'https://api.github.com/repos/powershell/powershell/releases/latest' | \
     grep -oP '"browser_download_url"\s*:\s*"\K(https://.+?/powershell-\d+\.\d+\.\d+-linux-alpine-x64\.tar\.gz)[^"]?' | \
-    xargs -n 1 wget -O - | \
+    xargs -n 1 wget -qO - | \
     tar -C "${pwsh_dir}" -zxvf -  && \
     chmod +x "${pwsh_dir}/pwsh" && \
     ln -s "${pwsh_dir}/pwsh" /usr/bin/pwsh && \
