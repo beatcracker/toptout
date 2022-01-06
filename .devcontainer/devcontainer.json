@@ -4,6 +4,7 @@
 		"dockerfile": "Dockerfile",
 	},
 	"settings": {
+		"terminal.integrated.shell.*": "/opt/powershell/pwsh",
 		"powershell.powerShellAdditionalExePaths": [
 			{
 				"versionName": "latest",
