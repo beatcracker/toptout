@@ -21,13 +21,12 @@ RUN \
     apk -X https://dl-cdn.alpinelinux.org/alpine/edge/main add --no-cache \
       lttng-ust && \
     apk add --no-cache --virtual .build-deps \
-      # grep in node image is a BusyBox built-in and can't do Perl regex
-      grep && \
+      jq && \
     mkdir -pv "${pwsh_dir}" && \
     wget -qO - 'https://api.github.com/repos/powershell/powershell/releases/latest' | \
-    grep -oP '"browser_download_url"\s*:\s*"\K(https://.+?/powershell-\d+\.\d+\.\d+-linux-alpine-x64\.tar\.gz)[^"]?' | \
+    jq -r '.assets[] | .browser_download_url | match("https://.+?/powershell-\\d+\\.\\d+\\.\\d+-linux-alpine-x64\\.tar\\.gz") | .string' | \
     xargs -n 1 wget -qO - | \
-    tar -C "${pwsh_dir}" -zxvf -  && \
+    tar -C "${pwsh_dir}" -zxvf - && \
     chmod +x "${pwsh_dir}/pwsh" && \
     ln -s "${pwsh_dir}/pwsh" /usr/bin/pwsh && \
     apk del .build-deps
