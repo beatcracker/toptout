@@ -126,8 +126,15 @@ function Restore-Dependency {
             # Download package
             $nupkg = "$OutDir/$name/$version/$name.$version.nupkg"
             if (-not [System.IO.File]::Exists($nupkg )) {
-                Write-Information "Downloading: $name.$version.nupkg" -InformationAction Continue
-                Invoke-RestMethod -Uri "https://www.powershellgallery.com/api/v2/package/$name/$version" -OutFile $nupkg
+                $OldPP = $ProgressPreference
+                try {
+                    $ProgressPreference = 'SilentlyContinue'
+                    Write-Information "Downloading: $name.$version.nupkg" -InformationAction Continue
+                    Invoke-RestMethod -Uri "https://www.powershellgallery.com/api/v2/package/$name/$version" -OutFile $nupkg
+                }
+                finally {
+                    $ProgressPreference = $OldPP
+                }
             }
 
             # Extract package
