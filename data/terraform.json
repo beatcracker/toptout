@@ -49,7 +49,7 @@
                 "windows": "%APPDATA%\\terraform.rc"
               },
               "selector": {
-                "regex": "^[ \\t]*disable_checkpoint[ \\t]=.+$"
+                "regex": "^[ \\t]*disable_checkpoint[ \\t]*=.+$"
               },
               "value": {
                 "opt_out": "disable_checkpoint = true",
