@@ -1,0 +1,40 @@
+{
+  "id": "warp",
+  "name": "Warp",
+  "executable_name": [
+    "warp"
+  ],
+  "category_id": "development",
+  "category_name": "Development",
+  "description": "For our beta phase, we do send telemetry by default and associate it with the logged in user.",
+  "links": {
+    "main": "https://www.warp.dev",
+    "privacy": "https://www.warp.dev/privacy"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "description": "All app interactions are tracked via [segment.com](https://segment.com/)",
+      "traits": {
+        "official": false,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
+      "links": {
+        "main": "https://docs.warp.dev/getting-started/privacy",
+        "telemetry": "https://github.com/warpdotdev/Warp/issues/1346"
+      },
+      "target": {
+        "noop": [
+          {
+            "name": "Block tracking",
+            "description": "Add this record to your hosts file to block access to Segment\n ```\n0.0.0.0 api.segment.io\n```",
+            "link": "https://linuxize.com/post/how-to-edit-your-hosts-file/"
+          }
+        ]
+      }
+    }
+  ]
+}
