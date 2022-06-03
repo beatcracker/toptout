@@ -55,6 +55,35 @@
           }
         }
       }
+    },
+    {
+      "id": "update-check",
+      "name": "Update check",
+      "description": "By default,`brew` command will try to fetch newest version of Homebrew and all formulae from GitHub.",
+      "traits": {
+        "official": true,
+        "usage_data": false,
+        "update_check": true,
+        "error_report": false
+      },
+      "links": {
+        "main": "https://docs.brew.sh/Manpage"
+      },
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "HOMEBREW_NO_AUTO_UPDATE"
+              },
+              "value": {
+                "opt_out": "1",
+                "opt_in": null
+              }
+            }
+          }
+        }
+      }
     }
   ]
 }
