@@ -1,0 +1,48 @@
+{
+  "id": "aws-amplify-cli",
+  "name": "AWS Amplify CLI",
+  "executable_name": [
+    "amplify"
+  ],
+  "category_id": "development",
+  "category_name": "Development",
+  "description": "AWS Amplify CLI sends anonymized information such as system metadata, usage metrics and errors.",
+  "links": {
+    "main": "https://aws.amazon.com/amplify/",
+    "telemetry": "https://docs.amplify.aws/cli/reference/usage-data/",
+    "privacy": "https://aws.amazon.com/compliance/data-privacy-faq/"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
+      "target": {
+        "exec": {
+          "scope": {
+            "user": {
+              "path": {
+                "default": "amplify"
+              },
+              "value": {
+                "opt_out": [
+                  "configure",
+                  "--usage-data-off"
+                ],
+                "opt_in": [
+                  "configure",
+                  "--usage-data-on"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
