@@ -1,2 +1,3 @@
 # PowerShell dependencies
 .packages
+/data/console-dnt.json
