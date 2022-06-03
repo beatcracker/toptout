@@ -198,6 +198,13 @@ esac
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'HOMEBREW_NO_ANALYTICS' '1'
 
+# Homebrew
+# https://brew.sh
+
+# Update check
+# https://docs.brew.sh/Manpage
+[[ "${toptout_env}" == 'True' ]] && set_env 'HOMEBREW_NO_AUTO_UPDATE' '1'
+
 # LYNX VFX
 # https://github.com/LucaScheller/VFX-LYNX
 
@@ -417,12 +424,39 @@ fi
 # Internal metrics
 [[ "${toptout_env}" == 'True' ]] && set_env 'ARDUINO_METRICS_ENABLED' 'false'
 
+# AWS Amplify CLI
+# https://aws.amazon.com/amplify/
+
+# Usage data
+if [[ "${toptout_exec}" == 'True' ]]
+then
+  if in_path 'amplify'
+  then
+    run_cmd 'amplify' 'configure --usage-data-off'
+  fi
+fi
+
 # Bot Framework CLI
 # https://github.com/microsoft/botframework-cli
 
 # Usage data
 # https://github.com/microsoft/botframework-cli/tree/main/packages/cli#bf-configsettelemetry
 [[ "${toptout_env}" == 'True' ]] && set_env 'BF_CLI_TELEMETRY' 'false'
+
+# Capacitor
+# https://capacitorjs.com
+
+# Usage data
+if [[ "${toptout_exec}" == 'True' ]]
+then
+  if in_path 'cap'
+  then
+    if in_path 'nx'
+    then
+      run_cmd 'nx' 'cap telemetry off'
+    fi
+  fi
+fi
 
 # Carbon Design System
 # https://www.carbondesignsystem.com/
@@ -856,6 +890,12 @@ fi
 # Update check
 # https://www.consul.io/docs/agent/options#disable_update_check
 [[ "${toptout_env}" == 'True' ]] && set_env 'CHECKPOINT_DISABLE' 'ANY_VALUE'
+
+# Dagger
+# https://dagger.io/
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'DO_NOT_TRACK' '1'
 
 # decK
 # https://github.com/Kong/deck

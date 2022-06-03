@@ -105,7 +105,7 @@ See [CONTRIBUTING](/.github/CONTRIBUTING.md) for details on adding new telemetry
 
 Below is automatically generated list of known telemetry channels for various applications.
 
-Total count: **144**
+Total count: **148**
 
 - [Applications](#applications)
   - [Atom](#atom)
@@ -150,8 +150,10 @@ Total count: **144**
   - [Appc Daemon](#appc-daemon)
   - [App Center CLI](#app-center-cli)
   - [Arduino CLI](#arduino-cli)
+  - [AWS Amplify CLI](#aws-amplify-cli)
   - [Bot Framework CLI](#bot-framework-cli)
   - [BuildBuddy](#buildbuddy)
+  - [Capacitor](#capacitor)
   - [Carbon Design System](#carbon-design-system)
   - [choosenim](#choosenim)
   - [CocoaPods](#cocoapods)
@@ -211,6 +213,7 @@ Total count: **144**
   - [vstest](#vstest)
   - [VueDX](#vuedx)
   - [WAPM CLI](#wapm-cli)
+  - [Warp](#warp)
   - [webhint](#webhint)
   - [Webiny](#webiny)
   - [Yarn 2](#yarn-2)
@@ -221,6 +224,7 @@ Total count: **144**
   - [Chef Automate](#chef-automate)
   - [Chef Workstation](#chef-workstation)
   - [Consul](#consul)
+  - [Dagger](#dagger)
   - [decK](#deck)
   - [F5 BIG-IP Terraform provider](#f5-big-ip-terraform-provider)
   - [F5 CLI](#f5-cli)
@@ -552,6 +556,24 @@ HOMEBREW_NO_ANALYTICS=1
 
 ```shell
 brew analytics off
+```
+
+#### [Update check](https://docs.brew.sh/Manpage)
+
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ✔            | ❌            |
+
+> By default,`brew` command will try to fetch newest version of Homebrew and all formulae from GitHub.
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+HOMEBREW_NO_AUTO_UPDATE=1
 ```
 
 ### [Lens](https://k8slens.dev/)
@@ -1706,6 +1728,31 @@ ARDUINO_METRICS_ENABLED=false
 
     > The metrics settings are exposed via the metrics section in the CLI configuration
 
+### [AWS Amplify CLI](https://aws.amazon.com/amplify/)
+
+> AWS Amplify CLI sends anonymized information such as system metadata, usage metrics and errors.
+
+- [Telemetry details](https://docs.amplify.aws/cli/reference/usage-data/)
+- [Privacy policy](https://aws.amazon.com/compliance/data-privacy-faq/)
+
+List of known telemetry channels:
+
+#### Usage data
+
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Run command
+
+###### Scope: 👤 User
+
+```shell
+amplify configure --usage-data-off
+```
+
 ### [Bot Framework CLI](https://github.com/microsoft/botframework-cli)
 
 > Privacy is very important to us. BF CLI contains optional instrumentation that is designed to help us improve the tool based on anonymous usage patterns. It is disabled, opted-out by default.
@@ -1779,6 +1826,31 @@ Use methods described below to opt-out of this telemetry channel.
 1. [Google Analytics | Using commandline flag](https://docs.buildbuddy.io/docs/config-telemetry/)
 
     > Provide `--disable_ga=true` flag.
+
+### [Capacitor](https://capacitorjs.com)
+
+> Capacitor collects anonymous telemetry data about general usage. This is an opt-in program that provides insight to the Capacitor team to help improve the product.
+
+- [Telemetry details](https://capacitorjs.com/telemetry)
+- [Privacy policy](https://ionic.io/privacy)
+
+List of known telemetry channels:
+
+#### Usage data
+
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Run command
+
+###### Scope: 👤 User
+
+```shell
+nx cap telemetry off
+```
 
 ### [Carbon Design System](https://www.carbondesignsystem.com/)
 
@@ -3618,6 +3690,35 @@ Use methods described below to opt-out of this telemetry channel.
 wapm config set telemetry.enabled false
 ```
 
+### [Warp](https://www.warp.dev)
+
+> For our beta phase, we do send telemetry by default and associate it with the logged in user.
+
+- [Privacy policy](https://www.warp.dev/privacy)
+
+List of known telemetry channels:
+
+#### [Usage data](https://docs.warp.dev/getting-started/privacy)
+
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ✔          | ❌            | ❌            |
+
+- [Telemetry details](https://github.com/warpdotdev/Warp/issues/1346)
+
+> All app interactions are tracked via [segment.com](https://segment.com/)
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Visit link(s) for more details
+
+1. [Block tracking](https://linuxize.com/post/how-to-edit-your-hosts-file/)
+
+    > Add this record to your hosts file to block access to Segment
+    >  ```
+    > 0.0.0.0 api.segment.io
+    > ```
+
 ### [webhint](https://webhint.io/)
 
 > At the end of the second run webhint we will ask if you want to send limited usage information to help us to build a better product.
@@ -4017,6 +4118,31 @@ Path: `some-dir/example.json`
 {
   "disable_anonymous_signature": true
 }
+```
+
+### [Dagger](https://dagger.io/)
+
+> By default, the dagger CLI sends anonymized telemetry to dagger.io
+
+- [Telemetry details](https://docs.dagger.io/1218/cli-telemetry)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+DO_NOT_TRACK=1
 ```
 
 ### [decK](https://github.com/Kong/deck)

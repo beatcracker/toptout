@@ -242,6 +242,15 @@ if ($Env) {
     Set-EnvVar -Name 'HOMEBREW_NO_ANALYTICS' -Value '1' -ShowLog:$ShowLog
 }
 
+# Homebrew
+# https://brew.sh
+
+# Update check
+# https://docs.brew.sh/Manpage
+if ($Env) {
+    Set-EnvVar -Name 'HOMEBREW_NO_AUTO_UPDATE' -Value '1' -ShowLog:$ShowLog
+}
+
 # LYNX VFX
 # https://github.com/LucaScheller/VFX-LYNX
 
@@ -492,6 +501,16 @@ if ($Env) {
     Set-EnvVar -Name 'ARDUINO_METRICS_ENABLED' -Value 'false' -ShowLog:$ShowLog
 }
 
+# AWS Amplify CLI
+# https://aws.amazon.com/amplify/
+
+# Usage data
+if ($Exec) {
+    if (Test-InPath 'amplify' -ShowLog:$ShowLog) {
+        Invoke-ShellCommand -Command 'amplify' -Arguments @('configure', '--usage-data-off') -ShowLog:$ShowLog
+    }
+}
+
 # Bot Framework CLI
 # https://github.com/microsoft/botframework-cli
 
@@ -499,6 +518,18 @@ if ($Env) {
 # https://github.com/microsoft/botframework-cli/tree/main/packages/cli#bf-configsettelemetry
 if ($Env) {
     Set-EnvVar -Name 'BF_CLI_TELEMETRY' -Value 'false' -ShowLog:$ShowLog
+}
+
+# Capacitor
+# https://capacitorjs.com
+
+# Usage data
+if ($Exec) {
+    if (Test-InPath 'cap' -ShowLog:$ShowLog) {
+        if (Test-InPath 'nx' -ShowLog:$ShowLog) {
+            Invoke-ShellCommand -Command 'nx' -Arguments @('cap', 'telemetry', 'off') -ShowLog:$ShowLog
+        }
+    }
 }
 
 # Carbon Design System
@@ -1031,6 +1062,14 @@ if ($Env) {
 # https://www.consul.io/docs/agent/options#disable_update_check
 if ($Env) {
     Set-EnvVar -Name 'CHECKPOINT_DISABLE' -Value 'ANY_VALUE' -ShowLog:$ShowLog
+}
+
+# Dagger
+# https://dagger.io/
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'DO_NOT_TRACK' -Value '1' -ShowLog:$ShowLog
 }
 
 # decK
