@@ -576,10 +576,12 @@ task api-schema-lint {
     exec {
         & 'npx' @(
             '--yes'
-            '@redocly/openapi-cli'
+            '@redocly/cli@1.0.0-beta.100'
             'lint'
             "$BuildRoot/schema/openapi.yaml"
             "--config=$BuildRoot/schema/.redocly.lint-ignore.yaml"
+            '--extends'
+            'recommended'
         )
     }
 }
@@ -590,7 +592,7 @@ task api-schema-bundle {
     exec {
         & 'npx' @(
             '--yes'
-            '@redocly/openapi-cli'
+            '@redocly/cli@1.0.0-beta.100'
             'bundle'
             "$BuildRoot/schema/openapi.yaml"
             '--output'
