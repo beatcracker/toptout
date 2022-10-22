@@ -5,7 +5,11 @@
 	},
 	"settings": {
 		"terminal.integrated.shell.*": "/opt/powershell/pwsh",
-		"powershell.powerShellAdditionalExePaths": [
+		// Disable PSScriptAnalyzer in PowerShell extension.
+		// Otherwise it loads it's own PSScriptAnalyzer assembly,
+		// which prevents build.ps1 from using specific version of PSScriptAnalyzer
+		"powershell.scriptAnalysis.enable": false,
+		"powershell.powerShellAdditionalExePaths":[
 			{
 				"versionName": "latest",
 				"exePath": "/opt/powershell/pwsh"
