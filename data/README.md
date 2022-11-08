@@ -264,7 +264,7 @@ Indicates that this specific telemetry channel is controlled by setting the Wind
 Indicates that this specific telemetry channel is controlled by setting the value in the INI file.
 
 ```json5
-"json_file": {
+"ini_file": {
   // Target scope. You can use multiple scopes.
   // machine - configures telemetry channel for all users of the computer
   // user    - configures telemetry channel for current user of the computer
