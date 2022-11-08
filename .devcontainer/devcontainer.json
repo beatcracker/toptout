@@ -1,21 +1,21 @@
 {
-	"name": "PowerShell + Node.js",
-	"build": {
-		"dockerfile": "Dockerfile",
-	},
-	"settings": {
-		"terminal.integrated.shell.*": "/opt/powershell/pwsh",
-		// Disable PSScriptAnalyzer in PowerShell extension.
-		// Otherwise it loads it's own PSScriptAnalyzer assembly,
-		// which prevents build.ps1 from using specific version of PSScriptAnalyzer
-		"powershell.scriptAnalysis.enable": false,
-		"powershell.powerShellAdditionalExePaths": {
-			"versionName": "latest",
-			"exePath": "/opt/powershell/pwsh"
-		}
-	},
-	"extensions": [
-		"ms-vscode.powershell"
-	],
-	"remoteUser": "node"
+  "name": "PowerShell + Node.js",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "settings": {
+    "terminal.integrated.shell.*": "/opt/powershell/pwsh",
+    // Disable PSScriptAnalyzer in PowerShell extension.
+    // Otherwise it loads it's own PSScriptAnalyzer assembly,
+    // which prevents build.ps1 from using specific version of PSScriptAnalyzer
+    "powershell.scriptAnalysis.enable": false,
+    "powershell.powerShellAdditionalExePaths": {
+      "versionName": "latest",
+      "exePath": "/opt/powershell/pwsh"
+    }
+  },
+  "extensions": [
+    "ms-vscode.powershell"
+  ],
+  "remoteUser": "node"
 }
