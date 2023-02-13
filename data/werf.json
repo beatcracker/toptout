@@ -1,0 +1,42 @@
+{
+  "id": "werf",
+  "name": "werf",
+  "executable_name": [
+    "werf"
+  ],
+  "category_id": "devops",
+  "category_name": "DevOps",
+  "description": "We collect anonymous usage data to improve werf’s features and steer its development in the right direction.",
+  "links": {
+    "main": "https://werf.io/",
+    "telemetry": "https://werf.io/documentation/v1.2/resources/telemetry.html"
+  },
+  "telemetry": [
+    {
+      "id": "usage-data",
+      "name": "Usage data",
+      "description": "Disable usage data reporting",
+      "traits": {
+        "official": true,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "WERF_TELEMETRY"
+              },
+              "value": {
+                "opt_out": "0",
+                "opt_in": null
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
