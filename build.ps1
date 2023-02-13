@@ -125,7 +125,7 @@ function Restore-Dependency {
 
             # Download package
             $nupkg = "$OutDir/$name/$version/$name.$version.nupkg"
-            if (-not [System.IO.File]::Exists($nupkg )) {
+            if (-not [System.IO.File]::Exists($nupkg)) {
                 $OldPP = $ProgressPreference
                 try {
                     $ProgressPreference = 'SilentlyContinue'
