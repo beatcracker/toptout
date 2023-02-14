@@ -6,7 +6,7 @@
   ],
   "category_id": "development",
   "category_name": "Development",
-  "description": "All your base are belong to us.",
+  "description": "Instrumentation will be added to the Go command-line tools written and distributed by the Go team, such as the `go` command, the Go compiler, `gopls`, and `govulncheck`.",
   "links": {
     "main": "https://go.dev/",
     "telemetry": "https://research.swtch.com/telemetry-intro",
@@ -16,7 +16,7 @@
     {
       "id": "usage-data",
       "name": "Usage data",
-      "description": "Disable usage data reporting",
+      "description": "Disable usage data reporting.",
       "links": {
         "main": "https://github.com/golang/go/discussions/58409"
       },
