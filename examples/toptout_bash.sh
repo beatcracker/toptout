@@ -550,6 +550,13 @@ fi
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'GATSBY_TELEMETRY_DISABLED' '1'
 
+# Golang
+# https://go.dev/
+
+# Usage data
+# https://github.com/golang/go/discussions/58409
+[[ "${toptout_env}" == 'True' ]] && set_env 'GOTELEMETRY' 'off'
+
 # Hasura GraphQL engine
 # https://hasura.io
 
@@ -903,6 +910,13 @@ fi
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'DECK_ANALYTICS' 'off'
 
+# Earthly
+# https://earthly.dev/
+
+# Usage data
+# https://github.com/earthly/earthly/blob/main/CHANGELOG.md#v0518---2021-07-08
+[[ "${toptout_env}" == 'True' ]] && set_env 'EARTHLY_DISABLE_ANALYTICS' '1'
+
 # F5 BIG-IP Terraform provider
 # https://registry.terraform.io/providers/F5Networks/bigip/latest/docs
 
@@ -1057,6 +1071,12 @@ fi
 
 # Update check
 [[ "${toptout_env}" == 'True' ]] && set_env 'CHECKPOINT_DISABLE' '1'
+
+# werf
+# https://werf.io/
+
+# Usage data
+[[ "${toptout_env}" == 'True' ]] && set_env 'WERF_TELEMETRY' '0'
 
 # WKSctl
 # https://www.weave.works/oss/wksctl/

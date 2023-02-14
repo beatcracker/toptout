@@ -642,6 +642,15 @@ if ($Env) {
     Set-EnvVar -Name 'GATSBY_TELEMETRY_DISABLED' -Value '1' -ShowLog:$ShowLog
 }
 
+# Golang
+# https://go.dev/
+
+# Usage data
+# https://github.com/golang/go/discussions/58409
+if ($Env) {
+    Set-EnvVar -Name 'GOTELEMETRY' -Value 'off' -ShowLog:$ShowLog
+}
+
 # Hasura GraphQL engine
 # https://hasura.io
 
@@ -1080,6 +1089,15 @@ if ($Env) {
     Set-EnvVar -Name 'DECK_ANALYTICS' -Value 'off' -ShowLog:$ShowLog
 }
 
+# Earthly
+# https://earthly.dev/
+
+# Usage data
+# https://github.com/earthly/earthly/blob/main/CHANGELOG.md#v0518---2021-07-08
+if ($Env) {
+    Set-EnvVar -Name 'EARTHLY_DISABLE_ANALYTICS' -Value '1' -ShowLog:$ShowLog
+}
+
 # F5 BIG-IP Terraform provider
 # https://registry.terraform.io/providers/F5Networks/bigip/latest/docs
 
@@ -1269,6 +1287,14 @@ if ($Env) {
 # Update check
 if ($Env) {
     Set-EnvVar -Name 'CHECKPOINT_DISABLE' -Value '1' -ShowLog:$ShowLog
+}
+
+# werf
+# https://werf.io/
+
+# Usage data
+if ($Env) {
+    Set-EnvVar -Name 'WERF_TELEMETRY' -Value '0' -ShowLog:$ShowLog
 }
 
 # WKSctl

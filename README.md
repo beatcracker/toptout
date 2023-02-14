@@ -105,7 +105,7 @@ See [CONTRIBUTING](/.github/CONTRIBUTING.md) for details on adding new telemetry
 
 Below is automatically generated list of known telemetry channels for various applications.
 
-Total count: **148**
+Total count: **151**
 
 - [Applications](#applications)
   - [Atom](#atom)
@@ -170,6 +170,7 @@ Total count: **148**
   - [Flagsmith API](#flagsmith-api)
   - [Flutter](#flutter)
   - [Gatsby](#gatsby)
+  - [Golang](#golang)
   - [Hasura GraphQL engine](#hasura-graphql-engine)
   - [Humbug](#humbug)
   - [ImageGear](#imagegear)
@@ -226,6 +227,7 @@ Total count: **148**
   - [Consul](#consul)
   - [Dagger](#dagger)
   - [decK](#deck)
+  - [Earthly](#earthly)
   - [F5 BIG-IP Terraform provider](#f5-big-ip-terraform-provider)
   - [F5 CLI](#f5-cli)
   - [Infracost](#infracost)
@@ -246,6 +248,7 @@ Total count: **148**
   - [Cloud Development Kit for Terraform](#cloud-development-kit-for-terraform)
   - [Vagrant](#vagrant)
   - [Weave Net](#weave-net)
+  - [werf](#werf)
   - [WKSctl](#wksctl)
 - [Drivers](#drivers)
   - [Nvidia drivers](#nvidia-drivers)
@@ -2397,6 +2400,33 @@ GATSBY_TELEMETRY_DISABLED=1
 gatsby telemetry --disable
 ```
 
+### [Golang](https://go.dev/)
+
+> All your base are belong to us.
+
+- [Telemetry details](https://research.swtch.com/telemetry-intro)
+- [Privacy policy](https://policies.google.com/privacy)
+
+List of known telemetry channels:
+
+#### [Usage data](https://github.com/golang/go/discussions/58409)
+
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
+
+> Disable usage data reporting
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+GOTELEMETRY=off
+```
+
 ### [Hasura GraphQL engine](https://hasura.io)
 
 > The Hasura GraphQL engine collects anonymous telemetry data that helps the Hasura team in understanding how the product is being used and in deciding what to focus on next.
@@ -4170,6 +4200,50 @@ Use methods described below to opt-out of this telemetry channel.
 DECK_ANALYTICS=off
 ```
 
+### [Earthly](https://earthly.dev/)
+
+> By default, Earthly collects anonymized data which we use for measuring performance of the earthly command.
+
+- [Telemetry details](https://docs.earthly.dev/docs/misc/data-collection)
+- [Privacy policy](https://earthly.dev/privacy-policy)
+
+List of known telemetry channels:
+
+#### [Usage data](https://github.com/earthly/earthly/blob/main/CHANGELOG.md#v0518---2021-07-08)
+
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
+
+> Disable usage data reporting
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+EARTHLY_DISABLE_ANALYTICS=1
+```
+
+##### 2. Edit config file (YAML)
+
+###### Scope: 👤 User
+
+| OS      | Path                                |
+| ------- | ----------------------------------- |
+| Linux   | `$HOME/.earthly/config.yml`         |
+| macOS   | `$HOME/.earthly/config.yml`         |
+| Windows | `%USERPROFILE%\.earthly\config.yml` |
+
+###### Content
+
+```yaml
+global:
+  disable_analytics: true
+```
+
 ### [F5 BIG-IP Terraform provider](https://registry.terraform.io/providers/F5Networks/bigip/latest/docs)
 
 > The F5 BIG-IP provider gathers non-identifiable usage data for the purposes of improving the product as outlined in the end user license agreement for BIG-IP.
@@ -4814,6 +4888,33 @@ Use methods described below to opt-out of this telemetry channel.
 
 ```none
 CHECKPOINT_DISABLE=1
+```
+
+### [werf](https://werf.io/)
+
+> We collect anonymous usage data to improve werf’s features and steer its development in the right direction.
+
+- [Telemetry details](https://werf.io/documentation/v1.2/resources/telemetry.html)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Usage data
+
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ✔          | ❌            | ❌            |
+
+> Disable usage data reporting
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+WERF_TELEMETRY=0
 ```
 
 ### [WKSctl](https://www.weave.works/oss/wksctl/)
