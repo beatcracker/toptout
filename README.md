@@ -2402,7 +2402,7 @@ gatsby telemetry --disable
 
 ### [Golang](https://go.dev/)
 
-> All your base are belong to us.
+> Instrumentation will be added to the Go command-line tools written and distributed by the Go team, such as the `go` command, the Go compiler, `gopls`, and `govulncheck`.
 
 - [Telemetry details](https://research.swtch.com/telemetry-intro)
 - [Privacy policy](https://policies.google.com/privacy)
@@ -2415,7 +2415,7 @@ List of known telemetry channels:
 | :------: | :--------: | :----------: | :----------: |
 | ✔        | ✔          | ❌            | ❌            |
 
-> Disable usage data reporting
+> Disable usage data reporting.
 
 Use methods described below to opt-out of this telemetry channel.
 
