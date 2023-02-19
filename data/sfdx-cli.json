@@ -58,6 +58,34 @@
           }
         }
       }
+    },
+    {
+      "id": "usage-data-alternate-env-var",
+      "name": "Usage data (alternate environment variable)",
+      "links": {
+        "main": "https://github.com/forcedotcom/sfdx-core/blob/31fc950dd3fea9696d15e28ad944f07a08349e60/src/config/envVars.ts#L176-L179"
+      },
+      "traits": {
+        "official": false,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "SF_DISABLE_TELEMETRY"
+              },
+              "value": {
+                "opt_out": "true",
+                "opt_in": null
+              }
+            }
+          }
+        }
+      }
     }
   ]
 }
