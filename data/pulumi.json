@@ -1,0 +1,41 @@
+{
+  "id": "pulumi",
+  "name": "Pulumi",
+  "executable_name": [
+    "pulumi"
+  ],
+  "category_id": "devops",
+  "category_name": "DevOps",
+  "description": "Pulumi tries to access pulumi.com to get the latest version.",
+  "links": {
+    "main": "https://www.pulumi.com/",
+    "telemetry": "https://www.pulumi.com/docs/reference/cli/environment-variables/"
+  },
+  "telemetry": [
+    {
+      "id": "update-check",
+      "name": "Update check",
+      "traits": {
+        "official": true,
+        "usage_data": false,
+        "update_check": true,
+        "error_report": false
+      },
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "PULUMI_SKIP_UPDATE_CHECK"
+              },
+              "value": {
+                "opt_out": "true",
+                "opt_in": null
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
