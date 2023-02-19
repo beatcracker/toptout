@@ -201,6 +201,13 @@ esac
 # Homebrew
 # https://brew.sh
 
+# Usage data (alternate environment variable)
+# https://github.com/Homebrew/brew/blob/6ad92949e910041416d84a53966ec46b873e069f/Library/Homebrew/utils/analytics.sh#L38
+[[ "${toptout_env}" == 'True' ]] && set_env 'HOMEBREW_NO_ANALYTICS_THIS_RUN' '1'
+
+# Homebrew
+# https://brew.sh
+
 # Update check
 # https://docs.brew.sh/Manpage
 [[ "${toptout_env}" == 'True' ]] && set_env 'HOMEBREW_NO_AUTO_UPDATE' '1'
@@ -752,11 +759,25 @@ fi
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'SLS_TELEMETRY_DISABLED' '1'
 
+# Serverless Framework
+# https://www.serverless.com/
+
+# Usage data (alternate environment variable)
+# https://github.com/serverless/serverless/blob/18d4d69eb3b1220814ab031690b6ef899280a93a/lib/utils/telemetry/are-disabled.js#L5-L9
+[[ "${toptout_env}" == 'True' ]] && set_env 'SLS_TRACKING_DISABLED' '1'
+
 # Salesforce CLI
 # https://developer.salesforce.com/tools/sfdxcli
 
 # Usage data
 [[ "${toptout_env}" == 'True' ]] && set_env 'SFDX_DISABLE_TELEMETRY' 'true'
+
+# Salesforce CLI
+# https://developer.salesforce.com/tools/sfdxcli
+
+# Usage data (alternate environment variable)
+# https://github.com/forcedotcom/sfdx-core/blob/31fc950dd3fea9696d15e28ad944f07a08349e60/src/config/envVars.ts#L176-L179
+[[ "${toptout_env}" == 'True' ]] && set_env 'SF_DISABLE_TELEMETRY' 'true'
 
 # SKU
 # https://github.com/seek-oss/sku
@@ -1001,6 +1022,12 @@ fi
 # Update check
 # https://pnp.github.io/powershell/articles/updatenotifications.html
 [[ "${toptout_env}" == 'True' ]] && set_env 'PNPPOWERSHELL_UPDATECHECK' 'false'
+
+# Pulumi
+# https://www.pulumi.com/
+
+# Update check
+[[ "${toptout_env}" == 'True' ]] && set_env 'PULUMI_SKIP_UPDATE_CHECK' 'true'
 
 # Azure Service Fabric CLI
 # https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-sfctl

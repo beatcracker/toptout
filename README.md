@@ -105,7 +105,7 @@ See [CONTRIBUTING](/.github/CONTRIBUTING.md) for details on adding new telemetry
 
 Below is automatically generated list of known telemetry channels for various applications.
 
-Total count: **151**
+Total count: **152**
 
 - [Applications](#applications)
   - [Atom](#atom)
@@ -240,6 +240,7 @@ Total count: **151**
   - [OpenVZ](#openvz)
   - [Packer](#packer)
   - [PnP PowerShell](#pnp-powershell)
+  - [Pulumi](#pulumi)
   - [Azure Service Fabric CLI](#azure-service-fabric-cli)
   - [Skaffold](#skaffold)
   - [Telepresence](#telepresence)
@@ -559,6 +560,22 @@ HOMEBREW_NO_ANALYTICS=1
 
 ```shell
 brew analytics off
+```
+
+#### [Usage data (alternate environment variable)](https://github.com/Homebrew/brew/blob/6ad92949e910041416d84a53966ec46b873e069f/Library/Homebrew/utils/analytics.sh#L38)
+
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ✔          | ❌            | ❌            |
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+HOMEBREW_NO_ANALYTICS_THIS_RUN=1
 ```
 
 #### [Update check](https://docs.brew.sh/Manpage)
@@ -3434,6 +3451,22 @@ SLS_TELEMETRY_DISABLED=1
 serverless slstats --disable
 ```
 
+#### [Usage data (alternate environment variable)](https://github.com/serverless/serverless/blob/18d4d69eb3b1220814ab031690b6ef899280a93a/lib/utils/telemetry/are-disabled.js#L5-L9)
+
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ✔          | ❌            | ❌            |
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+SLS_TRACKING_DISABLED=1
+```
+
 ### [Salesforce CLI](https://developer.salesforce.com/tools/sfdxcli)
 
 > Salesforce collects usage data and metrics (telemetry) to help improve Salesforce CLI. We collect anonymous information related to the use of the CLI and plug-ins, such as which commands and parameters were run, and performance and error data.
@@ -3465,6 +3498,22 @@ SFDX_DISABLE_TELEMETRY=true
 
 ```shell
 sfdx config:set disableTelemetry=true --global
+```
+
+#### [Usage data (alternate environment variable)](https://github.com/forcedotcom/sfdx-core/blob/31fc950dd3fea9696d15e28ad944f07a08349e60/src/config/envVars.ts#L176-L179)
+
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ❌        | ✔          | ❌            | ❌            |
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+SF_DISABLE_TELEMETRY=true
 ```
 
 ### [SKU](https://github.com/seek-oss/sku)
@@ -4623,6 +4672,31 @@ Use methods described below to opt-out of this telemetry channel.
 
 ```none
 PNPPOWERSHELL_UPDATECHECK=false
+```
+
+### [Pulumi](https://www.pulumi.com/)
+
+> Pulumi tries to access pulumi.com to get the latest version.
+
+- [Telemetry details](https://www.pulumi.com/docs/reference/cli/environment-variables/)
+- Privacy policy: ❌
+
+List of known telemetry channels:
+
+#### Update check
+
+| Official | Usage data | Update check | Error report |
+| :------: | :--------: | :----------: | :----------: |
+| ✔        | ❌          | ✔            | ❌            |
+
+Use methods described below to opt-out of this telemetry channel.
+
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+PULUMI_SKIP_UPDATE_CHECK=true
 ```
 
 ### [Azure Service Fabric CLI](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-sfctl)

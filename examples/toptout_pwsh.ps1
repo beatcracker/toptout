@@ -245,6 +245,15 @@ if ($Env) {
 # Homebrew
 # https://brew.sh
 
+# Usage data (alternate environment variable)
+# https://github.com/Homebrew/brew/blob/6ad92949e910041416d84a53966ec46b873e069f/Library/Homebrew/utils/analytics.sh#L38
+if ($Env) {
+    Set-EnvVar -Name 'HOMEBREW_NO_ANALYTICS_THIS_RUN' -Value '1' -ShowLog:$ShowLog
+}
+
+# Homebrew
+# https://brew.sh
+
 # Update check
 # https://docs.brew.sh/Manpage
 if ($Env) {
@@ -896,12 +905,30 @@ if ($Env) {
     Set-EnvVar -Name 'SLS_TELEMETRY_DISABLED' -Value '1' -ShowLog:$ShowLog
 }
 
+# Serverless Framework
+# https://www.serverless.com/
+
+# Usage data (alternate environment variable)
+# https://github.com/serverless/serverless/blob/18d4d69eb3b1220814ab031690b6ef899280a93a/lib/utils/telemetry/are-disabled.js#L5-L9
+if ($Env) {
+    Set-EnvVar -Name 'SLS_TRACKING_DISABLED' -Value '1' -ShowLog:$ShowLog
+}
+
 # Salesforce CLI
 # https://developer.salesforce.com/tools/sfdxcli
 
 # Usage data
 if ($Env) {
     Set-EnvVar -Name 'SFDX_DISABLE_TELEMETRY' -Value 'true' -ShowLog:$ShowLog
+}
+
+# Salesforce CLI
+# https://developer.salesforce.com/tools/sfdxcli
+
+# Usage data (alternate environment variable)
+# https://github.com/forcedotcom/sfdx-core/blob/31fc950dd3fea9696d15e28ad944f07a08349e60/src/config/envVars.ts#L176-L179
+if ($Env) {
+    Set-EnvVar -Name 'SF_DISABLE_TELEMETRY' -Value 'true' -ShowLog:$ShowLog
 }
 
 # SKU
@@ -1207,6 +1234,14 @@ if ($Env) {
 # https://pnp.github.io/powershell/articles/updatenotifications.html
 if ($Env) {
     Set-EnvVar -Name 'PNPPOWERSHELL_UPDATECHECK' -Value 'false' -ShowLog:$ShowLog
+}
+
+# Pulumi
+# https://www.pulumi.com/
+
+# Update check
+if ($Env) {
+    Set-EnvVar -Name 'PULUMI_SKIP_UPDATE_CHECK' -Value 'true' -ShowLog:$ShowLog
 }
 
 # Azure Service Fabric CLI
