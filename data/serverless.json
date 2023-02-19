@@ -56,6 +56,34 @@
           }
         }
       }
+    },
+    {
+      "id": "usage-data-alternate-env-var",
+      "name": "Usage data (alternate environment variable)",
+      "links": {
+        "main": "https://github.com/serverless/serverless/blob/18d4d69eb3b1220814ab031690b6ef899280a93a/lib/utils/telemetry/are-disabled.js#L5-L9"
+      },
+      "traits": {
+        "official": false,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "SLS_TRACKING_DISABLED"
+              },
+              "value": {
+                "opt_out": "1",
+                "opt_in": null
+              }
+            }
+          }
+        }
+      }
     }
   ]
 }
