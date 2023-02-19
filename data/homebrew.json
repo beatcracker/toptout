@@ -57,6 +57,34 @@
       }
     },
     {
+      "id": "usage-data-alternate-env-var",
+      "name": "Usage data (alternate environment variable)",
+      "links": {
+        "main": "https://github.com/Homebrew/brew/blob/6ad92949e910041416d84a53966ec46b873e069f/Library/Homebrew/utils/analytics.sh#L38"
+      },
+      "traits": {
+        "official": false,
+        "usage_data": true,
+        "update_check": false,
+        "error_report": false
+      },
+      "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "HOMEBREW_NO_ANALYTICS_THIS_RUN"
+              },
+              "value": {
+                "opt_out": "1",
+                "opt_in": null
+              }
+            }
+          }
+        }
+      }
+    },
+    {
       "id": "update-check",
       "name": "Update check",
       "description": "By default,`brew` command will try to fetch newest version of Homebrew and all formulae from GitHub.",
