@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.1.2
 info:
   title: Toptout
   description: Get data about telemetry channels in various applications
@@ -9,6 +9,7 @@ info:
 servers:
   - url: https://toptout.me/api
     description: Static API hosted on GitHub pages
+security: []
 tags:
   - name: apps
     description: Get application ids or categories
@@ -216,9 +217,7 @@ components:
         - error_report
     Noop:
       title: Noop
-      description: >-
-        "No operation". Use this for links to third-party telemetry
-        configuration tools, that are not supported by this schema.
+      description: '"No operation". Use this for links to third-party telemetry configuration tools, that are not supported by this schema.'
       type: object
       additionalProperties: false
       properties:
@@ -241,9 +240,7 @@ components:
         - name
     Path:
       title: Path
-      description: >-
-        Item path. For environment variables this would be name, for files -
-        full path.
+      description: Item path. For environment variables this would be name, for files - full path.
       type: object
       additionalProperties: false
       properties:
@@ -275,16 +272,12 @@ components:
       additionalProperties: false
       properties:
         opt_out:
-          description: >-
-            This value will opt-OUT of the telemetry collection. Use null to
-            indicate that entry should be removed.
+          description: This value will opt-OUT of the telemetry collection. Use null to indicate that entry should be removed.
           type:
             - string
             - 'null'
         opt_in:
-          description: >-
-            This value will opt-IN of the telemetry collection. Use null to
-            indicate that value should be removed.
+          description: This value will opt-IN of the telemetry collection. Use null to indicate that value should be removed.
           type:
             - string
             - 'null'
@@ -306,20 +299,13 @@ components:
         - value
     Env:
       title: Env
-      description: >-
-        "Environment variable" target. Set or remove environment variable.
-        Environment variables are by design configured in process scope. There
-        are mechanisms to configure them for every new process, but it's up to
-        OS/shell.
+      description: '"Environment variable" target. Set or remove environment variable. Environment variables are by design configured in process scope. There are mechanisms to configure them for every new process, but it''s up to OS/shell.'
       type: object
       additionalProperties: false
       properties:
         scope:
           type: object
-          description: >-
-            Target scope. You can use multiple scopes: machine (applies to all
-            users of the computer), user (applies to current user of the
-            computer), process (applies to current process only).
+          description: 'Target scope. You can use multiple scopes: machine (applies to all users of the computer), user (applies to current user of the computer), process (applies to current process only).'
           additionalProperties: false
           properties:
             machine:
@@ -347,20 +333,14 @@ components:
       additionalProperties: false
       properties:
         opt_out:
-          description: >-
-            These arguments will opt-OUT of the telemetry collection. Use empty
-            array to indicate that no arguments to command are needed. Use null
-            to indicate that opt-out is not applicable.
+          description: These arguments will opt-OUT of the telemetry collection. Use empty array to indicate that no arguments to command are needed. Use null to indicate that opt-out is not applicable.
           type:
             - array
             - 'null'
           items:
             type: string
         opt_in:
-          description: >-
-            These arguments will opt-IN of the telemetry collection. Use empty
-            array to indicate that no arguments to command are needed. Use null
-            to indicate that opt-in is not applicable.
+          description: These arguments will opt-IN of the telemetry collection. Use empty array to indicate that no arguments to command are needed. Use null to indicate that opt-in is not applicable.
           type:
             - array
             - 'null'
@@ -390,10 +370,7 @@ components:
       properties:
         scope:
           type: object
-          description: >-
-            Target scope. You can use multiple scopes: machine (applies to all
-            users of the computer), user (applies to current user of the
-            computer), process (applies to current process only).
+          description: 'Target scope. You can use multiple scopes: machine (applies to all users of the computer), user (applies to current user of the computer), process (applies to current process only).'
           additionalProperties: false
           properties:
             machine:
@@ -422,9 +399,7 @@ components:
       properties:
         root:
           type: string
-          description: >-
-            Registry hive name:
-            https://docs.microsoft.com/en-us/windows/win32/sysinfo/predefined-keys
+          description: 'Registry hive name: https://docs.microsoft.com/en-us/windows/win32/sysinfo/predefined-keys'
           enum:
             - HKEY_CLASSES_ROOT
             - HKEY_CURRENT_CONFIG
@@ -469,10 +444,7 @@ components:
       properties:
         scope:
           type: object
-          description: >-
-            Target scope. You can use multiple scopes: machine (applies to all
-            users of the computer), user (applies to current user of the
-            computer), process (applies to current process only).
+          description: 'Target scope. You can use multiple scopes: machine (applies to all users of the computer), user (applies to current user of the computer), process (applies to current process only).'
           additionalProperties: false
           properties:
             machine:
@@ -495,15 +467,11 @@ components:
         - scope
     Dasel:
       title: Dasel
-      description: >-
-        Standard selector syntax no matter the data format:
-        https://github.com/TomWright/dasel
+      description: 'Standard selector syntax no matter the data format: https://github.com/TomWright/dasel'
       type: string
     INIFileSelector:
       title: INIFileSelector
-      description: >-
-        Describes selector used to configure telemetry channel in application
-        INI configuration file.
+      description: Describes selector used to configure telemetry channel in application INI configuration file.
       type: object
       additionalProperties: false
       properties:
@@ -538,10 +506,7 @@ components:
       properties:
         scope:
           type: object
-          description: >-
-            Target scope. You can use multiple scopes: machine (applies to all
-            users of the computer), user (applies to current user of the
-            computer), process (applies to current process only).
+          description: 'Target scope. You can use multiple scopes: machine (applies to all users of the computer), user (applies to current user of the computer), process (applies to current process only).'
           additionalProperties: false
           properties:
             machine:
@@ -568,9 +533,7 @@ components:
       type: string
     JSONFileSelector:
       title: JSONFileSelector
-      description: >-
-        Describes selector used to configure telemetry channel in application
-        JSON configuration file.
+      description: Describes selector used to configure telemetry channel in application JSON configuration file.
       type: object
       additionalProperties: false
       properties:
@@ -583,25 +546,19 @@ components:
         - json_pointer
     RichValue:
       title: RichValue
-      description: >-
-        Opt-in/out values for JSON and other targets that can use non-string
-        values (e.g.: object/number/boolean/null)
+      description: 'Opt-in/out values for JSON and other targets that can use non-string values (e.g.: object/number/boolean/null)'
       type: object
       additionalProperties: false
       properties:
         opt_out:
-          description: >-
-            This value will opt-OUT of the telemetry collection. Use null to
-            indicate that the entire key holding this value should be removed.
+          description: This value will opt-OUT of the telemetry collection. Use null to indicate that the entire key holding this value should be removed.
           type:
             - number
             - string
             - boolean
             - 'null'
         opt_in:
-          description: >-
-            This value will opt-IN to the telemetry collection. Use null to
-            indicate that value should be removed.
+          description: This value will opt-IN to the telemetry collection. Use null to indicate that value should be removed.
           type:
             - number
             - string
@@ -637,10 +594,7 @@ components:
       properties:
         scope:
           type: object
-          description: >-
-            Target scope. You can use multiple scopes: machine (applies to all
-            users of the computer), user (applies to current user of the
-            computer), process (applies to current process only).
+          description: 'Target scope. You can use multiple scopes: machine (applies to all users of the computer), user (applies to current user of the computer), process (applies to current process only).'
           additionalProperties: false
           properties:
             machine:
@@ -663,15 +617,11 @@ components:
         - scope
     Regex:
       title: Regex
-      description: >-
-        Regular expression. RE2 flavor:
-        https://github.com/google/re2/wiki/Syntax
+      description: 'Regular expression. RE2 flavor: https://github.com/google/re2/wiki/Syntax'
       type: string
     PlainFileSelector:
       title: PlainFileSelector
-      description: >-
-        Describes selector used to configure telemetry channel in application
-        plaintext configuration file.
+      description: Describes selector used to configure telemetry channel in application plaintext configuration file.
       type: object
       additionalProperties: false
       properties:
@@ -706,10 +656,7 @@ components:
       properties:
         scope:
           type: object
-          description: >-
-            Target scope. You can use multiple scopes: machine (applies to all
-            users of the computer), user (applies to current user of the
-            computer), process (applies to current process only).
+          description: 'Target scope. You can use multiple scopes: machine (applies to all users of the computer), user (applies to current user of the computer), process (applies to current process only).'
           additionalProperties: false
           properties:
             machine:
@@ -732,9 +679,7 @@ components:
         - scope
     TOMLFileSelector:
       title: TOMLFileSelector
-      description: >-
-        Describes selector used to configure telemetry channel in application
-        TOML configuration file.
+      description: Describes selector used to configure telemetry channel in application TOML configuration file.
       type: object
       additionalProperties: false
       properties:
@@ -769,10 +714,7 @@ components:
       properties:
         scope:
           type: object
-          description: >-
-            Target scope. You can use multiple scopes: machine (applies to all
-            users of the computer), user (applies to current user of the
-            computer), process (applies to current process only).
+          description: 'Target scope. You can use multiple scopes: machine (applies to all users of the computer), user (applies to current user of the computer), process (applies to current process only).'
           additionalProperties: false
           properties:
             machine:
@@ -799,9 +741,7 @@ components:
       type: string
     XMLFileSelector:
       title: XMLFileSelector
-      description: >-
-        Describes selector used to configure telemetry channel in application
-        XML configuration file.
+      description: Describes selector used to configure telemetry channel in application XML configuration file.
       type: object
       additionalProperties: false
       properties:
@@ -833,18 +773,13 @@ components:
         - value
     XMLFile:
       title: XMLFile
-      description: >-
-        "XML file". Modify XML file:
-        https://developer.mozilla.org/docs/Web/XML/XML_introduction
+      description: '"XML file". Modify XML file: https://developer.mozilla.org/docs/Web/XML/XML_introduction'
       type: object
       additionalProperties: false
       properties:
         scope:
           type: object
-          description: >-
-            Target scope. You can use multiple scopes: machine (applies to all
-            users of the computer), user (applies to current user of the
-            computer), process (applies to current process only).
+          description: 'Target scope. You can use multiple scopes: machine (applies to all users of the computer), user (applies to current user of the computer), process (applies to current process only).'
           additionalProperties: false
           properties:
             machine:
@@ -867,9 +802,7 @@ components:
         - scope
     YAMLFileSelector:
       title: YAMLFileSelector
-      description: >-
-        Describes selector used to configure telemetry channel in application
-        YAML configuration file.
+      description: Describes selector used to configure telemetry channel in application YAML configuration file.
       type: object
       additionalProperties: false
       properties:
@@ -904,10 +837,7 @@ components:
       properties:
         scope:
           type: object
-          description: >-
-            Target scope. You can use multiple scopes: machine (applies to all
-            users of the computer), user (applies to current user of the
-            computer), process (applies to current process only).
+          description: 'Target scope. You can use multiple scopes: machine (applies to all users of the computer), user (applies to current user of the computer), process (applies to current process only).'
           additionalProperties: false
           properties:
             machine:
@@ -930,10 +860,7 @@ components:
         - scope
     Target:
       title: Target
-      description: >-
-        Describes telemetry channel configuration options. Optional, since you
-        may wish to describe telemetry channels that don't provide a ways to
-        control them.
+      description: Describes telemetry channel configuration options. Optional, since you may wish to describe telemetry channels that don't provide a ways to control them.
       type: object
       additionalProperties: false
       properties:
@@ -989,15 +916,11 @@ components:
         id:
           type: string
           pattern: ^[a-z0-9-]+$
-          description: >-
-            Telemetry channel unique ID. Use [a-z0-9-] character set. Must be
-            unique in this array. Example: usage-data.
+          description: 'Telemetry channel unique ID. Use [a-z0-9-] character set. Must be unique in this array. Example: usage-data.'
         name:
           type: string
           pattern: ^\S+(\s+\S+)*$
-          description: >-
-            Friendly name of the channel. No leading/trailing whitespace
-            allowed. Example: Usage data.
+          description: 'Friendly name of the channel. No leading/trailing whitespace allowed. Example: Usage data.'
         traits:
           $ref: '#/components/schemas/Traits'
         description:
@@ -1021,52 +944,34 @@ components:
         id:
           type: string
           pattern: ^[a-z0-9-]+$
-          description: >-
-            Product unique ID. Use [a-z0-9-] character set. Must be unique
-            across all files. Example: foo-bar.
+          description: 'Product unique ID. Use [a-z0-9-] character set. Must be unique across all files. Example: foo-bar.'
         name:
           type: string
           pattern: ^\S+(\s+\S+)*$
-          description: >-
-            Friendly name of the product. No leading/trailing whitespace
-            allowed. Example: Foo Bar.
+          description: 'Friendly name of the product. No leading/trailing whitespace allowed. Example: Foo Bar.'
         executable_name:
           type: array
-          description: >-
-            Optional. Provide executable name(s) if presence of this product can
-            be detected by PATH environment variable lookup. No leading/trailing
-            whitespace allowed.
+          description: Optional. Provide executable name(s) if presence of this product can be detected by PATH environment variable lookup. No leading/trailing whitespace allowed.
           items:
             type: string
             pattern: ^\S+(\s+\S+)*$
         description:
           type: string
           pattern: ^\S+(\s+\S+)*$
-          description: >-
-            Short description of the collected telemetry. Usually copied from
-            the product's documentation. No leading/trailing whitespace allowed.
+          description: Short description of the collected telemetry. Usually copied from the product's documentation. No leading/trailing whitespace allowed.
         category_id:
           type: string
           pattern: ^[a-z0-9-]+$
-          description: >-
-            Unique category id. Use [a-z0-9-] character set. The API generator
-            uses it to group products. Example: development.
+          description: 'Unique category id. Use [a-z0-9-] character set. The API generator uses it to group products. Example: development.'
         category_name:
           type: string
           pattern: ^\S+(\s+\S+)*$
-          description: >-
-            Friendly category name. The README generator uses it to group
-            products. No leading/trailing whitespace allowed. Example:
-            Development.
+          description: 'Friendly category name. The README generator uses it to group products. No leading/trailing whitespace allowed. Example: Development.'
         links:
           $ref: '#/components/schemas/Links'
         telemetry:
           type: array
-          description: >-
-            Telemetry channels list. Contains name and optionally description
-            and opt-in/out methods. Optional, since you may wish to add a
-            product that contains telemetry but doesn't provide a way to control
-            it.
+          description: Telemetry channels list. Contains name and optionally description and opt-in/out methods. Optional, since you may wish to add a product that contains telemetry but doesn't provide a way to control it.
           items:
             $ref: '#/components/schemas/Telemetry'
       required:
