@@ -1391,9 +1391,9 @@ Use methods described below to opt-out of this telemetry channel.
 
 ### [Meltano](https://www.meltano.com/)
 
-> By default, Meltano shares anonymous usage data with the Meltano team using Google Analytics.
+> By default, Meltano shares anonymous usage data with the Meltano team using Snowplow.
 
-- [Telemetry details](https://www.meltano.com/docs/settings.html#send-anonymous-usage-stats)
+- [Telemetry details](https://docs.meltano.com/reference/settings#send_anonymous_usage_stats)
 - [Privacy policy](https://www.meltano.com/privacy.html/)
 
 List of known telemetry channels:
@@ -1418,9 +1418,9 @@ MELTANO_DISABLE_TRACKING=True
 
 1. [New project](https://www.meltano.com/docs/command-line-interface.html#init)
 
-    > When creating a new project, pass `--no_usage_stats` to meltano init
+    > When creating a new project, pass `--no-usage-stats` to meltano init
 
-2. [Existing project](https://www.meltano.com/docs/settings.html#send-anonymous-usage-stats)
+2. [Existing project](https://docs.meltano.com/reference/settings#send_anonymous_usage_stats)
 
     > In an existing project, disable `send_anonymous_usage_stats` setting
 
@@ -2248,7 +2248,15 @@ List of known telemetry channels:
 
 Use methods described below to opt-out of this telemetry channel.
 
-##### 1. Run command
+##### 1. Set environment variable
+
+###### Scope: ⧉ Process
+
+```none
+DVC_NO_ANALYTICS=true
+```
+
+##### 2. Run command
 
 ###### Scope: 💻 Machine
 

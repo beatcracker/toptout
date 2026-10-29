@@ -1,0 +1,5 @@
+telemetry: off
+extends:
+  - recommended
+rules:
+  no-path-trailing-slash: off

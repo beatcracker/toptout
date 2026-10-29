@@ -1,0 +1,4 @@
+[global]
+disable = ["MD012", "MD013", "MD033", "MD034", "MD041"]
+include = [".github/**/*.md", "*/README.md"]
+respect-gitignore = true

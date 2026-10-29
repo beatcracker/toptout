@@ -1,0 +1,51 @@
+[settings]
+lockfile = true
+lockfile_platforms = ["linux-x64", "linux-x64-musl", "linux-arm64", "linux-arm64-musl", "macos-x64", "macos-arm64", "windows-x64"]
+
+[tools]
+powershell = "latest"
+node = "lts"
+jsonschema = "latest"
+"npm:@redocly/cli" = "latest"
+"aqua:biomejs/biome" = "latest"
+"aqua:rvben/rumdl" = "latest"
+"aqua:tamasfe/taplo" = "latest"
+"aqua:editorconfig-checker/editorconfig-checker" = "latest"
+"aqua:rhysd/actionlint" = "latest"
+
+[vars]
+biome_config = ".config/biome.json"
+rumdl_config = ".config/rumdl.toml"
+taplo_config = ".config/taplo.toml"
+toml_glob = "**/*.toml"
+editorconfig_exclude = '^docs/api/|^README[.]md$|^examples/toptout_|^docs/api-docs/openapi[.]yaml$|^mise[.]lock$|^[.]mise/|^[.]vscode/toptout[.]code-snippets$'
+
+[tasks.build]
+description = "Run build.ps1 tasks"
+raw_args = true
+run = "pwsh -NoProfile -File build.ps1"
+
+[tasks.preview]
+description = "Preview RapiDoc at http://127.0.0.1:8765/api-docs/"
+run = "npx --yes http-server@14.1.1 docs -a 127.0.0.1 -p 8765 -c-1 -o /api-docs/"
+
+[tasks.fmt]
+description = "Format maintained source files"
+run = [
+  "biome format --config-path {{ vars.biome_config }} --write .",
+  "rumdl fmt --config {{ vars.rumdl_config }} .",
+  "taplo format --config {{ vars.taplo_config }} {{ vars.toml_glob }}",
+  "pwsh -NoProfile -File build.ps1 fmt-code",
+]
+
+[tasks.check]
+description = "Check source formatting, workflows, and build tests"
+run = [
+  "biome ci --config-path {{ vars.biome_config }} .",
+  "rumdl check --config {{ vars.rumdl_config }} .",
+  "rumdl fmt --check --config {{ vars.rumdl_config }} .",
+  "taplo format --check --config {{ vars.taplo_config }} {{ vars.toml_glob }}",
+  'editorconfig-checker -disable-insert-final-newline -disable-indent-size -exclude "{{ vars.editorconfig_exclude }}"',
+  "actionlint -shellcheck=",
+  "pwsh -NoProfile -File build.ps1 test test-code-format api-schema-lint",
+]

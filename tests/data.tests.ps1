@@ -39,15 +39,9 @@ Describe 'Telemetry data' {
 
     Context '<_.Name>' -ForEach $json_files {
         It 'Conforms to the schema' {
-            # TODO: Figure out a better way to show what's exactly wrong with the file
-            $ret = try {
-                $content | Test-Json -SchemaFile $schema_file
-            }
-            catch {
-                $_ | Write-Error
-            }
-
-            $ret | Should -BeExactly $true
+            $validationErrors = @()
+            $valid = $content | Test-Json -SchemaFile $schema_file -ErrorAction SilentlyContinue -ErrorVariable validationErrors
+            $valid | Should -BeTrue -Because ($validationErrors | Out-String).Trim()
         }
 
         It 'File basename matches id' {

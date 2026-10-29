@@ -1,0 +1,67 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.6.3/schema.json",
+  "root": false,
+  "files": {
+    "includes": [
+      "data/*.json",
+      "schema/*.json",
+      "schema/*.yaml",
+      ".github/workflows/*.yml",
+      ".devcontainer/*.json",
+      ".vscode/*.json",
+      "docs/index.html",
+      "docs/api-docs/index.html",
+      "docs/**/*.js",
+      "docs/**/*.css",
+      ".config/biome.json"
+    ]
+  },
+  "formatter": {
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 120
+  },
+  "json": {
+    "formatter": {
+      "expand": "always",
+      "trailingNewline": false
+    }
+  },
+  "yaml": {
+    "formatter": {
+      "quoteStyle": "single"
+    }
+  },
+  "html": {
+    "experimentalFullSupportEnabled": true,
+    "formatter": {
+      "enabled": false
+    }
+  },
+  "linter": {
+    "enabled": false
+  },
+  "overrides": [
+    {
+      "includes": [
+        "schema/*.json",
+        ".vscode/*.json"
+      ],
+      "formatter": {
+        "indentWidth": 4
+      }
+    },
+    {
+      "includes": [
+        ".devcontainer/*.json",
+        ".config/biome.json"
+      ],
+      "json": {
+        "formatter": {
+          "trailingNewline": true
+        }
+      }
+    }
+  ]
+}

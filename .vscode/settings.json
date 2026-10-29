@@ -1,4 +1,5 @@
 {
+    "biome.configurationPath": "./.config/biome.json",
     "json.schemas": [
         {
             "fileMatch": [

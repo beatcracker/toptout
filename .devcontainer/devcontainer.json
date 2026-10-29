@@ -1,21 +1,19 @@
 {
-  "name": "PowerShell + Node.js",
-  "build": {
-    "dockerfile": "Dockerfile"
+  "name": "toptout",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers-extra/features/mise:1": {}
   },
-  "settings": {
-    "terminal.integrated.shell.*": "/opt/powershell/pwsh",
-    // Disable PSScriptAnalyzer in PowerShell extension.
-    // Otherwise it loads it's own PSScriptAnalyzer assembly,
-    // which prevents build.ps1 from using specific version of PSScriptAnalyzer
-    "powershell.scriptAnalysis.enable": false,
-    "powershell.powerShellAdditionalExePaths": {
-      "versionName": "latest",
-      "exePath": "/opt/powershell/pwsh"
+  "postCreateCommand": "mise trust --yes && mise install --locked",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.powershell",
+        "hverlin.mise-vscode"
+      ],
+      "settings": {
+        "powershell.scriptAnalysis.enable": false
+      }
     }
-  },
-  "extensions": [
-    "ms-vscode.powershell"
-  ],
-  "remoteUser": "node"
+  }
 }

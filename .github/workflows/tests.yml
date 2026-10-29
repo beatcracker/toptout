@@ -4,10 +4,17 @@ on: [pull_request, push]
 
 jobs:
   build:
-    runs-on: [ubuntu-22.04]
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
 
     steps:
-      - uses: actions/checkout@v3
-      - name: Pester
-        shell: pwsh
-        run: ./build.ps1 test
+      - uses: actions/checkout@v7
+      - uses: jdx/mise-action@v5
+        with:
+          install: true
+      - name: Check
+        run: mise run check
+      - name: Generate content
+        run: mise run build content api

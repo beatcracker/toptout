@@ -1,157 +1,39 @@
-#Requires -Version 7
+#Requires -Version 7.4.6
 
 # PSScriptAnalyzer doesn't handle scriptblocks well
 [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseUsingScopeModifierInNewRunspaces', '')]
 [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', '')]
 
 [CmdletBinding()]
-Param(
+param(
     [Parameter(Position = 0, ValueFromRemainingArguments)]
-    [ValidateSet(
-        'api',
-        'api-json',
-        'api-schema-lint',
-        'api-schema-bundle',
+    [ArgumentCompleter({
+        param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
 
-        'content',
-        'content-readme',
-        'content-shell',
+        $ast = [System.Management.Automation.Language.Parser]::ParseFile($PSCommandPath, [ref]$null, [ref]$null)
 
-        'test',
-        'test-schema',
-        'test-code',
-        'test-data',
-
-        'clean'
-    )]
+        foreach ($command in $ast.FindAll({
+            param($node)
+            $node -is [System.Management.Automation.Language.CommandAst] -and $node.GetCommandName() -eq 'task'
+        }, $true)) {
+            $name = $command.CommandElements[1]
+            if ($name -is [System.Management.Automation.Language.StringConstantExpressionAst] -and
+                $name.Value.StartsWith($wordToComplete, [StringComparison]::OrdinalIgnoreCase)) {
+                [System.Management.Automation.CompletionResult]::new($name.Value, $name.Value, 'ParameterValue', $name.Value)
+            }
+        }
+    })]
     [string[]]$Tasks
 )
 
-#region Common variables
-
 $LF = "`n"
 $PackageDirPath = "$PSScriptRoot/.packages"
-$Dependencies = @{
-    InvokeBuild      = '5.8.8'
-    Pester           = '5.3.1'
-    PSScriptAnalyzer = '1.20.0'
+$Dependencies = [ordered]@{
+    InvokeBuild      = '5.14.23'
+    Pester           = '6.2.0'
+    PSScriptAnalyzer = '1.25.0'
 }
 
-#endregion
-
-#region Common functions
-
-<#
-.Synopsis Restore dependencies
-#>
-function Restore-Dependency {
-    [CmdletBinding()]
-    Param(
-        [Parameter(Mandatory = $true , ValueFromPipeline, Position = 0)]
-        [ValidateNotNullOrEmpty()]
-        [hashtable]$InputObject,
-
-        [ValidateNotNullOrEmpty()]
-        [string]$OutDir
-    )
-
-    Begin {
-        filter Get-RelativePath {
-            param (
-                [string]
-                $BasePath = $PSScriptRoot
-            )
-
-            "$_".Replace($BasePath, '.')
-        }
-
-        function Clear-Directory {
-            [CmdletBinding()]
-            param (
-                [Parameter(Mandatory)]
-                [ValidateNotNullOrEmpty()]
-                [string]$Path,
-
-                [ValidateNotNullOrEmpty()]
-                [string[]]$Exclude
-            )
-
-            if ([System.IO.Directory]::Exists($Path)) {
-                foreach (
-                    $item in [System.IO.Directory]::EnumerateDirectories($Path)
-                ) {
-                    $name = [System.IO.Path]::GetFileName($item)
-                    if ( $name -notin $Exclude) {
-                        Write-Information "Removing   : $($item | Get-RelativePath)" -InformationAction Continue
-                        [System.IO.Directory]::Delete($item, $true)
-                    }
-                }
-            }
-        }
-
-        function Use-Directory {
-            [CmdletBinding()]
-            param (
-                [Parameter(Mandatory)]
-                [ValidateNotNullOrEmpty()]
-                [string]$Path
-            )
-
-            if (-not [System.IO.Directory]::Exists($Path) ) {
-                Write-Information "Creating   : $($Path | Get-RelativePath)" -InformationAction Continue
-                [void][System.IO.Directory]::CreateDirectory($Path)
-            }
-        }
-    }
-
-    Process {
-        # Clear all stale packages
-        Clear-Directory -Path $OutDir -Exclude $InputObject.Keys
-
-        # Ensure dir exists
-        Use-Directory -Path $OutDir
-
-        foreach ($kv in $InputObject.GetEnumerator()) {
-            $name = $kv.Name
-            $version = $kv.Value
-
-            Write-Information "Dependency : $name v$version" -InformationAction Continue
-
-            # Clear stale package versions
-            Clear-Directory -Path "$OutDir/$name" -Exclude $version
-
-            # Ensure package dir exists
-            Use-Directory -Path "$OutDir/$name/$version"
-
-            # Download package
-            $nupkg = "$OutDir/$name/$version/$name.$version.nupkg"
-            if (-not [System.IO.File]::Exists($nupkg)) {
-                $OldPP = $ProgressPreference
-                try {
-                    $ProgressPreference = 'SilentlyContinue'
-                    Write-Information "Downloading: $name.$version.nupkg" -InformationAction Continue
-                    Invoke-RestMethod -Uri "https://www.powershellgallery.com/api/v2/package/$name/$version" -OutFile $nupkg
-                }
-                finally {
-                    $ProgressPreference = $OldPP
-                }
-            }
-
-            # Extract package
-            $nuspec = "$OutDir/$name/$version/$name.nuspec"
-            if (
-                -not [System.IO.File]::Exists($nuspec)
-            ) {
-                Write-Information "Extracting : $name.$version.nupkg -> $("$OutDir/$name/$version" | Get-RelativePath)" -InformationAction Continue
-                [System.IO.Compression.ZipFile]::ExtractToDirectory($nupkg, "$OutDir/$name/$version", $true)
-            }
-        }
-    }
-}
-
-<#
-.Synopsis Given string 'TEST' produce centered padded string '---TEST---'
-#>
 function Get-PaddedString {
     [CmdletBinding()]
     Param(
@@ -187,33 +69,25 @@ function Get-PaddedString {
     }
 }
 
-#endregion
 
-#region Bootstrap
-
-# If direct call: ensure packages and call the local Invoke-Build
+# Invoke-Build loads this file to define tasks. Direct calls bootstrap it.
 if ([System.IO.Path]::GetFileName($MyInvocation.ScriptName) -ne 'Invoke-Build.ps1') {
     $ErrorActionPreference = 'Stop'
 
-    # Install packages
-    '{1}{0}{1}' -f ('=::[ Bootstrap ]::=' | Get-PaddedString -Width 100), [System.Environment]::NewLine |
-    Write-Information -InformationAction Continue
+    [void][System.IO.Directory]::CreateDirectory($PackageDirPath)
+    foreach ($dependency in $Dependencies.GetEnumerator()) {
+        $manifest = "$PackageDirPath/$($dependency.Key)/$($dependency.Value)/$($dependency.Key).psd1"
+        if (-not [System.IO.File]::Exists($manifest)) {
+            Write-Information "Restoring $($dependency.Key) $($dependency.Value)" -InformationAction Continue
+            Save-PSResource -Name $dependency.Key -Version $dependency.Value -Path $PackageDirPath -TrustRepository -AcceptLicense -ErrorAction Stop
+        }
+    }
 
-    $Dependencies | Restore-Dependency -OutDir $PackageDirPath
+    $env:PSModulePath = "$PackageDirPath$([System.IO.Path]::PathSeparator)$env:PSModulePath"
 
-    @(
-        ''
-        '-' | Get-PaddedString -Width 100
-        ''
-    ) | Write-Information -InformationAction Continue
-
-    $ib = Join-Path -Path $PackageDirPath -ChildPath 'InvokeBuild' -AdditionalChildPath ($Dependencies.InvokeBuild, 'Invoke-Build.ps1')
-    # Call Invoke-Build
-    & $ib -Task $Tasks -File $MyInvocation.MyCommand.Path @PSBoundParameters
+    & "$PackageDirPath/InvokeBuild/$($Dependencies.InvokeBuild)/Invoke-Build.ps1" -File $PSCommandPath -Task $Tasks
     return
 }
-
-#endregion
 
 #region Build output customization
 
@@ -229,6 +103,31 @@ Set-BuildHeader {
 #endregion
 
 #region Tasks
+
+# Suppress Redocly's promotional and update notifications.
+$env:REDOCLY_SUPPRESS_NOTIFICATIONS = 'true'
+
+function Format-Code {
+    param([switch]$Check)
+
+    Import-Module "$PackageDirPath/PSScriptAnalyzer/$($Dependencies.PSScriptAnalyzer)/PSScriptAnalyzer.psd1" -ErrorAction Stop
+    $settings = @{ IncludeRules = @('PSAvoidTrailingWhitespace', 'PSUseConsistentWhitespace') }
+    $files = @("$BuildRoot/build.ps1") +
+        @([IO.Directory]::GetFiles("$BuildRoot/helpers", '*.ps1')) +
+        @([IO.Directory]::GetFiles("$BuildRoot/tests", '*.ps1'))
+
+    foreach ($file in $files) {
+        $original = [IO.File]::ReadAllText($file)
+        $formatted = Invoke-Formatter -ScriptDefinition $original -Settings $settings
+        if ($original -cne $formatted) {
+            if ($Check) { throw "Formatting needed: $file" }
+            [IO.File]::WriteAllText($file, $formatted, [Text.UTF8Encoding]::new($false))
+        }
+    }
+}
+
+task fmt-code { Format-Code }
+task test-code-format { Format-Code -Check }
 
 task . -Jobs @(
     'test'
@@ -255,32 +154,30 @@ task test -Jobs @(
 
 task clean {
     Write-Build Yellow 'Clearing local package directory'
-
-    Remove-BuildItem @(
-        $PackageDirPath
-    )
+    Remove-BuildItem $PackageDirPath
 }
 
 task test-schema {
     Write-Build White 'Testing JSON Schema'
 
     exec {
-        & 'npx' @(
-            '--yes'
-            '--package=ajv-formats@2.1.1'
-            '--package=ajv-cli@5.0.0'
-            "--call=ajv compile --spec=draft2020 --validate-formats=true --verbose --all-errors --strict=true --strict-required=log --strict-types=log -c ajv-formats -s '$BuildRoot/schema/toptout.schema.json'"
-        )
+        & jsonschema metaschema "$BuildRoot/schema/toptout.schema.json" --format-assertion
+    }
+
+    exec {
+        & jsonschema lint "$BuildRoot/schema/toptout.schema.json" --only unknown_keywords_prefix --only unknown_local_ref --only invalid_external_ref
     }
 }
 
 task test-code {
     $TestPath = "$BuildRoot/tests/code.tests.ps1"
+    $PesterPath = "$PackageDirPath/Pester/$($Dependencies.Pester)/Pester.psd1"
+    $AnalyzerPath = "$PackageDirPath/PSScriptAnalyzer/$($Dependencies.PSScriptAnalyzer)/PSScriptAnalyzer.psd1"
     $Result = ForEach-Object -UseNewRunspace -Parallel {
         $Global:ErrorActionPreference = 'Stop'
 
-        Import-Module -Name "${using:PackageDirPath}/Pester"
-        Import-Module -Name "${using:PackageDirPath}/PSScriptAnalyzer"
+        Import-Module -Name $using:PesterPath -ErrorAction Stop
+        Import-Module -Name $using:AnalyzerPath -ErrorAction Stop
 
         Invoke-Pester -Path $using:TestPath -Output Detailed -PassThru
     }
@@ -290,10 +187,11 @@ task test-code {
 
 task test-data {
     $TestPath = "$BuildRoot/tests/data.tests.ps1"
+    $PesterPath = "$PackageDirPath/Pester/$($Dependencies.Pester)/Pester.psd1"
     $Result = ForEach-Object -UseNewRunspace -Parallel {
         $Global:ErrorActionPreference = 'Stop'
 
-        Import-Module -Name "${using:PackageDirPath}/Pester"
+        Import-Module -Name $using:PesterPath -ErrorAction Stop
 
         Invoke-Pester -Path $using:TestPath -Output Detailed -PassThru
     }
@@ -574,15 +472,12 @@ task api-schema-lint {
     Write-Build White 'Linting OpenAPI schema'
 
     exec {
-        & 'npx' @(
-            '--yes'
-            '@redocly/cli@1.0.0-beta.100'
+        $cmd = @(
             'lint'
             "$BuildRoot/schema/openapi.yaml"
-            "--config=$BuildRoot/schema/.redocly.lint-ignore.yaml"
-            '--extends'
-            'recommended'
+            "--config=$BuildRoot/schema/redocly.yaml"
         )
+        & 'redocly' @cmd
     }
 }
 
@@ -590,15 +485,14 @@ task api-schema-bundle {
     Write-Build White 'Bundling OpenAPI schema'
 
     exec {
-        & 'npx' @(
-            '--yes'
-            '@redocly/cli@1.0.0-beta.100'
+        $cmd = @(
             'bundle'
             "$BuildRoot/schema/openapi.yaml"
             '--output'
             "$BuildRoot/docs/api-docs/openapi.yaml"
-            "--config=$BuildRoot/schema/.redocly.lint-ignore.yaml"
+            "--config=$BuildRoot/schema/redocly.yaml"
         )
+        & 'redocly' @cmd
     }
 }
 
