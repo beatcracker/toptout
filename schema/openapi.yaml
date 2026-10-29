@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.1.2
 info:
   title: Toptout
   description: Get data about telemetry channels in various applications
@@ -6,6 +6,7 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   version: 0.0.1
+security: []
 servers:
   - url: https://toptout.me/api
     description: Static API hosted on GitHub pages
@@ -83,7 +84,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: toptout.schema.json
+                  $ref: toptout.schema.json#/definitions/Toptout
         '404':
           description: Resource not found
           content:
@@ -104,7 +105,7 @@ paths:
         - telemetry
       parameters:
         - name: id
-          in: path          
+          in: path
           required: true
           schema:
             type: string
@@ -117,7 +118,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: toptout.schema.json
+                $ref: toptout.schema.json#/definitions/Toptout
         '404':
           description: Resource not found
           content:
@@ -153,7 +154,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: toptout.schema.json
+                  $ref: toptout.schema.json#/definitions/Toptout
         '404':
           description: Resource not found
           content:
