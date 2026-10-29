@@ -611,10 +611,8 @@ if ($Env) {
 # https://dvc.org/
 
 # Usage Analytics
-if ($Exec) {
-    if (Test-InPath 'dvc' -ShowLog:$ShowLog) {
-        Invoke-ShellCommand -Command 'dvc' -Arguments @('config', 'core.analytics', 'false', '--global') -ShowLog:$ShowLog
-    }
+if ($Env) {
+    Set-EnvVar -Name 'DVC_NO_ANALYTICS' -Value 'true' -ShowLog:$ShowLog
 }
 
 # Fastlane

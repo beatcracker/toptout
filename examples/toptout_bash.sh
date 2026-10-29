@@ -519,13 +519,7 @@ fi
 # https://dvc.org/
 
 # Usage Analytics
-if [[ "${toptout_exec}" == 'True' ]]
-then
-  if in_path 'dvc'
-  then
-    run_cmd 'dvc' 'config core.analytics false --global'
-  fi
-fi
+[[ "${toptout_env}" == 'True' ]] && set_env 'DVC_NO_ANALYTICS' 'true'
 
 # Fastlane
 # https://fastlane.tools/
