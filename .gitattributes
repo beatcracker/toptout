@@ -7,6 +7,7 @@
 *.json text eol=lf
 *.md   text eol=lf
 *.ps1  text eol=lf
+*.toml text eol=lf
 
 # Generated
 *.html  text eol=lf
