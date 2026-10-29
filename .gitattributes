@@ -19,8 +19,10 @@
 *.yaml     text eol=lf
 *.yml      text eol=lf
 
-# Git
+# Root files
 
+.editorconfig  text eol=lf
 .gitattributes text eol=lf
 .gitignore     text eol=lf
+LICENSE        text eol=lf
 
