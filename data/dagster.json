@@ -31,7 +31,7 @@
                 "windows": "%DAGSTER_HOME%\\dagster.yaml"
               },
               "selector": {
-                "dasel":".telemetry.enabled"
+                "dasel": ".telemetry.enabled"
               },
               "value": {
                 "opt_out": false,

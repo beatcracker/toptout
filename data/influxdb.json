@@ -48,7 +48,7 @@
                 "windows": "%INFLUXD_CONFIG_PATH%\\config.yaml"
               },
               "selector": {
-                "dasel":".telemetry.enabled"
+                "dasel": ".telemetry.enabled"
               },
               "value": {
                 "opt_out": false,

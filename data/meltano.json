@@ -6,10 +6,10 @@
   ],
   "category_id": "database",
   "category_name": "Database",
-  "description": "By default, Meltano shares anonymous usage data with the Meltano team using Google Analytics.",
+  "description": "By default, Meltano shares anonymous usage data with the Meltano team using Snowplow.",
   "links": {
     "main": "https://www.meltano.com/",
-    "telemetry": "https://www.meltano.com/docs/settings.html#send-anonymous-usage-stats",
+    "telemetry": "https://docs.meltano.com/reference/settings#send_anonymous_usage_stats",
     "privacy": "https://www.meltano.com/privacy.html/"
   },
   "telemetry": [
@@ -39,13 +39,13 @@
         "noop": [
           {
             "name": "New project",
-            "description": "When creating a new project, pass `--no_usage_stats` to meltano init",
+            "description": "When creating a new project, pass `--no-usage-stats` to meltano init",
             "link": "https://www.meltano.com/docs/command-line-interface.html#init"
           },
           {
             "name": "Existing project",
             "description": "In an existing project, disable `send_anonymous_usage_stats` setting",
-            "link": "https://www.meltano.com/docs/settings.html#send-anonymous-usage-stats"
+            "link": "https://docs.meltano.com/reference/settings#send_anonymous_usage_stats"
           }
         ]
       }
