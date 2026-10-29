@@ -23,6 +23,19 @@
         "error_report": false
       },
       "target": {
+        "env": {
+          "scope": {
+            "process": {
+              "path": {
+                "default": "DVC_NO_ANALYTICS"
+              },
+              "value": {
+                "opt_out": "true",
+                "opt_in": null
+              }
+            }
+          }
+        },
         "exec": {
           "scope": {
             "user": {
@@ -39,7 +52,6 @@
                 "opt_in": [
                   "config",
                   "core.analytics",
-                  "false",
                   "true",
                   "--global"
                 ]
@@ -59,7 +71,6 @@
                 "opt_in": [
                   "config",
                   "core.analytics",
-                  "false",
                   "true",
                   "--system"
                 ]
